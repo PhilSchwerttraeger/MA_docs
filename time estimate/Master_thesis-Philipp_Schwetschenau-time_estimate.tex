@@ -1,0 +1,115 @@
+% Diese Vorlage wurde mit freundlicher Unterstützung von Felix Neumann angefertigt.
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[USenglish]{babel}    % Deutsche Sprache in automatisch generiertem
+\usepackage{latexsym}         % Fuer recht seltene Zeichen
+\usepackage[utf8]{inputenc}   % =E4 =F6 =FC =DF; danach  geht auch das ß richtig
+\usepackage{caption}          % Figure-Captions formatieren
+\usepackage{sectsty}          % Section headings formatieren
+\usepackage[fixlanguage]{babelbib}
+\usepackage[a4paper,lmargin={2.5cm},rmargin={2.5cm},tmargin={3cm},bmargin={2.5cm}]{geometry}
+\usepackage[sort&compress,square,comma,authoryear]{natbib}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\pdfinfo{
+	/Title		(Graphical Specification Language for the Entity-Labeling Aspect)
+	/Subject	(Exposé -- Master Thesis)
+	/Author		(Philipp Schwetschenau)
+}
+
+\selectbiblanguage{USenglish}
+\allsectionsfont{\sffamily}
+\captionsetup{margin=1cm,font=small,labelfont=bf}
+
+\newcommand\notice[1]{}
+\newcommand\seppar{ \vspace{2ex} \noindent }
+\renewcommand*\theenumii{\labelenumi\arabic{enumii}}
+\renewcommand*\labelenumii{\theenumii}
+
+\newenvironment{redtext}{\color{gray} \it{}}{\ignorespacesafterend}
+
+
+\begin{document}
+
+\title{{\bf Graphical Specification Language \\for the Entity-Labeling Aspect} \\ 
+\begin{large}Structure and time estimate -- Master Thesis\end{large}
+}
+\author{
+	Philipp Schwetschenau \\
+	Technische Universität Ilmenau \\
+	philipp.schwetschenau@tu-ilmenau.de
+}
+\date{\today}
+
+\maketitle
+
+\section{Time estimate} 
+\begin{table}[h]
+   \begin{tabularx}{\textwidth}{p{1cm} X p{5cm}} \toprule
+   1 	& Introduction 							& 1w 	\\ 
+   2 	& Fundamentals 							& 3w	\\
+   3 	& Design: Graphical specification language 	& 6w	\\
+   4 	& Design: Editor GUI 						& 2w	\\
+   5 	& Implementation 						& 5w	\\
+   6 	& Evaluation 								& 3w	\\
+   7 	& Outlook and Future Work 				& 1w	\\
+   8 	& Summary 								& 1w	\\	
+   	& Total									& 22w 	\\ \bottomrule
+    \\ 
+  \end{tabularx}
+  \caption{Estimated working time in weeks}
+ \end{table}
+  
+\cleardoublepage
+
+\section{Content structure}
+
+   \begin{enumerate}[noitemsep]
+      \item Introduction
+  \begin{enumerate}[noitemsep]
+         \item Domain
+         \item Motivation
+         \item Goal
+         \item Approach
+      \end{enumerate}
+      \item Fundamentals
+  \begin{enumerate}[noitemsep]
+         \item Security Models
+         \item Aspect-oriented Security Engineering and Entity-Labeling Aspect
+         \item Graphical notation models \begin{redtext}(UML, ERD, RBAC-notation by Sandhu)\end{redtext}
+         \item Gestalt laws and human optical perception
+         \item GUI design \begin{redtext}(design patterns, usability)\end{redtext}
+      \end{enumerate}
+      \item Design: Graphical specification language
+  \begin{enumerate}[noitemsep]
+         \item Concept \begin{redtext}(approach, basic ideas, adoptions from literature)\end{redtext}
+         \item Elements
+         \item Relationships
+         \item Structure
+	  \item \begin{redtext}Optional: Visualization on the higher abstraction level\end{redtext}
+      \end{enumerate}
+      \item Design: Editor GUI
+  \begin{enumerate}[noitemsep]
+         \item Structure
+         \item Sections
+      \end{enumerate}
+      \item Implementation
+  \begin{enumerate}[noitemsep]
+         \item Implementation base \begin{redtext}(Qt, MVC)\end{redtext}
+         \item Structure
+         \item GUI sections
+      \end{enumerate}
+      \item Evaluation
+  \begin{enumerate}[noitemsep]
+         \item Graphical specification language
+         \item Editor
+      \end{enumerate}
+      \item Outlook and Future Work
+	\item Summary
+   \end{enumerate}
+   
+\end{document}
