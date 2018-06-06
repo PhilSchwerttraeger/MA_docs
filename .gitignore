@@ -240,3 +240,5 @@ TSWLatexianTemp*
 
 # generated if using elsarticle.cls
 *.spl
+thesis/Master_thesis_Philipp_Schwetschenau_v0.pdf
+*.pdf
