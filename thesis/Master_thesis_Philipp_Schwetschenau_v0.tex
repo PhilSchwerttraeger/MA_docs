@@ -174,7 +174,9 @@ Furthermore this section will present a concept to express all types of security
 
 \subsection{HRU}
 \label{HRU}
-The HRU security model \citep*{Harrison75a} is dynamic security model.
+The HRU security model \citep*{Harrison75a} is a fundamental, dynamic access control model.
+It manages permissions of subjects on objects with the help of an state automaton and access control matrices.
+While subjects are active (e.g. users), objects are passive (e.g. files).
 
 \begin{xdefinition}[HRU] 
 A HRU model is a deterministic automaton
@@ -185,6 +187,8 @@ $\Sigma$ as input alphabet,
 $\delta : Q \times \Sigma \rightarrow Q$ as state transition function and 
 $q_0 \in Q$ as initial state.
 \end{xdefinition}
+
+
 
 \subsection{RBAC}
 \label{RBAC}
