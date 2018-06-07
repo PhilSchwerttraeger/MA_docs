@@ -63,6 +63,21 @@ Fachgebiet für Verteilte Systeme und Betriebssysteme
 %\listoflisting
 %\tocentry{\listingname}
 
+%
+% Citing
+
+% Author 1 et al. [1234]
+%\cite{Harrison75a}
+
+% Author 1, Author 2, Author 3 [1234]
+%\cite*{Harrison75a}
+
+% [Author 1 et al. 1234]
+%\citep{Harrison75a}
+
+% [Author 1, Author 2, Author 3 1234]
+%\citep*{Harrison75a}
+
 
 
 % Inhalts-Teil
@@ -151,15 +166,43 @@ In the last section~\ref{gui_design} information on how to design a software gra
 
 \section{Security models}
 \label{security_models}
-
+Security policies are sets of rules to fulfill security related requirements of a system.
+To actually be able to work with such policies and also in context of analyzing them, they have to be formalized as an instance of a security model.
+In context of model-based security engineering these security models are obviously the most important artifact.
+So this section introduces the HRU security model as well as the family of RBAC models with its concepts and elements.
+Furthermore this section will present a concept to express all types of security models in form of a single model, the Security Model Core.
 
 \subsection{HRU}
 \label{HRU}
-Harrison-Ruzzo-Ullman
+The HRU security model \citep*{Harrison75a} is dynamic security model.
+
+\begin{xdefinition}[HRU] 
+A HRU model is a deterministic automaton
+$(Q, \Sigma , \delta , q_{0})$ with 
+$Q = 2^S \times 2^O \times M$ as state space, 
+$M = \lbrace m|m:S \times O \rightarrow 2^R \rbrace$ as set of access control matrices, 
+$\Sigma$ as input alphabet, 
+$\delta : Q \times \Sigma \rightarrow Q$ as state transition function and 
+$q_0 \in Q$ as initial state.
+\end{xdefinition}
 
 \subsection{RBAC}
 \label{RBAC}
-Role-based Access Control
+Role-based Access Control 
+
+\begin{xdefinition}[RBAC] 
+A RBAC$_0$ model is a tuple $(U, R, P, S, UA, PA, user, roles)$ with 
+$U$ as set of \textit{users}, 
+$R$ as set of \textit{roles}, 
+$P = 2^{O \times OP}$ as set of \textit{permissions} 
+($O$ is the set of \textit{objects} and 
+$OP$ the set of \textit{operations}), 
+$S$ as set of \textit{sessions}, 
+$UA \subseteq U \times R$ as \textit{user-role relation}, 
+$PA \subseteq P \times R$ as \textit{permission-role relation}, 
+$user: S \rightarrow U$ as assignment, that maps every session to a user and
+$roles: S \rightarrow 2^R$ as assignment, that maps every session to set of roles.
+\end{xdefinition}
 
 \subsection{Security Model Core}
 \label{model_core}
@@ -332,26 +375,13 @@ Qt, MVC
 \cleardoublepage
 \DeclareRobustCommand{\citeext}[1]{\citeauthor{#1}~\cite{#1}}
 \bibliographystyle{plainnat}
-\begin{thebibliography}{99}
 
-\bibitem[Amthor(2018)]{Amthor18}
-  Peter Amthor,
- \emph{An Aspect-oriented Approach to Model-based Security Engineering},
-  Dissertation,
-  Technische Universität Ilmenau,
-  2018 
+\bibliography{other/db}
 
-\bibitem[Sandhu(1996)]{Sandhu96}
- Ravi S. Sandhu, Edward J. Coyne, Hal L. Feinstein, Charles E. Youman,
- \emph{Role-Based Access Control Models},
- IEEE Computer, 
- 29(2):38–47, 
- February 1996
-
-\end{thebibliography}
 \tocentry{Bibliography}
 
-\cleardoublepage
-%\input{other/selbststaendigkeit} %nicht notwendig für Studienarbeiten
+
+
+
 
 \end{document}
