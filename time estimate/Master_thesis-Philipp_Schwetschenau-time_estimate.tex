@@ -14,6 +14,7 @@
 \usepackage{tabularx}
 \usepackage{xcolor}
 \usepackage{enumitem}
+\usepackage{nicefrac}
 
 \pdfinfo{
 	/Title		(Graphical Specification Language for the Entity-Labeling Aspect)
@@ -29,10 +30,11 @@
 \newcommand\seppar{ \vspace{2ex} \noindent }
 \renewcommand*\theenumii{\labelenumi\arabic{enumii}}
 \renewcommand*\labelenumii{\theenumii}
-
 \newenvironment{redtext}{\color{gray} \it{}}{\ignorespacesafterend}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-1.5ex]{0pt}{0pt}}   % = `bottom' strut
 
-
+\setlength{\extrarowheight}{3pt}
 \begin{document}
 
 \title{{\bf Graphical Specification Language \\for the Entity-Labeling Aspect} \\ 
@@ -43,22 +45,37 @@
 	Technische Universität Ilmenau \\
 	philipp.schwetschenau@tu-ilmenau.de
 }
-\date{\today}
+\date{May 29, 2018}
 
 \maketitle
 
 \section{Time estimate} 
 \begin{table}[h]
-   \begin{tabularx}{\textwidth}{p{1cm} X p{5cm}} \toprule
-   1 	& Introduction 							& 1w 	\\ 
-   2 	& Fundamentals 							& 3w	\\
-   3 	& Design: Graphical specification language 	& 6w	\\
-   4 	& Design: Editor GUI 						& 2w	\\
-   5 	& Implementation 						& 5w	\\
-   6 	& Evaluation 								& 3w	\\
-   7 	& Outlook and Future Work 				& 1w	\\
-   8 	& Summary 								& 1w	\\	
-   	& Total									& 22w 	\\ \bottomrule
+   \begin{tabularx}
+   {\textwidth}{p{1cm} X p{5cm}}
+   \toprule
+   1 	& Introduction 															
+   & \nicefrac{2}{3} w 	\\ 
+   2 	& Fundamentals 															
+   & 3 w	\\
+   3 	& Design: Graphical specification language 	
+   & 6 w	\\
+   4 	& Design: Editor GUI 						
+   & 2 w	\\
+   5 	& Implementation 						
+   & 6 w	\\
+   6 	& Evaluation 								
+   & 5 w	\\
+   7 	& Outlook and Future Work 				
+   & \nicefrac{2}{3} w	\\
+   8 	& Summary 								
+   & \nicefrac{2}{3} w	\\	
+   & Spare 
+   & 2 w	\Bstrut \\			
+   \hline			
+   & Total \Tstrut	
+   & 26 w \\
+   \bottomrule
     \\ 
   \end{tabularx}
   \caption{Estimated working time in weeks}
