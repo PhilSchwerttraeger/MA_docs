@@ -237,6 +237,24 @@ $OP, R, RH, C$ as static component.
 
 \subsection{Security Model Core}
 \label{model_core}
+Over the years many different security models emerged for special purposes and requirements.
+They heavily vary and differ in their structure and design.
+Comparing them or even parts of them for analysis or evaluation purposes is not always possible per se.
+Methods to analyze a model concerning a given security property have to be adapted to every model they should run on.
+So \cite{Poelck14} proposed the Security Model Core to describe and formalize all possible security models in one meta model in a homogeneous way.
+
+\begin{xdefinition}[Security Model Core]
+\label{def:SecurityModelCore}
+The Security Model Core is a 5-tuple 
+$(Q, \Sigma , \delta , q_{0}, E)$ with 
+$Q$ as state space,
+$\Sigma$ as input alphabet, 
+$\delta: Q \times \Sigma \rightarrow Q$ as state transition function, 
+$q_0$ as initial state and 
+$E$ as static extension vector.
+\end{xdefinition}
+
+The definition of model components depends on the specialization of the corresponding model core and is done in six steps by identifying and defining those components.
 
 
 
