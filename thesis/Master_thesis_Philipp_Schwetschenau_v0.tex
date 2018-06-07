@@ -160,7 +160,6 @@ Section \ref{security_models} introduces the security models HRU and RBAC as wel
 Section \ref{AOSEEL} focuses on the Aspect-oriented Security Engineering (AOSE) proposed by \citet*{Amthor18}.
 It covers the Entity-Labeling Aspect in particular, one aspect of AOSE, which is going to be essential regarding the task to design a graphical specification language for it in chapter~\ref{gsl_design}.
 In section~\ref{graphical_notations} the well-established graphical notations UML and ER are described.
-
 Based on human optical perception and gestalt laws section~\ref{gestalt_laws_and_human_optical_perception} provides information on how we perceive and evaluate visual impressions regarding two-dimensional forms and structures.
 In the last section~\ref{gui_design} information on how to design a software graphical user interface are given with respect to common best practices like design patterns and modern usability.
 
@@ -192,7 +191,11 @@ $q_0 \in Q$ as initial state.
 
 \subsection{RBAC}
 \label{RBAC}
-Role-based Access Control 
+Due to its usage of access control matrices the HRU model does not scale well with an increasing number of subjects and objects.
+The family of role-based access control models (RBAC) counter this more effectively by using one stage of indirection.
+For this RBAC models introduce the concept of roles \citep{Sandhu96}.
+On the one hand every user is mapped to a set of roles.
+On the other hand every role is mapped to a set of permissions.
 
 \begin{xdefinition}[RBAC] 
 A RBAC$_0$ model is a tuple $(U, R, P, S, UA, PA, user, roles)$ with 
@@ -207,6 +210,30 @@ $PA \subseteq P \times R$ as \textit{permission-role relation},
 $user: S \rightarrow U$ as assignment, that maps every session to a user and
 $roles: S \rightarrow 2^R$ as assignment, that maps every session to set of roles.
 \end{xdefinition}
+
+RBAC is called family of security models, because there is a base model (RBAC$_0$) and advanced models that extend the base model.
+RBAC$_1$ extends RBAC$_0$ with a role hierarchy, because in reality it turned out that roles are often combinations of other already existing roles.
+This reduces redundancy and improves its scaling behavior with increasing number of users and objects even further.
+RBAC$_2$ extends RBAC$_0$ with a constraints component $C$ to restrict values for certain model components.
+RBAC$_3$ combines RBAC$_1$ and RBAC$_2$.
+
+In contrast to HRU RBAC is static.
+Due to not being dynamic a RBAC model can always just reflect a snapshot in time.
+To make it dynamic there is a model called DRBAC, which combines the RBAC$_3$ model with the deterministic state automaton of the HRU model.
+
+\begin{xdefinition}[DRBAC] 
+A DRBAC model is a tuple 
+$(Q, \Sigma , \delta , q_{0}, OP, R, RH, C)$ with
+$Q = 2^U \times 2^O \times 2^P \times 2^S \times 2^{\mathit{PA}} \times 2^{\mathit{UA}} \times \mathit{USER} \times \mathit{ROLES}$ as state space, where $U, O, P, S, PA, UA, RH, C$ is defined just as in the RBAC$_3$ model, 
+$\mathit{USER} = \lbrace user|user: S \rightarrow U \rbrace$ as set of mappings that maps sessions to users, 
+$\mathit{ROLES} = \lbrace roles|roles: S \rightarrow 2^R \rbrace$ as set of mappings that maps sessions to roles, 
+$\Sigma = OP \times X$ as input alphabet, 
+$\delta : Q \times \Sigma \rightarrow Q$ as state transition function, 
+$q_0 \in Q$ as initial state and 
+$OP, R, RH, C$ as static component.
+\end{xdefinition}
+
+
 
 \subsection{Security Model Core}
 \label{model_core}
