@@ -11,12 +11,13 @@
 
 % Language & Encoding
 \usepackage[T1]{fontenc}
-\usepackage[USenglish]{babel}	% Deutsche Sprache in automatisch generiertem
+\usepackage[USenglish]{babel}
 \usepackage[fixlanguage]{babelbib}
-\usepackage[utf8]{inputenc}	% =E4 =F6 =FC =DF; danach  geht auch das ß richtig
+\usepackage[utf8]{inputenc}
+\usepackage{blindtext}
 
 % Page Geometry
-\usepackage[a4paper]{geometry}	% A4-Seite mit vielen Layout-Optionen
+\usepackage[a4paper]{geometry}
 \geometry{
 	twoside,
 	top=3cm,
@@ -24,33 +25,28 @@
 }
 
 % Literature
-\usepackage{url} 
-\usepackage{hyperref}
+\usepackage{url}
 \usepackage[sort&compress,square,comma,authoryear]{natbib}
 
 % Fonts & Symbols
-\usepackage{latexsym}		% Fuer recht seltene Zeichen
-\usepackage{amsfonts}		% Mathe-Schriften
-\usepackage{amssymb}		% Symbole
-\usepackage{amsmath}		% Symbole
-\usepackage{lmodern}		% verwenden der "Latin Modern" ("Computer Modern"++)
+\usepackage{latexsym}		% Rare symbols
+\usepackage{amsfonts}		% Math fonts
+\usepackage{amssymb}		% Symbols
+\usepackage{amsmath}		% Symbols
+\usepackage{lmodern}		% "Latin Modern" ("Computer Modern"++)
 
-\newcommand{\origttfamily}{}	% Trenner für Typewriter
+\newcommand{\origttfamily}{}	% Separator for typewriter
 \let\origttfamily=\ttfamily
 \renewcommand{\ttfamily}{\origttfamily \hyphenchar\font=`\-}
-
-\hyphenation{
-	Ab-kürz-ungs-vor-la-ge
-}
 
 
 %
 % Document Layout
 
-\usepackage[activate]{pdfcprot}	% Margin-Kerning für ein besseres Gesamtbild
+\usepackage[activate]{pdfcprot}	% margin kerning
 
 % Header & Footer
-\usepackage{fancyhdr}		% Kopfzeilen formatieren
+\usepackage{fancyhdr}		% format headers
 \pagestyle{fancy}
 \fancyhf{}
 \setlength{\headheight}{15pt}
@@ -142,27 +138,23 @@
 % Page Elements
 
 % Captions & Figures
-\usepackage{graphicx}		% Grafiken einbinden mit vielen Optionen
+\usepackage{graphicx}		% include graphics
 \graphicspath{{./figures/}}
 
 % Tables
-\usepackage{booktabs}		% Bessere Tabellen.
+\usepackage{booktabs}
 
 % Theorems
-\usepackage{framed}		% Rahmen für Theoreme.
-\usepackage[framed,thmmarks,amsmath]{ntheorem}	% erweiterte Theorem-Umgebungen.
-\usepackage{shadethm}		% Theoreme mit farbigem Hintergrund
+\usepackage{framed}		% Frames for theorems.
+\usepackage[framed,thmmarks,amsmath]{ntheorem}	% extended theorem enviroments
+\usepackage{shadethm}		% theorems with colored background
 \theoremheaderfont{\sffamily\bfseries}
 \theorembodyfont{}
 \theoremstyle{break}
 \theoremseparator{.}
 \theoremindent0cm
 \theoremsymbol{}
-%\newcommand{\underlinebox}[1]{
-%	#1
-%	\makebox[0pt][r]{\rule{\textwidth}{1pt}}
-%}
-%\renewcommand*\FrameCommand{\underlinebox}
+
 \newshadetheorem{xtheorem}{Theorem}[chapter]
 \newshadetheorem{xlemma}[xtheorem]{Lemma}
 \newshadetheorem{xdefinition}[xtheorem]{Definition}
@@ -196,7 +188,6 @@
 \theoremheaderfont{\sffamily\itshape}
 \theoremsymbol{\ensuremath{\Box}}
 \newtheorem{proof}{Proof}
-
 \newtheorem{apxproof}{Proof}
 
 % Listings
@@ -286,11 +277,8 @@
 
 %
 % Inline
-
-\usepackage{url}		% URL's zitieren
-\usepackage{numprint}		% Zahlen formatieren
-\newcommand\notice[1]{}		% Notiz
-\newcommand\seppar{ \vspace{2ex} \noindent } % Neuer Absatz
-\newcommand\name[1]{{\em #1}} 	% Namen
-%\newcommand\ilcapt[1]{{\sffamily\bfseries #1}} % inline caption
-
+\usepackage{url}		% Cite URLs
+\usepackage{numprint}		% Format numbers
+\newcommand\notice[1]{}		% Notice
+\newcommand\seppar{ \vspace{2ex} \noindent } % New paragraph
+\newcommand\name[1]{{\em #1}} 	% Names
