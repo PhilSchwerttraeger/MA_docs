@@ -316,33 +316,58 @@ Examples: Dependency, association, generalization, include, extend (see figure \
 \end{figure}
 \end{description}
 
-\noindent Class diagrams can have different levels of detail.
+\noindent 
+Class diagrams can have different levels of detail.
 For example the class element has a simple symbolic form as well as an extended form with detailed information about its key words, attributes and operations.
 
 \begin{figure}[htb]
-	centering
+	\centering
 	\includegraphics[scale=0.6]{../figures/chapter2/UML_Klassen2.png}
 	\caption{Class diagrams with different level of detail}
 	\label{fig:Class}
 \end{figure}
  
+\noindent 
 UML has symbols and textual identifiers to visualize certain properties.
 Class diagrams for example have the following symbols to indicate visibility or attributes and operations: + for \textit{public}, \# for \textit{protected} and - for \textit{private}.
-With \textit{type} and \textit{multiplicity} a element can be constrained regarding the kind and number of its values.
+With \textit{multiplicity} an element can be constrained regarding kind and number of its values.
+The format for its bounds in BNF\footnote{Backus-Naur form} is defined by the UML specification 2.5 \citep{UML} as in listing \ref{BNF_multiplicity}.
 
-The format for its bounds in BNF\footnote{Backus-Naur form} is defined as following:
+\setlength{\grammarparsep}{10pt plus 1pt minus 1pt} % increase separation between rules
+\setlength{\grammarindent}{13em} % increase separation between LHS/RHS 
 
 \vspace{0.4cm}
-
 \noindent
+\begin{BNF}
+\fbox{
 \parbox[b]{\textwidth}{
 \begin{grammar}
-<multiplicity> ::= <lower-bound> `..' <upper-bound>
+<multiplicity> ::= <multiplicity-range> [ [ `$\lbrace$' <order-designator> [ `,' <uniqueness-designator> ] `$\rbrace$' ] |
+[ `$\lbrace$' <uniqueness-designator> [ `,' <order-designator> ] `$\rbrace$' ] ]
+
+<multiplicity-range> ::= [ <lower> `..' ] <upper>
+
+<lower> ::= <value-specification>
+
+<upper> ::= <value-specification>
+
+<order-designator> ::= `ordered' | `unordered'
+
+<uniqueness-designator> ::= `unique' | `nonunique'
 \end{grammar}
 }
-
+}
+\caption{UML multiplicity syntax in BNF}
+\label{BNF_multiplicity}
+\end{BNF}
 \vspace{0.3cm}
 
+\noindent
+For the sake of convenience we assume the literal <value-specification> being an integer number or * for infinite.
+
+Furthermore it is worth mentioning that UML does not use any color for its diagrams.
+This makes it compatible, easy and fast for hand-drawing.
+Coloring always remains an not officially specified option to highlight certain parts of a diagram, e.g. to set a focus for an accompanying text.
 
 
 \subsection{Entity-Relationship}

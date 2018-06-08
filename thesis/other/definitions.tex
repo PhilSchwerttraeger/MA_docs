@@ -16,6 +16,7 @@
 \usepackage[fixlanguage]{babelbib}
 \usepackage[utf8]{inputenc}
 \usepackage{blindtext}
+\usepackage{caption}
 
 % Page Geometry
 \usepackage[a4paper]{geometry}
@@ -283,3 +284,8 @@
 \newcommand\notice[1]{}		% Notice
 \newcommand\seppar{ \vspace{2ex} \noindent } % New paragraph
 \newcommand\name[1]{{\em #1}} 	% Names
+
+
+\newenvironment{BNF}
+  {\captionsetup{type=lstlisting}}
+  {}
