@@ -290,7 +290,7 @@ Components an UML diagram is build up with are classified into \textit{elements}
 Elements are the main objects in a UML diagram.
 Graphically elements are based on closed shapes like boxes or ellipses.
 They usually have a name or identifier in form of text in the center of their shape. Horizontal lines can be used to separate an element into two or more sections (see \textit{class diagram}). \\
-Examples: Classes, components, nodes, objects, packages (see figure \ref{fig:UML_elements} and \ref{fig:UMLOther})
+Examples: Classes, components, nodes, objects, packages (see figure \ref{fig:UML_elements})
 
 \begin{figure}[htb]
 	\centering
@@ -318,7 +318,7 @@ Examples: Dependency, association, generalization, include, extend (see figure \
 
 \noindent 
 Class diagrams can have different levels of detail.
-For example the class element has a simple symbolic form as well as an extended form with detailed information about its key words, attributes and operations.
+For example the class element has a simple symbolic form as well as an extended form with detailed information about its key words, attributes and operations (see figure \ref{fig:Class}).
 
 \begin{figure}[htb]
 	\centering
@@ -370,15 +370,55 @@ This makes it compatible, easy and fast for hand-drawing.
 Coloring always remains an not officially specified option to highlight certain parts of a diagram, e.g. to set a focus for an accompanying text.
 
 
-\subsection{Entity-Relationship}
+\subsection{Entity-Relationship model}
 \label{ER}
-Entity-Relationship (ER)
+An entity-relationship model (ER model) is a model to describe classified objects (entities) and how they are interrelated.
+It was developed to illustrate structural information of databases and became a popular tool for the requirement analysis in this domain.
+In contrast to UML, which is a collection of multiple diagram types, ER only has one diagram type and has no official specified standard, but slightly different notation types (Chen, Bachman, etc.).
+The different notations only differ in their symbol usage at the end of relationship-lines (see \ref{fig:ER_example}.
+The figures in this subsection are in Chen notation.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter2/ER_example.png}
+	\caption{ER diagram minimal example}
+	\label{fig:ER_example}
+\end{figure}
+
+\begin{description}
+\item[1) Entity type]\hfill \\
+The most important artifact of ER is the entity.
+It represents an individual and unambiguously identifiable object.
+An entity is characterized by its properties.
+An entity type is a template for entities that summarizes all attributes.
+Entities can be seens as instances of an entity type with concrete values.
+Graphically an entity type is a simple rectangle with its name in its center.
+
+\item[2) Relationships]\hfill \\
+Relationships can connect two or more entities and describe how they are interrelated.
+In contrast to UML (see \ref{UML}) relationships are not simple lines, but are drawn as rhombus with the relationship name in its center.
+This rhombus is then connected to two or more entities with simple lines.
+
+\item[3) Attributes]\hfill \\
+Attributes are properties of entites or relationship.
+Graphically an attribute is a single ellipse with its name in its center.
+It is connected to an entity or to a relationship object with the help of a simple line.
+\end{description}
+
+
+%cardinality: 1 C N NC
+%The data modeling technique can be used to describe any ontology (i.e. an overview and classifications of used terms and their relationships) for a certain area of interest
+
+%chen, kähenfuß, pfeilnotation, numeric, bachman
+
+%recursive
+
+%similar to clas diagram --> compact form (EWI)
 
 \subsection{RBAC notation by Sandhu}
 \label{RBAC_notation}
-Sandhu useda notation to visualize his proposal to roled-based access control
-
-maybe my own gsl from bachelor thesis?
+%Sandhu useda notation to visualize his proposal to roled-based access control
+%maybe my own gsl from bachelor thesis?
 
 
 
@@ -457,7 +497,7 @@ approach, basic ideas, adoptions from literature
 \label{implementation}
 	
 	
-\section{Implementation base)}
+\section{Implementation base}
 \label{implementation_base}
 Qt, MVC
 
