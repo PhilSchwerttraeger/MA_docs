@@ -277,12 +277,73 @@ The definition of model components depends on the specialization of the correspo
 
 \subsection{Unified Modeling Language}
 \label{UML}
-The Unified Modeling Language (UML)
-The \textit{Unified Modeling Language} (UML) is a graphical modeling language to specify, visualize, design and document software.
+The \textit{Unified Modeling Language} (UML) is a graphical modeling language to specify, visualize, design and document software \citep{UML}.
 The current version of UML (2.5) contains 14 different types of diagrams.
-Every diagram illustrates a model regarding a certain aspect.
+Every diagram illustrates according to one specific aspect.
+UML diagrams are classified into static and dynamic types, but they can have fuzzy borders and mixed forms as well.
+Static diagram types describe structural properties, dynamic diagram types behavioral properties.
 
-UML diagrams are classified into static and dynamic diagrams, but they can have fuzzy borders and mixed forms as well.
+Components an UML diagram is build up with are classified into \textit{elements}, \textit{relationships}:
+
+\begin{description}
+\item[1) Elements]\hfill \\
+Elements are the main objects in a UML diagram.
+Graphically elements are based on closed shapes like boxes or ellipses.
+They usually have a name or identifier in form of text in the center of their shape. Horizontal lines can be used to separate an element into two or more sections (see \textit{class diagram}). \\
+Examples: Classes, components, nodes, objects, packages (see figure \ref{fig:UML_elements} and \ref{fig:UMLOther})
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.6]{../figures/chapter2/UML_elements.png}
+	\caption{Selection of UML elements}
+	\label{fig:UML_elements}
+\end{figure}
+
+\item[2) Relationships]\hfill \\
+Relationships can connect two or more elements.
+Graphically relationships are based on lines.
+Optionally they can have a shape at one end to indicate some kind of direction.
+They can vary in form by having differently drawn lines (solid, dotted), shaped arrows.
+They can have several angles (preferable $90^{\circ}$ or $45^{\circ}$) to run on a clearly laid out path.
+Lines do not collide if possible. \\
+Examples: Dependency, association, generalization, include, extend (see figure \ref{fig:UML_relationships})
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.6]{../figures/chapter2/UML_relationships.png}
+	\caption{Selection of UML relationships}
+	\label{fig:UML_relationships}
+\end{figure}
+\end{description}
+
+\noindent Class diagrams can have different levels of detail.
+For example the class element has a simple symbolic form as well as an extended form with detailed information about its key words, attributes and operations.
+
+\begin{figure}[htb]
+	centering
+	\includegraphics[scale=0.6]{../figures/chapter2/UML_Klassen2.png}
+	\caption{Class diagrams with different level of detail}
+	\label{fig:Class}
+\end{figure}
+ 
+UML has symbols and textual identifiers to visualize certain properties.
+Class diagrams for example have the following symbols to indicate visibility or attributes and operations: + for \textit{public}, \# for \textit{protected} and - for \textit{private}.
+With \textit{type} and \textit{multiplicity} a element can be constrained regarding the kind and number of its values.
+
+The format for its bounds in BNF\footnote{Backus-Naur form} is defined as following:
+
+\vspace{0.4cm}
+
+\noindent
+\parbox[b]{\textwidth}{
+\begin{grammar}
+<multiplicity> ::= <lower-bound> `..' <upper-bound>
+\end{grammar}
+}
+
+\vspace{0.3cm}
+
+
 
 \subsection{Entity-Relationship}
 \label{ER}
