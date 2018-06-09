@@ -372,17 +372,18 @@ Coloring always remains an not officially specified option to highlight certain 
 
 \subsection{Entity-Relationship model}
 \label{ER}
-An entity-relationship model (ER model) is a model to describe classified objects (entities) and how they are interrelated.
-It was developed to illustrate structural information of databases and became a popular tool for the requirement analysis in this domain.
-In contrast to UML, which is a collection of multiple diagram types, ER only has one diagram type and has no official specified standard, but slightly different notation types (Chen, Bachman, etc.).
-The different notations only differ in their symbol usage at the end of relationship-lines (see \ref{fig:ER_example}.
+The entity-relationship model (ER model) is a model to describe classified objects (entities) and how they are interrelated.
+It was developed to illustrate structural information in databases on a conceptual level and became a popular tool for requirement analysis in this domain.
+In contrast to UML, which is a collection of multiple diagram types, ER only has one diagram type.
+ER is not an officially specified standard, but has some slightly different notation types (Chen, Bachman, etc.).
+The different notations only differ in their symbol usage at the end of lines (see \ref{fig:ERD_minimal_example}.
 The figures in this subsection are in Chen notation.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.4]{../figures/chapter2/ER_example.png}
+	\includegraphics[scale=0.4]{../figures/chapter2/ERD_simple_example.png}
 	\caption{ER diagram minimal example}
-	\label{fig:ER_example}
+	\label{fig:ERD_minimal_example}
 \end{figure}
 
 \begin{description}
@@ -390,20 +391,69 @@ The figures in this subsection are in Chen notation.
 The most important artifact of ER is the entity.
 It represents an individual and unambiguously identifiable object.
 An entity is characterized by its properties.
-An entity type is a template for entities that summarizes all attributes.
-Entities can be seens as instances of an entity type with concrete values.
+An \textit{entity type} is a template for entities that summarizes all their attributes.
+Entities can be interpreted as instances of an entity type with concrete values.
 Graphically an entity type is a simple rectangle with its name in its center.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter2/ERD_entity.png}
+	\caption{Entity object of ER}
+	\label{fig:ERD_entity}
+\end{figure}
 
 \item[2) Relationships]\hfill \\
 Relationships can connect two or more entities and describe how they are interrelated.
-In contrast to UML (see \ref{UML}) relationships are not simple lines, but are drawn as rhombus with the relationship name in its center.
+In contrast to UML (see \ref{UML}) relationship is not represented with a simple lines, but with a rhombus with the relationship name in its center.
 This rhombus is then connected to two or more entities with simple lines.
+These lines may have symbols at their end to indicate properties of the connected entities in context of the relationship.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter2/ERD_relationship.png}
+	\caption{Relationship object of ER}
+	\label{fig:ERD_relationship}
+\end{figure}
 
 \item[3) Attributes]\hfill \\
-Attributes are properties of entites or relationship.
+Attributes are properties of entites or relationships.
 Graphically an attribute is a single ellipse with its name in its center.
-It is connected to an entity or to a relationship object with the help of a simple line.
+It is connected to an entity or to a relationship with the help of a simple line.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter2/ERD_attribute.png}
+	\caption{Attribute object of ER}
+	\label{fig:ERD_}
+\end{figure}
 \end{description}
+
+\noindent
+To specify the amount of actual entities participating in a relationship the following cardinalities are used:
+
+\begin{itemize}
+\item \textbf{1} to indicate a relationship to exactly one entity.
+\item \textbf{c} to indicate a relationship to no or one entities.
+\item \textbf{n} to indicate a relationship to one or more entities.
+\item \textbf{nc} to indicate a relationship to no, one or more entities.
+\end{itemize}
+
+\noindent
+A relationship can be read in two directions.
+For example the \textit{is}-relationship in figure \ref{fig:ERD_example}: 
+
+\noindent
+Left-to-right: A movie is connected to exactly one genre
+
+\noindent
+Right-to-left: A genre is connected to one or more movies
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter2/ERD_example.png}
+	\caption{ER diagram example with multiplicities and primary keys}
+	\label{fig:ERD_example}
+\end{figure}
 
 
 %cardinality: 1 C N NC
@@ -413,7 +463,7 @@ It is connected to an entity or to a relationship object with the help of a simp
 
 %recursive
 
-%similar to clas diagram --> compact form (EWI)
+%similar to UML - esp. class diagram (cardinality=multiplicity) --> compact form (EWI)
 
 \subsection{RBAC notation by Sandhu}
 \label{RBAC_notation}
