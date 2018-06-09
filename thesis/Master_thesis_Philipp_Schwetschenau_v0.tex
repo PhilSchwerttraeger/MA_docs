@@ -429,7 +429,7 @@ It is connected to an entity or to a relationship with the help of a simple line
 \end{description}
 
 \noindent
-To specify the amount of actual entities participating in a relationship the following cardinalities are used:
+To specify the amount of entities participating in a relationship the following \textit{cardinalities} are used:
 
 \begin{itemize}
 \item \textbf{1} to indicate a relationship to exactly one entity.
@@ -439,14 +439,11 @@ To specify the amount of actual entities participating in a relationship the fol
 \end{itemize}
 
 \noindent
+Those cardinalities can be upper case (N) or lower case (n) with no semantic difference.
 A relationship can be read in two directions.
-For example the \textit{is}-relationship in figure \ref{fig:ERD_example}: 
-
-\noindent
-Left-to-right: A movie is connected to exactly one genre
-
-\noindent
-Right-to-left: A genre is connected to one or more movies
+For example the \textit{is}-relationship in figure \ref{fig:ERD_example}:
+(left-to-right) A movie is connected to exactly one genre.
+(right-to-left): A genre is connected to one or more movies.
 
 \begin{figure}[htb]
 	\centering
@@ -456,8 +453,22 @@ Right-to-left: A genre is connected to one or more movies
 \end{figure}
 
 
-%cardinality: 1 C N NC
+%prim key, scnd key
+
+%Weak entity
+The normal entity type as shown above is also named \textit{strong entity} or \textit{parent entity}.
+In this context there are also weak entities.
+They completely depend on other entity types (not stand-alone) and do not have primary keys.
+Graphically they are drawn like normal entity types, but with a double frame line.
+
+%pic
+
 %The data modeling technique can be used to describe any ontology (i.e. an overview and classifications of used terms and their relationships) for a certain area of interest
+
+\subsubsection{Notations}
+As already mentioned ER is not standardized and has different notation variants.
+Here is a short overview on how some of these differ:
+
 
 %chen, kähenfuß, pfeilnotation, numeric, bachman
 
