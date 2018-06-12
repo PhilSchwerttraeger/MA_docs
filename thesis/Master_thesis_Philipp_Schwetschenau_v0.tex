@@ -156,7 +156,7 @@ In addition to that a GUI-based editor should be developed as a prototype to mak
 This chapter provides information to all fundamentals necessary for this thesis.
 It will serve as basis for all design decisions in the following chapter~\ref{gsl_design} and chapter~\ref{editor_design}.
 
-Section \ref{security_models} introduces the security models HRU and RBAC as well as the Security Model Core.
+Section \ref{security_models} introduces the RBAC security model.
 Section \ref{AOSEEL} focuses on the Aspect-oriented Security Engineering (AOSE) proposed by \citet*{Amthor18}.
 It covers the Entity-Labeling Aspect in particular, one aspect of AOSE, which is going to be essential regarding the task to design a graphical specification language for it in chapter~\ref{gsl_design}.
 In section~\ref{graphical_notations} the well-established graphical notations UML and ER are described.
@@ -167,31 +167,50 @@ In the last section~\ref{gui_design} information on how to design a software gra
 \label{security_models}
 Security policies are sets of rules to fulfill security related requirements of a system.
 To actually be able to work with such policies and also in context of analyzing them, they have to be formalized as an instance of a security model.
-In context of model-based security engineering these security models are obviously the most important artifact.
-So this section introduces the HRU security model as well as the family of RBAC models with its concepts and elements.
-Furthermore this section will present a concept to express all types of security models in form of a single model, the Security Model Core.
+Being the central artifact in the process of model-based security engineering we want to describe a very basic security model -- the identity-based access control model - and a well-established and widely used extension of it -- the role-based access control model.
+In the course of this work, we need to construct security policies and models to explain, execute and visualize the security engineering in context of the Entity-Labeling aspect.
+Those models will be RBAC models.
 
-\subsection{HRU}
-\label{HRU}
-The HRU security model \citep*{Harrison75a} is a fundamental, dynamic access control model.
-It manages permissions of subjects on objects with the help of an state automaton and access control matrices.
-While subjects are active (e.g. users), objects are passive (e.g. files).
+%\subsection{HRU}
+%\label{HRU}
+%The HRU security model \citep*{Harrison75a} is a fundamental, dynamic access control model.
+%It manages permissions of subjects on objects with the help of an state automaton and access control matrices.
+%While subjects are active (e.g. users), objects are passive (e.g. files).
 
-\begin{xdefinition}[HRU] 
-A HRU model is a deterministic automaton
-$(Q, \Sigma , \delta , q_{0})$ with 
-$Q = 2^S \times 2^O \times M$ as state space, 
-$M = \lbrace m|m:S \times O \rightarrow 2^R \rbrace$ as set of access control matrices, 
-$\Sigma$ as input alphabet, 
-$\delta : Q \times \Sigma \rightarrow Q$ as state transition function and 
-$q_0 \in Q$ as initial state.
-\end{xdefinition}
+%\begin{xdefinition}[HRU] 
+%A HRU model is a deterministic automaton
+%$(Q, \Sigma , \delta , q_{0})$ with 
+%$Q = 2^S \times 2^O \times M$ as state space, 
+%$M = \lbrace m|m:S \times O \rightarrow 2^R \rbrace$ as set of access control matrices, 
+%$\Sigma$ as input alphabet, 
+%$\delta : Q \times \Sigma \rightarrow Q$ as state transition function and 
+%$q_0 \in Q$ as initial state.
+%\end{xdefinition}
 
 
 
-\subsection{RBAC}
+\subsection{Identity-based Access Control}
+\label{IBAC}
+The most fundamental security model is probably the Identity-based Access Control (IBAC) model.
+With IBAC requests are managed according to the requester's identification \citep{Lampson74}.
+A set of rules determines whether a request is permitted or forbidden.
+These rules can be notated in form of a access control matrix or of access control function.
+An access control function is defined as following:
+
+\begin{definition}[Access control function]
+An access control function (ACF) is a function $acf: S \times O \times OP \rightarrow B$, where
+\begin{itemize}
+\item $S$ is a set of subject identifiers,
+\item $O$ is a set of object identifiers, and
+\item $OP$ is a set of operation identifiers.
+\end{itemize} 
+For any $s \in S, o \in O, op \in OP$, we say s is allowed to execute $op$ on $o$ iff $acf(s,o,op)$.
+\end{definition}
+
+
+
+\subsection{Role-based Access Control}
 \label{RBAC}
-Due to its usage of access control matrices the HRU model does not scale well with an increasing number of subjects and objects.
 The family of role-based access control models (RBAC) counter this more effectively by using one stage of indirection.
 For this RBAC models introduce the concept of roles \citep{Sandhu96}.
 On the one hand every user is mapped to a set of roles.
@@ -233,6 +252,8 @@ $q_0 \in Q$ as initial state and
 $OP, R, RH, C$ as static component.
 \end{xdefinition}
 
+
+%well-established, examples?
 
 
 \subsection{Security Model Core}
