@@ -35,7 +35,7 @@ Fachgebiet für Verteilte Systeme und Betriebssysteme
 }
 \vfill \parbox{\detailwidth}{
 	\makebox[\detaildescriptionwidth][r]{Supervisor:~~} Prof. Dr.-Ing. habil. Winfried E. Kühnhauser \\
-	\makebox[\detaildescriptionwidth][r]{Supervisor:~~} Peter Amthor \\
+	\makebox[\detaildescriptionwidth][r]{Supervisor:~~} Dipl.-Inf. Peter Amthor \\
 	\vspace{2ex} \\
 	\makebox[\detaildescriptionwidth][r]{Studies:~~} Computer science\\  
 	\makebox[\detaildescriptionwidth][r]{Matriculation no.:~~} 46756  
@@ -165,11 +165,11 @@ In the last section~\ref{gui_design} information on how to design a software gra
 
 \section{Security models}
 \label{security_models}
-Security policies are sets of rules to fulfill security related requirements of a system.
-To actually be able to work with such policies and also in context of analyzing them, they have to be formalized as an instance of a security model.
-Being the central artifact in the process of model-based security engineering we want to describe a very basic security model -- the identity-based access control model - and a well-established and widely used extension of it -- the role-based access control model.
-In the course of this work, we need to construct security policies and models to explain, execute and visualize the security engineering in context of the Entity-Labeling aspect.
-Those models will be RBAC models.
+A security policy is a set of rules to fulfill security related requirements of an IT system.
+In order to be able to work with such a security policy and to analyze it, it has to be formalized as an instance of a security model.
+Being the central artifact in the process of model-based security engineering we want to describe a very basic security model -- the Identity-based Access Control (IBAC) model -- and a well-established and widely used extension of it -- the Role-based Access Control (RBAC) model.
+In the course of this work, we need to construct security policies and models to explain and visualize the security engineering in context of the Entity-Labeling aspect.
+The models going to be used are RBAC models.
 
 %\subsection{HRU}
 %\label{HRU}
@@ -192,90 +192,119 @@ Those models will be RBAC models.
 \subsection{Identity-based Access Control}
 \label{IBAC}
 The most fundamental security model is probably the Identity-based Access Control (IBAC) model.
-With IBAC requests are managed according to the requester's identification \citep{Lampson74}.
-A set of rules determines whether a request is permitted or forbidden.
-These rules can be notated in form of a access control matrix or of access control function.
-An access control function is defined as following:
+It models a system with active (subjects) and passive entities (objects).
+With IBAC requests are managed according to the requester's unique identification \citep{Lampson74}.
+A set of rules (\textit{policy}) determines whether a request is permitted or forbidden.
+These rules can be formulated in form of an access control matrix (ACM) or an access control function (ACF).
+An ACF is defined as following \citep{Amthor18}:
 
 \begin{definition}[Access control function]
 An access control function (ACF) is a function $acf: S \times O \times OP \rightarrow B$, where
+\vspace{-2mm}
 \begin{itemize}
-\item $S$ is a set of subject identifiers,
-\item $O$ is a set of object identifiers, and
-\item $OP$ is a set of operation identifiers.
+\item $S$ is a set of \textit{subject identifiers}
+\item $O$ is a set of \textit{object identifiers}
+\item $OP$ is a set of \textit{operation identifiers}
 \end{itemize} 
-For any $s \in S, o \in O, op \in OP$, we say s is allowed to execute $op$ on $o$ iff $acf(s,o,op)$.
+\vspace{-2mm}
+For any $s \in S, o \in O, op \in OP$, we say $s$ is allowed to execute $op$ on $o$ iff $acf(s,o,op)$.
 \end{definition}
 
 
 
 \subsection{Role-based Access Control}
 \label{RBAC}
-The family of role-based access control models (RBAC) counter this more effectively by using one stage of indirection.
-For this RBAC models introduce the concept of roles \citep{Sandhu96}.
+With an increasing number of subjects and objects IBAC's ACFs or ACMs get very large and hard to manage effectively.
+Role-based Access Control models (RBAC) counter this scalability problem by using one stage of indirection.
+For this RBAC models extend IBAC with the concept of roles \citep{Sandhu96}.
+This design decision is based on the finding of \cite{Sandhu96} that many subjects share the same access privileges in large systems.
 On the one hand every user is mapped to a set of roles.
 On the other hand every role is mapped to a set of permissions.
+This concept reduces redundancy in systems with large or fast growing sets of subjects and objects and also models real scenarios closer to reality (e.g. job positions or departments in a company or organization).
 
 \begin{xdefinition}[RBAC] 
-A RBAC$_0$ model is a tuple $(U, R, P, S, UA, PA, user, roles)$ with 
-$U$ as set of \textit{users}, 
-$R$ as set of \textit{roles}, 
-$P = 2^{O \times OP}$ as set of \textit{permissions} 
-($O$ is the set of \textit{objects} and 
-$OP$ the set of \textit{operations}), 
-$S$ as set of \textit{sessions}, 
-$UA \subseteq U \times R$ as \textit{user-role relation}, 
-$PA \subseteq P \times R$ as \textit{permission-role relation}, 
-$user: S \rightarrow U$ as assignment, that maps every session to a user and
-$roles: S \rightarrow 2^R$ as assignment, that maps every session to set of roles.
+A RBAC$_0$ model is a tuple $(U, R, P, S, UA, PA, user, roles)$ with
+
+\vspace{-2mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item $U$ as set of \textit{users}
+\item $R$ as set of \textit{roles}
+\item $P = 2^{O \times OP}$ as set of \textit{permissions}
+\vspace{-2mm}
+\begin{itemize}
+\item $O$ is the set of \textit{objects}
+\item $OP$ the set of \textit{operations})
+\end{itemize}
+\vspace{-2mm}
+\item $S$ as set of \textit{sessions}
+\item $UA \subseteq U \times R$ as \textit{user-role relation}
+\item $PA \subseteq P \times R$ as \textit{permission-role relation}
+\item $user: S \rightarrow U$ as assignment, that maps every session to a user
+\item $roles: S \rightarrow 2^R$ as assignment, that maps every session to set of roles
+\end{itemize}
 \end{xdefinition}
 
-RBAC is called family of security models, because there is a base model (RBAC$_0$) and advanced models that extend the base model.
+\noindent
+RBAC is a family of security models, because there is a base model (RBAC$_0$) and models that extend the base model.
 RBAC$_1$ extends RBAC$_0$ with a role hierarchy, because in reality it turned out that roles are often combinations of other already existing roles.
 This reduces redundancy and improves its scaling behavior with increasing number of users and objects even further.
-RBAC$_2$ extends RBAC$_0$ with a constraints component $C$ to restrict values for certain model components.
+RBAC$_2$ extends RBAC$_0$ with constraints to restrict values for certain model components.
 RBAC$_3$ combines RBAC$_1$ and RBAC$_2$.
 
-In contrast to HRU RBAC is static.
-Due to not being dynamic a RBAC model can always just reflect a snapshot in time.
-To make it dynamic there is a model called DRBAC, which combines the RBAC$_3$ model with the deterministic state automaton of the HRU model.
+%In contrast to automaton-based security models (e.g.~HRU), RBAC is static.
+%Due to not being dynamic a RBAC model can always just reflect a snapshot in time.
+%A dynamic variant of RBAC was proposed by \cite{Schlegel13} and is called DRBAC.
+%It combines the RBAC$_3$ model with a deterministic state automaton of the HRU model.
 
-\begin{xdefinition}[DRBAC] 
-A DRBAC model is a tuple 
-$(Q, \Sigma , \delta , q_{0}, OP, R, RH, C)$ with
-$Q = 2^U \times 2^O \times 2^P \times 2^S \times 2^{\mathit{PA}} \times 2^{\mathit{UA}} \times \mathit{USER} \times \mathit{ROLES}$ as state space, where $U, O, P, S, PA, UA, RH, C$ is defined just as in the RBAC$_3$ model, 
-$\mathit{USER} = \lbrace user|user: S \rightarrow U \rbrace$ as set of mappings that maps sessions to users, 
-$\mathit{ROLES} = \lbrace roles|roles: S \rightarrow 2^R \rbrace$ as set of mappings that maps sessions to roles, 
-$\Sigma = OP \times X$ as input alphabet, 
-$\delta : Q \times \Sigma \rightarrow Q$ as state transition function, 
-$q_0 \in Q$ as initial state and 
-$OP, R, RH, C$ as static component.
-\end{xdefinition}
-
-
-%well-established, examples?
+%\begin{xdefinition}[DRBAC] 
+%A DRBAC model is a tuple 
+%$(Q, \Sigma , \delta , q_{0}, OP, R, RH, C)$ with
+%$Q = 2^U \times 2^O \times 2^P \times 2^S \times 2^{\mathit{PA}} \times %2^{\mathit{UA}} \times \mathit{USER} \times \mathit{ROLES}$ as state space, where $U, O, P, S, PA, UA, RH, C$ is defined just as in the RBAC$_3$ model, 
+%$\mathit{USER} = \lbrace user|user: S \rightarrow U \rbrace$ as set of mappings that maps sessions to users, 
+%$\mathit{ROLES} = \lbrace roles|roles: S \rightarrow 2^R \rbrace$ as set of mappings that maps sessions to roles, 
+%$\Sigma = OP \times X$ as input alphabet, 
+%$\delta : Q \times \Sigma \rightarrow Q$ as state transition function, 
+%$q_0 \in Q$ as initial state and 
+%$OP, R, RH, C$ as static component.
+%\end{xdefinition}
 
 
-\subsection{Security Model Core}
-\label{model_core}
-Over the years many different security models emerged for special purposes and requirements.
-They heavily vary and differ in their structure and design.
-Comparing them or even parts of them for analysis or evaluation purposes is not always possible per se.
-Methods to analyze a model concerning a given security property have to be adapted to every model they should run on.
-So \cite{Poelck14} proposed the Security Model Core to describe and formalize all possible security models in one meta model in a homogeneous way.
 
-\begin{xdefinition}[Security Model Core]
-\label{def:SecurityModelCore}
-The Security Model Core is a 5-tuple 
-$(Q, \Sigma , \delta , q_{0}, E)$ with 
-$Q$ as state space,
-$\Sigma$ as input alphabet, 
-$\delta: Q \times \Sigma \rightarrow Q$ as state transition function, 
-$q_0$ as initial state and 
-$E$ as static extension vector.
-\end{xdefinition}
+\subsection{RBAC notation by \cite{Sandhu96}}
+\label{RBAC_notation}
+\cite{Sandhu96} used a graphical notation in his work to visualize the RBAC model with all its elements and relationships.
 
-The definition of model components depends on the specialization of the corresponding model core and is done in six steps by identifying and defining those components.
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.3]{../figures/chapter2/RBAC0.png}
+	\caption{Graphical notation used by \cite{Sandhu96}}
+	\label{fig:UML_elements}
+\end{figure}
+
+%maybe my own gsl from bachelor thesis?
+
+
+%\subsection{Security Model Core}
+%\label{model_core}
+%Over the years many different security models emerged for special purposes and requirements.
+%They heavily vary and differ in their structure and design.
+%Comparing them or even parts of them for analysis or evaluation purposes is not always possible per se.
+%Methods to analyze a model concerning a given security property have to be adapted to every model they should run on.
+%So \cite{Poelck14} proposed the Security Model Core to describe and formalize all possible security models in one meta model in a homogeneous way.
+
+%\begin{xdefinition}[Security Model Core]
+%\label{def:SecurityModelCore}
+%The Security Model Core is a 5-tuple 
+%$(Q, \Sigma , \delta , q_{0}, E)$ with 
+%$Q$ as state space,
+%$\Sigma$ as input alphabet, 
+%$\delta: Q \times \Sigma \rightarrow Q$ as state transition function, 
+%$q_0$ as initial state and 
+%$E$ as static extension vector.
+%\end{xdefinition}
+
+%The definition of model components depends on the specialization of the corresponding model core and is done in six steps by identifying and defining those components.
 
 
 
@@ -469,8 +498,8 @@ For example the \textit{is}-relationship in figure \ref{fig:ERD_example}:
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.4]{../figures/chapter2/ERD_example.png}
-	\caption{ER diagram example with multiplicities and primary keys}
+	\includegraphics[scale=0.37]{../figures/chapter2/ERD_example.png}
+	\caption{ER diagram with multiplicities and primary keys}
 	\label{fig:ERD_example}
 \end{figure}
 
@@ -507,11 +536,6 @@ As seen in the last example of figure \ref{fig:ERD_notations} ER can also be mod
 %recursive
 
 %similar to UML - esp. class diagram (cardinality=multiplicity) --> compact form (EWI)
-
-\subsection{RBAC notation by Sandhu}
-\label{RBAC_notation}
-%Sandhu useda notation to visualize his proposal to roled-based access control
-%maybe my own gsl from bachelor thesis?
 
 
 
