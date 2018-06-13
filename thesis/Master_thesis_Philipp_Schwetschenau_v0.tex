@@ -192,7 +192,7 @@ The models going to be used are RBAC models.
 \subsection{Identity-based Access Control}
 \label{IBAC}
 The most fundamental security model is probably the Identity-based Access Control (IBAC) model.
-It models a system with active (subjects) and passive entities (objects).
+The model is based on a system with active (subjects) and passive entities (objects).
 With IBAC requests are managed according to the requester's unique identification \citep{Lampson74}.
 A set of rules (\textit{policy}) determines whether a request is permitted or forbidden.
 These rules can be formulated in form of an access control matrix (ACM) or an access control function (ACF).
@@ -220,7 +220,7 @@ For this RBAC models extend IBAC with the concept of roles \citep{Sandhu96}.
 This design decision is based on the finding of \cite{Sandhu96} that many subjects share the same access privileges in large systems.
 On the one hand every user is mapped to a set of roles.
 On the other hand every role is mapped to a set of permissions.
-This concept reduces redundancy in systems with large or fast growing sets of subjects and objects and also models real scenarios closer to reality (e.g. job positions or departments in a company or organization).
+This concept reduces redundancy in systems with large or fast growing sets of subjects and objects and also models real scenarios closer to reality (e.g. job function in an organization).
 
 \begin{xdefinition}[RBAC] 
 A RBAC$_0$ model is a tuple $(U, R, P, S, UA, PA, user, roles)$ with
@@ -238,19 +238,24 @@ A RBAC$_0$ model is a tuple $(U, R, P, S, UA, PA, user, roles)$ with
 \end{itemize}
 \vspace{-2mm}
 \item $S$ as set of \textit{sessions}
-\item $UA \subseteq U \times R$ as \textit{user-role relation}
-\item $PA \subseteq P \times R$ as \textit{permission-role relation}
-\item $user: S \rightarrow U$ as assignment, that maps every session to a user
-\item $roles: S \rightarrow 2^R$ as assignment, that maps every session to set of roles
+\item $UA \subseteq U \times R$ as a many-to-many \textit{user-to-role assignment relation}
+\item $PA \subseteq P \times R$ as a many-to-many \textit{permission-to-role assignment relation}
+\item $user: S \rightarrow U$ as function, that maps every session to a single user
+\item $roles: S \rightarrow 2^R$ as function, that maps every session to set of roles
 \end{itemize}
 \end{xdefinition}
 
 \noindent
-RBAC is a family of security models, because there is a base model (RBAC$_0$) and models that extend the base model.
+RBAC is called a family of security models, because there is a base model (RBAC$_0$) and three models that extend this base model with advanced concepts.
 RBAC$_1$ extends RBAC$_0$ with a role hierarchy, because in reality it turned out that roles are often combinations of other already existing roles.
 This reduces redundancy and improves its scaling behavior with increasing number of users and objects even further.
-RBAC$_2$ extends RBAC$_0$ with constraints to restrict values for certain model components.
-RBAC$_3$ combines RBAC$_1$ and RBAC$_2$.
+The role hierarchy is defined as partial order $RH \subseteq R \times R$ on $R$ (also written as $\geq$).
+
+RBAC$_2$ extends RBAC$_0$ with a set of constraints $C$ to restrict values of the model components $UA, PA, user, role$ or $RH$ (e.g. forbid the activation of two certain roles at the same time).
+Constraints can be highly individual and specific to a certain application.
+However, \cite{Sandhu96} mentions three main concepts for constraints, that seem to be used frequently and are therefore reasonable to implement: \textit{Mutually exclusive roles}, \textit{cardinality} and \textit{prerequisite roles}.
+
+RBAC$_3$ combines the concepts of RBAC$_1$ and RBAC$_2$.
 
 %In contrast to automaton-based security models (e.g.~HRU), RBAC is static.
 %Due to not being dynamic a RBAC model can always just reflect a snapshot in time.
@@ -271,16 +276,45 @@ RBAC$_3$ combines RBAC$_1$ and RBAC$_2$.
 
 
 
-\subsection{RBAC notation by \cite{Sandhu96}}
+\subsection{RBAC notation by Sandhu at al.}
 \label{RBAC_notation}
-\cite{Sandhu96} used a graphical notation in his work to visualize the RBAC model with all its elements and relationships.
+\cite{Sandhu96} used a graphical notation in his work to visualize the RBAC model family with all its elements and relationships (see figure \ref{fig:Sandhu_notation}).
+The RBAC model is a well-established security models among many others.
+Also regarding its relevance in literature -- especially for its contribution to the standardized NIST RBAC model \citep{RBACNIST} -- we want to take a look at its graphical notation.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.3]{../figures/chapter2/RBAC0.png}
-	\caption{Graphical notation used by \cite{Sandhu96}}
-	\label{fig:UML_elements}
+	\includegraphics[scale=1]{../figures/chapter2/Sandhu_notation.png}
+	\caption{Graphical notation used by \cite{Sandhu96} to visualize $RBAC_3$}
+	\label{fig:Sandhu_notation}
 \end{figure}
+
+\noindent
+Unfortunatly \cite{Sandhu96} gives no details on how or why the notation is build up the way it is in his work.
+Following graphical elements are used for this notation:
+
+\begin{itemize}
+\item A circle or ellipse represents a set ($U, R, P, S$).
+\item A rounded rectangle represents a special set -- the set of constraints ($Constraints$).
+\item A normal-headed unidirectional arrow represents a one-to-one assignment ($user$).
+\item A double-headed unidirectional arrow represents a one-to-many assignment ($roles$).
+\item A double-headed bidirectional arrow represents a many-to-many assignment relation ($UA, PA, RH$).
+\item A normal-headed unidirectional dotted arrow represents a constaint.
+These arrows point from the set of constraints to all model components constraints can be defined on.
+\end{itemize}
+%TODO: Better a table?
+
+\noindent
+Sets are having their name (and optionally their identifier) in their center.
+All arrow types -- except the constraint arrows -- have their name (and optionally their identifier) next to them.
+
+Furthermore the \textit{Sessions} set ($S$) is not directly connected with arrows to other components.
+It is drawn with large black dots inside, which represent single elements of this set.
+These dots are then connected to other components with arrows.
+Three small black dots (in this case aligned horizontally) indicate that there are potentially more than just those three set elements (possibly $0$ to $n$).
+
+Also worth mentioning is that $RH$ is drawn as a loop. 
+It is pointing from \textit{Roles} ($R$) to \textit{Roles} with a double-headed bidirectional arrow.
 
 %maybe my own gsl from bachelor thesis?
 
@@ -329,13 +363,16 @@ Aspect-oriented Security Engineering (AOSE) is a new approach by \citet*{Amthor1
 
 \subsection{Unified Modeling Language}
 \label{UML}
-The \textit{Unified Modeling Language} (UML) is a graphical modeling language to specify, visualize, design and document software \citep{UML}.
+The \textit{Unified Modeling Language} (UML) is a graphical modeling language to specify, visualize, design and document software \citep{UML_OMG}.
+UML became a widely used tool in software development and was standardized by The Object Management Group in 1997 and also was approved as official ISO standard in 2005 \citep{UML_ISO}.
+
+UML defines terms and relationships between those terms, as well as a graphical notation for those.
 The current version of UML (2.5) contains 14 different types of diagrams.
-Every diagram illustrates according to one specific aspect.
+Every diagram illustrates information according to one specific aspect.
 UML diagrams are classified into static and dynamic types, but they can have fuzzy borders and mixed forms as well.
 Static diagram types describe structural properties, dynamic diagram types behavioral properties.
 
-Components an UML diagram is build up with are classified into \textit{elements}, \textit{relationships}:
+Components an UML diagram is build up with are classified into \textit{elements} and \textit{relationships}:
 
 \begin{description}
 \item[1) Elements]\hfill \\
@@ -346,7 +383,7 @@ Examples: Classes, components, nodes, objects, packages (see figure \ref{fig:UML
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.6]{../figures/chapter2/UML_elements.png}
+	\includegraphics[scale=0.7]{../figures/chapter2/UML_elements.png}
 	\caption{Selection of UML elements}
 	\label{fig:UML_elements}
 \end{figure}
@@ -362,7 +399,7 @@ Examples: Dependency, association, generalization, include, extend (see figure \
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.6]{../figures/chapter2/UML_relationships.png}
+	\includegraphics[scale=0.7]{../figures/chapter2/UML_relationships.png}
 	\caption{Selection of UML relationships}
 	\label{fig:UML_relationships}
 \end{figure}
@@ -383,7 +420,7 @@ For example the class element has a simple symbolic form as well as an extended 
 UML has symbols and textual identifiers to visualize certain properties.
 Class diagrams for example have the following symbols to indicate visibility or attributes and operations: + for \textit{public}, \# for \textit{protected} and - for \textit{private}.
 With \textit{multiplicity} an element can be constrained regarding kind and number of its values.
-The format for its bounds in BNF\footnote{Backus-Naur form} is defined by the UML specification 2.5 \citep{UML} as in listing \ref{BNF_multiplicity}.
+The format for its bounds in Backus-Naur form (BNF) is defined by the UML specification 2.5 \citep{UML_OMG} as in listing \ref{BNF_multiplicity}.
 
 \setlength{\grammarparsep}{10pt plus 1pt minus 1pt} % increase separation between rules
 \setlength{\grammarindent}{13em} % increase separation between LHS/RHS 
@@ -419,27 +456,32 @@ For the sake of convenience we assume the literal <value-specification> being an
 
 Furthermore it is worth mentioning that UML does not use any color for its diagrams.
 This makes it compatible, easy and fast for hand-drawing.
-Coloring always remains an not officially specified option to highlight certain parts of a diagram, e.g. to set a focus for an accompanying text.
+Coloring always remains a not officially specified option to highlight certain parts of a diagram, e.g. to set a focus for an accompanying text.
 
 
 \subsection{Entity-Relationship model}
 \label{ER}
-The entity-relationship model (ER model) is a model to describe classified objects (entities) and how they are interrelated.
-It was developed to illustrate structural information in databases on a conceptual level and became a popular tool for requirement analysis in this domain.
-In contrast to UML, which is a collection of multiple diagram types, ER only has one diagram type.
-ER is not an officially specified standard, but has some slightly different notation types (Chen, Bachman, etc.).
+The entity-relationship model (ER) is a model to describe classified objects (entities) and how they are interrelated.
+It was developed to illustrate information in databases on a conceptual level and became a popular tool for requirement analysis in this domain.
+In contrast to UML (see \ref{UML}), which is a collection of multiple diagram types, ER only has one type of diagram: The Entity-Relationship diagram (ERD).
+
+Also unlike UML ER is not an officially specified standard.
+Furthermore ER has some slightly different notation variants (Chen, Bachman, etc.), which will be discussed in section \ref{ERD_notations}.
 The figures in this subsection are in Chen notation.
+
+Figure \ref{fig:ERD_minimal_example} shows a minimal example of an ERD.
+ERDs are build up with the following elements \citep{Kleuker11}:
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=0.4]{../figures/chapter2/ERD_simple_example.png}
-	\caption{ER diagram minimal example}
+	\caption{ERD example}
 	\label{fig:ERD_minimal_example}
 \end{figure}
 
 \begin{description}
 \item[1) Entity type]\hfill \\
-The most important artifact of ER is the entity.
+The most important artifact of ER is probably the entity.
 It represents an individual and unambiguously identifiable object.
 An entity is characterized by its properties.
 An \textit{entity type} is a template for entities that summarizes all their attributes.
@@ -482,7 +524,9 @@ It is connected to an entity or to a relationship with the help of a simple line
 \noindent
 To specify the amount of entities participating in a relationship the following \textit{cardinalities} are used:
 
+\vspace{-2mm}
 \begin{itemize}
+\setlength\itemsep{0em}
 \item \textbf{1} to indicate a relationship to exactly one entity.
 \item \textbf{c} to indicate a relationship to no or one entities.
 \item \textbf{n} to indicate a relationship to one or more entities.
@@ -493,8 +537,13 @@ To specify the amount of entities participating in a relationship the following 
 Those cardinalities can be upper case (N) or lower case (n) with no semantic difference.
 A relationship can be read in two directions.
 For example the \textit{is}-relationship in figure \ref{fig:ERD_example}:
-(left-to-right) A movie is connected to exactly one genre.
-(right-to-left): A genre is connected to one or more movies.
+
+\vspace{-2mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item A movie is connected to exactly one genre (left-to-right).
+\item A genre is connected to one or more movies (left-to-right).
+\end{itemize}
 
 \begin{figure}[htb]
 	\centering
@@ -517,6 +566,7 @@ Graphically they are drawn like normal entity types, but with a double frame lin
 %The data modeling technique can be used to describe any ontology (i.e. an overview and classifications of used terms and their relationships) for a certain area of interest
 
 \subsubsection{Notations}
+\label{ERD_notations}
 As already mentioned ER is not standardized and has different notation variants.
 The notation variants only differ in their symbol usage at the end of lines.
 Here is a short overview on how some of these differ in their appearance:
