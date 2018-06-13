@@ -524,7 +524,6 @@ It is connected to an entity or to a relationship with the help of a simple line
 \noindent
 To specify the amount of entities participating in a relationship the following \textit{cardinalities} are used:
 
-\vspace{-2mm}
 \begin{itemize}
 \setlength\itemsep{0em}
 \item \textbf{1} to indicate a relationship to exactly one entity.
@@ -538,11 +537,10 @@ Those cardinalities can be upper case (N) or lower case (n) with no semantic dif
 A relationship can be read in two directions.
 For example the \textit{is}-relationship in figure \ref{fig:ERD_example}:
 
-\vspace{-2mm}
 \begin{itemize}
 \setlength\itemsep{0em}
 \item A movie is connected to exactly one genre (left-to-right).
-\item A genre is connected to one or more movies (left-to-right).
+\item A genre is connected to one or more movies (right-to-left).
 \end{itemize}
 
 \begin{figure}[htb]
@@ -552,18 +550,25 @@ For example the \textit{is}-relationship in figure \ref{fig:ERD_example}:
 	\label{fig:ERD_example}
 \end{figure}
 
+\noindent
+An entity type needs to have a \textit{primary key} defined in order to have its elements unambiguously identifiable.
+The primary key is an attribute or a combination of attributes of the entity type and has to be unique among all other attribute values.
+A primary key attribute is graphically indicated with an underlined name (see \textit{MovieID} in figure \ref{fig:ERD_example}).
 
-%prim key, scnd key
+Besides this basic system, ERDs can indicate some additional information.
+For example besides those elements described above, there are variants of them with a double frame line to indicate a \textit{weak} property (no primary key, therefore dependent to parent elements) or a dashed frame line to indicate a \textit{multivalued} property.
+In context of this work those will not be relevant.
 
-%Weak entity
-The normal entity type as shown above is also named \textit{strong entity} or \textit{parent entity}.
-In this context there are also weak entities.
-They completely depend on other entity types (not stand-alone) and do not have primary keys.
-Graphically they are drawn like normal entity types, but with a double frame line.
+%UML
+Notable is that an ER model can be visualized with the help of UML to some degree.
+When entity types are treated as classes, entities as objects, relationships as associations, attributes as instance variables and cardinalities as multiplicities an UML \textit{class diagram} can be used to build up a diagram similar to an ERD.
 
-%pic
+%TODO: pic
+
+As seen in figure \ref{fig:ERD_as_UML} both diagrams differ in their appearance in almost all aspects -- except the depiction of entites -- but still are easy to translate into each other.
 
 %The data modeling technique can be used to describe any ontology (i.e. an overview and classifications of used terms and their relationships) for a certain area of interest
+
 
 \subsubsection{Notations}
 \label{ERD_notations}
