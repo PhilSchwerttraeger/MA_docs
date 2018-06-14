@@ -284,7 +284,7 @@ Also regarding its relevance in literature -- especially for its contribution to
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=1]{../figures/chapter2/Sandhu_notation.png}
+	\includegraphics[width=\linewidth]{../figures/chapter2/Sandhu_notation.png}
 	\caption{Graphical notation used by \cite{Sandhu96} to visualize $RBAC_3$}
 	\label{fig:Sandhu_notation}
 \end{figure}
@@ -299,20 +299,21 @@ Following graphical elements are used for this notation:
 \item A normal-headed unidirectional arrow represents a one-to-one assignment ($user$).
 \item A double-headed unidirectional arrow represents a one-to-many assignment ($roles$).
 \item A double-headed bidirectional arrow represents a many-to-many assignment relation ($UA, PA, RH$).
-\item A normal-headed unidirectional dotted arrow represents a constaint.
-These arrows point from the set of constraints to all model components constraints can be defined on.
+\item A normal-headed unidirectional dotted arrow represents a constraint.
+Six arrows of this type are pointing symbolically from the set of constraints in the direction of all model components constraints can be potentially defined on.
 \end{itemize}
 %TODO: Better a table?
 
 \noindent
-Sets are having their name (and optionally their identifier) in their center.
-All arrow types -- except the constraint arrows -- have their name (and optionally their identifier) next to them.
+A set has its name and its identifier in its center.
+An arrow -- except the constraint arrow -- has its name and its identifier next to it.
 
 Furthermore the \textit{Sessions} set ($S$) is not directly connected with arrows to other components.
 It is drawn with large black dots inside, which represent single elements of this set.
-These dots are then connected to other components with arrows.
-Three small black dots (in this case aligned horizontally) indicate that there are potentially more than just those three set elements (possibly $0$ to $n$).
+These set elements are then connected to other components with certain arrows.
+Three small black dots (in this case aligned horizontally) indicate that there are potentially more than just those three set elements (the number of sessions is not limited per definition).
 
+This diagram is often used in a simplified form (for example in \citep{Amthor18}) that directly connects the \textit{Sessions} set -- like the other sets -- with just one arrow to \textit{Users} and one to \textit{Roles} and does not display single set elements of \textit{Sessions}.
 Also worth mentioning is that $RH$ is drawn as a loop. 
 It is pointing from \textit{Roles} ($R$) to \textit{Roles} with a double-headed bidirectional arrow.
 
@@ -344,17 +345,48 @@ It is pointing from \textit{Roles} ($R$) to \textit{Roles} with a double-headed 
 
 \section{Aspect-oriented Security Engineering and Entity-Labeling Aspect}
 \label{AOSEEL}
-Aspect-oriented Security Engineering (AOSE) is a new approach by \citet*{Amthor18} to improve the process of model-based security engineering.
-
+In this section the Aspect-oriented Security Engineering proposed by \citep{Amthor18} is described with focus on its Entity-Labeling aspect.
+The content of this section will act as fundamental basis of information for designing a graphical specification language for the Entity-Labeling aspect later in chapter \ref{gsl_design}.
 
 
 \subsection{Aspect-oriented Security Engineering}
 \label{AOSE}
+Aspect-oriented Security Engineering (AOSE) is a new approach proposed by \cite{Amthor18} to improve the process of model-based security engineering.
+With an increasing number and complexity of security models the engineering process that goes along also became more complex and therefore prone to human errors.
+
+\cite{Amthor18} claims to close semantic gaps between the steps model engineering, model analysis and formal policy specification in the process of security engineering to reduce the potential impact of human errors.
+These steps are depicted in figure \ref{}.
+
+%TODO: diagram diss
+
+For this AOSE roughly adopts the idea of the aspect-oriented programming paradigm.
+It tailors all steps to aspects, which are non-functional requirements of the engineering process like determining requirements of policy semantics or analyzing certain security goals.
+There are two major classes \cite{Amthor18} proposes for aspects regarding AOSE: related to policy semantics and related to policy analysis.
+One of several aspects proposed is Entity-Labeling.
+
+According to \cite{Amthor18} an aspect-oriented security model is formally defined as:
+
+\begin{xdefinition}[Aspect-oriented security model] 
+A aspect oriented security model is defined as $\langle \mathcal{M},\mathcal{A},sem \rangle$ with:
+
+\vspace{-2mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item $\mathcal{M}$ as finite set of model component identifiers
+\item $\mathcal{A}$ as set of semantic category identifiers (aspect)
+\item $sem : \mathcal{A} \rightarrow 2^\mathcal{M}$ as semantical application of $\mathcal{A}$ to $\mathcal{M}$
+\end{itemize}
+\end{xdefinition}
+
 
 
 \subsection{Entity-Labeling Aspect}
 \label{EL}
+The Entity Labeling Aspect (EL) is one possible aspect in context of AOSE.
+It is designed to formally specify policy semantics typically found in operating systems and middleware systems.
+It bridges the gap between informal policy and formal model by supporting its transformation.
 
+EL classifies model components into six semantic categories:
 
 
 
