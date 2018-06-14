@@ -385,8 +385,32 @@ A aspect oriented security model is defined as $\langle \mathcal{M},\mathcal{A},
 The Entity Labeling Aspect (EL) is one possible aspect in context of AOSE.
 It is designed to formally specify policy semantics typically found in operating systems and middleware systems.
 It bridges the gap between informal policy and formal model by supporting its transformation.
-
 EL classifies model components into six semantic categories:
+
+
+\begin{description}
+\item[1) Entity Set (ES)]\hfill \\
+A set of entity identifiers in the domain of an AC system.
+\item[2) Label Set (LS)]\hfill \\
+A set of legal label values.
+\item[3) Label Assignment (LA)]\hfill \\
+An association between entities and labels
+\item[4) Access Rule (AR)]\hfill \\
+A logical rule that defines, based on a set of entity labels, which operations may be legally performed on entities corresponding to these labels. Model components in AR thus reflect a policy’s access control function (ACF).
+\item[5) Relabeling Rule (RR)]\hfill \\
+A logical rule for legal label changes
+\item[6) Model Constraint (MC)]\hfill \\
+Constraints over model components that must be satisfied in every model state
+\end{description}
+
+\noindent
+According to these categories, we define the EL aspect:
+
+\begin{xdefinition}[Entity-Labeling aspect] 
+The entity labeling aspect of a security policy is defined as 
+$\mathcal{A}_{EL} = \lbrace ES,LS,LA,AR,RR,MC\rbrace $
+where $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$ denote categories of model components with the semantics defined in Defs. 4.2–4.7.
+\end{xdefinition}
 
 
 
