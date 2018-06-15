@@ -199,7 +199,7 @@ These rules can be formulated in form of an access control matrix (ACM) or an ac
 An ACF is defined as following \citep{Amthor18}:
 
 \begin{definition}[Access control function]
-An access control function (ACF) is a function $acf: S \times O \times OP \rightarrow B$, where
+An access control function (ACF) is a function ${acf}: S \times O \times OP \rightarrow \mathbb{B}$, where
 \vspace{-2mm}
 \begin{itemize}
 \item $S$ is a set of \textit{subject identifiers}
@@ -278,9 +278,8 @@ RBAC$_3$ combines the concepts of RBAC$_1$ and RBAC$_2$.
 
 \subsection{RBAC notation by Sandhu at al.}
 \label{RBAC_notation}
-\cite{Sandhu96} used a graphical notation in his work to visualize the RBAC model family with all its elements and relationships (see figure \ref{fig:Sandhu_notation}).
-The RBAC model is a well-established security models among many others.
-Also regarding its relevance in literature -- especially for its contribution to the standardized NIST RBAC model \citep{RBACNIST} -- we want to take a look at its graphical notation.
+\cite{Sandhu96} uses a graphical notation in his work to visualize the RBAC model family with all its elements and relationships (see figure \ref{fig:Sandhu_notation}).
+Due to RBAC being a well-established security model and also regarding its relevance in literature -- especially for its contribution to the standardized NIST RBAC model \citep{RBACNIST} -- we want to take a closer look at its graphical notation.
 
 \begin{figure}[htb]
 	\centering
@@ -354,12 +353,18 @@ The content of this section will act as fundamental basis of information for des
 Aspect-oriented Security Engineering (AOSE) is a new approach proposed by \cite{Amthor18} to improve the process of model-based security engineering.
 With an increasing number and complexity of security models the engineering process that goes along also became more complex and therefore prone to human errors.
 
-\cite{Amthor18} claims to close semantic gaps between the steps model engineering, model analysis and formal policy specification in the process of security engineering to reduce the potential impact of human errors.
-These steps are depicted in figure \ref{}.
+\cite{Amthor18} claims to close semantic gaps between model engineering, model analysis and formal policy specification in the process of security engineering to reduce the potential impact of human errors.
+These three steps and how they connect are depicted in figure \ref{fig:AOSE}.
 
-%TODO: diagram diss
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter2/AOSE.png}
+	\caption{Steps in the process of model-based security engineering \citep{Amthor18}}
+	\label{fig:AOSE}
+\end{figure}
 
-For this AOSE roughly adopts the idea of the aspect-oriented programming paradigm.
+\noindent
+AOSE roughly adopts the idea of the aspect-oriented programming paradigm.
 It tailors all steps to aspects, which are non-functional requirements of the engineering process like determining requirements of policy semantics or analyzing certain security goals.
 There are two major classes \cite{Amthor18} proposes for aspects regarding AOSE: related to policy semantics and related to policy analysis.
 One of several aspects proposed is Entity-Labeling.
@@ -382,9 +387,9 @@ A aspect oriented security model is defined as $\langle \mathcal{M},\mathcal{A},
 
 \subsection{Entity-Labeling Aspect}
 \label{EL}
-The Entity Labeling Aspect (EL) is one possible aspect in context of AOSE.
+The Entity Labeling aspect (EL) is one possible aspect $\mathcal{A}$ in context of AOSE.
 It is designed to formally specify policy semantics typically found in operating systems and middleware systems.
-It bridges the gap between informal policy and formal model by supporting its transformation.
+It bridges the gap between informal policy and formal model by supporting its transformation (see highlighted part in figure \ref{fig:AOSE}).
 EL classifies model components into six semantic categories:
 
 
@@ -394,22 +399,25 @@ A set of entity identifiers in the domain of an AC system.
 \item[2) Label Set (LS)]\hfill \\
 A set of legal label values.
 \item[3) Label Assignment (LA)]\hfill \\
-An association between entities and labels
+An association between entities and labels.
 \item[4) Access Rule (AR)]\hfill \\
 A logical rule that defines, based on a set of entity labels, which operations may be legally performed on entities corresponding to these labels. Model components in AR thus reflect a policy’s access control function (ACF).
 \item[5) Relabeling Rule (RR)]\hfill \\
-A logical rule for legal label changes
+A logical rule for legal label changes.
 \item[6) Model Constraint (MC)]\hfill \\
-Constraints over model components that must be satisfied in every model state
+Constraints over model components that must be satisfied in every model state.
 \end{description}
 
 \noindent
-According to these categories, we define the EL aspect:
+According to these categories, we define the EL aspect as following:
 
 \begin{xdefinition}[Entity-Labeling aspect] 
 The entity labeling aspect of a security policy is defined as 
 $\mathcal{A}_{EL} = \lbrace ES,LS,LA,AR,RR,MC\rbrace $
-where $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$ denote categories of model components with the semantics defined in Defs. 4.2–4.7.
+where $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$ denote categories of model components defined as following:
+
+
+
 \end{xdefinition}
 
 
@@ -428,6 +436,9 @@ Every diagram illustrates information according to one specific aspect.
 UML diagrams are classified into static and dynamic types, but they can have fuzzy borders and mixed forms as well.
 Static diagram types describe structural properties, dynamic diagram types behavioral properties.
 
+
+
+\subsubsection{Components}
 Components an UML diagram is build up with are classified into \textit{elements} and \textit{relationships}:
 
 \begin{description}
@@ -471,12 +482,25 @@ For example the class element has a simple symbolic form as well as an extended 
 	\caption{Class diagrams with different level of detail}
 	\label{fig:Class}
 \end{figure}
- 
-\noindent 
+
+
+
+\subsubsection{Additional annotations}
 UML has symbols and textual identifiers to visualize certain properties.
-Class diagrams for example have the following symbols to indicate visibility or attributes and operations: + for \textit{public}, \# for \textit{protected} and - for \textit{private}.
-With \textit{multiplicity} an element can be constrained regarding kind and number of its values.
-The format for its bounds in Backus-Naur form (BNF) is defined by the UML specification 2.5 \citep{UML_OMG} as in listing \ref{BNF_multiplicity}.
+A class diagram for example has the following symbols to indicate visibility of attributes and operations: + for \textit{public}, \# for \textit{protected} and - for \textit{private} (see figure \ref{fig:UML_class_diagram}).
+
+%TODO: UML class diagram
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics[scale=0.6]{../figures/chapter2/UML_class_diagram.png}
+%	\caption{UML class diagram example with multiplicities}
+%	\label{fig:UML_class_diagram}
+%\end{figure}
+
+\noindent 
+With \textit{multiplicities} an element can be constrained regarding its number in context of an relationship.
+The notation is placed at the connection point of class and relationship component.
+The format for multiplicity bounds is defined by the UML specification 2.5 \citep{UML_OMG} in Backus-Naur form (BNF) as in listing \ref{BNF_multiplicity}.
 
 \setlength{\grammarparsep}{10pt plus 1pt minus 1pt} % increase separation between rules
 \setlength{\grammarindent}{13em} % increase separation between LHS/RHS 
@@ -508,7 +532,7 @@ The format for its bounds in Backus-Naur form (BNF) is defined by the UML specif
 \vspace{0.3cm}
 
 \noindent
-For the sake of convenience we assume the literal <value-specification> being an integer number or * for infinite.
+For the sake of convenience we assume the literal <value-specification> being an integer number (0 or 1 in most cases) or * to indicate the end of a boundless interval.
 
 Furthermore it is worth mentioning that UML does not use any color for its diagrams.
 This makes it compatible, easy and fast for hand-drawing.
@@ -519,7 +543,7 @@ Coloring always remains a not officially specified option to highlight certain p
 \label{ER}
 The entity-relationship model (ER) is a model to describe classified objects (entities) and how they are interrelated.
 It was developed to illustrate information in databases on a conceptual level and became a popular tool for requirement analysis in this domain.
-In contrast to UML (see \ref{UML}), which is a collection of multiple diagram types, ER only has one type of diagram: The Entity-Relationship diagram (ERD).
+In contrast to UML (see section \ref{UML}), which is a collection of multiple diagram types, ER only has one type of diagram: The Entity-Relationship diagram (ERD).
 
 Also unlike UML ER is not an officially specified standard.
 Furthermore ER has some slightly different notation variants (Chen, Bachman, etc.), which will be discussed in section \ref{ERD_notations}.
@@ -534,8 +558,8 @@ Figure \ref{fig:ERD_minimal_example} shows an example of an ERD.
 	\label{fig:ERD_minimal_example}
 \end{figure}
 
-\noindent
-ERDs are build up with the following elements \citep{Kleuker11}:
+\subsubsection{Components}
+ERDs are build up with the following components \citep{Kleuker11}:
 
 \begin{description}
 \item[1) Entity type]\hfill \\
@@ -579,7 +603,7 @@ It is connected to an entity or to a relationship with the help of a simple line
 \end{figure}
 \end{description}
 
-\noindent
+\subsubsection{Additional annotations}
 To specify the amount of entities in context of a relationship the following indicators for \textit{cardinalities} are used:
 
 \begin{itemize}
