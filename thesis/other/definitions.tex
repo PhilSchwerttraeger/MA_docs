@@ -166,14 +166,17 @@
 	\addtotheorems{Theorem}{#1}
 	\begin{xtheorem}[#1]%
 }{\end{xtheorem}}
+
 \newenvironment{lemma}[1][]{%
 	\addtotheorems{Lemma}{#1}
 	\begin{xlemma}[#1]%
 }{\end{xlemma}}
+
 \newenvironment{definition}[1][]{%
 	\addtotheorems{Definition}{#1}
 	\begin{xdefinition}[#1]%
 }{\end{xdefinition}}
+
 \newenvironment{requirement}[1][]{%
 	\addtotheorems{Requirement}{#1}
 	\begin{xrequirement}[#1]%
@@ -294,3 +297,6 @@
 \renewcommand{\labelitemii}{$\bullet$}
 \renewcommand{\labelitemiii}{$\bullet$}
 \renewcommand{\labelitemiv}{$\bullet$}
+
+
+\usepackage{letltxmacro,changepage}

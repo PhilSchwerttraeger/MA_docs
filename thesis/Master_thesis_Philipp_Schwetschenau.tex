@@ -351,7 +351,7 @@ For example \textit{Permissions P} does not indicate that its elements are defin
 
 \section{Aspect-oriented Security Engineering and Entity-Labeling Aspect}
 \label{AOSEEL}
-In this section the Aspect-oriented Security Engineering proposed by \citep{Amthor18} is described with focus on its Entity-Labeling aspect.
+In this section the Aspect-oriented Security Engineering proposed by \cite{Amthor18} is described with focus on its Entity-Labeling aspect.
 The content of this section will act as fundamental basis of information for designing a graphical specification language for the Entity-Labeling aspect later in chapter \ref{gsl_design}.
 
 
@@ -372,11 +372,11 @@ These three steps and how they connect are depicted in figure \ref{fig:AOSE}.
 
 \noindent
 AOSE roughly adopts the idea of the aspect-oriented programming paradigm.
-It tailors all steps to aspects, which are non-functional requirements of the engineering process like determining requirements of policy semantics or analyzing certain security goals.
+It tailors all steps to aspects, which are non-functional requirements of the engineering process, for example determining requirements of policy semantics or analyzing certain security goals.
 There are two major classes \cite{Amthor18} proposes for aspects regarding AOSE: related to policy semantics and related to policy analysis.
-One of several aspects proposed is Entity-Labeling.
+One of several aspects proposed in his work is Entity-Labeling.
 
-According to \cite{Amthor18} an aspect-oriented security model is formally defined as:
+According to \cite{Amthor18} an aspect-oriented security model is defined as:
 
 \begin{xdefinition}[Aspect-oriented security model] 
 A aspect oriented security model is defined as $\langle \mathcal{M},\mathcal{A},sem \rangle$ with:
@@ -388,32 +388,87 @@ A aspect oriented security model is defined as $\langle \mathcal{M},\mathcal{A},
 \item $\mathcal{A}$ as set of semantic category identifiers (aspect)
 \item $sem : \mathcal{A} \rightarrow 2^\mathcal{M}$ as semantical application of $\mathcal{A}$ to $\mathcal{M}$
 \end{itemize}
+\label{definition:AOSE}
 \end{xdefinition}
 
 
 
 \subsection{Entity-Labeling Aspect}
 \label{EL}
-The Entity Labeling aspect (EL) is one possible aspect $\mathcal{A}$ in context of AOSE.
-It is designed to formally specify policy semantics typically found in operating systems and middleware systems.
-It bridges the gap between informal policy and formal model by supporting its transformation (see highlighted part in figure \ref{fig:AOSE}).
-EL classifies model components into six semantic categories:
-
+The Entity Labeling aspect (EL) is one possible aspect $\mathcal{A}$ in context of AOSE (see definition \ref{definition:AOSE}).
+It is designed to support the process of formally specifying policy semantics typically found in operating systems and middleware systems.
+According to \cite{Amthor18} it bridges the gap between informal policy and formal model by supporting its transformation (see highlighted part in figure \ref{fig:AOSE}).
+EL classifies model components into six semantic categories, that are defined by \cite{Amthor18} as following:
 
 \begin{description}
 \item[1) Entity Set (ES)]\hfill \\
-A set of entity identifiers in the domain of an AC system.
+A set of entity identifiers.
+Basic elements in context of access control decisions are defined as \textit{entities} and are resources and principals like subjects, objects, users, tasks, etc.~(different terms in literature).
+\vspace{-2mm}
+
+\begin{xdefinition}[ES] 
+ES model components are sets that list potential participants in access decisions.
+Elements of those sets are (1) atomic identifiers, (2) legal argument values for any authorization decision, (3) illegal argument values for evaluating \textit{AR} model components and (4) associated with labels via \textit{LA} model components.
+\label{definition:ES}
+\end{xdefinition}
+
 \item[2) Label Set (LS)]\hfill \\
 A set of legal label values.
+These labels act as attributes in access control decision and therefore as level of indirection.
+Their content vary depending on a policy's application domain and may be finite enumerations (e.g.~RBAC), infinite enumerations (e.g.~ABAC) as well as any number system such as $\mathbb{N}$.
+\vspace{-2mm}
+
+\begin{xdefinition}[LS] 
+LS model components are sets that list identifiers used in entity labels.
+Elements of those sets are (1) legal attribute values in labels, (2) legal argument values for evaluating \textit{AR} model components, (3) illegal argument values for any authorization decision and (4) may be associated with labels via \textit{LA} model components.
+\label{definition:LS}
+\end{xdefinition}
+
+
+
 \item[3) Label Assignment (LA)]\hfill \\
 An association between entities and labels.
+\vspace{-2mm}
+
+\begin{xdefinition}[LA] 
+LA model components are assignments that determine a system configuration in terms of how a policy's access rules (\textit{AR}) are applied to entities (\textit{ES}). They (1) are used to associate entity identifiers with label identifiers, (2) may be used to associate label identifiers with label identifiers and (3) indirectly determine any authorization decision.
+\label{definition:LA}
+\end{xdefinition}
+
+
+
 \item[4) Access Rule (AR)]\hfill \\
-A logical rule that defines, based on a set of entity labels, which operations may be legally performed on entities corresponding to these labels. Model components in AR thus reflect a policy’s access control function (ACF).
+A logical rule that defines, based on a set of entity labels, which operations may be legally performed on entities corresponding to these labels. Model components in \textit{AR} thus reflect a policy’s access control function (ACF).
+\vspace{-2mm}
+
+\begin{xdefinition}[AR] 
+\textit{AR} model components are logical rules which (1) are evaluated using label identifiers and (2) directly determine any authorization decision.
+\label{definition:AR}
+\end{xdefinition}
+
+
+
 \item[5) Relabeling Rule (RR)]\hfill \\
 A logical rule for legal label changes.
+Label changes can emerge from either administrative accesses (e.g.~RBAC's \textit{UA}) or discretionary accesses (user owns files and grant roles/users access).
+\vspace{-2mm}
+
+\begin{xdefinition}[RR] 
+\textit{RR} model components are logical rules which (1) define relations between \textit{ES} or \textit{LS} model components and (2) restrict changes of \textit{LA} model components.
+\label{definition:RR}
+\end{xdefinition}
+
+
+
 \item[6) Model Constraint (MC)]\hfill \\
 Constraints over model components that must be satisfied in every model state.
-\end{description}
+There are two types of constraints: policy-intrinsic (related to variables managed inside the AC system) and policy-extrinsic (external variables, e.g.~time).
+
+\begin{xdefinition}[MC] 
+MC model components are boolean expressions or external variables. 
+They represent conditions which (1) may relate to all model components (including external variables), (2) must be satisfied by the values of all model components, excluding external variables and (3) must be satisfied after any change of model components.
+\label{definition:MC}
+\end{xdefinition}
 
 \noindent
 According to these categories, we define the EL aspect as following:
@@ -422,10 +477,8 @@ According to these categories, we define the EL aspect as following:
 The entity labeling aspect of a security policy is defined as 
 $\mathcal{A}_{EL} = \lbrace ES,LS,LA,AR,RR,MC\rbrace $
 where $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$ denote categories of model components defined as following:
-
-
-
 \end{xdefinition}
+\end{description}
 
 
 
