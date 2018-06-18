@@ -243,6 +243,7 @@ A RBAC$_0$ model is a tuple $(U, R, P, S, UA, PA, user, roles)$ with
 \item $user: S \rightarrow U$ as function, that maps every session to a single user
 \item $roles: S \rightarrow 2^R$ as function, that maps every session to set of roles
 \end{itemize}
+\label{definition:RBAC}
 \end{xdefinition}
 
 \noindent
@@ -307,14 +308,20 @@ Six arrows of this type are pointing symbolically from the set of constraints in
 A set has its name and its identifier in its center.
 An arrow -- except the constraint arrow -- has its name and its identifier next to it.
 
-Furthermore the \textit{Sessions} set ($S$) is not directly connected with arrows to other components.
+Furthermore the set \textit{Sessions S} is not directly connected with arrows to other components.
 It is drawn with large black dots inside, which represent single elements of this set.
 These set elements are then connected to other components with certain arrows.
-Three small black dots (in this case aligned horizontally) indicate that there are potentially more than just those three set elements (the number of sessions is not limited per definition).
+Three small black dots (in this case aligned horizontally) indicate that those three set elements are just symbolic and that there are potentially more or less (the number of sessions is not limited per definition).
 
-This diagram is often used in a simplified form (for example in \citep{Amthor18}) that directly connects the \textit{Sessions} set -- like the other sets -- with just one arrow to \textit{Users} and one to \textit{Roles} and does not display single set elements of \textit{Sessions}.
-Also worth mentioning is that $RH$ is drawn as a loop. 
+This diagram is often used in a simplified form (for example in \citep{Amthor18}) that does not display single set elements of \textit{Sessions S}, but directly connects \textit{Sessions S}-- like the other sets -- with just one arrow (for the \textit{user} function) to \textit{Users} and one arrow (for the \textit{roles} function) to \textit{Roles}.
+Also worth mentioning is that the \textit{Role Hierarchy RH} is drawn as a loop. 
 It is pointing from \textit{Roles} ($R$) to \textit{Roles} with a double-headed bidirectional arrow.
+
+Sandhu's notation depicts the overall structure of the RBAC model with its relationships between model components.
+Different arrow types indicate different types of relationships.
+Besides \textit{Sessions S} no set displays any set elements.
+Also no set displays any kind of definition for its elements.
+For example \textit{Permissions P} does not indicate that its elements are defined as $2^{O \times OP}$ (as in the RBAC definition, see definition \ref{definition:RBAC}).
 
 %maybe my own gsl from bachelor thesis?
 
@@ -424,6 +431,8 @@ where $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$ denote categories of model componen
 
 \section{Graphical notation models}
 \label{graphical_notations}
+In this section two well-established graphical notation models are presented: UML and ER.
+They are (de facto standard
 
 \subsection{Unified Modeling Language}
 \label{UML}
