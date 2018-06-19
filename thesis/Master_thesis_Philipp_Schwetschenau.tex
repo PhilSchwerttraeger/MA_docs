@@ -158,7 +158,7 @@ It will serve as basis for all design decisions in the following chapter~\ref{gs
 
 Section \ref{security_models} introduces the RBAC security model.
 Section \ref{AOSEEL} focuses on the Aspect-oriented Security Engineering (AOSE) proposed by \citet*{Amthor18}.
-It covers the Entity-Labeling Aspect in particular, one aspect of AOSE, which is going to be essential regarding the task to design a graphical specification language for it in chapter~\ref{gsl_design}.
+It covers the Entity Labeling Aspect in particular, one aspect of AOSE, which is going to be essential regarding the task to design a graphical specification language for it in chapter~\ref{gsl_design}.
 In section~\ref{graphical_notations} the well-established graphical notations UML and ER are described.
 Based on human optical perception and gestalt laws section~\ref{gestalt_laws_and_human_optical_perception} provides information on how we perceive and evaluate visual impressions regarding two-dimensional forms and structures.
 In the last section~\ref{gui_design} information on how to design a software graphical user interface are given with respect to common best practices like design patterns and modern usability.
@@ -168,7 +168,7 @@ In the last section~\ref{gui_design} information on how to design a software gra
 A security policy is a set of rules to fulfill security related requirements of an IT system.
 In order to be able to work with such a security policy and to analyze it, it has to be formalized as an instance of a security model.
 Being the central artifact in the process of model-based security engineering we want to describe a very basic security model -- the Identity-based Access Control (IBAC) model -- and a well-established and widely used extension of it -- the Role-based Access Control (RBAC) model.
-In the course of this work, we need to construct security policies and models to explain and visualize the security engineering in context of the Entity-Labeling aspect.
+In the course of this work, we need to construct security policies and models to explain and visualize the security engineering in context of the Entity Labeling aspect.
 The models going to be used are RBAC models.
 
 %\subsection{HRU}
@@ -284,7 +284,7 @@ Due to RBAC being a well-established security model and also regarding its relev
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\linewidth]{../figures/chapter2/Sandhu_notation.png}
+	\includegraphics[width=\linewidth-2cm]{../figures/chapter2/Sandhu_notation.png}
 	\caption{Graphical notation used by \cite{Sandhu96} to visualize $RBAC_3$}
 	\label{fig:Sandhu_notation}
 \end{figure}
@@ -349,9 +349,9 @@ For example \textit{Permissions P} does not indicate that its elements are defin
 
 
 
-\section{Aspect-oriented Security Engineering and Entity-Labeling Aspect}
+\section{Aspect-oriented Security Engineering and Entity Labeling Aspect}
 \label{AOSEEL}
-In this section the Aspect-oriented Security Engineering proposed by \cite{Amthor18} is described with focus on its Entity-Labeling aspect.
+In this section the Aspect-oriented Security Engineering proposed by \cite{Amthor18} is described with focus on its Entity Labeling aspect.
 The content of this section will act as fundamental basis of information for designing a graphical specification language for the Entity-Labeling aspect later in chapter \ref{gsl_design}.
 
 
@@ -374,12 +374,16 @@ These three steps and how they connect are depicted in figure \ref{fig:AOSE}.
 AOSE roughly adopts the idea of the aspect-oriented programming paradigm.
 It tailors all steps to aspects, which are non-functional requirements of the engineering process, for example determining requirements of policy semantics or analyzing certain security goals.
 There are two major classes \cite{Amthor18} proposes for aspects regarding AOSE: related to policy semantics and related to policy analysis.
-One of several aspects proposed in his work is Entity-Labeling.
+One of several aspects proposed in his work is Entity Labeling.
 
 According to \cite{Amthor18} an aspect-oriented security model is defined as:
 
 \begin{xdefinition}[Aspect-oriented security model] 
-A aspect oriented security model is defined as $\langle \mathcal{M},\mathcal{A},sem \rangle$ with:
+A aspect oriented security model is defined as 
+\begin{gather*}
+\langle \mathcal{M},\mathcal{A},sem \rangle
+\end{gather*}
+with:
 
 \vspace{-2mm}
 \begin{itemize}
@@ -393,17 +397,18 @@ A aspect oriented security model is defined as $\langle \mathcal{M},\mathcal{A},
 
 
 
-\subsection{Entity-Labeling Aspect}
+\subsection{Entity Labeling Aspect}
 \label{EL}
 The Entity Labeling aspect (EL) is one possible aspect $\mathcal{A}$ in context of AOSE (see definition \ref{definition:AOSE}).
 It is designed to support the process of formally specifying policy semantics typically found in operating systems and middleware systems.
 According to \cite{Amthor18} it bridges the gap between informal policy and formal model by supporting its transformation (see highlighted part in figure \ref{fig:AOSE}).
-EL classifies model components into six semantic categories, that are defined by \cite{Amthor18} as following:
+
+For this we have to identify and formalize model components of an informally specified policy and classify them into six semantic categories, that are described and defined by \cite{Amthor18} as following:
 
 \begin{description}
 \item[1) Entity Set (ES)]\hfill \\
-A set of entity identifiers.
-Basic elements in context of access control decisions are defined as \textit{entities} and are resources and principals like subjects, objects, users, tasks, etc.~(different terms in literature).
+\textit{ES} is a set of entity identifiers.
+Basic elements in context of access control decisions are defined as \textit{entities} and are resources and principals like subjects, objects, users, etc.
 \vspace{-2mm}
 
 \begin{xdefinition}[ES] 
@@ -413,8 +418,8 @@ Elements of those sets are (1) atomic identifiers, (2) legal argument values for
 \end{xdefinition}
 
 \item[2) Label Set (LS)]\hfill \\
-A set of legal label values.
-These labels act as attributes in access control decision and therefore as level of indirection.
+\textit{LS} is a set of legal label values.
+Labels act as attributes in access control decisions and therefore as level of indirection.
 Their content vary depending on a policy's application domain and may be finite enumerations (e.g.~RBAC), infinite enumerations (e.g.~ABAC) as well as any number system such as $\mathbb{N}$.
 \vspace{-2mm}
 
@@ -427,7 +432,7 @@ Elements of those sets are (1) legal attribute values in labels, (2) legal argum
 
 
 \item[3) Label Assignment (LA)]\hfill \\
-An association between entities and labels.
+\textit{LA} is an association between entities and labels.
 \vspace{-2mm}
 
 \begin{xdefinition}[LA] 
@@ -438,7 +443,7 @@ LA model components are assignments that determine a system configuration in ter
 
 
 \item[4) Access Rule (AR)]\hfill \\
-A logical rule that defines, based on a set of entity labels, which operations may be legally performed on entities corresponding to these labels. Model components in \textit{AR} thus reflect a policy’s access control function (ACF).
+\textit{AR} is a logical rule that defines, based on a set of entity labels, which operations may be legally performed on entities corresponding to these labels. Model components in \textit{AR} thus reflect a policy’s access control function (ACF).
 \vspace{-2mm}
 
 \begin{xdefinition}[AR] 
@@ -449,7 +454,7 @@ A logical rule that defines, based on a set of entity labels, which operations m
 
 
 \item[5) Relabeling Rule (RR)]\hfill \\
-A logical rule for legal label changes.
+\textit{RR} is a logical rule for legal label changes.
 Label changes can emerge from either administrative accesses (e.g.~RBAC's \textit{UA}) or discretionary accesses (user owns files and grant roles/users access).
 \vspace{-2mm}
 
@@ -461,24 +466,119 @@ Label changes can emerge from either administrative accesses (e.g.~RBAC's \texti
 
 
 \item[6) Model Constraint (MC)]\hfill \\
-Constraints over model components that must be satisfied in every model state.
-There are two types of constraints: policy-intrinsic (related to variables managed inside the AC system) and policy-extrinsic (external variables, e.g.~time).
+\textit{MC} is a set of constraints over model components that must be satisfied in every model state.
+There are two types of constraints: policy-intrinsic (related to variables managed inside the AC system) and policy-extrinsic (related to external variables, e.g.~time).
+\vspace{-2mm}
 
 \begin{xdefinition}[MC] 
 MC model components are boolean expressions or external variables. 
-They represent conditions which (1) may relate to all model components (including external variables), (2) must be satisfied by the values of all model components, excluding external variables and (3) must be satisfied after any change of model components.
+They represent conditions which (1) may relate to all model components (including external variables), (2) must be satisfied by the values of all model components (excluding external variables) and (3) must be satisfied after any change of the model components.
 \label{definition:MC}
+\end{xdefinition}
+\end{description}
+
+\noindent
+According to these categories EL is defined as following:
+
+\begin{xdefinition}[Entity Labeling aspect] 
+The Entity Labeling aspect of a security policy is defined as:
+\begin{gather*}
+\mathcal{A}_{EL} = \lbrace ES,LS,LA,AR,RR,MC\rbrace
+\end{gather*}
+where $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$ denote categories of model components defined as in definition \ref{definition:ES} to
+\label{definition:EL} \ref{definition:MC}.
 \end{xdefinition}
 
 \noindent
-According to these categories, we define the EL aspect as following:
+The resulting model after EL can be depicted in three different forms: Textual, table and graphical.
+The textual form created from an example policy looks like this:
 
-\begin{xdefinition}[Entity-Labeling aspect] 
-The entity labeling aspect of a security policy is defined as 
-$\mathcal{A}_{EL} = \lbrace ES,LS,LA,AR,RR,MC\rbrace $
-where $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$ denote categories of model components defined as following:
+\begin{align*}
+\langle &\mathcal{M}_{example}, \mathcal{A}_{EL}, sem \rangle \\
+\end{align*}
+
+\noindent
+with
+
+\begin{align*}
+\mathcal{M}_{example} &= \lbrace U, D, R, GR, AR, P, ua, da, pa \rbrace \\
+\end{align*}
+
+\begin{align*}
+sem(ES) &= \lbrace U, D \rbrace\\
+sem(LS) &= \lbrace R, P \rbrace\\
+sem(LA) &= \lbrace ua, da \rbrace\\
+sem(AR) &= \lbrace pa, P \rbrace\\
+sem(RR) &= \lbrace GR, AR, ua \rbrace\\
+sem(MC) &= \lbrace \emptyset \rbrace\\
+\end{align*}
+
+\noindent
+Figure \ref{fig:EL_table} shows the same result as table.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth-3cm]{../figures/chapter2/EL_table.png}
+	\caption{Result of EL-based model engineering from \cite[p.77, table 4.1]{Amthor18}}
+	\label{fig:EL_table}
+\end{figure}
+
+\noindent
+The first columns displays the EL categories.
+The second column shows all given informal model components.
+They are classified into the EL categories by assigning them into the corresponding row.
+In the third column those model components are formalized as sets, mappings, relations, etc.
+The last column refers to the corresponding informal rule of the example policy the model components originate from.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth-6cm]{../figures/chapter2/EL_diagram.png}
+	\caption{Visual summary of figure \ref{fig:EL_table} from \cite[p.76, figure 4.3]{Amthor18}}
+	\label{fig:EL_diagram}
+\end{figure}
+
+\cite{Amthor18} also used a graphical depiction of these EL results (see figure \ref{fig:EL_diagram}).
+In this diagram members of EL categories are visually classified by being horizontally aligned to a category space.
+The category spaces are indicated with dotted lines at the bottom of the diagram.
+
+\subsubsection{Hierarchical Entity Labeling}
+To further improve scalability another level of indirection can be added to a model with already one level of indirection (e.g. adding a role hierarchy like RBAC has).
+For this another \textit{LS} and \textit{LA} components are added to the EL categories.
+In this context $m$ indicates the degree of indirection.
+So definition \ref{definition:EL} is just for the case where $m=1$.
+For $m>1$ the EL aspect $\mathcal{A}_{EL(m)}$ is defined by \cite{Amthor18} as following:
+
+\begin{xdefinition}[Hierarchical Entity Labeling aspect] 
+The hierarchical Entity Labeling aspect of a security policy is defined as:
+\begin{gather*}
+\mathcal{A}_{EL} = \lbrace ES,LS_1, \dots,LS_m, LA_1, \dots, LA_m,AR,RR,MC\rbrace
+\end{gather*}
+where $ES$, $AR$, $RR$, and $MC$ are defined as in definition \ref{definition:EL}.
+$m \in \mathbb{N}$ is the degree of indirection. 
+$LA_i$ is the category of model components that assign labels defined in model components of the $LS_i$ category to labels defined in model components of the $LS_{i-1}$ category, $1 \leq i \leq m$.
+We define $LS_0 = ES, LA_{m+1}=AR$, and $LS_{m+1} = \lbrace \mathbb{B} \rbrace$.
+\label{definition:EL_m}
 \end{xdefinition}
-\end{description}
+
+\noindent
+Adding a role hierarchy to our example policy will alter $sem(LA)$ to $sem(LA_1)$ and $sem(LS)$ to $sem(LS_1)$ and will add following two assignments:
+
+\begin{align*}
+sem(LS_2) &= \lbrace R \rbrace\\
+sem(LA_2) &= \lbrace RH \rbrace\\
+\end{align*}
+
+\noindent
+This leads to a diagram with an additional component $RH$ and multiple sections for $LS_i$ and $LA_i$ as depicted in figure \ref{fig:EL_diagram_m}.
+The category spaces at the bottom are now not the only indications for categories in this diagram.
+$LA_2$ and $LS_2$ are depicted as dotted-lined rectangles within the diagram itself and frame its components $RH$ and $R$.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth-6cm]{../figures/chapter2/EL_diagram_m.png}
+	\caption{Visual summary with $m=2$ from \cite[p.79, figure 4.4]{Amthor18}}
+	\label{fig:EL_diagram_m}
+\end{figure}
 
 
 
