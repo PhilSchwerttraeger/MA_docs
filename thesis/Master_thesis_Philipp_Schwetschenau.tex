@@ -537,7 +537,7 @@ The last column refers to the corresponding informal rule of the example policy 
 	\label{fig:EL_diagram}
 \end{figure}
 
-\cite{Amthor18} also used a graphical depiction of these EL results (see figure \ref{fig:EL_diagram}).
+\cite{Amthor18} also used a graphical depiction (see figure \ref{fig:EL_diagram}).
 In this diagram members of EL categories are visually classified by being horizontally aligned to a category space.
 The category spaces are indicated with dotted lines at the bottom of the diagram.
 
@@ -820,7 +820,7 @@ Here is a short overview on how some of these differ in their appearance:
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.5]{../figures/chapter2/ERD_notations.png}
+	\includegraphics[scale=0.4]{../figures/chapter2/ERD_notations.png}
 	\caption{Simple example in different ER notation variants}
 	\label{fig:ERD_notations}
 \end{figure}
@@ -828,9 +828,22 @@ Here is a short overview on how some of these differ in their appearance:
 
 
 
-\section{Gestalt laws and human optical perception}
+\section{Perception}
 \label{gestalt_laws_and_human_optical_perception}
+This section is about the human visual perception.
+Its content will act as fundamental basis for designing a graphical specification language in chapter \ref{gsl_design} as well as for designing an editor's graphical user interface in chapter \ref{editor_design}.
 
+In science there are two types of visualizing information:
+One is to show absolute or relative primitive data or values (tables, bar graphs, pie charts) and one to show structures and semantic properties (specialized graphical systems like the class diagram of UML (see section \ref{UML}), the Chen notation of ERD (see section \ref{ER}), block diagram, etc.).
+In context of this thesis the latter is relevant.
+
+Due to being highly adapted and tied to one specific domain these types of visualization are impractical for direct reuse in another domain.
+Generally a new application will also require a newly designed graphical system.
+In reality single components and ideas already established in other well-known or related systems are getting (partly) reused and adapted accordingly.
+A newly designed graphical system should be designed in a way its components are not ambiguously compared to similar systems from related domains to avoid misunderstanding.
+
+Also designing such a system should consider design guidelines and rules of best practice.
+One of these are gestalt laws.
 
 \subsection{Gestalt laws}
 \label{gestalt_laws}
@@ -846,12 +859,18 @@ Here is a short overview on how some of these differ in their appearance:
 \label{gui_design}
 
 
+
+
 \subsection{Design Patterns}
 \label{design_patterns}
 
 
+
+
 \subsection{Usability}
 \label{usability}
+
+
 
 
 
