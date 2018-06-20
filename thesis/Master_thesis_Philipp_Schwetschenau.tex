@@ -29,7 +29,7 @@ Fachgebiet für Verteilte Systeme und Betriebssysteme
 
 \vfill {\large
 	Masters thesis\\ \vspace{2ex}
-	\LARGE \textbf{Graphical Specification Language for the Entity-Labeling Aspect} \\ \vspace{2.5ex} 
+	\LARGE \textbf{Graphical Specification Language \\for the Entity-Labeling Aspect} \\ \vspace{2.5ex} 
 	\normalsize Submitted by: \\
 	\Large Philipp Schwetschenau \\ \vspace{3ex} 
 }
@@ -603,17 +603,32 @@ Components an UML diagram is build up with are classified into \textit{elements}
 
 \begin{description}
 \item[1) Elements]\hfill \\
-Elements are the main objects in a UML diagram.
+Elements are the main artifacts in an UML diagram.
 Graphically elements are based on closed shapes like boxes or ellipses.
-They usually have a name or identifier in form of text in the center of their shape. Horizontal lines can be used to separate an element into two or more sections (see \textit{class diagram}). \\
-Examples: Classes, components, nodes, objects, packages (see figure \ref{fig:UML_elements})
+They usually have a name or identifier in form of text in the center of their shape. Horizontal lines can be used to separate an element into two or more sections (see \textit{class} element). \\
+Examples for elements are classes, components, notes, objects, packages, interfaces, ports, etc.~(see figure \ref{fig:UML_elements}).
+Elements can be closely tied to specific diagram types (e.g.~components to component diagrams).
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.7]{../figures/chapter2/UML_elements.png}
+	\includegraphics[scale=0.5]{../figures/chapter2/UML_elements.png}
 	\caption{Selection of UML elements}
 	\label{fig:UML_elements}
 \end{figure}
+
+\noindent 
+Some elements can have multiple forms.
+For example the class element has a simple symbolic form as well as an extended form with detailed information about its key words, attributes and operations (see figure \ref{fig:Class}).
+With this option whole diagrams can be dynamically adjusted to a desired level of detail.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.6]{../figures/chapter2/UML_Klassen2.png}
+	\caption{Class diagrams with different level of detail}
+	\label{fig:Class}
+\end{figure}
+
+
 
 \item[2) Relationships]\hfill \\
 Relationships can connect two or more elements.
@@ -632,16 +647,7 @@ Examples: Dependency, association, generalization, include, extend (see figure \
 \end{figure}
 \end{description}
 
-\noindent 
-Class diagrams can have different levels of detail.
-For example the class element has a simple symbolic form as well as an extended form with detailed information about its key words, attributes and operations (see figure \ref{fig:Class}).
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[scale=0.6]{../figures/chapter2/UML_Klassen2.png}
-	\caption{Class diagrams with different level of detail}
-	\label{fig:Class}
-\end{figure}
 
 
 
