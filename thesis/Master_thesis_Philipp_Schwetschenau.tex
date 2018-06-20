@@ -919,19 +919,74 @@ There they are ready for further processing, e.g.~applying of knowledge or emoti
 
 \section{GUI Design}
 \label{gui_design}
+The \textit{graphical user interface} (GUI) is a well-established interface type that allows interactions between human and machine on a graphical level.
+It presents visual content to its users and offers functions to operate with the help of symbols and control elements.
+GUIs were developed, because text-based \textit{command line interfaces} (CLI) need a higher degree of memorization and familiarity for operation and navigation and therefore new users in particular find operating a CLI more difficult than a GUI \citep{CLI}.
+Unfortunately GUI design often lacks ease of use, due to its design being tied too strictly to the work flow of experts \citep{Reckling14}.
 
-
-
-
-\subsection{Design Patterns}
-\label{design_patterns}
-
+There are some best practices to stick to when it comes to design a \textit{good} GUI.
+One of them is to reuse already established methods and approaches like \textit{user interface pattern}.
+Another one is to evaluate whether a design concept follows \textit{usability} rules.
 
 
 
 \subsection{Usability}
 \label{usability}
+\cite{Shackel91a} defines usability as following
 
+\begin{xdefinition}[Usability] 
+Usability is the capability to be used by humans easily and effectively, while
+\begin{itemize}
+\item \textit{easily} means ``to a specified level of subjective assessment'' and
+\item \textit{effectively} means ``to a specified level of (human) performance''
+\end{itemize}
+\label{definition:usability}
+\end{xdefinition}
+
+\noindent
+Usability can be classified into \textit{interaction design} and \textit{interface design}.
+The former describes \textit{how} a system reactions to user interactions, the latter \textit{with what} a system visualizes interaction options \citep{Reckling14}.
+
+\cite{Tidwell11} describes several principles essential for achieving a high usability.
+These principles can be applied in form of non-functional requirements in the process of designing a new GUI.
+The following list describes the first 6 of those principles:
+
+\begin{description}
+\item[1) Safe Exploration]\hfill \\
+A user should always be able to safely explore the interface.
+This includes undoing every operation he performs in particular.
+For this a software has to be designed as \textit{non-destructive} as possible.
+
+\item[2) Instant Gratification]\hfill \\
+A user should always instantly get feedback about operations he just performed.
+This can be the direct result of his operation (e.g.~opening a window) or a visual hint, that indicates that his action was recognized and the desired operation was executed accordingly (e.g.~coloring a button to indicate its activation).
+
+\item[3) Satisfiscing]\hfill \\
+\textit{Satisfiscing} is a word combination of \textit{satisfying} and \textit{sufficing}.
+A user tends to scan all options just roughly and to use trial-and-error before finding the perfectly matching tool for a certain task.
+He tends to be fine with solutions that are \textit{good enough} and not the best possible.
+This means that the user should be supported to find the right tools when he needs them.
+For this symbols and texts have to be short, simple and easy to understand.
+Also to ensure a correct order of operations or work flow (if necessary at all, see point 6 of this list) the user should be guided appropriately (e.g.~\textit{drag here}, \textit{click to start}, etc.).
+
+\item[4) Changes in Midstream]\hfill \\
+A user should always be able to interfere with running operations to always have the control.
+An example is a time consuming operation that is indicated with an progress bar, but that can be canceled at any time with the help of a button or key command.
+
+\item[5) Deferred Choices]\hfill \\
+A user should always be able to defer choices that are not mandatory and answer just the minimal set of questions that are necessary to progress at a certain point.
+Of course, besides this, the system has to offer a way for the user to come back to answer the skipped questions later.
+
+\item[6) Incremental Construction]\hfill \\
+Builder-style software like editors need to support \textit{incremental construction}.
+This means that the user is free to choose on which particular part he wants to works.
+A user should always be free to stop working on one part and instantly jump to another part to continue working there.
+When this \textit{incremental construction} is achieved to a high degree, this can induce a state of flow in the user, which leads to an increased working performance and satisfaction.
+\end{description}
+
+
+\subsection{Design Patterns}
+\label{design_patterns}
 
 
 
