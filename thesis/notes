@@ -1,0 +1,54 @@
+Grundlagenkapitel
+- Def Einrückung
+- Beispiel auf RBAC ändern
+- Detailliertere Beschreibung von Amthor Notation
+
+Aktuell
+- Konzeptionierung
+- Recherche: Grafische SL, Leitfaden für Konzeptionierung
+
+Anfang
+- Struktur prinzipiell aufbauend auf Amthor scheint sinnvoll
+- Aber: (Usability/Technische) Probleme und Ungenauigkeit identifizieren
+- Eindeutigkeit herstellen
+- Gewissheit erlangen: Basisfälle
+	-> Vergleich semantischer Equlivalenz durch verlustfreie Hin- und Rücktransformation von verschiedenen (aussagekräftigen) Beispielen
+
+Amthor Notation
+- grundlegend 2 Probleme
+	- Mehrdeutigkeit/Ungenauigkeit von Beziehungen (Pfeile)
+		- Stelligkeit (einfach U, Potenzmenge 2^U) und Op.typ (Kreuzprodukt x, Vereinigung U, Schnitt)
+			- Verschiedene Pfeilköpfe (weniger flexibel)
+			- UML-ähnliche Annotationen an Beziehungen (1, n, 2^X)
+				- Ein-/Ausblendbar (Sem. äquivalent, trotzdem übersichtlich)
+	- Uneleganze Kategorisierung (mehrdeutig, unübersichtlich, struktur (EL Kategorien) sollte sofort klar sein, ist sie aber nicht)
+		- Erkenntnisse
+			- Kanten können prinzipiell überall langlaufen.
+			- Überschneidungen oder uneinheitliche Sektionierung ist bereits bei wenigen Objekten nicht mehr vermeidbar.
+			- Zugehörigkeit eines sets ab 3 categorien nicht möglich über dotted sections below. 
+				- Dotted rectangles bei feingranularität irgendwann um jedes objekt mit mehrfacher beschriftung
+				-> EL categorien müssten zwecks Übersicht dezentral indiziert werden.
+			- Steigt m steigen Objekte in Mitte des Diagrams
+			- AR immer hinten
+			- Da Kanten überall langlaufen können (Bestes Beispiel: RR oder LA_2) Man könnte vielleicht nur Sets in dotted sections darstellen.
+				- Idee: Mehrfache Zugehörigkeit mit Kombisections (LS1-LS3) -> Unübersichtlich (Was ist alles in LS1?)
+				- Idee: Uniforme Flächenaufteilung mit Schnitten zwischen allen Mengen -> ab n>3 unübersichtlich, siehe Venn BA
+			- Bei Farben: Kanten hätten immer nur eine Farbe. Sets evtl mehrere.
+				- Farbe einzig sinnvoller gestalt facor 
+				- Rückwärtskompatibilität zu Handzeichnung: Schraffierung
+				- Begrenzung auf wenige Farbabstufungen (ca. 16)
+					- LA und LS gleichfarbig, da immer zusammengehörig (LA immer Fkt/Rel., LS immer Sets lt. Def)
+						- 4 feste (ES, AR, RR; MC) -> 12 LA/LS Kategorien -> m<=12
+
+Eigenschaften mit Vor-/Nachteilen bzgl. Farbmodellierung
+- Sets
+	- Mehrere Kategorien (mehrere Farben)
+- Fkt/Rel
+	- Eine Kategory (gut für dotted)
+	- Überspringen Sections oder bleiben in einem Set (loop)
+
+Implmentierung
+- [x] ES, [x] LA_1, etc.
+- [x] Annotations ("1..*")
+
+Fragen: Warum R in LS1 und LS2? (S. 79)? Warum nicht nur LS?
