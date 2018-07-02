@@ -154,13 +154,17 @@ In addition to that a GUI-based editor should be developed as a prototype to mak
 \chapter{Fundamentals}
 \label{fundamentals}
 This chapter provides information to fundamentals necessary for this thesis.
-It will serve as basis for all design decisions in the following chapter~\ref{gsl_design} and chapter~\ref{editor_design}.
+It will serve as a basis for design decisions in the following chapter~\ref{gsl_design} and chapter~\ref{editor_design}.
 
-Section \ref{security_models} introduces two fundamental security models: IBAC and RBAC.
-It also describes a graphical notation for depicting RBAC models.
+Section \ref{security_models} introduces two fundamental families of security models: IBAC and RBAC.
+It also describes a graphical notation for depicting RBAC models by \cite{Sandhu96}.
+This notation will serve as first basis for graphical modeling in this domain.
 Section \ref{AOSE} focuses on the Aspect-oriented Security Engineering (AOSE) proposed by \citet*{Amthor18}.
-It covers the Entity Labeling Aspect in particular, one aspect of AOSE, which is going to be essential regarding the task to design a graphical specification language for it in chapter~\ref{gsl_design}.
-In section~\ref{graphical_notations} the well-established graphical notations UML and ER are described.
+It covers the Entity Labeling Aspect in particular, one aspect of AOSE, which is going to be essential regarding the task to design a graphical specification language for it.
+Also the notation used by \citet*{Amthor18} to graphically model the process of Entity-Labeling, which was slightly inspired by the graphical RBAC notation by \cite{Sandhu96}, will be described.
+This will be the starting point in designing the graphical specification language in chapter \ref{gsl_design}.
+
+In section~\ref{graphical_notations} the well-established graphical notations \textit{Unified Modeling Language} and \textit{Entity-Relationship} are described.
 Based on human optical perception and gestalt laws section~\ref{perception} provides information on how we perceive and evaluate optical stimuli regarding properties like shape and closeness.
 In the last section~\ref{gui_design} information on how to design a software graphical user interface are given with respect to common best practices like interaction design patterns and usability.
 
@@ -191,9 +195,9 @@ In the course of this work, we need security policies and models to explain and 
 
 \subsection{Identity-based Access Control}
 \label{IBAC}
-The most fundamental security model is probably the Identity-based Access Control (IBAC) model.
+The most fundamental class of security models is probably the family of Identity-based Access Control (IBAC) models.
 The model is based on a system with active (subjects) and passive entities (objects).
-In IBAC requests are managed according to the requester's unique identification \citep{Lampson74}.
+In IBAC requests are decided according to the unique identification of the requester and the object \citep{Lampson74}.
 A set of rules (\textit{policy}) determines whether a request is permitted or forbidden.
 These rules can be formulated as access control matrix (ACM) or access control function (ACF).
 An ACF is defined as following \citep{Amthor18}:
@@ -214,7 +218,7 @@ For any $s \in S, o \in O, op \in OP$, we say $s$ is allowed to execute $op$ on 
 
 \subsection{Role-based Access Control}
 \label{RBAC}
-With an increasing number of subjects and objects IBAC's ACFs/ACMs get very large and hard to manage effectively.
+With an increasing number of subjects and objects the access control functions/matrices of IBAC models get very large and hard to manage effectively.
 Role-based Access Control (RBAC) models counter this scalability problem by adding one stage of indirection.
 For this RBAC models extend IBAC with the concept of roles \citep{Sandhu96}.
 This design decision is based on the finding of \cite{Sandhu96} that in large systems many subjects share the same access privileges.
@@ -281,6 +285,7 @@ RBAC$_3$ combines the concepts of RBAC$_1$ and RBAC$_2$.
 \label{RBAC_notation}
 \cite{Sandhu96} use a graphical notation in their work to visualize the RBAC model family with all its elements and relationships (see figure \ref{fig:Sandhu_notation}).
 Due to RBAC being a well-established security model and also regarding its relevance in literature -- especially for its contribution to the standardized NIST RBAC model \citep{RBACNIST} -- we want to take a closer look at its graphical notation.
+Unfortunatly \cite{Sandhu96} gives no details on how or why the notation is build up the way it is in his work.
 
 \begin{figure}[htb]
 	\centering
@@ -290,7 +295,6 @@ Due to RBAC being a well-established security model and also regarding its relev
 \end{figure}
 
 \noindent
-Unfortunatly \cite{Sandhu96} gives no details on how or why the notation is build up the way it is in his work.
 Following graphical elements are used in this notation:
 
 \begin{itemize}
@@ -399,7 +403,7 @@ The Entity Labeling (EL) aspect is one possible aspect $\mathcal{A}$ in context 
 It is designed to support the process of formally specifying policy semantics typically found in operating systems and middleware systems.
 According to \cite{Amthor18} it bridges the gap between informal policy and formal model by supporting its transformation (see highlighted part in figure \ref{fig:AOSE}).
 
-For this we have to identify and formalize model components of an informally specified policy and classify them into six semantic categories, that are described and defined by \cite{Amthor18} as following:
+For this model components of an informally specified policy have to be identified and formalized by classifying them into six semantic categories:
 
 \begin{description}
 \item[1) Entity Set (ES)]\hfill \\
@@ -407,11 +411,12 @@ For this we have to identify and formalize model components of an informally spe
 Basic elements in context of access control decisions are defined as \textit{entities} and are resources and principals like subjects, objects, users, etc.
 \vspace{-2mm}
 
-\begin{xdefinition}[ES] 
-ES model components are sets that list potential participants in access decisions.
-Elements of those sets are (1) atomic identifiers, (2) legal argument values for any authorization decision, (3) illegal argument values for evaluating \textit{AR} model components and (4) associated with labels via \textit{LA} model components.
-\label{definition:ES}
-\end{xdefinition}
+
+%\begin{xdefinition}[ES] 
+%ES model components are sets that list potential participants in access decisions.
+%Elements of those sets are (1) atomic identifiers, (2) legal argument values for any authorization decision, (3) illegal argument values for evaluating \textit{AR} model components and (4) associated with labels via \textit{LA} model components.
+%\label{definition:ES}
+%\end{xdefinition}
 
 \item[2) Label Set (LS)]\hfill \\
 \textit{LS} is a set of legal label values.
@@ -419,11 +424,11 @@ Labels act as attributes in access control decisions and therefore as level of i
 Their content vary depending on a policy's application domain and may be finite enumerations (e.g.~RBAC), infinite enumerations (e.g.~ABAC) as well as any number system such as $\mathbb{N}$.
 \vspace{-2mm}
 
-\begin{xdefinition}[LS] 
-LS model components are sets that list identifiers used in entity labels.
-Elements of those sets are (1) legal attribute values in labels, (2) legal argument values for evaluating \textit{AR} model components, (3) illegal argument values for any authorization decision and (4) may be associated with labels via \textit{LA} model components.
-\label{definition:LS}
-\end{xdefinition}
+%\begin{xdefinition}[LS] 
+%LS model components are sets that list identifiers used in entity labels.
+%Elements of those sets are (1) legal attribute values in labels, (2) legal argument values for evaluating \textit{AR} model components, (3) illegal argument values for any authorization decision and (4) may be associated with labels via \textit{LA} model components.
+%\label{definition:LS}
+%\end{xdefinition}
 
 
 
@@ -431,10 +436,10 @@ Elements of those sets are (1) legal attribute values in labels, (2) legal argum
 \textit{LA} is an association between entities and labels.
 \vspace{-2mm}
 
-\begin{xdefinition}[LA] 
-LA model components are assignments that determine a system configuration in terms of how a policy's access rules (\textit{AR}) are applied to entities (\textit{ES}). They (1) are used to associate entity identifiers with label identifiers, (2) may be used to associate label identifiers with label identifiers and (3) indirectly determine any authorization decision.
-\label{definition:LA}
-\end{xdefinition}
+%\begin{xdefinition}[LA] 
+%LA model components are assignments that determine a system configuration in terms of how a policy's access rules (\textit{AR}) are applied to entities (\textit{ES}). They (1) are used to associate entity identifiers with label identifiers, (2) may be used to associate label identifiers with label identifiers and (3) indirectly determine any authorization decision.
+%\label{definition:LA}
+%\end{xdefinition}
 
 
 
@@ -442,10 +447,10 @@ LA model components are assignments that determine a system configuration in ter
 \textit{AR} is a logical rule that defines, based on a set of entity labels, which operations may be legally performed on entities corresponding to these labels. Model components in \textit{AR} thus reflect a policy’s access control function (ACF).
 \vspace{-2mm}
 
-\begin{xdefinition}[AR] 
-\textit{AR} model components are logical rules which (1) are evaluated using label identifiers and (2) directly determine any authorization decision.
-\label{definition:AR}
-\end{xdefinition}
+%\begin{xdefinition}[AR] 
+%\textit{AR} model components are logical rules which (1) are evaluated using label identifiers and (2) directly determine any authorization decision.
+%\label{definition:AR}
+%\end{xdefinition}
 
 
 
@@ -454,10 +459,10 @@ LA model components are assignments that determine a system configuration in ter
 Label changes can emerge from either administrative accesses (e.g.~RBAC's \textit{UA}) or discretionary accesses (user owns files and grant roles/users access).
 \vspace{-2mm}
 
-\begin{xdefinition}[RR] 
-\textit{RR} model components are logical rules which (1) define relations between \textit{ES} or \textit{LS} model components and (2) restrict changes of \textit{LA} model components.
-\label{definition:RR}
-\end{xdefinition}
+%\begin{xdefinition}[RR] 
+%\textit{RR} model components are logical rules which (1) define relations between \textit{ES} or \textit{LS} model components and (2) restrict changes of \textit{LA} model components.
+%\label{definition:RR}
+%\end{xdefinition}
 
 
 
@@ -466,11 +471,11 @@ Label changes can emerge from either administrative accesses (e.g.~RBAC's \texti
 There are two types of constraints: policy-intrinsic (related to variables managed inside the AC system) and policy-extrinsic (related to external variables, e.g.~time).
 \vspace{-2mm}
 
-\begin{xdefinition}[MC] 
-MC model components are boolean expressions or external variables. 
-They represent conditions which (1) may relate to all model components (including external variables), (2) must be satisfied by the values of all model components (excluding external variables) and (3) must be satisfied after any change of the model components.
-\label{definition:MC}
-\end{xdefinition}
+%\begin{xdefinition}[MC] 
+%MC model components are boolean expressions or external variables. 
+%They represent conditions which (1) may relate to all model components (including external variables), (2) must be satisfied by the values of all model components (excluding external variables) and (3) must be satisfied after any change of the model components.
+%\label{definition:MC}
+%\end{xdefinition}
 \end{description}
 
 \noindent
