@@ -161,7 +161,7 @@ It also describes a graphical notation for depicting RBAC models by \cite{Sandhu
 This notation will serve as first basis for graphical modeling in this domain.
 Section \ref{AOSE} focuses on the Aspect-oriented Security Engineering (AOSE) proposed by \citet*{Amthor18}.
 It covers the Entity Labeling Aspect in particular, one aspect of AOSE, which is going to be essential regarding the task to design a graphical specification language for it.
-Also the notation used by \citet*{Amthor18} to graphically model the process of Entity-Labeling, which was slightly inspired by the graphical RBAC notation by \cite{Sandhu96}, will be described.
+Also the notation used by \citet*{Amthor18} to graphically model the process of Entity-Labeling, which was inspired by the graphical RBAC notation by \cite{Sandhu96}, will be described.
 This will be the starting point in designing the graphical specification language in chapter \ref{gsl_design}.
 
 In section~\ref{graphical_notations} the well-established graphical notations \textit{Unified Modeling Language} and \textit{Entity-Relationship} are described.
@@ -403,14 +403,13 @@ The Entity Labeling (EL) aspect is one possible aspect $\mathcal{A}$ in context 
 It is designed to support the process of formally specifying policy semantics typically found in operating systems and middleware systems.
 According to \cite{Amthor18} it bridges the gap between informal policy and formal model by supporting its transformation (see highlighted part in figure \ref{fig:AOSE}).
 
-For this model components of an informally specified policy have to be identified and formalized by classifying them into six semantic categories:
+For this model components of an informally specified policy have to be identified and formalized by classifying them into the six semantic categories $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$:
 
 \begin{description}
 \item[1) Entity Set (ES)]\hfill \\
 \textit{ES} is a set of entity identifiers.
-Basic elements in context of access control decisions are defined as \textit{entities} and are resources and principals like subjects, objects, users, etc.
-\vspace{-2mm}
-
+Basic elements in context of access control decisions are defined as \textit{entities} and are resources and principals like subjects or objects.
+%\vspace{-2mm}
 
 %\begin{xdefinition}[ES] 
 %ES model components are sets that list potential participants in access decisions.
@@ -421,8 +420,8 @@ Basic elements in context of access control decisions are defined as \textit{ent
 \item[2) Label Set (LS)]\hfill \\
 \textit{LS} is a set of legal label values.
 Labels act as attributes in access control decisions and therefore as level of indirection.
-Their content vary depending on a policy's application domain and may be finite enumerations (e.g.~RBAC), infinite enumerations (e.g.~ABAC) as well as any number system such as $\mathbb{N}$.
-\vspace{-2mm}
+Their content vary depending on a policy's application domain and can be finite enumerations (e.g.~RBAC), infinite enumerations (e.g.~ABAC) or any number system such as $\mathbb{N}$.
+%\vspace{-2mm}
 
 %\begin{xdefinition}[LS] 
 %LS model components are sets that list identifiers used in entity labels.
@@ -430,46 +429,38 @@ Their content vary depending on a policy's application domain and may be finite 
 %\label{definition:LS}
 %\end{xdefinition}
 
-
-
 \item[3) Label Assignment (LA)]\hfill \\
-\textit{LA} is an association between entities and labels.
-\vspace{-2mm}
+\textit{LA} is a set of associations between entities and labels.
+%\vspace{-2mm}
 
 %\begin{xdefinition}[LA] 
 %LA model components are assignments that determine a system configuration in terms of how a policy's access rules (\textit{AR}) are applied to entities (\textit{ES}). They (1) are used to associate entity identifiers with label identifiers, (2) may be used to associate label identifiers with label identifiers and (3) indirectly determine any authorization decision.
 %\label{definition:LA}
 %\end{xdefinition}
 
-
-
 \item[4) Access Rule (AR)]\hfill \\
-\textit{AR} is a logical rule that defines, based on a set of entity labels, which operations may be legally performed on entities corresponding to these labels. Model components in \textit{AR} thus reflect a policy’s access control function (ACF).
-\vspace{-2mm}
+\textit{AR} is a logical rule that defines, based on a set of entity labels, which operations may be legally performed on entities corresponding to these labels. Model components in \textit{AR} thus reflect a policy’s access control function.
+%\vspace{-2mm}
 
 %\begin{xdefinition}[AR] 
 %\textit{AR} model components are logical rules which (1) are evaluated using label identifiers and (2) directly determine any authorization decision.
 %\label{definition:AR}
 %\end{xdefinition}
 
-
-
 \item[5) Relabeling Rule (RR)]\hfill \\
 \textit{RR} is a logical rule for legal label changes.
 Label changes can emerge from either administrative accesses (e.g.~RBAC's \textit{UA}) or discretionary accesses (user owns files and grant roles/users access).
-\vspace{-2mm}
+%\vspace{-2mm}
 
 %\begin{xdefinition}[RR] 
 %\textit{RR} model components are logical rules which (1) define relations between \textit{ES} or \textit{LS} model components and (2) restrict changes of \textit{LA} model components.
 %\label{definition:RR}
 %\end{xdefinition}
 
-
-
-\item[6) Model Constraint (MC)]\hfill \\
-\textit{MC} is a set of constraints over model components that must be satisfied in every model state.
+\item[6) Model Constraints (MC)]\hfill \\
+\textit{MC} is a set of constraints over model components that must be satisfied at all time.
 There are two types of constraints: policy-intrinsic (related to variables managed inside the AC system) and policy-extrinsic (related to external variables, e.g.~time).
-\vspace{-2mm}
+%\vspace{-2mm}
 
 %\begin{xdefinition}[MC] 
 %MC model components are boolean expressions or external variables. 
@@ -478,40 +469,35 @@ There are two types of constraints: policy-intrinsic (related to variables manag
 %\end{xdefinition}
 \end{description}
 
-\noindent
-According to these categories EL is defined as following:
+%\noindent
+%According to these categories EL is defined as following:
 
-\begin{xdefinition}[Entity Labeling aspect] 
-The Entity Labeling aspect of a security policy is defined as:
-\begin{gather*}
-\mathcal{A}_{EL} = \lbrace ES,LS,LA,AR,RR,MC\rbrace
-\end{gather*}
-where $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$ denote categories of model components defined as in definitions \ref{definition:ES} to
-\label{definition:EL} \ref{definition:MC}.
-\end{xdefinition}
+%\begin{xdefinition}[Entity Labeling aspect] 
+%The Entity Labeling aspect of a security policy is defined as:
+%\begin{gather*}
+%\mathcal{A}_{EL} = \lbrace ES,LS,LA,AR,RR,MC\rbrace
+%\end{gather*}
+%where $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$ denote categories of model components defined as in definitions \ref{definition:ES} to
+%\label{definition:EL} \ref{definition:MC}.
+%\end{xdefinition}
 
 \noindent
 The resulting model after EL can be depicted in three different forms: Textual, table and graphical.
 The textual form created from an example policy looks like this:
 
 \begin{align*}
-\langle &\mathcal{M}_{example}, \mathcal{A}_{EL}, sem \rangle \\
+\langle &\mathcal{M}_{example}, \mathcal{A}_{EL}, sem \rangle
 \end{align*}
-
-\noindent
-with
-
 \begin{align*}
-\mathcal{M}_{example} &= \lbrace U, D, R, GR, AR, P, ua, da, pa \rbrace \\
+\mathcal{M}_{example} &= \lbrace U, D, R, GR, AR, P, ua, da, pa \rbrace
 \end{align*}
-
 \begin{align*}
 sem(ES) &= \lbrace U, D \rbrace\\
 sem(LS) &= \lbrace R, P \rbrace\\
 sem(LA) &= \lbrace ua, da \rbrace\\
 sem(AR) &= \lbrace pa, P \rbrace\\
 sem(RR) &= \lbrace GR, AR, ua \rbrace\\
-sem(MC) &= \lbrace \emptyset \rbrace\\
+sem(MC) &= \lbrace \emptyset \rbrace
 \end{align*}
 
 \noindent
@@ -525,7 +511,7 @@ Figure \ref{fig:EL_table} shows the same result as table.
 \end{figure}
 
 \noindent
-The first columns displays the EL categories.
+The first column contains the EL categories.
 The second column shows all given informal model components.
 They are classified into the EL categories by assigning them into the corresponding row.
 In the third column those model components are formalized as sets, mappings, relations, etc.
@@ -538,32 +524,36 @@ The last column refers to the corresponding informal rule of the example policy 
 	\label{fig:EL_diagram}
 \end{figure}
 
-\cite{Amthor18} also used a graphical depiction (see figure \ref{fig:EL_diagram}) that seem to be loosely based on the notation by \cite{Sandhu96} (see section \ref{RBAC_notation}).
+\cite{Amthor18} also used a graphical depiction (see figure \ref{fig:EL_diagram}) that is loosely based on the notation by \cite{Sandhu96} (see section \ref{RBAC_notation}).
 In this diagram members of EL categories are visually classified by being horizontally aligned to a category space.
 The category spaces are indicated with dotted lines at the bottom of the diagram.
+
+As in the RBAC notation (see section \ref{RBAC_notation}) circles are used to depict sets.
+Subsets are depicted as smaller circles inside their supersets.
+Simple one-headed arrows depict mappings.
+Arrows are drawn between members of \textit{ES} or \textit{LS}.
+They just indicate a direction and not any properties or typing of the given relationships.
+In figure \ref{fig:EL_diagram_m} there is also a double-headed arrow for depicting a relation (again analogue to the RBAC notation).
+
+In contrast to its graphical origin -- the RBAC notation by \cite{Sandhu96} -- this notation is tailored specifically to the domain of EL.
+It roughly takes the RBAC notation, simplifies it to some degree (less arrow head types, ignoring set elements) and extends it with dotted sections to indicate its EL categories.
+However this notation is also imprecise and ambiguous to some extent.
+This especially becomes noticeable when comparing this notation to the table form.
+In chapter \ref{gsl_design} we will start off with this notation and try to identify its weaknesses to create a unambiguous and therefore more powerful notation.
 
 \subsection{Hierarchical Entity Labeling}
 \label{HEL}
 To further improve scalability another level of indirection can be iteratively added to a model which already has one level of indirection (e.g. adding a role hierarchy like RBAC has).
 For this additional \textit{LS} and \textit{LA} components are added to the EL categories.
 In this context $m$ indicates the degree of indirection.
-So definition \ref{definition:EL} defines EL just for the case where $m=1$.
-For $m>1$ the EL aspect $\mathcal{A}_{EL(m)}$ is defined by \cite{Amthor18} as following:
+For $m>1$ the EL aspect is defined by \cite{Amthor18} as:
 
-\begin{xdefinition}[Hierarchical Entity Labeling aspect] 
-The hierarchical Entity Labeling aspect of a security policy is defined as:
-\begin{gather*}
-\mathcal{A}_{EL} = \lbrace ES,LS_1, \dots,LS_m, LA_1, \dots, LA_m,AR,RR,MC\rbrace
-\end{gather*}
-where $ES$, $AR$, $RR$, and $MC$ are defined as in definition \ref{definition:EL}.
-$m \in \mathbb{N}$ is the degree of indirection. 
-$LA_i$ is the category of model components that assign labels defined in model components of the $LS_i$ category to labels defined in model components of the $LS_{i-1}$ category, $1 \leq i \leq m$.
-We define $LS_0 = ES, LA_{m+1}=AR$, and $LS_{m+1} = \lbrace \mathbb{B} \rbrace$.
-\label{definition:EL_m}
-\end{xdefinition}
+\begin{align*}
+\mathcal{A}_{EL(m)} = \lbrace ES,LS_1, \dots,LS_m, LA_1, \dots, LA_m,AR,RR,MC\rbrace
+\end{align*}
 
 \noindent
-Adding a role hierarchy to our example policy will alter $sem(LA)$ to $sem(LA_1)$ and $sem(LS)$ to $sem(LS_1)$ and will add following two assignments:
+Adding a role hierarchy to our example policy from above will alter $sem(LA)$ to $sem(LA_1)$ and $sem(LS)$ to $sem(LS_1)$ and will add following two assignments:
 
 \begin{align*}
 sem(LS_2) &= \lbrace R \rbrace\\
@@ -588,14 +578,14 @@ $LA_2$ and $LS_2$ are depicted as dotted-lined rectangles within the diagram its
 \label{graphical_notations}
 In this section two well-established graphical notation models are presented: UML and ER.
 Due to being standard and de facto standard, they have a high relevance in the domain of graphical modeling. 
-UML and ER come with reasonable concepts and opportunities to illustrate structural information and semantic properties (for types of information visualization in science see section \ref{perception}).
+UML and ER come with reasonable concepts to illustrate structural information and semantic properties (for types of information visualization in science see section \ref{perception}).
 
 \subsection{Unified Modeling Language}
 \label{UML}
 The \textit{Unified Modeling Language} (UML) is a graphical modeling language to specify, visualize, design and document software \citep{UML_OMG}.
 UML became a widely used tool in software development and was standardized by The Object Management Group in 1997 and also was approved as official ISO standard in 2005 \citep{UML_ISO}.
 
-UML defines terms and relationships between those terms, as well as a graphical notation for those.
+%UML defines terms and relationships between those terms, as well as a graphical notation for those.
 The current version of UML (2.5) contains 14 different types of diagrams.
 Every diagram illustrates information according to one specific aspect.
 UML diagrams are classified into static and dynamic types, but they can have fuzzy borders and mixed forms as well.
@@ -611,40 +601,40 @@ Components an UML diagram is build up with are classified into \textit{elements}
 Elements are the main artifacts in an UML diagram.
 Graphically elements are based on closed shapes like boxes or ellipses.
 They usually have a name or identifier in form of text in the center of their shape. Horizontal lines can be used to separate an element into two or more sections (see \textit{class} element). \\
-Examples for elements are classes, components, notes, objects, packages, interfaces, ports, etc.~(see figure \ref{fig:UML_elements}).
+Examples for elements are classes, packages, ports, etc.~(see figure \ref{fig:UML_elements}).
 Elements can be closely tied to specific diagram types (e.g.~components to component diagrams).
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.5]{../figures/chapter2/UML_elements.png}
+	\includegraphics[width=\linewidth]{../figures/chapter2/UML_elements.png}
 	\caption{Selection of UML elements}
 	\label{fig:UML_elements}
 \end{figure}
 
-\noindent 
-Some elements can have multiple forms.
-For example the class element has a simple symbolic form as well as an extended form with detailed information about its key words, attributes and operations (see figure \ref{fig:Class}).
-With this option whole diagrams can be dynamically adjusted to a desired level of detail.
-
-\begingroup
-\leftskip10em
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=\linewidth]{../figures/chapter2/UML_Klassen2.png}
-	\caption{Class diagrams with different level of detail}
-	\label{fig:Class}
-\end{figure}
-\par
-\endgroup
+%\noindent 
+%Some elements can have multiple forms.
+%For example the class element has a simple symbolic form as well as an extended form with detailed information (see figure \ref{fig:Class}).
+%With this option whole diagrams can be dynamically adjusted to a desired level of detail.
+%
+%\begingroup
+%\leftskip10em
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics[width=\linewidth]{../figures/chapter2/UML_Klassen2.png}
+%	\caption{Class diagrams with different level of detail}
+%	\label{fig:Class}
+%\end{figure}
+%\par
+%\endgroup
 
 \item[2) Relationships]\hfill \\
 Relationships can connect two or more elements.
-Graphically relationships are based on lines.
-Optionally they can have a shape at one end to indicate some kind of direction.
-They can vary in form by having differently drawn lines (solid, dotted), shaped arrows.
+Graphically relationships are lines.
+Optionally they can have a shape at one end to indicate a direction.
+They can vary in form by having differently drawn lines (solid, dotted) or shaped arrow heads.
 They can have several angles (preferable $90^{\circ}$ or $45^{\circ}$) to run on a clearly laid out path.
 Lines do not collide if possible. \\
-Examples: Dependency, association, generalization, include, extend (see figure \ref{fig:UML_relationships})
+Examples: Dependency, generalization, include (see figure \ref{fig:UML_relationships})
 
 \begin{figure}[htb]
 	\centering
@@ -656,71 +646,24 @@ Examples: Dependency, association, generalization, include, extend (see figure \
 
 
 
-
-
 \subsubsection{Additional annotations}
 UML has symbols and textual identifiers to visualize certain properties.
-A class diagram for example has the following symbols to indicate visibility of attributes and operations: + for \textit{public}, \# for \textit{protected} and - for \textit{private} (see figure \ref{fig:UML_class_diagram}).
-
-%TODO: UML class diagram
-%\begin{figure}[htb]
-%	\centering
-%	\includegraphics[scale=0.6]{../figures/chapter2/UML_class_diagram.png}
-%	\caption{UML class diagram example with multiplicities}
-%	\label{fig:UML_class_diagram}
-%\end{figure}
-
-\noindent 
 With \textit{multiplicities} an element can be constrained regarding its number in context of an relationship.
 The notation is placed at the connection point of class and relationship component.
-The format for multiplicity bounds is defined by the UML specification 2.5 \citep{UML_OMG} in Backus-Naur form (BNF) as in listing \ref{BNF_multiplicity}.
-
-\setlength{\grammarparsep}{10pt plus 1pt minus 1pt} % increase separation between rules
-\setlength{\grammarindent}{13em} % increase separation between LHS/RHS 
-
-\vspace{0.4cm}
-\noindent
-\begin{BNF}
-\fbox{
-\parbox[b]{\textwidth}{
-\begin{grammar}
-<multiplicity> ::= <multiplicity-range> [ [ `$\lbrace$' <order-designator> [ `,' <uniqueness-designator> ] `$\rbrace$' ] |
-[ `$\lbrace$' <uniqueness-designator> [ `,' <order-designator> ] `$\rbrace$' ] ]
-
-<multiplicity-range> ::= [ <lower> `..' ] <upper>
-
-<lower> ::= <value-specification>
-
-<upper> ::= <value-specification>
-
-<order-designator> ::= `ordered' | `unordered'
-
-<uniqueness-designator> ::= `unique' | `nonunique'
-\end{grammar}
-}
-}
-\caption{UML multiplicity syntax in BNF}
-\label{BNF_multiplicity}
-\end{BNF}
-\vspace{0.3cm}
-
-\noindent
-For the sake of convenience we assume the literal <value-specification> being an integer number (0 or 1 in most cases) or * to indicate the end of a boundless interval.
+In almost all cases it is depicted as integer number (0 or 1) or * to indicate a boundless interval.
 
 Furthermore it is worth mentioning that UML does not use any color for its diagrams.
 This makes it compatible, easy and fast for hand-drawing.
-Coloring always remains a not officially specified option to highlight certain parts of a diagram, e.g. to set a focus for an accompanying text.
+Coloring remains a not officially specified option to highlight certain parts of a diagram, e.g. to set a focus without being in conflict with any already colorized sections of the model.
 
 
 \subsection{Entity-Relationship model}
 \label{ER}
 The entity-relationship model (ER) is a model to describe classified objects (entities) and how they are interrelated.
 It was developed to illustrate information in databases on a conceptual level and became a popular tool for requirement analysis in this domain.
-In contrast to UML (see section \ref{UML}), which is a collection of multiple diagram types, ER only has one type of diagram: The Entity-Relationship diagram (ERD).
-
+In contrast to UML (see section \ref{UML}) ER only has one type of diagram: The Entity-Relationship diagram (ERD).
 Also unlike UML ER is not an officially specified standard.
-Furthermore ER has some slightly different notation variants (Chen, Bachman, etc.), which will be discussed in section \ref{ERD_notations}.
-The figures in this subsection are in Chen notation.
+ER has different notation variants (Chen, Bachman, etc.), which will be depicted in section \ref{ERD_notations}.
 Figure \ref{fig:ERD_minimal_example} shows an example of an ERD.
 
 
@@ -788,7 +731,7 @@ To specify the amount of entities in context of a relationship the following ind
 \end{itemize}
 
 \noindent
-Cardinalities can be upper case (N) or lower case (n) with no semantic difference.
+%Cardinalities can be upper case (N) or lower case (n) with no semantic difference.
 A relationship can be read in two directions.
 For example the \textit{orders}-relationship in figure \ref{fig:ERD_minimal_example}:
 
@@ -803,17 +746,16 @@ An entity type needs to have a \textit{primary key} defined in order to have its
 The primary key is an attribute or a combination of attributes of the entity type and has to be unique among all other attribute values.
 A primary key attribute is graphically indicated with an underlined name (see \textit{ClientID} in figure \ref{fig:ERD_minimal_example}).
 
-Besides this basic system, ERDs can indicate some additional information.
-For example besides those elements described above, there are variants of them with a double frame line to indicate a \textit{weak} property (no primary key, dependent to parent elements) or a dashed frame line to indicate a \textit{multivalued} property.
-In context of this work those will not be relevant.
+%Besides this basic system, ERDs can indicate some additional information.
+%For example besides those elements described above, there are variants of them with a double frame line to indicate a \textit{weak} property (no primary key, dependent to parent elements) or a dashed frame line to indicate a \textit{multivalued} property.
+%In context of this work those will not be relevant.
 
 
 
 \subsubsection{ERD Notation Variants}
 \label{ERD_notations}
 As already mentioned ER is not standardized and has different notation variants.
-The notation variants only differ in the depiction of their relationships.
-Here is a short overview of how some of them differ in their appearance:
+These variants only differ in the depiction of their relationships (see figure \ref{fig:ERD_notations}).
 
 \begin{figure}[htb]
 	\centering
@@ -822,7 +764,7 @@ Here is a short overview of how some of them differ in their appearance:
 	\label{fig:ERD_notations}
 \end{figure}
 
-\noindent
+%\noindent
 % ERD as UML
 Notable is also that an ER model can be visualized with the help of UML.
 When entity types are treated as classes, entities as objects, relationships as associations, attributes as instance variables and cardinalities as multiplicities an UML \textit{class diagram} can be used to build up a diagram that is similar to an ERD.
@@ -834,11 +776,9 @@ When entity types are treated as classes, entities as objects, relationships as 
 	\label{fig:ERD_as_UML}
 \end{figure}
 
-\noindent
-As seen in figure \ref{fig:ERD_as_UML} the diagram visually differs from the diagram in figure \ref{fig:ERD_minimal_example}, but can depict the information even more compact.
-However, there is no common way for indicating an entity type's primary key in UML (the UML extension concept of \textit{stereotypes} can be used for this).
-
-%The data modeling technique can be used to describe any ontology (i.e. an overview and classifications of used terms and their relationships) for a certain area of interest
+%\noindent
+%As seen in figure \ref{fig:ERD_as_UML} the diagram visually differs from the diagram in figure \ref{fig:ERD_minimal_example}, but can depict the information even more compact.
+%However, there is no common way for indicating an entity type's primary key in UML (the UML extension concept of \textit{stereotypes} can be used for this).
 
 
 
@@ -848,15 +788,8 @@ This section is about the human visual perception.
 Its content will act as fundamental basis for designing a graphical specification language in chapter \ref{gsl_design} as well as for designing an editor's graphical user interface in chapter \ref{editor_design}.
 
 In science there are two types of visualizing information:
-One is to present absolute or relative primitive values (tables, bar graphs, pie charts) and one to depict structural information and semantic properties (specialized graphical systems like the class diagram of UML (see section \ref{UML}), the Chen notation of ERD (see section \ref{ER}), electrical block diagram, etc.).
-In context of this thesis the latter is relevant.
-
-Due to being highly adapted and tied to one specific domain these types of visualization are impractical for direct reuse in another domain.
-Generally a new application will also require a newly designed graphical system.
-In reality single components and ideas already established in other well-known or related systems are getting (partly) reused and adapted accordingly.
-A newly designed graphical system should be designed in a way its components are not ambiguously compared to similar systems from related domains to avoid misunderstanding.
-
-Also designing such a system should consider design guidelines and rules of best practice.
+One is to present absolute or relative primitive values (tables, bar graphs, pie charts) and one to depict structural information and semantic properties (specialized graphical systems like the class diagram of UML or the Chen notation of ERD).
+Designing a new system of the latter should consider design guidelines and rules of best practice to visually support working with it.
 One of these are gestalt laws.
 
 \subsection{Gestalt Laws}
@@ -874,16 +807,16 @@ Given that there is a large number of various gestalt laws, the following list (
 \item[1) Law of Prägnanz]\hfill \\
 The Law of Prägnanz (German for \textit{pithiness}) is the fundamental principle of gestalt laws.
 It says that humans tend to order inputs of their senses in the best possible way (simple, regular, symmetrical).
-This results in phenomena like completing incomplete forms, favoring closed objects or treating groups of objects as units.
+This results in phenomena like completing incomplete forms or favoring closed objects or treating groups of objects as units.
 
 \item[2) Law of Proximity]\hfill \\
 Objects that are closer together are not associated individually but as groups.
 Smart utilizing this law offers opportunities to design visually separated sections without the help of any lines or boxes.
 
 \item[3) Law of Similarity]\hfill \\
-Homogeneously designed objects are associated as belonging together, although they may not be in close range to each other.
-This effect can be induced by \textit{Gestalt factors} like shape, color, brightness, size, orientation, rotation, etc.
-This law allows classifying or logically grouping multiple spatially distributed objects.
+Homogeneously depicted objects are associated as belonging together, although they may not be in close range to each other.
+This effect can be induced by \textit{Gestalt factors} like shape, color, brightness, size, orientation or rotation.
+%This law allows classifying or logically grouping multiple spatially distributed objects.
 
 \item[4) Law of Good Gestalt]\hfill \\
 While looking at complex structures of objects, details are ignored and objects will always be perceived in the most simple, regular and symmetric pattern they will form.
@@ -943,7 +876,7 @@ Another one is to evaluate whether a design concept follows \textit{usability} r
 
 \subsection{Usability}
 \label{usability}
-\cite{Shackel91a} defines usability as following
+\cite{Shackel91a} defines usability as following:
 
 \begin{xdefinition}[Usability] 
 Usability is the capability to be used by humans easily and effectively, while
@@ -966,30 +899,28 @@ The following list describes the first 6 of those principles:
 \item[1) Safe Exploration]\hfill \\
 A user should always be able to safely explore the interface.
 This includes undoing every operation he performs in particular.
-For this a software has to be designed as \textit{non-destructive} as possible.
+%For this a software has to be designed as \textit{non-destructive} as possible.
 
 \item[2) Instant Gratification]\hfill \\
 A user should always instantly get feedback about operations he just performed.
-This can be the direct result of his operation (e.g.~opening a window) or a visual hint, that indicates that his action was recognized and the desired operation was executed accordingly (e.g.~coloring a button to indicate its activation).
+This can be the direct result of his operation (e.g.~opening a window) or a visual hint, that an operation was executed as desired (e.g.~coloring an activated button).
 
 \item[3) Satisfiscing]\hfill \\
-\textit{Satisfiscing} is a word combination of \textit{satisfying} and \textit{sufficing}.
-A user tends to scan all options just roughly and to use trial-and-error before finding the perfectly matching tool for a certain task.
+\textit{Satisfiscing} (\textit{satisfying} and \textit{sufficing}) is the phenomenon that a user tends to scan all options just roughly and to use trial-and-error before finding the perfectly matching tool for a certain task.
 He tends to be fine with solutions that are \textit{good enough} and not the best possible.
 This means that the user should be supported to find the right tools when he needs them.
-For this symbols and texts have to be short, simple and easy to understand.
+%For this symbols and texts have to be short, simple and easy to understand.
 Elements and symbols already known should be reused when possible.
-Also to ensure a correct order of operations or work flow (if necessary at all, see point 6 of this list) the user should be guided appropriately (e.g.~\textit{drag here}, \textit{click to start}, etc.).
+Also to ensure a correct order of operations or work flow (if necessary at all, see point 6 of this list) the user should be guided appropriately (e.g.~\textit{drag here}).
 
 \item[4) Changes in Midstream]\hfill \\
-A user should always be able to interfere with running operations to always have the control.
-An example is a time consuming operation that is indicated with an progress bar, but that can be canceled at any time with the help of a button or key command.
+A user should always be able to interfere with running operations to always have the control (e.g. a time consuming operation indicated with a progress bar together with a cancel button underneath).
 
-\item[5) Deferred Choices]\hfill \\
-A user should always be able to defer choices that are not mandatory and answer just the minimal set of questions that are necessary to progress at a certain point.
-Of course, besides this, the system has to offer a way for the user to come back to answer the skipped questions later.
+%\item[5) Deferred Choices]\hfill \\
+%A user should always be able to defer choices that are not mandatory and answer just the minimal set of questions that are necessary to progress at a certain point.
+%Of course, besides this, the system has to offer a way for the user to come back to answer the skipped questions later.
 
-\item[6) Incremental Construction]\hfill \\
+\item[5) Incremental Construction]\hfill \\
 Builder-style software like editors need to support \textit{incremental construction}.
 This means that the user is free to choose on which particular part he wants to works.
 A user should always be free to stop working on one part and instantly jump to another part to continue working there.
@@ -1009,7 +940,7 @@ An interaction design pattern is defined by \cite{Folmer} as a general repeatabl
 Interaction design pattern can be graphical elements like buttons, menus or scroll bars as well as control functions like drag and drop, swipe gestures or context-menu by clicking the mouse button.
 
 Whenever these patterns fit, they should be applied.
-Reinventing interaction design is not only very time consuming, but actually even counterproductive concerning usability due to users will get discouraged by being confronted with new unknown mechanisms (see section \ref{usability} point 6 \textit{satisfiscing}).
+Reinventing interaction design is not only very time consuming, but actually even counterproductive concerning usability due to users will get discouraged by being confronted with new unknown mechanisms (see section \ref{usability} \textit{satisfiscing}).
 
 
 
@@ -1021,6 +952,18 @@ Reinventing interaction design is not only very time consuming, but actually eve
 \section{Concept}
 \label{gsl_concept}
 approach, basic ideas, adoptions from literature
+
+Due to being highly tailored to one specific domain these visualizations are impractical for direct reuse in another domain.
+Generally a new application will also require a newly designed graphical system.
+In reality certain components and ideas already established in other well-known or related systems are getting (partly) reused and adapted accordingly.
+A newly designed graphical system should be designed in a way its components are not ambiguously compared to similar systems from related domains to avoid misunderstanding.
+
+
+
+%This law allows classifying or logically grouping multiple spatially distributed objects.
+
+
+
 
 \section{Elements}
 \label{gsl_elements}
