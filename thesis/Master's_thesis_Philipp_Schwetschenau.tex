@@ -536,14 +536,17 @@ They just indicate a direction and not any properties or typing of the given rel
 In figure \ref{fig:EL_diagram_m} there is also a double-headed arrow for depicting a relation (again analogue to the RBAC notation).
 
 In contrast to its graphical origin -- the RBAC notation by \cite{Sandhu96} -- this notation is tailored specifically to the domain of EL.
-It roughly takes the RBAC notation, simplifies it to some degree (less arrow head types, ignoring set elements) and extends it with dotted sections to indicate its EL categories.
-However this notation is also imprecise and ambiguous to some extent.
-This especially becomes noticeable when comparing this notation to the table form.
-In chapter \ref{gsl_design} we will start off with this notation and try to identify its weaknesses to create a unambiguous and therefore more powerful notation.
+It roughly takes the graphical elements of the RBAC notation, simplifies them to some degree (less arrow head types, ignoring set elements) and extends the system with dotted sections to indicate its EL categories.
+However this notation is imprecise and ambiguous to some extent.
+This especially becomes evident when comparing the notation to ELs table form.
+
+The initial motivation for proposing the EL aspect was to support security engineering, e.g. by improving the communication between different people involved in the process.
+This can be achieved by using a graphical notation, but will not be any useful support, when the notation is not defined unambiguously and consistently.
+In chapter \ref{gsl_design} we will start off with this notation and try to identify its problems to create a more powerful notation system.
 
 \subsection{Hierarchical Entity Labeling}
 \label{HEL}
-To further improve scalability another level of indirection can be iteratively added to a model which already has one level of indirection (e.g. adding a role hierarchy like RBAC has).
+To further improve scalability another level of indirection can be iteratively added to an EL model that already has one level of indirection (e.g. adding a role hierarchy like RBAC has).
 For this additional \textit{LS} and \textit{LA} components are added to the EL categories.
 In this context $m$ indicates the degree of indirection.
 For $m>1$ the EL aspect is defined by \cite{Amthor18} as:
@@ -947,19 +950,55 @@ Reinventing interaction design is not only very time consuming, but actually eve
 \cleardoublepage
 \chapter{Design: Graphical Specification Language}
 \label{gsl_design}
+In this chapter we will develop a system to graphically model the Entity Labeling aspect (section \ref{EL}) of Aspect-oriented Security Engineering.
+
+%Ablauf
+In the first section the general idea of how to achieve this and the language concept are explained.
+For this the notation used by \citep{Amthor18} is investigated regarding its completeness, consistency and general weaknesses.
+In the section \ref{gsl_elements} the different elements the system uses are explained, followed by section \ref{gsl_structure}, which depicts the overall structure of the system.
+%Section \ref{higher_abstraction_level} will be about the visualization on a higher abstraction level (when $m>1$).
+
 
 
 \section{Concept}
 \label{gsl_concept}
-approach, basic ideas, adoptions from literature
+%approach, basic ideas, adoptions from literature
 
-Due to being highly tailored to one specific domain these visualizations are impractical for direct reuse in another domain.
-Generally a new application will also require a newly designed graphical system.
-In reality certain components and ideas already established in other well-known or related systems are getting (partly) reused and adapted accordingly.
-A newly designed graphical system should be designed in a way its components are not ambiguously compared to similar systems from related domains to avoid misunderstanding.
+Due to being highly tailored to one specific domain established notations and visualization systems like UML or ER (see section \ref{graphical_notations}) are impractical for direct reuse in another domain.
+Generally a new domain (like EL) will also require a newly designed graphical system, but in reality certain concepts and ideas from related systems are getting (partly) adopted and adapted accordingly, when they fit semantically.
+With or without adoption: A newly designed graphical system should be designed in a way its components are not ambiguously to systems from similar or related domains to avoid misunderstanding or barriers in learning.
+With this said we want to start off with the graphical notation \cite{Amthor18} uses to depict the EL aspect and try to expose its problems.
+
+% Describe the 2 general problems
+%\begin{description}
+%\item[1) Safe Exploration]\hfill \\
+
+% Details on problem 1
+When comparing the visual summary (figure \ref{fig:EL_diagram}) with the table form (figure \ref{fig:EL_table}) we will find several inconsistencies.
+
+One is that all mappings ignore the presence of power sets, e.g.~$ua: U \rightarrow 2^R$ is drawn as a simple arrow from $U$ to $R$.
+The inconsistency becomes clear when converting the graphical statement back to a mathematical one:
+
+\begin{align*}
+(U \rightarrow 2^R) \not\equiv (U \rightarrow R)
+\end{align*}
+
+Also mappings can have multiple input arguments.
+There is no example mapping in the depicted example, but we can easily imagine a simple function with two arguments, e.g.~a mapping that takes subjects and objects identifications to decide whether an action is allowed or not in the IBAC model (see section \ref{IBAC})):
+
+\begin{align*}
+S \times O \rightarrow R 
+\end{align*}
+
+To draw an arrow that comes from $S$ and $O$, connects in one point and ends with an arrow head at $R$ is not sufficient in terms of consistency, because the operator can vary.
 
 
+% Details on problem 2
 
+
+% Applying Optical Perception
+
+% Applying Gestalt Laws
 %This law allows classifying or logically grouping multiple spatially distributed objects.
 
 
@@ -967,10 +1006,6 @@ A newly designed graphical system should be designed in a way its components are
 
 \section{Elements}
 \label{gsl_elements}
-
-
-\section{Relationships}
-\label{gsl_relationships}
 
 
 \section{Structure}
