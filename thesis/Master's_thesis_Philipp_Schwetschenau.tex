@@ -951,9 +951,7 @@ Reinventing interaction design is not only very time consuming, but actually eve
 \chapter{Design: Graphical Specification Language}
 \label{gsl_design}
 In this chapter we will develop a system to graphically model the Entity Labeling aspect (section \ref{EL}) of Aspect-oriented Security Engineering.
-
-%Ablauf
-In the first section the general idea of how to achieve this and the language concept are explained.
+In the first section \ref{gsl_concept} the general idea of how to achieve this and the language concept are explained.
 For this the notation used by \citep{Amthor18} is investigated regarding its completeness, consistency and general weaknesses.
 In the section \ref{gsl_elements} the different elements the system uses are explained, followed by section \ref{gsl_structure}, which depicts the overall structure of the system.
 %Section \ref{higher_abstraction_level} will be about the visualization on a higher abstraction level (when $m>1$).
@@ -964,36 +962,33 @@ In the section \ref{gsl_elements} the different elements the system uses are exp
 \label{gsl_concept}
 %approach, basic ideas, adoptions from literature
 
-Due to being highly tailored to one specific domain established notations and visualization systems like UML or ER (see section \ref{graphical_notations}) are impractical for direct reuse in another domain.
-Generally a new domain (like EL) will also require a newly designed graphical system, but in reality certain concepts and ideas from related systems are getting (partly) adopted and adapted accordingly, when they fit semantically.
-With or without adoption: A newly designed graphical system should be designed in a way its components are not ambiguously to systems from similar or related domains to avoid misunderstanding or barriers in learning.
-With this said we want to start off with the graphical notation \cite{Amthor18} uses to depict the EL aspect and try to expose its problems.
+Due to being highly tailored to one specific domain established notations and visualization systems for structural and semantic properties like UML or ER (see section \ref{graphical_notations}) are impractical for direct reuse in other domains.
+Generally a new specialized domain like EL will also require a newly designed graphical system, but in reality certain concepts and ideas from related systems are getting (partly) adopted and adapted accordingly, when they semantically fit.
+With or without adoption: The system should be designed in a way its components are unambiguous to components of systems from similar or related domains to avoid misunderstanding or barriers in learning.
+With this said we want to start off with the graphical notation \cite{Amthor18} uses to depict the EL aspect and try to expose and analyze its two major problems: ambiguously depicted relationships and categorization.
 
 % Describe the 2 general problems
-%\begin{description}
-%\item[1) Safe Exploration]\hfill \\
-
-% Details on problem 1
-When comparing the visual summary (figure \ref{fig:EL_diagram}) with the table form (figure \ref{fig:EL_table}) we will find several inconsistencies.
+\begin{description}
+\item[1) Ambiguously depicted relationships] \hfill \\
+When comparing the visual summary (figure \ref{fig:EL_diagram}) with the table form (figure \ref{fig:EL_table}) we find several inconsistencies.
 
 One is that all mappings ignore the presence of power sets, e.g.~$ua: U \rightarrow 2^R$ is drawn as a simple arrow from $U$ to $R$.
 The inconsistency becomes clear when converting the graphical statement back to a mathematical one:
-
 \begin{align*}
 (U \rightarrow 2^R) \not\equiv (U \rightarrow R)
 \end{align*}
 
 Also mappings can have multiple input arguments.
-There is no example mapping in the depicted example, but we can easily imagine a simple function with two arguments, e.g.~a mapping that takes subjects and objects identifications to decide whether an action is allowed or not in the IBAC model (see section \ref{IBAC})):
-
+There is no example mapping in the depicted example, but we can easily imagine a simple mapping with two arguments, e.g.~a mapping that takes subjects and objects identifications to decide whether an action is allowed or not (IBAC, see section \ref{IBAC}):
 \begin{align*}
 S \times O \rightarrow R 
 \end{align*}
 
-To draw an arrow that comes from $S$ and $O$, connects in one point and ends with an arrow head at $R$ is not sufficient in terms of consistency, because the operator can vary.
+Drawing an arrow from $S$ and $O$, merging in one point and ending with an arrow head in $R$ is not sufficient in terms of consistency, because the operator (here: $\times$) can vary (may be $\cup$ or $\cap$ just as well).
+When handling three or more arguments the order of operations (may be indicated with brackets) has to be considered and depicted as well.
 
-
-% Details on problem 2
+\item[2) Ambiguously depicted categorization] \hfill \\
+\end{description}
 
 
 % Applying Optical Perception
