@@ -965,7 +965,7 @@ In the section \ref{gsl_elements} the different elements the system uses are exp
 Due to being highly tailored to one specific domain established notations and visualization systems for structural and semantic properties like UML or ER (see section \ref{graphical_notations}) are impractical for direct reuse in other domains.
 Generally a new specialized domain like EL will also require a newly designed graphical system, but in reality certain concepts and ideas from related systems are getting (partly) adopted and adapted accordingly, when they semantically fit.
 With or without adoption: The system should be designed in a way its components are unambiguous to components of systems from similar or related domains to avoid misunderstanding or barriers in learning.
-With this said we want to start off with the graphical notation \cite{Amthor18} uses to depict the EL aspect and try to expose and analyze its two major problems: ambiguously depicted relationships and categorization.
+With this said we want to start off with the graphical notation \cite{Amthor18} uses to depict the EL aspect and try to expose and analyze its two major problems: ambiguously depicted relationships and inelegant categorization.
 
 % Describe the 2 general problems
 \begin{description}
@@ -985,9 +985,10 @@ S \times O \rightarrow R
 \end{align*}
 
 Drawing an arrow from $S$ and $O$, merging in one point and ending with an arrow head in $R$ is not sufficient in terms of consistency, because the operator (here: $\times$) can vary (may be $\cup$ or $\cap$ just as well).
-When handling three or more arguments the order of operations (may be indicated with brackets) has to be considered and depicted as well.
+Beyond that that, when handling three or more arguments the order of operations (may be indicated with brackets) has to be considered and depicted as well.
 
 \item[2) Ambiguously depicted categorization] \hfill \\
+The EL categories are depicted by
 \end{description}
 
 
