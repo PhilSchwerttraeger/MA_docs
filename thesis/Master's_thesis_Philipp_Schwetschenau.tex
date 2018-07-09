@@ -966,11 +966,19 @@ Due to being highly tailored to one specific domain established notations and vi
 A new specialized domain like EL requires a newly designed graphical system.
 In reality certain concepts and ideas from related systems are getting (partly) adopted and adapted accordingly, when they semantically fit.
 With or without adoption: The system should be designed in a way its components are unambiguous to components of systems from similar or related domains to avoid misunderstanding or barriers in learning.
-With this said we want to start off with the graphical notation \cite{Amthor18} uses to visualize the EL aspect and try to expose and analyze its two major problems: ambiguously depicted relationships and inelegant categorization.
+With this said we want to start off with the graphical notation \cite{Amthor18} uses to visualize the EL aspect and try to analyze and expose its problems.
 
-% Describe the 2 general problems
-\begin{description}
-\item[1) Ambiguously depicted relationships] \hfill \\
+
+
+\subsection{Analyzing the EL notation used by Amthor}
+The two major problems of the graphical EL notation used by \cite{Amthor18}, which makes it inconsistent and ambiguous, are the depicted relationships between elements and the manner of categorization.
+
+\vspace{4mm}
+\noindent
+\textbf{1) Ambiguously depicted relationships}
+\vspace{1mm}
+
+\noindent
 When comparing the visual summary (figure \ref{fig:EL_diagram}) with the table form (figure \ref{fig:EL_table}) we find several inconsistencies.
 
 One is that all mappings in the visual summary ignore the presence of power sets or similar expressions that extend sets, e.g.~$ua: U \rightarrow 2^R$ is drawn as a simple arrow from $U$ to $R$.
@@ -979,12 +987,14 @@ The inconsistency (loss of information) becomes clear when converting the graphi
 (U \rightarrow 2^R) \not\equiv (U \rightarrow R)
 \end{align*}
 
+\noindent
 Also mappings can have multiple input arguments.
 Unfortunately \cite{Amthor18} does not depict any mapping example with multiple arguments, but we can easily imagine a simple mapping with two arguments: e.g.~a mapping that takes a subject's and an object's identification to decide whether an action is allowed or not (IBAC, see section \ref{IBAC}):
 \begin{align*}
 S \times O \rightarrow R 
 \end{align*}
 
+\noindent
 The ad-hoc idea is to draw an arrow from $S$ and $O$, merge in one point and ending with an arrow head in $R$ (figure \ref{fig:inconsistent_two_arguments}) is not sufficient in terms of consistency, because the type of operation is not specified ambiguously; the operator can vary (here: $\times$, but may be $\cup$ or $\cap$ just as well).
 
 \begin{figure}[htb]
@@ -994,30 +1004,73 @@ The ad-hoc idea is to draw an arrow from $S$ and $O$, merge in one point and end
 	\label{fig:inconsistent_two_arguments}
 \end{figure}
 
+\noindent
 Besides that, when handling three or more arguments the order of operations (may be mathematically indicated with brackets) has to be considered and depicted as well for the sake of consistency:
 \begin{align*}
 \lbrace U1 \cup U2 \rbrace \times O \rightarrow R
 \end{align*}
 
-\item[2) Ambiguously depicted categorization] \hfill \\
+\vspace{4mm}
+\noindent
+\textbf{2) Ambiguously depicted categorization}
+\vspace{1mm}
+
+\noindent
 The EL categories are depicted by \cite{Amthor18} with dotted spaces at the bottom of a figure.
 These allow a form of categorizing by horizontally aligning elements into sections.
-The horizontal alignment seems similar to a table categorization with columns, but unlike a table the graphical depiction uses arrows to show relationships between elements.
+Additionally elements can be categorized by surrounding them with a dotted box (e.g.~\textit{R} into $LS_2$ in figure \ref{fig:ambiguous_categorization}).
+The horizontal alignment seems similar to a table categorization with columns, but unlike a table the graphical depiction uses arrows to connect elements to indicate a relationship.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth-12cm]{../figures/chapter3/ambiguous_categorization.png}
+	\caption{Ambiguous categorization of a relation}
+	\label{fig:ambiguous_categorization}
+\end{figure}
+
 When connecting two elements, that are positioned in different sections, arrows inevitably run through all sections lying between them.
-But arrows do not always connect elements across one section.
-It is possible that they connect elements that are far away from each other or belong to the same section (e.g.~\textit{RH} in figure \ref{fig:EL_diagram}).
-So arrows that connect two elements from different section will automatically be associated with them, which is not desired in many cases.
+But arrows do not always connect elements across two sections.
+It is possible that they connect elements that are further away from each other or belong to the same section.
+For example \textit{RH} in figure \ref{fig:ambiguous_categorization} is incorrectly associated with $LS_1$).
+So arrows will automatically be associated with
+\begin{enumerate}[label=\alph*)]
+\item (all) sections lying between elements they connect, when these elements are categorized into different categories or 
+\item the category of a single element, when the relationship is a loop
+\end{enumerate}
+which is both not preventable and undesired in many cases.
 
-Expanding this concept into two dimensions will maintain the same issues.
 
 
-\end{description}
+
+\subsection{Improving the EL notation used by Amthor}
+\vspace{2mm}
+\noindent
+\textbf{1) Ambiguously depicted relationships}
+\vspace{1mm}
+
+\noindent
+To counter the first problem of the graphical EL notation used by \cite{Amthor18} we need a better way to depict relationships.
 
 
-% Applying Optical Perception
+\vspace{4mm}
+\noindent
+\textbf{2) Ambiguously depicted categorization}
+\vspace{1mm}
 
-% Applying Gestalt Laws
-%This law allows classifying or logically grouping multiple spatially distributed objects.
+\noindent
+To counter the second major problem of the graphical EL notation used by \cite{Amthor18} we need a better way to depict memberships to categories.
+Unfortunately the occurrence of falsely associating elements described above is unavoidable with the concept of horizontal aligning.
+Expanding the idea of these sections into two dimensions will not solve this issue either.
+Aligning elements to one (or even two) axis is therefore not suitable for the task of classification.
+
+As described in section \ref{gestalt_laws} gestalt laws can help to solve graphical-based tasks.
+The manner to classify with horizontal alignment utilizes the \textit{law of proximity}, but the \textit{law of similarity} seems much more suitable for this instead, because elements might be widely distributed.
+The law says that objects can be logically grouped, although they may not be in close range to each other, with the help of \textit{gestalt factors}.
+The gestalt factor \textit{shape} is already occupied for depicting an elements type, \textit{brightness} may be too subtle, \textit{size} impractical, \textit{orientation} and \textit{rotation} not applicable to circles or arrows with fixed start and end points.
+But \textit{color} seems to be a suitable solution.
+Coloring can indicate an element's classification without proximity, aligning or altering its shape and is applicable to sets as well as to relationships.
+Also multiple memberships can be depicted by multi-coloring the surface of sets or the lines of arrows.
+
 
 
 
@@ -1026,6 +1079,8 @@ Expanding this concept into two dimensions will maintain the same issues.
 \label{gsl_elements}
 % Pfeile unflexibel
 % UML-like annotations
+
+
 
 \section{Structure}
 \label{gsl_structure}
