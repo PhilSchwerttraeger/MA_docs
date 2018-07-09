@@ -650,6 +650,7 @@ Examples: Dependency, generalization, include (see figure \ref{fig:UML_relations
 
 
 \subsubsection{Additional annotations}
+\label{UML_additional_annotations}
 UML has symbols and textual identifiers to visualize certain properties.
 With \textit{multiplicities} an element can be constrained regarding its number in context of an relationship.
 The notation is placed at the connection point of class and relationship component.
@@ -723,6 +724,7 @@ It is connected to an entity or to a relationship with the help of a simple line
 \end{description}
 
 \subsubsection{Additional annotations}
+\label{ER_additional_annotations}
 To specify the amount of entities in context of a relationship the following indicators for \textit{cardinalities} are used:
 
 \begin{itemize}
@@ -767,7 +769,7 @@ These variants only differ in the depiction of their relationships (see figure \
 	\label{fig:ERD_notations}
 \end{figure}
 
-%\noindent
+\noindent
 % ERD as UML
 Notable is also that an ER model can be visualized with the help of UML.
 When entity types are treated as classes, entities as objects, relationships as associations, attributes as instance variables and cardinalities as multiplicities an UML \textit{class diagram} can be used to build up a diagram that is similar to an ERD.
@@ -975,7 +977,7 @@ The two major problems of the graphical EL notation used by \cite{Amthor18}, whi
 
 \vspace{4mm}
 \noindent
-\textbf{1) Ambiguously depicted relationships}
+\textbf{Problem 1: Ambiguously depicted relationships}
 \vspace{1mm}
 
 \noindent
@@ -1012,7 +1014,7 @@ Besides that, when handling three or more arguments the order of operations (may
 
 \vspace{4mm}
 \noindent
-\textbf{2) Ambiguously depicted categorization}
+\textbf{Problem 2: Ambiguously depicted categorization}
 \vspace{1mm}
 
 \noindent
@@ -1039,32 +1041,55 @@ So arrows will automatically be associated with
 \end{enumerate}
 which is both not preventable and undesired in many cases.
 
+But not just arrows, also sets have a similar issue, because they can be member of multiple categories at once.
+In figure \ref{fig:ambiguous_categorization} this could lead to a situation where $LS_2$ gets another element $X$, which is also member of a category not horizontally adjacent to $LS_1$.
+Therefore we have to either extend the dotted rectangle for $LS_2$ up to the other category (which inevitable overlaps with other undesired horizontal categories and therefore gets associated with them) or we have to depict $X$ two times at once (inside $LS_2$ and the other category), which makes the figure inconsistent and thus confusing and redundant.
 
 
 
 \subsection{Improving the EL notation used by Amthor}
 \vspace{2mm}
 \noindent
-\textbf{1) Ambiguously depicted relationships}
+\textbf{Solution 1: Relationship annotations and type indicators}
 \vspace{1mm}
 
 \noindent
-To counter the first problem of the graphical EL notation used by \cite{Amthor18} we need a better way to depict relationships.
+To counter the first major problem of the graphical EL notation used by \cite{Amthor18} we need a better way to depict relationships.
+This is done with two extensions: Annotations and type indicators.
+
+For indicating extended expressions for sets in context of a relationship like power sets we introduce \textit{relationship annotations}.
+These are simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ER's capacities (see section \ref{ER_additional_annotations}) and are positioned at the connection points of sets and relationships.
+A relationship annotation describes a specific form of an element in context of a relationship it is part of.
+Just like UML/ER the mathematical expression (e.g.~$2^R$) is depicted directly as textual expression without any additional graphical elements or symbols.
+This makes it universal to depict any mathematical expression.
+
+At this level of detail specifying special graphical elements (e.g.~differently shaped arrow heads) for every possible expression is not reasonable due to the amount of different elements needed.
+This may be even counter-intuitive, because humans are able to hold up to 7 different elements in their visual buffer at once, beyond that learning/working becomes harder due to constantly swapping information between cerebral areas (see section \ref{human_optical_perception} about human optical perception).
+
+The second extension is the \textit{type indicator}, which allows specifying the type of operation inside a relationship.
+In the notation \cite{Amthor18} uses, relationships do not specify any internal operation type, just the relationship type (mapping, relation, constraint).
+Therefore any relationship is depicted incompletely due to not knowing in which way its sets are interrelated ($\times, \cup, \cap, \setminus, \Delta$, \dots).
+Again, just like before, it is not reasonable to introduce new graphical elements for the purpose of indicating the type of operation at this level of detail and with that amount of different possible types.
+Again we use the textual mathematical expression/symbol.
+It is positioned in the middle of its corresponding relationship arrow.
+To avoid proximity and overlapping conflicts in case of short arrows or intersecting arrows the textual indicator is placed inside a graphical shape: a rhombus (based on ERD relationship objects, see section \ref{ERD}).
+This graphical element is the logical center and connection point for all arrows from and to elements participating in this relationship.
+
 
 
 \vspace{4mm}
 \noindent
-\textbf{2) Ambiguously depicted categorization}
+\textbf{Solution 2: Categorization by coloring}
 \vspace{1mm}
 
 \noindent
 To counter the second major problem of the graphical EL notation used by \cite{Amthor18} we need a better way to depict memberships to categories.
-Unfortunately the occurrence of falsely associating elements described above is unavoidable with the concept of horizontal aligning.
-Expanding the idea of these sections into two dimensions will not solve this issue either.
-Aligning elements to one (or even two) axis is therefore not suitable for the task of classification.
+Unfortunately -- as already mentioned above -- falsely classified elements are unavoidable with the method of horizontally aligning elements.
+Expanding the method into two dimensions will not solve this issue either.
+Therefore aligning elements to one (or two) axis is not suitable for the task of classification.
 
 As described in section \ref{gestalt_laws} gestalt laws can help to solve graphical-based tasks.
-The manner to classify with horizontal alignment utilizes the \textit{law of proximity}, but the \textit{law of similarity} seems much more suitable for this instead, because elements might be widely distributed.
+The method of classifying by horizontally aligning elements utilizes the \textit{law of proximity}, but due to elements being potentially widely distributed the \textit{law of similarity} seems more suitable for this instead.
 The law says that objects can be logically grouped, although they may not be in close range to each other, with the help of \textit{gestalt factors}.
 The gestalt factor \textit{shape} is already occupied for depicting an elements type, \textit{brightness} may be too subtle, \textit{size} impractical, \textit{orientation} and \textit{rotation} not applicable to circles or arrows with fixed start and end points.
 But \textit{color} seems to be a suitable solution.
@@ -1074,11 +1099,14 @@ Also multiple memberships can be depicted by multi-coloring the surface of sets 
 
 
 
-
 \section{Elements}
 \label{gsl_elements}
-% Pfeile unflexibel
-% UML-like annotations
+
+
+
+% Example Amthor vs example coloring
+
+% Example multi-coloring set, example arrow
 
 
 
