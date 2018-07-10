@@ -1119,7 +1119,7 @@ The law says that objects can be logically grouped, although they may not be in 
 The gestalt factor \textit{shape} is already occupied for depicting an elements type, \textit{brightness} may be too subtle, \textit{size} impractical, \textit{orientation} and \textit{rotation} not applicable to circles or arrows with fixed start and end points.
 But \textit{color} seems to be a suitable solution.
 Coloring can indicate an element's classification without proximity, aligning or altering its shape and is applicable to sets (circles, ellipses) as well as to relationships (arrows, lines).
-Also multiple category memberships can be depicted by multi-coloring the enclosed area of circles or the lines of arrows.
+Also multiple category memberships can be depicted by multi-coloring enclosed areas of elements.
 
 
 
@@ -1129,16 +1129,41 @@ Also multiple category memberships can be depicted by multi-coloring the enclose
 The core structure of the notation is adopted from \cite{Amthor18} and is extended with the solutions proposed above.
 Depicting categories by horizontal spaces indicated with dotted lines at the bottom of the diagram is removed and is replaced with coloring.
 
+Any figure now needs a legend (or reference to a legend) to show the assignment of colors to the corresponding EL categories.
+With $m=1$ we have six different categories and therefore six colors.
+Using the primary colors (red, blue, yellow) and their mixtures (green, orange, purple) maximizes the visual differences between those and avoid visual misunderstandings.
+Brighten up the colors is a common method to make the coloring less prominent and the notation less optical aggressive due to its higher contrast to (black) text, lines and object's outlines.
+A suggested color selection is shown in figure \ref{fig:legend}.
+The following figures are all based on these colors.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.5]{../figures/chapter3/legend.png}
+	\caption{Suggested legend for EL categorization coloring}
+	\label{fig:legend}
+\end{figure}
+
 \subsection{Sets}
-Regarding their shape sets remain the same, but now have colored areas to indicate category memberships.
+Regarding their shape sets remain the same (circles/ellipses), but now have colored areas to indicate category memberships.
 The depiction of subsets is unaltered as well: They are drawn as smaller circles inside their supersets.
 They can be colored individually to their superset.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter3/subsets.png}
+	\caption{Set element with two differently categorized subsets}
+	\label{fig:subsets}
+\end{figure}
 
 The internal definition of sets (equations like $P = 2^{O \times OP}$ in $RBAC_0$, see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) is not depicted in a graphical way for the same reasons as for the usage of a mathematical expression for annotations and mathematical symbols for argument operation types.
 Still set definitions can be depicted with a mathematical expression inside the set itself.
 
-Additionally a figure now needs a legend to show the assignment of colors to the corresponding EL categories.
-With $m=1$ we have six different categories and therefore colors.
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.5]{../figures/chapter3/set_with_internal_def.png}
+	\caption{Example for a set element with its internal definition}
+	\label{fig:set_with_internal_def}
+\end{figure}
 
 
 
@@ -1152,6 +1177,13 @@ Unlike its origin notation they can now indicate not just its relationship type 
 
 % Example multi-coloring set, example arrow
 
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{../figures/chapter3/RBAC96.png}
+	\caption{$RBAC_3$ example}
+	\label{fig:RBAC96_example}
+\end{figure}
 
 
 
