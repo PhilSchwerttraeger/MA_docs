@@ -303,7 +303,7 @@ Following graphical elements are used in this notation:
 \item A normal-headed unidirectional arrow represents a one-to-one assignment ($user$).
 \item A double-headed unidirectional arrow represents a one-to-many assignment ($roles$).
 \item A double-headed bidirectional arrow represents a many-to-many assignment relation ($UA, PA, RH$).
-\item A normal-headed unidirectional dotted arrow represents a constraint.
+\item A normal-headed unidirectional dashed arrow represents a constraint.
 Six arrows of this type are pointing symbolically from the set of constraints in the direction of all model components constraints can be potentially defined on.
 \end{itemize}
 %TODO: Better a table?
@@ -526,7 +526,7 @@ The last column refers to the corresponding informal rule of the example policy 
 
 \cite{Amthor18} also used a graphical depiction (see figure \ref{fig:EL_diagram}) that is loosely based on the notation by \cite{Sandhu96} (see section \ref{RBAC_notation}).
 In this diagram members of EL categories are visually classified by being horizontally aligned to a category space.
-The category spaces are indicated with dotted lines at the bottom of the diagram.
+The category spaces are indicated with dashed lines at the bottom of the diagram.
 
 As in the RBAC notation (see section \ref{RBAC_notation}) circles are used to depict sets.
 Subsets are depicted as smaller circles inside their supersets.
@@ -536,7 +536,7 @@ They just indicate a direction and not any properties or typing of the given rel
 In figure \ref{fig:EL_diagram_m} there is also a double-headed arrow for depicting a relation (again analogue to the RBAC notation).
 
 In contrast to its graphical origin -- the RBAC notation by \cite{Sandhu96} -- this notation is tailored specifically to the domain of EL.
-It roughly takes the graphical elements of the RBAC notation, simplifies them to some degree (less arrow head types, ignoring set elements) and extends the system with dotted sections to indicate its EL categories.
+It roughly takes the graphical elements of the RBAC notation, simplifies them to some degree (less arrow head types, ignoring set elements) and extends the system with dashed sections to indicate its EL categories.
 However this notation is imprecise and ambiguous to some extent.
 This especially becomes evident when comparing the notation to ELs table form.
 
@@ -566,7 +566,7 @@ sem(LA_2) &= \lbrace RH \rbrace\\
 \noindent
 This leads to a diagram with an additional component $RH$ and multiple sections for $LS_i$ and $LA_i$ as depicted in figure \ref{fig:EL_diagram_m}.
 The category spaces at the bottom are now not the only indications for categories in this diagram.
-$LA_2$ and $LS_2$ are depicted as dotted-lined rectangles within the diagram itself and frame its components $RH$ and $R$.
+$LA_2$ and $LS_2$ are depicted as dashed rectangles within the diagram itself and frame its components $RH$ and $R$.
 
 \begin{figure}[htb]
 	\centering
@@ -634,7 +634,7 @@ Elements can be closely tied to specific diagram types (e.g.~components to compo
 Relationships can connect two or more elements.
 Graphically relationships are lines.
 Optionally they can have a shape at one end to indicate a direction.
-They can vary in form by having differently drawn lines (solid, dotted) or shaped arrow heads.
+They can vary in form by having differently drawn lines (solid, dashed) or shaped arrow heads.
 They can have several angles (preferable $90^{\circ}$ or $45^{\circ}$) to run on a clearly laid out path.
 Lines do not collide if possible. \\
 Examples: Dependency, generalization, include (see figure \ref{fig:UML_relationships})
@@ -1023,9 +1023,9 @@ Besides that, when handling two or more arguments the order of operations, which
 \vspace{1mm}
 
 \noindent
-The EL categories are depicted by \cite{Amthor18} with dotted spaces at the bottom of a figure.
+The EL categories are depicted by \cite{Amthor18} with dashed spaces at the bottom of a figure.
 These allow a form of categorizing by horizontally aligning elements into sections.
-Additionally elements can be categorized by surrounding them with a dotted box (e.g.~\textit{R} in $LS_2$ in figure \ref{fig:ambiguous_categorization}).
+Additionally elements can be categorized by surrounding them with a dashed box (e.g.~\textit{R} in $LS_2$ in figure \ref{fig:ambiguous_categorization}).
 The horizontal alignment seems similar to a table categorization with columns, but unlike a table the graphical depiction uses arrows that connect elements to indicate a relationship between them.
 
 \begin{figure}[htb]
@@ -1049,7 +1049,7 @@ which is both unpreventable and undesired in many cases.
 
 But not just arrows, also \textit{sets} have a similar issue, because they can be member of multiple categories at once.
 In figure \ref{fig:ambiguous_categorization} we can construct such situation by adding a new element $E$, which is member of $LS_2$ and of a new category $C$, that is not horizontally adjacent to $LS_1$.
-Therefore we have to either extend the dotted rectangle for $LS_2$ up to category $C$ (which then inevitable overlaps with other undesired horizontal categories and therefore gets associated with them) or we have to depict $E$ two times at once (in $LS_2$ and $C$), which makes the figure inconsistent again, but also redundant and thus confusing.
+Therefore we have to either extend the dashed rectangle for $LS_2$ up to category $C$ (which then inevitable overlaps with other undesired horizontal categories and therefore gets associated with them) or we have to depict $E$ two times at once (in $LS_2$ and $C$), which makes the figure inconsistent again, but also redundant and thus confusing.
 
 
 
@@ -1109,7 +1109,7 @@ Unfortunately -- as already mentioned above -- falsely classified elements are u
 Expanding the method into two dimensions will not solve this issue either, because it does not change the situation of falsely associated elements with horizontally (or vertically) aligned categories.
 Therefore aligning elements to one (or two) axis is not suitable for this task of classification.
 
-Abandoning the idea of horizontal aligning still leaves the option to use dotted rectangles to classify elements.
+Abandoning the idea of horizontal aligning still leaves the option to use dashed rectangles to classify elements.
 In the worst case this would lead to every item in the figure being encapsulated into its very own rectangle.
 This adds multiple new elements to a figure and makes it unnecessarily complex to determine all elements of a category as a result.
 
@@ -1127,7 +1127,7 @@ Also multiple category memberships can be depicted by multi-coloring enclosed ar
 \section{Structure and Elements}
 \label{gsl_elements}
 The core structure of the notation is adopted from \cite{Amthor18} and is extended with the solutions proposed above.
-Depicting categories by horizontal spaces indicated with dotted lines at the bottom of the diagram is removed and is replaced with coloring.
+Depicting categories by horizontal spaces indicated with dashed lines at the bottom of the diagram is removed and is replaced with coloring.
 
 Any figure now needs a legend (or reference to a legend) to show the assignment of colors to the corresponding EL categories.
 With $m=1$ we have six different categories and therefore six colors.
@@ -1168,8 +1168,22 @@ Still set definitions can be depicted with a mathematical expression inside the 
 
 
 \subsection{Relationships}
-Simple one-headed arrows depict mappings, double-headed arrows depict relations, unchanged.
-Unlike its origin notation they can now indicate not just its relationship type (mapping, relation), but also the type of operation that describes how its arguments are connected.
+Simple arrows depict mappings, double-sided arrows depict relations and dashed-lined arrows depict constraints -- unchanged.
+Unlike its origin notation they can now indicate not just its relationship type (mapping, relation, constraint), but also the operation type that describes how its arguments are connected.
+Relationships have their name next to it.
+In the case of mappings the name is encapsulated into a rectangle.
+This is done to have an area to depict its color for categorization.
+Many -- especially bright -- colors like yellow do not have a high contrast to their background (generally white), so coloring lines or object's outlines is hard to see.
+To enhance the visual perception we decided to continue using black arrows and lines to maximize the contrast in combination with a white background.
+To still be able to classify relationships by color, they need an element to represent its color.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter3/relationships.png}
+	\caption{Relationships: Mapping, relation and constraint}
+	\label{fig:relationships}
+\end{figure}
+
 
 % Annotation: If 1 do not show
 
