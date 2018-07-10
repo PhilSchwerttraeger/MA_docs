@@ -952,7 +952,7 @@ Reinventing interaction design is not only very time consuming, but actually eve
 \cleardoublepage
 \chapter{Design: Graphical Specification Language}
 \label{gsl_design}
-In this chapter we develop a system to graphically model the Entity Labeling aspect (see section \ref{EL}) of Aspect-oriented Security Engineering.
+In this chapter we develop a notation to graphically model the Entity Labeling aspect (see section \ref{EL}) of Aspect-oriented Security Engineering.
 In the first section \ref{gsl_concept} the general idea of how to achieve this and the overall concept are explained.
 For this the notation used by \cite{Amthor18} is investigated regarding its completeness, consistency and general weaknesses.
 In section \ref{gsl_elements} the graphical elements the system uses are explained, followed by section \ref{gsl_structure}, which depicts the overall structure of the system.
@@ -964,16 +964,17 @@ In section \ref{gsl_elements} the graphical elements the system uses are explain
 \label{gsl_concept}
 %approach, basic ideas, adoptions from literature
 
-Due to being highly tailored to one specific domain established notations and visualization systems for structural and semantic properties like UML or ER (see section \ref{graphical_notations}) are impractical for direct reuse in other domains.
-A new specialized domain like EL requires a newly designed graphical system.
-In reality certain concepts and ideas from related systems are getting (partly) adopted and adapted accordingly, when they semantically fit.
+Due to being highly tailored to one specific domain, established graphical notations for structural or semantic properties like UML or ER (see section \ref{graphical_notations}) are impractical for direct reuse in other domains.
+A new concept like EL generally requires a newly designed graphical notation.
+In reality needed elements, concepts and ideas are not always created from scratch, but are getting (partly) adopted from related systems and adapted accordingly as long as they fit syntactically and semantically.
 With or without adoption: The system should be designed in a way its components are unambiguous to components of systems from similar or related domains to avoid misunderstanding or barriers in learning.
-With this said we want to start off with the graphical notation \cite{Amthor18} uses to visualize the EL aspect and try to analyze and expose its problems.
+With this said we want to start off with the graphical notation \cite{Amthor18} uses to visualize the EL aspect and try to analyze and expose its problems in section \ref{analyzing_notation} and to propose solutions in section \ref{improving_notation}.
 
 
 
 \subsection{Analyzing the EL notation used by Amthor}
-The two major problems of the graphical EL notation used by \cite{Amthor18}, which makes it inconsistent and ambiguous, are the depicted relationships between elements and the manner of categorization.
+\label{analyzing_notation}
+The two major problems of the graphical EL notation used by \cite{Amthor18}, which makes it inconsistent and ambiguous, are the depicted relationships between elements and the method of classifying elements.
 
 \vspace{4mm}
 \noindent
@@ -983,21 +984,23 @@ The two major problems of the graphical EL notation used by \cite{Amthor18}, whi
 \noindent
 When comparing the visual summary (figure \ref{fig:EL_diagram}) with the table form (figure \ref{fig:EL_table}) we find several inconsistencies.
 
-One is that all mappings in the visual summary ignore the presence of power sets or similar expressions that extend sets, e.g.~$ua: U \rightarrow 2^R$ is drawn as a simple arrow from $U$ to $R$.
+One is that all mappings in the visual summary ignore the presence of power sets or similar expressions that can extend sets.
+For example $ua: U \rightarrow 2^R$ is drawn as a simple arrow from $U$ to $R$.
 The inconsistency (loss of information) becomes clear when converting the graphical statement back to a mathematical one:
-\begin{align*}
+\begin{align}
 (U \rightarrow 2^R) \not\equiv (U \rightarrow R)
-\end{align*}
+\end{align}
 
 \noindent
 Also mappings can have multiple input arguments.
-Unfortunately \cite{Amthor18} does not depict any mapping example with multiple arguments, but we can easily imagine a simple mapping with two arguments: e.g.~a mapping that takes a subject's and an object's identification to decide whether an action is allowed or not (IBAC, see section \ref{IBAC}):
-\begin{align*}
+Unfortunately \cite{Amthor18} does not depict any mapping example with multiple arguments, but we can easily imagine a simple mapping with two arguments: e.g.~a mapping that takes a subject's and an object's identification to decide whether an user action is allowed on an object or not (IBAC, see section \ref{IBAC}):
+\begin{align}
 S \times O \rightarrow R 
-\end{align*}
+\end{align}
 
 \noindent
-The ad-hoc idea is to draw an arrow from $S$ and $O$, merge in one point and ending with an arrow head in $R$ (figure \ref{fig:inconsistent_two_arguments}) is not sufficient in terms of consistency, because the type of operation is not specified ambiguously; the operator can vary (here: $\times$, but may be $\cup$ or $\cap$ just as well).
+The ad-hoc idea is to draw a line from $S$ and $O$, merge in one point and ending with an arrow head in $R$ (figure \ref{fig:inconsistent_two_arguments}) is not sufficient in terms of consistency, because the type of operation is not specified.
+The operation, that determines how a mapping's arguments interrelate, can vary (here: $\times$, but may be $\cup, \cap, \setminus, \Delta$, \dots just as well).
 
 \begin{figure}[htb]
 	\centering
@@ -1007,10 +1010,12 @@ The ad-hoc idea is to draw an arrow from $S$ and $O$, merge in one point and end
 \end{figure}
 
 \noindent
-Besides that, when handling three or more arguments the order of operations (may be mathematically indicated with brackets) has to be considered and depicted as well for the sake of consistency:
-\begin{align*}
-\lbrace U1 \cup U2 \rbrace \times O \rightarrow R
-\end{align*}
+Besides that, when handling two or more arguments the order of operations, which may be mathematically indicated with brackets, is relevant (see inequations below) and thus has to be considered and depicted as well:
+\begin{gather}
+\lbrace A \setminus B \rbrace \not\equiv \lbrace B \setminus A \rbrace \\
+(\lbrace A \cap B \rbrace \cup C \rightarrow D) \not\equiv
+(A \cap \lbrace B \cup C \rbrace \rightarrow D)
+\end{gather}
 
 \vspace{4mm}
 \noindent
@@ -1020,34 +1025,36 @@ Besides that, when handling three or more arguments the order of operations (may
 \noindent
 The EL categories are depicted by \cite{Amthor18} with dotted spaces at the bottom of a figure.
 These allow a form of categorizing by horizontally aligning elements into sections.
-Additionally elements can be categorized by surrounding them with a dotted box (e.g.~\textit{R} into $LS_2$ in figure \ref{fig:ambiguous_categorization}).
-The horizontal alignment seems similar to a table categorization with columns, but unlike a table the graphical depiction uses arrows to connect elements to indicate a relationship.
+Additionally elements can be categorized by surrounding them with a dotted box (e.g.~\textit{R} in $LS_2$ in figure \ref{fig:ambiguous_categorization}).
+The horizontal alignment seems similar to a table categorization with columns, but unlike a table the graphical depiction uses arrows that connect elements to indicate a relationship between them.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\linewidth-12cm]{../figures/chapter3/ambiguous_categorization.png}
+	\includegraphics[width=\linewidth-8cm]{../figures/chapter3/ambiguous_categorization.png}
 	\caption{Ambiguous categorization of a relation}
 	\label{fig:ambiguous_categorization}
 \end{figure}
 
-When connecting two elements, that are positioned in different sections, arrows inevitably run through all sections lying between them.
-But arrows do not always connect elements across two sections.
-It is possible that they connect elements that are further away from each other or belong to the same section.
-For example \textit{RH} in figure \ref{fig:ambiguous_categorization} is incorrectly associated with $LS_1$).
+When connecting two elements, which are positioned in different sections, arrows inevitably run through all sections lying between those sections.
+But arrows do not always connect elements across two sections:
+It is possible that they connect elements that are further away from each other or elements that belong to the same section.
+For example in figure \ref{fig:ambiguous_categorization} \textit{RH} is placed above $R$, because it is no member of one of the horizontally adjacent categories of $LS_1$ ($LA_1$ and $AR$); nevertheless it is incorrectly associated with $LS_1$ due to its horizontal alignment.
+
 So arrows will automatically be associated with
 \begin{enumerate}[label=\alph*)]
-\item (all) sections lying between elements they connect, when these elements are categorized into different categories or 
+\item (all) categories lying between elements they connect, when those elements are members of different categories or 
 \item the category of a single element, when the relationship is a loop
 \end{enumerate}
-which is both not preventable and undesired in many cases.
+which is both unpreventable and undesired in many cases.
 
-But not just arrows, also sets have a similar issue, because they can be member of multiple categories at once.
-In figure \ref{fig:ambiguous_categorization} this could lead to a situation where $LS_2$ gets another element $X$, which is also member of a category not horizontally adjacent to $LS_1$.
-Therefore we have to either extend the dotted rectangle for $LS_2$ up to the other category (which inevitable overlaps with other undesired horizontal categories and therefore gets associated with them) or we have to depict $X$ two times at once (inside $LS_2$ and the other category), which makes the figure inconsistent and thus confusing and redundant.
+But not just arrows, also \textit{sets} have a similar issue, because they can be member of multiple categories at once.
+In figure \ref{fig:ambiguous_categorization} we can construct such situation by adding a new element $E$, which is member of $LS_2$ and of a new category $C$, that is not horizontally adjacent to $LS_1$.
+Therefore we have to either extend the dotted rectangle for $LS_2$ up to category $C$ (which then inevitable overlaps with other undesired horizontal categories and therefore gets associated with them) or we have to depict $E$ two times at once (in $LS_2$ and $C$), which makes the figure inconsistent again, but also redundant and thus confusing.
 
 
 
 \subsection{Improving the EL notation used by Amthor}
+\label{improving_notation}
 \vspace{2mm}
 \noindent
 \textbf{Solution to problem 1: Relationship annotations and type indicators}
@@ -1072,7 +1079,7 @@ Therefore any relationship is depicted incompletely due to not knowing in which 
 Again, just like before, it is not reasonable to introduce new graphical elements for the purpose of indicating the type of operation at this level of detail and with that amount of different possible types.
 Again we use the textual mathematical expression/symbol.
 It is positioned in the middle of its corresponding relationship arrow.
-To avoid proximity and overlapping conflicts in case of short arrows or intersecting arrows the textual indicator is placed inside a graphical shape: a rhombus (based on ERD relationship objects, see section \ref{ERD}).
+To avoid proximity and overlapping conflicts in case of short arrows or intersecting arrows the textual indicator is placed inside a graphical shape: a rhombus (based on ERD relationships, see page \pageref{fig:ERD_relationship}).
 This graphical element is the logical center and connection point for all arrows from and to elements participating in this relationship.
 
 
@@ -1083,18 +1090,18 @@ This graphical element is the logical center and connection point for all arrows
 \vspace{1mm}
 
 \noindent
-To counter the second major problem of the graphical EL notation used by \cite{Amthor18} we need a better way to depict memberships to categories.
+To counter the second major problem of the graphical EL notation used by \cite{Amthor18} we need a better way to depict category memberships.
 Unfortunately -- as already mentioned above -- falsely classified elements are unavoidable with the method of horizontally aligning elements.
-Expanding the method into two dimensions will not solve this issue either.
-Therefore aligning elements to one (or two) axis is not suitable for the task of classification.
+Expanding the method into two dimensions will not solve this issue either, because it does not change the situation of falsely associated elements with horizontally (or vertically) aligned categories.
+Therefore aligning elements to one (or two) axis is not suitable for this task of classification.
 
-As described in section \ref{gestalt_laws} gestalt laws can help to solve graphical-based tasks.
+As described in section \ref{gestalt_laws} \textit{gestalt laws} can help to solve graphical-based tasks.
 The method of classifying by horizontally aligning elements utilizes the \textit{law of proximity}, but due to elements being potentially widely distributed the \textit{law of similarity} seems more suitable for this instead.
 The law says that objects can be logically grouped, although they may not be in close range to each other, with the help of \textit{gestalt factors}.
 The gestalt factor \textit{shape} is already occupied for depicting an elements type, \textit{brightness} may be too subtle, \textit{size} impractical, \textit{orientation} and \textit{rotation} not applicable to circles or arrows with fixed start and end points.
 But \textit{color} seems to be a suitable solution.
-Coloring can indicate an element's classification without proximity, aligning or altering its shape and is applicable to sets as well as to relationships.
-Also multiple memberships can be depicted by multi-coloring the surface of sets or the lines of arrows.
+Coloring can indicate an element's classification without proximity, aligning or altering its shape and is applicable to sets (circles, ellipses) as well as to relationships (arrows, lines).
+Also multiple category memberships can be depicted by multi-coloring the enclosed area of circles or the lines of arrows.
 
 
 
