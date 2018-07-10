@@ -1065,22 +1065,29 @@ To counter the first major problem of the graphical EL notation used by \cite{Am
 This is done with two extensions: Annotations and type indicators.
 
 For indicating extended expressions for sets in context of a relationship like power sets we introduce \textit{relationship annotations}.
-These are simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ER's capacities (see section \ref{ER_additional_annotations}) and are positioned at the connection points of sets and relationships.
-A relationship annotation describes a specific form of an element in context of a relationship it is part of.
-Just like UML/ER the mathematical expression (e.g.~$2^R$) is depicted directly as textual expression without any additional graphical elements or symbols.
+These are simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}) and are positioned at the connection points of sets and relationships (see figure \ref{fig:relationship_annotation}).
+Unlike its semantics in UML or ERD, these relationship annotations do not indicate the (relative) amount of elements participating in a relationship, but describes a specific form of an element in context of a relationship it is part of.
+Just like UML/ERD the mathematical expression (e.g.~$2^R$) is depicted directly as textual expression without any additional graphical elements or symbols.
 This makes it universal to depict any mathematical expression.
 
-At this level of detail specifying special graphical elements (e.g.~differently shaped arrow heads) for every possible expression is not reasonable due to the amount of different elements needed.
-This may be even counter-intuitive, because humans are able to hold up to 7 different elements in their visual buffer at once, beyond that learning/working becomes harder due to constantly swapping information between cerebral areas (see section \ref{human_optical_perception} about human optical perception).
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter3/relationship_annotation.png}
+	\caption{Relationship annotations for improved set expressions}
+	\label{fig:relationship_annotation}
+\end{figure}
 
-The second extension is the \textit{type indicator}, which allows specifying the type of operation inside a relationship.
-In the notation \cite{Amthor18} uses, relationships do not specify any internal operation type, just the relationship type (mapping, relation, constraint).
+At this level of detail specifying special graphical elements (e.g.~differently shaped arrow heads) for every possible expression is not reasonable due to the high amount of different elements needed.
+This may be even counter-intuitive, because humans are able to hold up to 7 different elements in their visual buffer at once; beyond that learning/working becomes harder due to constantly swapping information between cerebral areas (see section \ref{human_optical_perception} about human optical perception).
+
+The second extension is the \textit{type indicator}, which allows specifying the type of operation between two elements of a relationship.
+In the notation \cite{Amthor18} uses, relationships do not specify any internal operation type between elements, just the relationship type with the depiction of different arrows (mapping, relation, constraint).
 Therefore any relationship is depicted incompletely due to not knowing in which way its sets are interrelated ($\times, \cup, \cap, \setminus, \Delta$, \dots).
-Again, just like before, it is not reasonable to introduce new graphical elements for the purpose of indicating the type of operation at this level of detail and with that amount of different possible types.
+Just like before it seems not reasonable to introduce new graphical elements for the purpose of indicating the type of operation at this level of detail and with that amount of different possible types.
 Again we use the textual mathematical expression/symbol.
 It is positioned in the middle of its corresponding relationship arrow.
 To avoid proximity and overlapping conflicts in case of short arrows or intersecting arrows the textual indicator is placed inside a graphical shape: a rhombus (based on ERD relationships, see page \pageref{fig:ERD_relationship}).
-This graphical element is the logical center and connection point for all arrows from and to elements participating in this relationship.
+This graphical element is the logical center and connection point for all arrows and lines from and to elements participating in this relationship.
 
 
 
@@ -1116,6 +1123,9 @@ Regarding their shape sets remain the same, but now have colored areas to indica
 The depiction of subsets is unaltered as well: They are drawn as smaller circles inside their supersets.
 They can be colored individually to their superset.
 
+The internal definition of sets (equations like $P = 2^{O \times OP}$ in $RBAC_0$, see definition \ref{definition:RBAC}) on page \pageref{definition:RBAC}) is not depicted in a graphical way for the same reasons as for the usage of a mathematical expression for annotations and mathematical symbols for argument operation types.
+Still set definitions can be depicted with a mathematical expression inside the set itself.
+
 
 
 \subsection{Relationships}
@@ -1132,6 +1142,12 @@ Unlike its origin notation they can now indicate not just its relationship type 
 
 \section{Visualization on a Higher Level of Abstraction}
 \label{higher_abstraction_level}
+
+
+
+\section{Summary}
+\label{gsl_summary}
+% essential: find interfaces/break points where graphical and where mathematical expression is reasonable
 
 
 
