@@ -804,7 +804,7 @@ They describe phenomena of how we perceive and evaluate objects and groups of ob
 
 These laws apply in particular when we look at graphical user interfaces (\textit{GUI}), graphs or diagrams.
 They can describe how and why we look at certain aspects first or find some aspect more easy or hard to understand than another.
-Considering gestalt laws while designing any graphical content can improve its perception quality and therefore also the handling for its readers or users.
+Considering gestalt laws while designing any graphical content can help improving its visual quality and solving graphical problems and therefore also enhance the handling for its readers or users.
 
 Given that there is a large number of various gestalt laws, the following list (based on \citep{Goeckel01a}, \citep{Heinecke04a} and \citep{Sternberg}) describes some of them that are relevant for the task of designing a graphical specification language in chapter \ref{gsl_design}:
 
@@ -1067,8 +1067,8 @@ This is done with two extensions: Annotations and type indicators.
 For indicating extended expressions for sets in context of a relationship like power sets we introduce \textit{relationship annotations}.
 These are simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}) and are positioned at the connection points of sets and relationships (see figure \ref{fig:relationship_annotation}).
 Unlike its semantics in UML or ERD, these relationship annotations do not indicate the (relative) amount of elements participating in a relationship, but describes a specific form of an element in context of a relationship it is part of.
-Just like UML/ERD the mathematical expression (e.g.~$2^R$) is depicted directly as textual expression without any additional graphical elements or symbols.
-This makes it universal to depict any mathematical expression.
+Just like UML/ERD the mathematical expression (e.g.~$2^B$) is depicted directly as textual expression without any additional graphical elements or symbols.
+This makes it universal to depict any mathematical expression needed in context of a set argument.
 
 \begin{figure}[htb]
 	\centering
@@ -1089,6 +1089,13 @@ It is positioned in the middle of its corresponding relationship arrow.
 To avoid proximity and overlapping conflicts in case of short arrows or intersecting arrows the textual indicator is placed inside a graphical shape: a rhombus (based on ERD relationships, see page \pageref{fig:ERD_relationship}).
 This graphical element is the logical center and connection point for all arrows and lines from and to elements participating in this relationship.
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter3/relationship_operation_2args.png}
+	\caption{Relationship with operation type and two arguments}
+	\label{fig:relationship_operation_2args}
+\end{figure}
+
 
 
 \vspace{4mm}
@@ -1101,6 +1108,10 @@ To counter the second major problem of the graphical EL notation used by \cite{A
 Unfortunately -- as already mentioned above -- falsely classified elements are unavoidable with the method of horizontally aligning elements.
 Expanding the method into two dimensions will not solve this issue either, because it does not change the situation of falsely associated elements with horizontally (or vertically) aligned categories.
 Therefore aligning elements to one (or two) axis is not suitable for this task of classification.
+
+Abandoning the idea of horizontal aligning still leaves the option to use dotted rectangles to classify elements.
+In the worst case this would lead to every item in the figure being encapsulated into its very own rectangle.
+This adds multiple new elements to a figure and makes it unnecessarily complex to determine all elements of a category as a result.
 
 As described in section \ref{gestalt_laws} \textit{gestalt laws} can help to solve graphical-based tasks.
 The method of classifying by horizontally aligning elements utilizes the \textit{law of proximity}, but due to elements being potentially widely distributed the \textit{law of similarity} seems more suitable for this instead.
@@ -1123,8 +1134,11 @@ Regarding their shape sets remain the same, but now have colored areas to indica
 The depiction of subsets is unaltered as well: They are drawn as smaller circles inside their supersets.
 They can be colored individually to their superset.
 
-The internal definition of sets (equations like $P = 2^{O \times OP}$ in $RBAC_0$, see definition \ref{definition:RBAC}) on page \pageref{definition:RBAC}) is not depicted in a graphical way for the same reasons as for the usage of a mathematical expression for annotations and mathematical symbols for argument operation types.
+The internal definition of sets (equations like $P = 2^{O \times OP}$ in $RBAC_0$, see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) is not depicted in a graphical way for the same reasons as for the usage of a mathematical expression for annotations and mathematical symbols for argument operation types.
 Still set definitions can be depicted with a mathematical expression inside the set itself.
+
+Additionally a figure now needs a legend to show the assignment of colors to the corresponding EL categories.
+With $m=1$ we have six different categories and therefore colors.
 
 
 
@@ -1132,6 +1146,7 @@ Still set definitions can be depicted with a mathematical expression inside the 
 Simple one-headed arrows depict mappings, double-headed arrows depict relations, unchanged.
 Unlike its origin notation they can now indicate not just its relationship type (mapping, relation), but also the type of operation that describes how its arguments are connected.
 
+% Annotation: If 1 do not show
 
 % Example Amthor vs example coloring
 
