@@ -970,122 +970,129 @@ Due to being highly tailored to one specific domain, established graphical notat
 A new concept like EL generally requires a newly designed graphical notation.
 In reality needed elements, concepts and ideas are not always created from scratch, but are getting (partly) adopted from related systems and adapted accordingly as long as they fit syntactically and semantically.
 With or without adoption: The system should be designed in a way its components are unambiguous to components of systems from similar or related domains to avoid misunderstanding or barriers in learning.
-With this said we want to start off with the graphical notation \cite{Amthor18} uses to visualize the EL aspect and try to analyze and expose its problems in section \ref{analyzing_notation} and to propose solutions in section \ref{improving_notation}.
-
-
-
-\subsection{Analyzing the EL notation used by Amthor}
-\label{analyzing_notation}
-The major problems of the graphical EL notation used by \cite{Amthor18}, which makes it inconsistent, are the ambiguously depicted relationships between elements and the ambiguous method of classifying elements.
-In the following we want to isolate and describe the different issues.
+With this said we want to start off with the graphical notation \cite{Amthor18} uses to visualize the EL aspect and try to analyze and expose its problems in section \ref{analyzing_notation} and to propose matching solutions in section \ref{improving_notation}.
 
 \begin{mdframed}[style=mystyle,frametitle=Note]
 Henceforth all possible connections between elements like mappings, relations, constraints, etc.~are referred to as \textit{relationships}.
 \end{mdframed}
 
 
+
+\subsection{Analyzing the EL notation used by Amthor}
+\label{analyzing_notation}
+The major problems the graphical EL notation by \cite{Amthor18} has, that make the notation inconsistent, are the ambiguously depicted relationships between elements and the ambiguous method of classifying elements.
+In the following we want to isolate and describe 4 different problems.
+
 \vspace{4mm}
 \noindent
-\textbf{Problem 1: Set expressions in relationships}
+\textbf{Problem 1: Set expressions}
 \vspace{1mm}
 
 \noindent
 When comparing the visual summary (figure \ref{fig:EL_diagram}) with the table form (figure \ref{fig:EL_table}) we find several inconsistencies.
-
 One is that all mappings in the visual summary ignore the presence of power sets or similar expressions that can extend sets.
 For example $ua: U \rightarrow 2^R$ is drawn as a simple arrow from $U$ to $R$.
-The inconsistency (loss of information) becomes clear when converting the graphical statement back to a mathematical one:
+It depicts the participants in the mapping, but not the exact set expressions.
+This inconsistency (loss of information) becomes clear in particular after converting the graphical statement back to a mathematical one:
 \begin{align}
 (U \rightarrow 2^R) \not\equiv (U \rightarrow R)
 \end{align}
 
-\vspace{4mm}
+\vspace{8mm}
 \noindent
-\textbf{Problem 2: Multiple arguments in relationships}
+\textbf{Problem 2: Multiple arguments}
 \vspace{1mm}
 
 \noindent
 Relationships can have multiple input arguments.
-Unfortunately \cite{Amthor18} does not depict any mapping example with multiple arguments.
-It is unclear how to depict those.
+Unfortunately \cite{Amthor18} neither depict any relationship with multiple arguments, nor describe how to depict those.
 We can easily imagine a simple mapping with two arguments: e.g.~a mapping that takes a subject's and an object's identification to decide whether an user action is allowed on an object or not (IBAC, see section \ref{IBAC}):
 \begin{align}
 S \times O \rightarrow R 
 \end{align}
 
 \noindent
-The first naive attempt to extend the given notation would be drawing a line from $S$ and $O$, merge in one point and ending with an arrow head in $R$ (figure \ref{fig:inconsistent_two_arguments}).
+The first naive attempt to extend the given notation would be drawing a line from $S$ and $O$, merging in one point and ending with an arrow head in $R$ (figure \ref{fig:inconsistent_two_arguments}).
 Unfortunately this is not sufficient in terms of consistency, because the type of operation is not specified.
-The operation, that determines how a mapping's arguments interrelate, can vary (here: $\times$, but may be $\cup, \cap, \setminus, \Delta$, \dots just as well).
+The operation type, that determines how a mapping's arguments interrelate, can vary (here: $\times$, but may be $\cup, \cap, \setminus, \Delta$, \dots just as well).
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth-10cm]{../figures/chapter3/inconsistent_two_arguments.png}
-	\caption{Inconsistent depiction of a mapping with two arguments}
+	\caption{Naive attempt to depict a mapping with two arguments}
 	\label{fig:inconsistent_two_arguments}
 \end{figure}
 
-\vspace{4mm}
+\vspace{8mm}
 \noindent
-\textbf{Problem 3: Order of operations in relationships}
+\textbf{Problem 3: Order of operations and arguments}
 \vspace{1mm}
 
 \noindent
-Besides that, when handling two or more arguments the order of operations, which may be mathematically indicated with brackets, is relevant (see inequations below) and thus has to be considered and depicted as well:
-\begin{gather}
+Besides that, when handling two or more arguments the order of operations (may be mathematically indicated with brackets, see equation \ref{eq:order_operations}) and the order of arguments (see equation \ref{eq:order_arguments}) are relevant and thus have to be considered and depicted as well:
+\begin{equation}
+\begin{gathered}
 (\lbrace A \cap B \rbrace \cup C \rightarrow D) \not\equiv
-(A \cap \lbrace B \cup C \rbrace \rightarrow D) \\
+(A \cap \lbrace B \cup C \rbrace \rightarrow D)
+\end{gathered}\label{eq:order_operations}
+\end{equation}
+\vspace{-6mm}
+\begin{equation}
+\begin{gathered}
 \lbrace A \setminus B \rbrace \not\equiv \lbrace B \setminus A \rbrace 
-\end{gather}
+\end{gathered}\label{eq:order_arguments}
+\end{equation}\\
 
-\vspace{4mm}
+\vspace{8mm}
 \noindent
-\textbf{Problem 4: Ambiguously depicted categorization}
+\textbf{Problem 4: Categorization}
 \vspace{1mm}
 
 \noindent
 The EL categories are depicted by \cite{Amthor18} with dashed spaces at the bottom of a figure.
-These allow a form of categorizing by horizontally aligning elements into sections.
+These allow categorizing by horizontally aligning elements into sections.
 Additionally elements can be categorized by surrounding them with a dashed box (e.g.~\textit{R} in $LS_2$ in figure \ref{fig:ambiguous_categorization}).
 The horizontal alignment seems similar to a table categorization with columns, but unlike a table the graphical depiction uses arrows that connect elements to indicate a relationship between them.
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth-8cm]{../figures/chapter3/ambiguous_categorization.png}
-	\caption{Ambiguous categorization of a relation}
+	\caption{Ambiguous categorization of the relation RH}
 	\label{fig:ambiguous_categorization}
 \end{figure}
 
+\noindent
 When connecting two elements, which are positioned in different sections, arrows inevitably run through all sections lying between those sections.
 But arrows do not always connect elements across two sections:
 It is possible that they connect elements that are further away from each other or elements that belong to the same section.
 For example in figure \ref{fig:ambiguous_categorization} \textit{RH} is placed above $R$, because it is no member of one of the horizontally adjacent categories of $LS_1$ ($LA_1$ and $AR$); nevertheless it is incorrectly associated with $LS_1$ due to its horizontal alignment.
+As a result arrows will always be automatically associated with
 
-So arrows will automatically be associated with
 \begin{enumerate}[label=\alph*)]
 \item (all) categories lying between elements they connect, when those elements are members of different categories or 
 \item the category of a single element, when the relationship is a loop
 \end{enumerate}
+
+\noindent
 which is both unpreventable and undesired in many cases.
 
 But not just arrows, also \textit{sets} have a similar issue, because they can be member of multiple categories at once.
-In figure \ref{fig:ambiguous_categorization} we can construct such situation by adding a new element $E$, which is member of $LS_2$ and of a new category $C$, that is not horizontally adjacent to $LS_1$.
-Therefore we have to either extend the dashed rectangle for $LS_2$ up to category $C$ (which then inevitable overlaps with other undesired horizontal categories and therefore gets associated with them) or we have to depict $E$ two times at once (in $LS_2$ and $C$), which makes the figure inconsistent again, but also redundant and thus confusing.
+In figure \ref{fig:ambiguous_categorization} we can construct such situation by adding a new element $E$, which is member of $LS_1$ and of a new category $C$, that is not horizontally adjacent to $LS_1$, but left to $LA_1$ or right to $AR$.
+Therefore we have to depict $E$ two times at once (in $LS_1$ and $C$), which makes the figure redundant and thus confusing.\\
 
 
+\vspace{10mm}
 
 \subsection{Improving the EL notation used by Amthor}
 \label{improving_notation}
 \vspace{2mm}
 \noindent
-\textbf{Solution to problem 1: Relationship annotations and type indicators}
+\textbf{Solution to problem 1: Set expressions}
 \vspace{1mm}
 
 \noindent
-To counter the first major problem of the graphical EL notation used by \cite{Amthor18} we need a better way to depict relationships.
-This is done with two extensions: Annotations and type indicators.
-
-For indicating extended expressions for sets in context of a relationship like power sets we introduce \textit{relationship annotations}.
+To counter the ambiguous depiction of sets in context of a relationship we need a way to depict set expressions like power sets.
+For this we introduce \textit{relationship annotations}.
 These are simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}) and are positioned at the connection points of sets and relationships (see figure \ref{fig:relationship_annotation}).
 Unlike its semantics in UML or ERD, these relationship annotations do not indicate the (relative) amount of elements participating in a relationship, but describes a specific form of an element in context of a relationship it is part of.
 Just like UML/ERD the mathematical expression (e.g.~$2^B$) is depicted directly as textual expression without any additional graphical elements or symbols.
@@ -1096,7 +1103,7 @@ This may be even counter-intuitive, because humans are able to hold up to 7 diff
 
 \vspace{2mm}
 \noindent
-\textbf{Solution to problem 2: Operation type indicators}
+\textbf{Solution to problem 2: Multiple arguments}
 \vspace{1mm}
 
 \noindent
@@ -1110,10 +1117,21 @@ To avoid proximity and overlapping conflicts in case of short arrows or intersec
 This graphical element is the logical center and connection point for all arrows and lines from and to elements participating in this relationship.
 
 
+\vspace{2mm}
+\noindent
+\textbf{Solution to problem 3: Order of operations and arguments}
+\vspace{1mm}
+
+\noindent
+The order of operations can be easily depicted by \textit{cascading} operation type indicator elements introduced above.
+In rare cases also the order of arguments participating in \textit{one} operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction).
+To indicate and determine the order of arguments \textit{roman numerals} can be used as annotations.
+
+
 
 \vspace{4mm}
 \noindent
-\textbf{Solution to problem 3: Categorization by coloring}
+\textbf{Solution to problem 4: Categorization by coloring}
 \vspace{1mm}
 
 \noindent
