@@ -300,3 +300,25 @@
 \renewcommand{\labelitemiv}{$\bullet$}
 
 \usepackage[inline]{enumitem}
+
+
+\usepackage{xcolor}
+\usepackage[tikz]{bclogo}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{lipsum}
+\usepackage[many]{tcolorbox}
+
+\definecolor{bgblue}{RGB}{245,243,253}
+\definecolor{ttblue}{RGB}{91,194,224}
+
+\mdfdefinestyle{mystyle}{%
+  rightline=true,
+  innerleftmargin=10,
+  innerrightmargin=10,
+  outerlinewidth=3pt,
+  topline=false,
+  rightline=true,
+  bottomline=false,
+  skipabove=\topsep,
+  skipbelow=\topsep
+}

@@ -1135,7 +1135,7 @@ Although we now use coloring to indicate categories, elements can be still arran
 
 \section{Structure and Elements}
 \label{gsl_elements}
-The core structure of the notation is adopted from \cite{Amthor18} and is extended with the solutions proposed above.
+The core structure of the notation is adopted from \cite{Amthor18} and is extended with the improvements proposed above.
 Depicting categories by horizontal spaces indicated with dashed lines at the bottom of the diagram is removed and is replaced with coloring.
 
 Any figure now needs a legend (or reference to a legend) to show the assignment of colors to the corresponding EL categories.
@@ -1147,77 +1147,149 @@ The following figures are all based on these colors.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.5]{../figures/chapter3/legend.png}
+	\includegraphics[scale=0.45]{../figures/chapter3/legend.png}
 	\caption{Suggested legend for EL categorization coloring}
 	\label{fig:legend}
 \end{figure}
 
 \subsection{Sets}
-Regarding their shape sets remain the same (circles/ellipses), but now have colored areas to indicate category memberships.
+Regarding their appearance sets remain mostly the same (see figure \ref{fig:set}).
+The unclosed area of a set can now be colored to indicate category memberships.
+Its name and internal definition depicted by a formula are optional.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter3/set.png}
+	\caption{Set element layout}
+	\label{fig:set}
+\end{figure}
+
+\noindent
 The depiction of subsets is unaltered as well: They are drawn as smaller circles inside their supersets.
-They can be colored individually to their superset.
+They can be colored individually to their superset.\\
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=0.4]{../figures/chapter3/subsets.png}
-	\caption{Set element with two differently categorized subsets}
+	\caption{Set element with differently categorized subsets}
 	\label{fig:subsets}
 \end{figure}
 
-The internal definition of sets (equations like $P = 2^{O \times OP}$ in $RBAC_0$, see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) is not depicted in a graphical way for the same reasons as for the usage of a mathematical expression for annotations and mathematical symbols for argument operation types.
-Still set definitions can be depicted with a mathematical expression inside the set itself.
+\noindent
+The internal definition of sets (equations like $P = 2^{O \times OP}$ in $RBAC_0$, see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) is not depicted in a graphical way for the same reasons as for the usage of a mathematical expression for annotations and mathematical symbols for argument operation types (see section \ref{improving_notation}).
+Still set definitions can be depicted with a mathematical expression inside the set itself as shown in figure \ref{fig:set_with_internal_def}.\\
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=0.5]{../figures/chapter3/set_with_internal_def.png}
-	\caption{Example for a set element with its internal definition}
+	\caption{Set element with its internal definition as formula}
 	\label{fig:set_with_internal_def}
 \end{figure}
 
+\noindent
+Indicating a membership to two or more categories is done by \textit{multi-coloring} the unclosed area of an element.
+Multi-coloring uses uniformly divided circular sectors to partition the coloring area.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.3]{../figures/chapter3/set_multicolor.png}
+	\caption{Sets with multiple category memberships}
+	\label{fig:set_multicolor}
+\end{figure}
 
 
 \subsection{Relationships}
 Simple arrows depict mappings, double-sided arrows depict relations and dashed-lined arrows depict constraints -- unchanged.
-Unlike its origin notation they can now indicate not just its relationship type (mapping, relation, constraint), but also the operation type that describes how its arguments are connected.
-Relationships have their name next to it.
-In the case of mappings the name is encapsulated into a rectangle.
-This is done to have an area to depict its color for categorization.
-Many -- especially bright -- colors like yellow do not have a high contrast to their background (generally white), so coloring lines or object's outlines is hard to see.
-To enhance the visual perception we decided to continue using black arrows and lines to maximize the contrast in combination with a white background.
-To still be able to classify relationships by color, they need an element to represent its color.
+Mappings and relations can be extended with additional rhombus objects to indicate the type of operation two or more sets are connected with.
+
+Unlike its origin notation they can now indicate not just its relationship type (mapping, relation, constraint), but also the operation type that describes how its arguments are connected, when there is more than one argument.
+Many -- especially bright -- colors like yellow do not have a high contrast to their background (generally white), so colored thin objects like lines or object's outlines are hard to see.
+So, to enhance the visual perception, we continue using black arrows and lines to maximize the contrast in combination with a white background.
+To still be able to classify relationships by color, relationship elements need a sufficient enclosed area that can represent its color.
+Relations already have such area: The rhombus shape holding the operation type symbol.
+Relations always have at least one operation type symbol.
+Mappings do not.
+So for mappings we introduce a rectangle to obtain a sufficient coloring area.
+A Mapping also has its names encapsulated into this rectangle.
+A relation holds its name in its rhombus shape above its operation type symbol (see figure \ref{fig:relationships}).\\
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.4]{../figures/chapter3/relationships.png}
-	\caption{Relationships: Mapping, relation and constraint}
+	\includegraphics[width=\linewidth-1cm]{../figures/chapter3/relationships.png}
+	\caption{Relationship types}
 	\label{fig:relationships}
 \end{figure}
 
+\noindent
+Handling two or more arguments is possible now as well as handling multiple operations and any order of operations as depicted in figure \ref{fig:relationship_operation_2args} and \ref{fig:relationship_operation_3args}.
+When having multiple operation types like in figure \ref{fig:relationship_operation_3args} the name of the relationship is encapsulated in the last object.
 
-% Annotation: If 1 do not show
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter3/relationship_operation_2args.png}
+	\caption{Mapping with two arguments $f:A \times B \rightarrow Z$}
+	\label{fig:relationship_operation_2args}
+\end{figure}
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter3/relationship_operation_3args.png}
+	\caption{Mapping with different operations $f:A \times \lbrace B \cup C \rbrace \rightarrow Z$ }
+	\label{fig:relationship_operation_3args}
+\end{figure}
+
+In rare cases the order of arguments participating in \textit{one} operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction).
+To indicate and determine the order of arguments roman numerals can be used as annotations as depicted in figure \ref{fig:operation_order}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter3/operation_order.png}
+	\caption{Indicating the order of arguments for an operation}
+	\label{fig:operation_order}
+\end{figure}
+
+To be able to depict an extended set expression in context of a relationship, annotations are used as seen in figure \ref{fig:relationship_annotation}.
+In many cases sets are used in their unaltered form and no extra expression is needed.
+In this case the annotation is not depicted to reduce redundancy.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter3/relationship_annotation.png}
+	\caption{Relationship annotations for improved set expressions}
+	\label{fig:relationship_annotation}
+\end{figure}
+
+
+
+\section{Example}
+\label{gsl_example}
+In this section we want to depict some example \cite{Amthor18} uses in our newly developed notation.
 % Example Amthor vs example coloring
-
 % Example multi-coloring set, example arrow
 
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\linewidth]{../figures/chapter3/RBAC96.png}
+	\includegraphics[width=\linewidth]{../figures/chapter3/RBAC96_v1.png}
 	\caption{$RBAC_3$ example}
 	\label{fig:RBAC96_example}
 \end{figure}
 
 
 
-\section{Visualization on a Higher Level of Abstraction}
-\label{higher_abstraction_level}
+%\section{Visualization on a Higher Level of Abstraction}
+%\label{higher_abstraction_level}
 
 
 
 \section{Summary}
 \label{gsl_summary}
-% essential: find interfaces/break points where graphical and where mathematical expression is reasonable
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text  Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text   Text Text.
+Text Text Text Text Text Text.
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text  Text Text Text Text.
+Text Text Text Text Text Text.
+Text Text Text Text Text  Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.
+Text Text Text Text Text Text Text TextText Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.% essential: find interfaces/break points where graphical and where mathematical expression is reasonable
 
 
 
@@ -1225,7 +1297,8 @@ To still be able to classify relationships by color, they need an element to rep
 \cleardoublepage
 \chapter{Design: Editor GUI}
 \label{editor_design}
-% ein/ausblendbar, Übersicht, "layer"
+% ein/ausblendbar wegen Übersicht, 
+% "Filter-layers" (visibility filter): Categories, Annotations, Internal structure formulas, Names/Identifiers, Operation rhombus, all relationships, mappings/relations/constraints
 
 \section{Structure}
 \label{editor_structure}
@@ -1240,11 +1313,14 @@ To still be able to classify relationships by color, they need an element to rep
 \cleardoublepage
 \chapter{Implementation}
 \label{implementation}
-	
-	
+% Auto-drawing elements/graphs? Framework? Library?
+% Auto-Aligning graphs?
+% How depict formulas?
+% File/Database storage (Convert everything from data model!)
+
 \section{Implementation Base}
 \label{implementation_base}
-Qt, MVC
+% Qt, MVC
 
 \section{Structure}
 \label{implementation_structure}
