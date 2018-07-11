@@ -954,8 +954,10 @@ Reinventing interaction design is not only very time consuming, but actually eve
 \label{gsl_design}
 In this chapter we develop a notation to graphically model the Entity Labeling aspect (see section \ref{EL}) of Aspect-oriented Security Engineering.
 In the first section \ref{gsl_concept} the general idea of how to achieve this and the overall concept are explained.
-For this the notation used by \cite{Amthor18} is investigated regarding its completeness, consistency and general weaknesses.
-In section \ref{gsl_elements} the graphical elements the system uses are explained, followed by section \ref{gsl_structure}, which depicts the overall structure of the system.
+For this the notation used by \cite{Amthor18} is investigated regarding its consistency and general weaknesses.
+Afterwards possible adjustments to solve these problems and to improve the notation are proposed.
+In section \ref{gsl_elements} the graphical elements the system uses are described. 
+%, followed by section \ref{gsl_structure}, which depicts the overall structure of the system.
 %Section \ref{higher_abstraction_level} will be about the visualization on a higher abstraction level (when $m>1$).
 
 
@@ -974,11 +976,16 @@ With this said we want to start off with the graphical notation \cite{Amthor18} 
 
 \subsection{Analyzing the EL notation used by Amthor}
 \label{analyzing_notation}
-The two major problems of the graphical EL notation used by \cite{Amthor18}, which makes it inconsistent and ambiguous, are the depicted relationships between elements and the method of classifying elements.
+The two major problems of the graphical EL notation used by \cite{Amthor18}, which makes it inconsistent and ambiguous, are the ambiguously depicted relationships between elements and the ambiguous method of classifying elements.
+
+\begin{mdframed}[style=mystyle,frametitle=Web addresses in text]
+Note: Henceforth all possible connections between elements like mappings, relations, constraints, etc.~are referred to as \textit{relationships}.
+\end{mdframed}
+
 
 \vspace{4mm}
 \noindent
-\textbf{Problem 1: Ambiguously depicted relationships}
+\textbf{Problem 1: Set expressions in relationships}
 \vspace{1mm}
 
 \noindent
@@ -991,15 +998,23 @@ The inconsistency (loss of information) becomes clear when converting the graphi
 (U \rightarrow 2^R) \not\equiv (U \rightarrow R)
 \end{align}
 
+\vspace{4mm}
 \noindent
-Also mappings can have multiple input arguments.
-Unfortunately \cite{Amthor18} does not depict any mapping example with multiple arguments, but we can easily imagine a simple mapping with two arguments: e.g.~a mapping that takes a subject's and an object's identification to decide whether an user action is allowed on an object or not (IBAC, see section \ref{IBAC}):
+\textbf{Problem 2: Multiple arguments in relationships}
+\vspace{1mm}
+
+\noindent
+Relationships can have multiple input arguments.
+Unfortunately \cite{Amthor18} does not depict any mapping example with multiple arguments.
+It is unclear how to depict those.
+We can easily imagine a simple mapping with two arguments: e.g.~a mapping that takes a subject's and an object's identification to decide whether an user action is allowed on an object or not (IBAC, see section \ref{IBAC}):
 \begin{align}
 S \times O \rightarrow R 
 \end{align}
 
 \noindent
-The ad-hoc idea is to draw a line from $S$ and $O$, merge in one point and ending with an arrow head in $R$ (figure \ref{fig:inconsistent_two_arguments}) is not sufficient in terms of consistency, because the type of operation is not specified.
+The first naive attempt to extend the given notation would be drawing a line from $S$ and $O$, merge in one point and ending with an arrow head in $R$ (figure \ref{fig:inconsistent_two_arguments}).
+Unfortunately this is not sufficient in terms of consistency, because the type of operation is not specified.
 The operation, that determines how a mapping's arguments interrelate, can vary (here: $\times$, but may be $\cup, \cap, \setminus, \Delta$, \dots just as well).
 
 \begin{figure}[htb]
@@ -1012,14 +1027,14 @@ The operation, that determines how a mapping's arguments interrelate, can vary (
 \noindent
 Besides that, when handling two or more arguments the order of operations, which may be mathematically indicated with brackets, is relevant (see inequations below) and thus has to be considered and depicted as well:
 \begin{gather}
-\lbrace A \setminus B \rbrace \not\equiv \lbrace B \setminus A \rbrace \\
 (\lbrace A \cap B \rbrace \cup C \rightarrow D) \not\equiv
-(A \cap \lbrace B \cup C \rbrace \rightarrow D)
+(A \cap \lbrace B \cup C \rbrace \rightarrow D) \\
+\lbrace A \setminus B \rbrace \not\equiv \lbrace B \setminus A \rbrace 
 \end{gather}
 
 \vspace{4mm}
 \noindent
-\textbf{Problem 2: Ambiguously depicted categorization}
+\textbf{Problem 3: Ambiguously depicted categorization}
 \vspace{1mm}
 
 \noindent
@@ -1070,17 +1085,16 @@ Unlike its semantics in UML or ERD, these relationship annotations do not indica
 Just like UML/ERD the mathematical expression (e.g.~$2^B$) is depicted directly as textual expression without any additional graphical elements or symbols.
 This makes it universal to depict any mathematical expression needed in context of a set argument.
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[scale=0.4]{../figures/chapter3/relationship_annotation.png}
-	\caption{Relationship annotations for improved set expressions}
-	\label{fig:relationship_annotation}
-\end{figure}
-
 At this level of detail specifying special graphical elements (e.g.~differently shaped arrow heads) for every possible expression is not reasonable due to the high amount of different elements needed.
 This may be even counter-intuitive, because humans are able to hold up to 7 different elements in their visual buffer at once; beyond that learning/working becomes harder due to constantly swapping information between cerebral areas (see section \ref{human_optical_perception} about human optical perception).
 
-The second extension is the \textit{type indicator}, which allows specifying the type of operation between two elements of a relationship.
+\vspace{2mm}
+\noindent
+\textbf{Solution to problem 2: Operation type indicators}
+\vspace{1mm}
+
+\noindent
+The second extension is the \textit{operation type indicator}, which allows specifying the type of an operation between elements of a relationship.
 In the notation \cite{Amthor18} uses, relationships do not specify any internal operation type between elements, just the relationship type with the depiction of different arrows (mapping, relation, constraint).
 Therefore any relationship is depicted incompletely due to not knowing in which way its sets are interrelated ($\times, \cup, \cap, \setminus, \Delta$, \dots).
 Just like before it seems not reasonable to introduce new graphical elements for the purpose of indicating the type of operation at this level of detail and with that amount of different possible types.
@@ -1089,18 +1103,11 @@ It is positioned in the middle of its corresponding relationship arrow.
 To avoid proximity and overlapping conflicts in case of short arrows or intersecting arrows the textual indicator is placed inside a graphical shape: a rhombus (based on ERD relationships, see page \pageref{fig:ERD_relationship}).
 This graphical element is the logical center and connection point for all arrows and lines from and to elements participating in this relationship.
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[scale=0.4]{../figures/chapter3/relationship_operation_2args.png}
-	\caption{Relationship with operation type and two arguments}
-	\label{fig:relationship_operation_2args}
-\end{figure}
-
 
 
 \vspace{4mm}
 \noindent
-\textbf{Solution to problem 2: Categorization by coloring}
+\textbf{Solution to problem 3: Categorization by coloring}
 \vspace{1mm}
 
 \noindent
@@ -1120,6 +1127,8 @@ The gestalt factor \textit{shape} is already occupied for depicting an elements 
 But \textit{color} seems to be a suitable solution.
 Coloring can indicate an element's classification without proximity, aligning or altering its shape and is applicable to sets (circles, ellipses) as well as to relationships (arrows, lines).
 Also multiple category memberships can be depicted by multi-coloring enclosed areas of elements.
+
+Although we now use coloring to indicate categories, elements can be still arranged in groups (horizontally, vertically, freely) to support the perception of belonging together as far as the structure of a concrete model does allow that.
 
 
 
