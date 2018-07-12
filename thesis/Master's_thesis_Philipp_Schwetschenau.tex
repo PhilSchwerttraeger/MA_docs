@@ -1077,7 +1077,7 @@ which is both unpreventable and undesired in many cases.
 
 But not just arrows, also \textit{sets} have a similar issue, because they can be member of multiple categories at once.
 In figure \ref{fig:ambiguous_categorization} we can construct such situation by adding a new element $E$, which is member of $LS_1$ and of a new category $C$, that is not horizontally adjacent to $LS_1$, but left to $LA_1$ or right to $AR$.
-Therefore we have to depict $E$ two times at once (in $LS_1$ and $C$), which makes the figure redundant and thus confusing.\\
+In this scenario there would be need to depict $E$ two times at once (in $LS_1$ and $C$), which makes the figure redundant and thus confusing, especially for the activity of iteratively developing a model, which is the major task EL was actually designed for to support.\\
 
 
 \vspace{10mm}
@@ -1285,11 +1285,23 @@ In rare cases the order of arguments participating in \textit{one} operation is 
 
 \section{Example}
 \label{gsl_example}
-In this section we want to depict an example \cite{Amthor18} uses in our newly developed notation.
-In the appendix (\ref{}) are two more examples (HIX, ABAC).
-% Example Amthor vs example coloring
-% Example multi-coloring set, example arrow
+To showcase that we can now model all relevant aspects of EL -- even for $m>1$ (see \textit{hierarchical EL}, section \ref{HEL}) -- we want to depict the HIX example with added role hierarchy \cite{Amthor18} uses as example with our newly developed notation.
 
+The example refers to the example depicted in section \ref{EL}, but with one additional level of indirection $m=2$.
+To depict the additional level of indirection ($LS_2, LA_2$), the color legend has to be expanded accordingly.
+It corresponds to its original depiction in figure \ref{fig:EL_diagram} and can be compared to it to observe the changes we introduced in this section.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth-3cm]{../figures/chapter3/HIX.png}
+	\caption{HIX example with $m=2$ \citep{Amthor18}}
+	\label{fig:HIX}
+\end{figure}
+
+The layout was adapted to better compare both figures, but is not limited to this form in comparison to its original notation.
+By removing the need of spatial alignment and by introducing colors for categorizing, models now can be arranged freely regarding its graph layout.
+
+More examples ($RBAC_3$, $ABAC$) can be found in the appendix on page \pageref{}.
 
 \begin{figure}[htb]
 	\centering
@@ -1307,12 +1319,7 @@ In the appendix (\ref{}) are two more examples (HIX, ABAC).
 
 \section{Summary}
 \label{gsl_summary}
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text  Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text   Text Text.
-Text Text Text Text Text Text.
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text  Text Text Text Text.
-Text Text Text Text Text Text.
-Text Text Text Text Text  Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.
-Text Text Text Text Text Text Text TextText Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.% essential: find interfaces/break points where graphical and where mathematical expression is reasonable
+% essential: find interfaces/break points where graphical and where mathematical expression is reasonable
 
 
 
