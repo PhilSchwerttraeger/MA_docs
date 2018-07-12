@@ -1147,6 +1147,7 @@ The gestalt factor \textit{shape} is already reserved for depicting an element's
 But \textit{color} seems to be a suitable solution.
 Coloring can indicate an element's classification without proximity, aligning or altering its shape and is applicable to sets (circles, ellipses) as well as to relationships (arrows, lines).
 Also multiple category memberships can be depicted by multi-coloring enclosed areas of elements.
+This will be beneficial in particular when depicting models with multiple levels of indirection (see hierarchical EL in section \ref{HEL}).
 
 Although we now use coloring to indicate categories, elements can be still arranged in groups (horizontally, vertically, freely) to support the perception of belonging together as far as the structure of a concrete model does allow that.
 
@@ -1163,11 +1164,12 @@ With $m=1$ we have six different categories and therefore six colors.
 Using the primary colors (red, blue, yellow) and their mixtures (green, orange, purple) maximizes the visual differences between those and avoid visual misunderstandings.
 Brighten up the colors is a common method to make the coloring less prominent and the notation less optical aggressive due to its higher contrast to (black) text, lines and object's outlines.
 A suggested color selection is shown in figure \ref{fig:legend}.
-The following figures are all based on these colors.
+The following figures all base on this color legend, therefore it is not necessary to depict it in every figure.
+For multiple levels of indirection ($m>1$) the color legend needs to be extended accordingly.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.4]{../figures/chapter3/legend.png}
+	\includegraphics[scale=0.5]{../figures/chapter3/legend.png}
 	\caption{Suggested legend for EL categorization coloring}
 	\label{fig:legend}
 \end{figure}
