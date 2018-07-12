@@ -154,7 +154,7 @@ In addition to that a GUI-based editor should be developed as a prototype to mak
 \chapter{Fundamentals}
 \label{fundamentals}
 This chapter provides information to fundamentals necessary for this thesis.
-It will serve as a basis for design decisions in the following chapter~\ref{gsl_design} and chapter~\ref{editor_design}.
+It will serve as a basis for design decisions in the following chapter~\ref{gsl} and chapter~\ref{editor_design}.
 
 Section \ref{security_models} introduces two fundamental families of security models: IBAC and RBAC.
 It also describes a graphical notation for depicting RBAC models by \cite{Sandhu96}.
@@ -162,7 +162,7 @@ This notation will serve as first basis for graphical modeling in this domain.
 Section \ref{AOSE} focuses on the Aspect-oriented Security Engineering (AOSE) proposed by \citet*{Amthor18}.
 It covers the Entity Labeling Aspect in particular, one aspect of AOSE, which is going to be essential regarding the task to design a graphical specification language for it.
 Also the notation used by \citet*{Amthor18} to graphically model the process of Entity-Labeling, which was inspired by the graphical RBAC notation by \cite{Sandhu96}, will be described.
-This will be the starting point in designing the graphical specification language in chapter \ref{gsl_design}.
+This will be the starting point in designing the graphical specification language in chapter \ref{gsl}.
 
 In section~\ref{graphical_notations} the well-established graphical notations \textit{Unified Modeling Language} and \textit{Entity-Relationship} are described.
 Based on human optical perception and gestalt laws section~\ref{perception} provides information on how we perceive and evaluate optical stimuli regarding properties like shape and closeness.
@@ -356,7 +356,7 @@ For example \textit{Permissions P} does not indicate that its elements are defin
 \section{Aspect-oriented Security Engineering}
 \label{AOSE}
 In this section the Aspect-oriented Security Engineering proposed by \cite{Amthor18} is described with focus on its Entity Labeling aspect.
-The content of this section will act as fundamental basis of information for designing a graphical specification language for the Entity-Labeling aspect later in chapter \ref{gsl_design}.
+The content of this section will act as fundamental basis of information for designing a graphical specification language for the Entity-Labeling aspect later in chapter \ref{gsl}.
 
 Aspect-oriented Security Engineering (AOSE) is a new approach proposed by \cite{Amthor18} to improve the process of model-based security engineering.
 With an increasing number and complexity of security models the engineering process that goes along also became more complex and therefore prone to human errors.
@@ -543,7 +543,7 @@ This especially becomes evident when comparing the notation to ELs table form.
 
 The initial motivation for proposing the EL aspect was to support security engineering, e.g. by improving the communication between different people involved in the process.
 This can be achieved by using a graphical notation, but will not be any useful support, when the notation is not defined unambiguously and consistently.
-In chapter \ref{gsl_design} we will start off with this notation and try to identify its problems to create a more powerful notation system.
+In chapter \ref{gsl} we will start off with this notation and try to identify its problems to create a more powerful notation system.
 
 \subsection{Hierarchical Entity Labeling}
 \label{HEL}
@@ -582,7 +582,7 @@ $LA_2$ and $LS_2$ are depicted as dashed rectangles within the diagram itself an
 \label{graphical_notations}
 In this section two well-established graphical notation models are presented: UML and ER.
 Due to being standard and de facto standard, they have a high relevance in the domain of graphical modeling. 
-UML and ER come with reasonable concepts to illustrate structural information and semantic properties (for types of information visualization in science see section \ref{perception}).
+UML and ER come with reasonable concepts to illustrate structural information and semantic properties (for types of information visualization in science see section \ref{perception}), which serve as helpful pool for designing a graphical notation.
 
 \subsection{Unified Modeling Language}
 \label{UML}
@@ -671,7 +671,7 @@ Also unlike UML ER is not an officially specified standard.
 ER has different notation variants, which will be depicted in section \ref{ERD_notations}.
 Figure \ref{fig:ERD_minimal_example} shows an example of an ERD.
 
-
+\vspace{4mm}
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth]{../figures/chapter2/ERD_minimal_example.png}
@@ -747,7 +747,6 @@ For example the \textit{orders}-relationship in figure \ref{fig:ERD_minimal_exam
 \item A client is connceted to no, one or multiple orders (right-to-left).
 \end{itemize}
 
-\noindent
 %An entity type needs to have a \textit{primary key} defined in order to have its elements unambiguously identifiable.
 %The primary key is an attribute or a combination of attributes of the entity type and has to be unique among all other attribute values.
 %A primary key attribute is graphically indicated with an underlined name (see \textit{ClientID} in figure \ref{fig:ERD_minimal_example}).
@@ -755,6 +754,10 @@ For example the \textit{orders}-relationship in figure \ref{fig:ERD_minimal_exam
 %Besides this basic system, ERDs can indicate some additional information.
 %For example besides those elements described above, there are variants of them with a double frame line to indicate a \textit{weak} property (no primary key, dependent to parent elements) or a dashed frame line to indicate a \textit{multivalued} property.
 %In context of this work those will not be relevant.
+
+\noindent
+The idea of ERD annotations is suitable solution to graphically model a special aspect or property in context of a relationship between elements.
+This concept will be adopted later in chapter \ref{gsl}.
 
 
 
@@ -790,7 +793,7 @@ When entity types are treated as classes, entities as objects, relationships as 
 \section{Perception}
 \label{perception}
 This section is about the human visual perception.
-Its content will act as fundamental basis for designing a graphical specification language in chapter \ref{gsl_design} as well as for designing an editor's graphical user interface in chapter \ref{editor_design}.
+Its content will act as fundamental basis for designing a graphical specification language in chapter \ref{gsl} as well as for designing an editor's graphical user interface in chapter \ref{editor_design}.
 
 In science there are two types of visualizing information:
 One is to present absolute or relative primitive values (tables, bar graphs, pie charts) and one to depict structural information and semantic properties (specialized graphical systems like the class diagram of UML or the Chen notation of ERD).
@@ -806,7 +809,7 @@ These laws apply in particular when we look at graphical user interfaces (\texti
 They can describe how and why we look at certain aspects first or find some aspect more easy or hard to understand than another.
 Considering gestalt laws while designing any graphical content can help improving its visual quality and solving graphical problems and therefore also enhance the handling for its readers or users.
 
-Given that there is a large number of various gestalt laws, the following list (based on \citep{Goeckel01a}, \citep{Heinecke04a} and \citep{Sternberg}) describes some of them that are relevant for the task of designing a graphical specification language in chapter \ref{gsl_design}:
+Given that there is a large number of various gestalt laws, the following list (based on \citep{Goeckel01a}, \citep{Heinecke04a} and \citep{Sternberg}) describes some of them that are relevant for the task of designing a graphical specification language in chapter \ref{gsl}:
 
 \begin{description}
 \item[1) Law of Prägnanz]\hfill \\
@@ -951,7 +954,7 @@ Reinventing interaction design is not only very time consuming, but actually eve
 
 \cleardoublepage
 \chapter{Design: Graphical Specification Language}
-\label{gsl_design}
+\label{gsl}
 In this chapter we develop a notation to graphically model the Entity Labeling aspect (see section \ref{EL}) of Aspect-oriented Security Engineering.
 In the first section \ref{gsl_concept} the general idea and approach for this are explained.
 In this conctext the notation used by \cite{Amthor18} is investigated regarding its inconsistency and general weaknesses.
@@ -1393,7 +1396,7 @@ The following task will be to design and develop an appropriate software system 
 \chapter*{Appendix}
 \label{appendix}
 \section{Additional examples}
-The following figure depicts the $RBAC_3$ model in the graphical notation developed in chapter \ref{gsl_design}.
+The following figure depicts the $RBAC_3$ model in the graphical notation developed in chapter \ref{gsl}.
 For its definition see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}.
 
 \begin{figure}[htb]
