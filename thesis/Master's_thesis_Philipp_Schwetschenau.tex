@@ -1000,7 +1000,7 @@ This inconsistency (loss of information) becomes clear in particular after conve
 
 \vspace{8mm}
 \noindent
-\textbf{Problem 2: Multiple arguments}
+\textbf{Problem 2: Operation types}
 \vspace{1mm}
 
 \noindent
@@ -1063,8 +1063,7 @@ The horizontal alignment seems similar to a table categorization with columns, b
 
 \noindent
 When connecting two elements, which are positioned in different sections, arrows inevitably run through all sections lying between those sections.
-But arrows do not always connect elements across two sections:
-It is possible that they connect elements that are further away from each other or elements that belong to the same section.
+Due to arrows not always connecting elements across just two sections, it is possible that they connect elements that are further away from each other or elements that belong to the same section.
 For example in figure \ref{fig:ambiguous_categorization} \textit{RH} is placed above $R$, because it is no member of one of the horizontally adjacent categories of $LS_1$ ($LA_1$ and $AR$); nevertheless it is incorrectly associated with $LS_1$ due to its horizontal alignment.
 As a result arrows will always be automatically associated with
 
@@ -1093,27 +1092,26 @@ Therefore we have to depict $E$ two times at once (in $LS_1$ and $C$), which mak
 \noindent
 To counter the ambiguous depiction of sets in context of a relationship we need a way to depict set expressions like power sets.
 For this we introduce \textit{relationship annotations}.
-These are simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}) and are positioned at the connection points of sets and relationships (see figure \ref{fig:relationship_annotation}).
-Unlike its semantics in UML or ERD, these relationship annotations do not indicate the (relative) amount of elements participating in a relationship, but describes a specific form of an element in context of a relationship it is part of.
+These are positioned at the connection points of sets and relationships, simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}).
+Unlike their semantics in UML or ERD, these relationship annotations do not indicate the amount of elements participating in a relationship, but a specific form of an element in context of a relationship it is part of.
 Just like UML/ERD the mathematical expression (e.g.~$2^B$) is depicted directly as textual expression without any additional graphical elements or symbols.
-This makes it universal to depict any mathematical expression needed in context of a set argument.
+This makes it universal to depict any mathematical expression needed.
 
-At this level of detail specifying special graphical elements (e.g.~differently shaped arrow heads) for every possible expression is not reasonable due to the high amount of different elements needed.
+At this level of detail specifying special graphical elements (e.g.~special arrow heads) for every possible expression is not reasonable due to the high amount of different elements existing.
 This may be even counter-intuitive, because humans are able to hold up to 7 different elements in their visual buffer at once; beyond that learning/working becomes harder due to constantly swapping information between cerebral areas (see section \ref{human_optical_perception} about human optical perception).
 
 \vspace{2mm}
 \noindent
-\textbf{Solution to problem 2: Multiple arguments}
+\textbf{Solution to problem 2: Operation types}
 \vspace{1mm}
 
 \noindent
-The second extension is the \textit{operation type indicator}, which allows specifying the type of an operation between elements of a relationship.
-In the notation \cite{Amthor18} uses, relationships do not specify any internal operation type between elements, just the relationship type with the depiction of different arrows (mapping, relation, constraint).
-Therefore any relationship is depicted incompletely due to not knowing in which way its sets are interrelated ($\times, \cup, \cap, \setminus, \Delta$, \dots).
-Just like before it seems not reasonable to introduce new graphical elements for the purpose of indicating the type of operation at this level of detail and with that amount of different possible types.
+The second extension is the \textit{operation type indicator}, which allows specifying the type of an operation between elements in a relationship.
+In the notation \cite{Amthor18} uses, relationships do not specify any internal operation type between elements, just the relationship type by different arrows (mapping, relation, constraint).
+Therefore any relationship is depicted incompletely.
+Again, it seems not reasonable to introduce new graphical elements to indicate the type of operation at this level of detail and with that amount of different possible types.
 Again we use the textual mathematical expression/symbol.
-It is positioned in the middle of its corresponding relationship arrow.
-To avoid proximity and overlapping conflicts in case of short arrows or intersecting arrows the textual indicator is placed inside a graphical shape: a rhombus (based on ERD relationships, see page \pageref{fig:ERD_relationship}).
+To avoid proximity and overlapping conflicts the operation type indicator is encapsulated in a graphical shape: a rhombus (based on ERD relationships, see page \pageref{fig:ERD_relationship}).
 This graphical element is the logical center and connection point for all arrows and lines from and to elements participating in this relationship.
 
 
@@ -1125,7 +1123,7 @@ This graphical element is the logical center and connection point for all arrows
 \noindent
 The order of operations can be easily depicted by \textit{cascading} operation type indicator elements introduced above.
 In rare cases also the order of arguments participating in \textit{one} operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction).
-To indicate and determine the order of arguments \textit{roman numerals} can be used as annotations.
+To indicate and determine the order of arguments \textit{roman numerals} can be used as additional annotations.
 
 
 
@@ -1135,19 +1133,19 @@ To indicate and determine the order of arguments \textit{roman numerals} can be 
 \vspace{1mm}
 
 \noindent
-To counter the second major problem of the graphical EL notation used by \cite{Amthor18} we need a better way to depict category memberships.
-Unfortunately -- as already mentioned above -- falsely classified elements are unavoidable with the method of horizontally aligning elements.
-Expanding the method into two dimensions will not solve this issue either, because it does not change the situation of falsely associated elements with horizontally (or vertically) aligned categories.
-Therefore aligning elements to one (or two) axis is not suitable for this task of classification.
+To counter the problem of ambiguously categorization we need a better way to depict category memberships.
+Unfortunately -- as observed above -- falsely categorized elements are unavoidable with the method of horizontally aligning elements.
+Expanding the method into two dimensions will not solve this issue either, because it does not change the situation of falsely associated elements with spatially aligned categories.
+Therefore aligning elements along one (or two) axis is not suitable for this task of categorization.
 
-Abandoning the idea of horizontal aligning still leaves the option to use dashed rectangles to classify elements.
+Abandoning the idea of horizontal aligning still leaves the option to use dashed rectangles to categorize elements.
 In the worst case this would lead to every item in the figure being encapsulated into its very own rectangle.
-This adds multiple new elements to a figure and makes it unnecessarily complex to determine all elements of a category as a result.
+This adds multiple new elements to a figure and makes it unnecessarily hard to oversee all elements of one category.
 
 As described in section \ref{gestalt_laws} \textit{gestalt laws} can help to solve graphical-based tasks.
-The method of classifying by horizontally aligning elements utilizes the \textit{law of proximity}, but due to elements being potentially widely distributed the \textit{law of similarity} seems more suitable for this instead.
-The law says that objects can be logically grouped, although they may not be in close range to each other, with the help of \textit{gestalt factors}.
-The gestalt factor \textit{shape} is already occupied for depicting an elements type, \textit{brightness} may be too subtle, \textit{size} impractical, \textit{orientation} and \textit{rotation} not applicable to circles or arrows with fixed start and end points.
+The method of categorizing by horizontally aligning elements utilizes the \textit{law of proximity}, but due to elements being potentially widely distributed the \textit{law of similarity} seems more suitable for this task instead.
+According to the law objects can be logically grouped, although they may not be in close range to each other, with the help of \textit{gestalt factors}.
+The gestalt factor \textit{shape} is already reserved for depicting an element's type, \textit{brightness} may be too subtle, \textit{size}, \textit{orientation} and \textit{rotation} impractical.
 But \textit{color} seems to be a suitable solution.
 Coloring can indicate an element's classification without proximity, aligning or altering its shape and is applicable to sets (circles, ellipses) as well as to relationships (arrows, lines).
 Also multiple category memberships can be depicted by multi-coloring enclosed areas of elements.
@@ -1201,16 +1199,15 @@ They can be colored individually to their superset.\\
 
 \noindent
 The internal definition of sets (equations like $P = 2^{O \times OP}$ in $RBAC_0$, see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) is not depicted in a graphical way for the same reasons as for the usage of a mathematical expression for annotations and mathematical symbols for argument operation types (see section \ref{improving_notation}).
-Still set definitions can be depicted with a mathematical expression inside the set itself as shown in figure \ref{fig:set_with_internal_def}.\\
+Still set definitions can be depicted with a mathematical expression inside the set itself.% as shown in figure \ref{fig:set_with_internal_def}.\\
+%
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics[scale=0.5]{../figures/chapter3/set_with_internal_def.png}
+%	\caption{Set element with its internal definition as formula}
+%	\label{fig:set_with_internal_def}
+%\end{figure}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[scale=0.5]{../figures/chapter3/set_with_internal_def.png}
-	\caption{Set element with its internal definition as formula}
-	\label{fig:set_with_internal_def}
-\end{figure}
-
-\noindent
 Indicating a membership to two or more categories is done by \textit{multi-coloring} the unclosed area of an element.
 Multi-coloring uses uniformly divided circular sectors to partition the coloring area.
 
@@ -1224,18 +1221,30 @@ Multi-coloring uses uniformly divided circular sectors to partition the coloring
 
 \subsection{Relationships}
 Simple arrows depict mappings, double-sided arrows depict relations and dashed-lined arrows depict constraints -- unchanged.
-Mappings and relations can be extended with additional rhombus objects to indicate the type of operation two or more sets are connected with.
+To be able to depict an extended set expression in context of a relationship, annotations are used as seen in figure \ref{fig:relationship_annotation}.
+In many cases sets are used in their unaltered form and no extra expression is needed.
+In this case the annotation is not depicted to reduce redundancy.
 
-Unlike its origin notation they can now indicate not just its relationship type (mapping, relation, constraint), but also the operation type that describes how its arguments are connected, when there is more than one argument.
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter3/relationship_annotation.png}
+	\caption{Relation $R \subseteq A \times 2^B$}
+	\label{fig:relationship_annotation}
+\end{figure}
+
+\noindent
+Mappings and relations can be extended with additional rhombus shapes in their middle to specify the type of operation.
+So in contrast to the original notation we can now specify not just a relationship type (mapping, relation, constraint), but also how its sets are connected.
+
 Many -- especially bright -- colors like yellow do not have a high contrast to their background (generally white), so colored thin objects like lines or object's outlines are hard to see.
-So, to enhance the visual perception, we continue using black arrows and lines to maximize the contrast in combination with a white background.
-To still be able to classify relationships by color, relationship elements need a sufficient enclosed area that can represent its color.
+So, to enhance the visual perception, we do not want to use coloring directly on those objects, but continue using black arrows and lines to maximize the contrast in combination with a white background.
+To still be able to categorize relationships by color, relationship elements need a sufficient enclosed area that can properly represent its color.
 Relations already have such area: The rhombus shape holding the operation type symbol.
-Relations always have at least one operation type symbol.
-Mappings do not.
+Relations always have at least one operation type, mappings do not.
 So for mappings we introduce a rectangle to obtain a sufficient coloring area.
 A Mapping also has its names encapsulated into this rectangle.
-A relation holds its name in its rhombus shape above its operation type symbol (see figure \ref{fig:relationships}).\\
+The rectangle shape can be dynamically resized to fit its content.
+A relation holds its name in its rhombus shape above its operation type symbol (see figure \ref{fig:relationships}).
 
 \begin{figure}[htb]
 	\centering
@@ -1245,49 +1254,39 @@ A relation holds its name in its rhombus shape above its operation type symbol (
 \end{figure}
 
 \noindent
-Handling two or more arguments is possible now as well as handling multiple operations and any order of operations as depicted in figure \ref{fig:relationship_operation_2args} and \ref{fig:relationship_operation_3args}.
-When having multiple operation types like in figure \ref{fig:relationship_operation_3args} the name of the relationship is encapsulated in the last object.
+Handling two or more arguments is possible now as well as multiple operations and any order of operations as depicted in figure \ref{fig:relationship_operation_2args} and \ref{fig:relationship_operation_3args}.
+When having multiple operation types the name of the relation is always encapsulated in the last operation type object.
 
-\begin{figure}[htb]
+\begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.4]{../figures/chapter3/relationship_operation_2args.png}
 	\caption{Mapping with two arguments $f:A \times B \rightarrow Z$}
 	\label{fig:relationship_operation_2args}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.4]{../figures/chapter3/relationship_operation_3args.png}
 	\caption{Mapping with different operations $f:A \times \lbrace B \cup C \rbrace \rightarrow Z$ }
 	\label{fig:relationship_operation_3args}
 \end{figure}
 
-In rare cases the order of arguments participating in \textit{one} operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction).
-To indicate and determine the order of arguments roman numerals can be used as annotations as depicted in figure \ref{fig:operation_order}.
+\noindent
+In rare cases the order of arguments participating in \textit{one} operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction) and can be indicated with roman numerals as annotations as depicted in figure \ref{fig:operation_order}.
 
-\begin{figure}[htb]
+\begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.4]{../figures/chapter3/operation_order.png}
 	\caption{Indicating the order of arguments for an operation}
 	\label{fig:operation_order}
 \end{figure}
 
-To be able to depict an extended set expression in context of a relationship, annotations are used as seen in figure \ref{fig:relationship_annotation}.
-In many cases sets are used in their unaltered form and no extra expression is needed.
-In this case the annotation is not depicted to reduce redundancy.
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[scale=0.4]{../figures/chapter3/relationship_annotation.png}
-	\caption{Relationship annotations for improved set expressions}
-	\label{fig:relationship_annotation}
-\end{figure}
-
 
 
 \section{Example}
 \label{gsl_example}
-In this section we want to depict some example \cite{Amthor18} uses in our newly developed notation.
+In this section we want to depict an example \cite{Amthor18} uses in our newly developed notation.
+In the appendix (\ref{}) are two more examples (HIX, ABAC).
 % Example Amthor vs example coloring
 % Example multi-coloring set, example arrow
 
