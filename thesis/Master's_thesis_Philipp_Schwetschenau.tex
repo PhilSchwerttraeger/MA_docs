@@ -401,14 +401,14 @@ with:
 \label{EL}
 The Entity Labeling (EL) aspect is one possible aspect $\mathcal{A}$ in context of AOSE (see definition \ref{definition:AOSE}).
 It is designed to support the process of formally specifying policy semantics typically found in operating systems and middleware systems.
-According to \cite{Amthor18} it bridges the gap between informal policy and formal model by supporting its transformation (see highlighted part in figure \ref{fig:AOSE}).
+Its purpose is to support the transition from informal policy to formal model (see highlighted part in figure \ref{fig:AOSE}).
 
-For this model components of an informally specified policy have to be identified and formalized by classifying them into the six semantic categories $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$:
+For this model components of an informally specified policy are formalized by classifying them into the six semantic categories $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$:
 
 \begin{description}
 \item[1) Entity Set (ES)]\hfill \\
-\textit{ES} is a set of entity identifiers.
-Basic elements in context of access control decisions are defined as \textit{entities} and are resources and principals like subjects or objects.
+\textit{ES} is a set of \textit{entity} identifiers.
+These are very basic elements in context of access control decisions and can be resources or principals like users or files.
 %\vspace{-2mm}
 
 %\begin{xdefinition}[ES] 
@@ -418,9 +418,10 @@ Basic elements in context of access control decisions are defined as \textit{ent
 %\end{xdefinition}
 
 \item[2) Label Set (LS)]\hfill \\
-\textit{LS} is a set of legal label values.
+\textit{LS} is a set of legal \textit{label} values.
 Labels act as attributes in access control decisions and therefore as level of indirection.
-Their content vary depending on a policy's application domain and can be finite enumerations (e.g.~RBAC), infinite enumerations (e.g.~ABAC) or any number system such as $\mathbb{N}$.
+Their content varies depending on a policy's application domain.
+% and can be finite enumerations (e.g.~RBAC), infinite enumerations (e.g.~ABAC) or any number system such as $\mathbb{N}$.
 %\vspace{-2mm}
 
 %\begin{xdefinition}[LS] 
@@ -439,7 +440,7 @@ Their content vary depending on a policy's application domain and can be finite 
 %\end{xdefinition}
 
 \item[4) Access Rule (AR)]\hfill \\
-\textit{AR} is a logical rule that defines, based on a set of entity labels, which operations may be legally performed on entities corresponding to these labels. Model components in \textit{AR} thus reflect a policy’s access control function.
+\textit{AR} is a logical rule that defines, based on a set of entity labels, which operations may be legally performed on entities corresponding to these labels. Model components in \textit{AR} thus reflect a policy’s \textit{access control function}.
 %\vspace{-2mm}
 
 %\begin{xdefinition}[AR] 
