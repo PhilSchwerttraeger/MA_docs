@@ -604,9 +604,9 @@ Components an UML diagram is build up with are classified into \textit{elements}
 \item[1) Elements]\hfill \\
 Elements are the main artifacts in an UML diagram.
 Graphically elements are based on closed shapes like boxes or ellipses.
-They usually have a name or identifier in form of text in the center of their shape. Horizontal lines can be used to separate an element into two or more sections (see \textit{class} element). \\
-Examples for elements are classes, packages, ports, etc.~(see figure \ref{fig:UML_elements}).
-Elements can be closely tied to specific diagram types (e.g.~components to component diagrams).
+They usually have a name or identifier in form of text in the center of their shape. Horizontal lines can be used to separate an element into two or more sections (see \textit{class} element in figure \ref{fig:UML_elements}). \\
+%Examples for elements are classes, packages, ports, etc.~(see figure \ref{fig:UML_elements}).
+%Elements can be closely tied to specific diagram types (e.g.~components to component diagrams).
 
 \begin{figure}[htb]
 	\centering
@@ -635,10 +635,10 @@ Elements can be closely tied to specific diagram types (e.g.~components to compo
 Relationships can connect two or more elements.
 Graphically relationships are lines.
 Optionally they can have a shape at one end to indicate a direction.
-They can vary in form by having differently drawn lines (solid, dashed) or shaped arrow heads.
-They can have several angles (preferable $90^{\circ}$ or $45^{\circ}$) to run on a clearly laid out path.
+They can vary in form by having differently drawn lines (solid, dashed) or shaped arrow heads (see figure \ref{fig:UML_relationships}).
+They preferably run in $90^{\circ}$ or $45^{\circ}$ angles.
 Lines do not collide if possible. \\
-Examples: Dependency, generalization, include (see figure \ref{fig:UML_relationships})
+%Examples: Dependency, generalization, include (see figure \ref{fig:UML_relationships})
 
 \begin{figure}[htb]
 	\centering
@@ -653,6 +653,7 @@ Examples: Dependency, generalization, include (see figure \ref{fig:UML_relations
 \subsubsection{Additional annotations}
 \label{UML_additional_annotations}
 UML has symbols and textual identifiers to visualize certain properties.
+UML has symbols and textual identifiers to visualize special properties.
 With \textit{multiplicities} an element can be constrained regarding its number in context of an relationship.
 The notation is placed at the connection point of class and relationship component.
 In almost all cases it is depicted as integer number (0 or 1) or * to indicate a boundless interval.
@@ -668,7 +669,7 @@ The entity-relationship model (ER) is a model to describe classified objects (en
 It was developed to illustrate information in databases on a conceptual level and became a popular tool for requirement analysis in this domain.
 In contrast to UML (see section \ref{UML}) ER only has one type of diagram: The Entity-Relationship diagram (ERD).
 Also unlike UML ER is not an officially specified standard.
-ER has different notation variants (Chen, Bachman, etc.), which will be depicted in section \ref{ERD_notations}.
+ER has different notation variants, which will be depicted in section \ref{ERD_notations}.
 Figure \ref{fig:ERD_minimal_example} shows an example of an ERD.
 
 
