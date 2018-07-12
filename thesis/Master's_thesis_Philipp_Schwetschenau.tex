@@ -652,7 +652,6 @@ Lines do not collide if possible. \\
 
 \subsubsection{Additional annotations}
 \label{UML_additional_annotations}
-UML has symbols and textual identifiers to visualize certain properties.
 UML has symbols and textual identifiers to visualize special properties.
 With \textit{multiplicities} an element can be constrained regarding its number in context of an relationship.
 The notation is placed at the connection point of class and relationship component.
@@ -685,12 +684,12 @@ ERDs are build up with the following components \citep{Kleuker11}:
 
 \begin{description}
 \item[1) Entity type]\hfill \\
-The most important artifact of ER is probably the entity.
-It represents an individual and unambiguously identifiable object.
+The most important artifact of ER is the entity.
+It represents an individual unambiguously identifiable object.
 An entity is characterized by its properties.
 An \textit{entity type} is a template for entities that summarizes all their attributes.
-Entities can be interpreted as instances of an entity type with concrete values.
-Graphically an entity type is a simple rectangle with its name in its center.
+Entities can be interpreted as instances of entity types with concrete values.
+Graphically an entity type is a rectangle with a name inside.
 
 \begin{figure}[htb]
 	\centering
@@ -701,9 +700,9 @@ Graphically an entity type is a simple rectangle with its name in its center.
 
 \item[2) Relationships]\hfill \\
 Relationships can connect two or more entities and describe how they are interrelated.
-In contrast to UML (see \ref{UML}) relationship is not represented with a simple lines, but with a rhombus with the relationship name in its center.
-This rhombus is then connected to two or more entities with simple lines.
-These lines may have symbols at their end to indicate properties of the connected entities in context of the relationship.
+In contrast to UML relationships additionally have a rhombus shape with its name inside.
+This rhombus is then connected to two or more entities with lines.
+A line can hold a symbol at its end to indicate a property of the connected entity in context of the relationship.
 
 \begin{figure}[htb]
 	\centering
@@ -715,7 +714,7 @@ These lines may have symbols at their end to indicate properties of the connecte
 \item[3) Attributes]\hfill \\
 Attributes are properties of entites or relationships.
 Graphically an attribute is a single ellipse with its name in its center.
-It is connected to an entity or to a relationship with the help of a simple line.
+It is connected to an entity or to a relationship with simple lines.
 
 \begin{figure}[htb]
 	\centering
@@ -749,9 +748,9 @@ For example the \textit{orders}-relationship in figure \ref{fig:ERD_minimal_exam
 \end{itemize}
 
 \noindent
-An entity type needs to have a \textit{primary key} defined in order to have its elements unambiguously identifiable.
-The primary key is an attribute or a combination of attributes of the entity type and has to be unique among all other attribute values.
-A primary key attribute is graphically indicated with an underlined name (see \textit{ClientID} in figure \ref{fig:ERD_minimal_example}).
+%An entity type needs to have a \textit{primary key} defined in order to have its elements unambiguously identifiable.
+%The primary key is an attribute or a combination of attributes of the entity type and has to be unique among all other attribute values.
+%A primary key attribute is graphically indicated with an underlined name (see \textit{ClientID} in figure \ref{fig:ERD_minimal_example}).
 
 %Besides this basic system, ERDs can indicate some additional information.
 %For example besides those elements described above, there are variants of them with a double frame line to indicate a \textit{weak} property (no primary key, dependent to parent elements) or a dashed frame line to indicate a \textit{multivalued} property.
@@ -771,7 +770,6 @@ These variants only differ in the depiction of their relationships (see figure \
 	\label{fig:ERD_notations}
 \end{figure}
 
-\noindent
 % ERD as UML
 Notable is also that an ER model can be visualized with the help of UML.
 When entity types are treated as classes, entities as objects, relationships as associations, attributes as instance variables and cardinalities as multiplicities an UML \textit{class diagram} can be used to build up a diagram that is similar to an ERD.
