@@ -967,12 +967,12 @@ Finally section \ref{gsl_example} depicts and describes a full practical example
 
 Due to being highly tailored to one specific domain, established graphical notations for structural or semantic properties like UML or ER (see section \ref{graphical_notations}) are impractical for direct reuse in other domains.
 A new concept like EL generally requires a newly designed graphical notation.
-In reality needed elements, concepts and ideas are not always created from scratch, but are getting (partly) adopted from related systems and adapted accordingly as long as they fit syntactically and semantically.
+In reality needed elements, concepts and ideas are not always created from scratch, but are getting (partly) adopted from related systems and adapted accordingly as long as they syntactically and semantically fit.
 With or without adoption: The system should be designed in a way its components are unambiguous to components of systems from similar or related domains to avoid misunderstanding or barriers in learning.
 With this said we want to start off with the graphical notation \cite{Amthor18} uses to visualize the EL aspect and try to analyze and expose its problems in section \ref{analyzing_notation} and to propose matching solutions in section \ref{improving_notation}.
 
 \begin{mdframed}[style=mystyle,frametitle=Note]
-Henceforth all possible connections between elements like mappings, relations, constraints, etc.~are referred to as \textit{relationships}.
+Henceforth all possible connections between sets like mappings, relations, constraints, etc.~are referred to as \textit{relationships} (hypernym).
 \end{mdframed}
 
 
@@ -982,7 +982,7 @@ Henceforth all possible connections between elements like mappings, relations, c
 The major problems the graphical EL notation by \cite{Amthor18} has, that make the notation inconsistent, are the ambiguously depicted relationships between elements and the ambiguous method of classifying elements.
 In the following we want to isolate and describe 4 different problems.
 
-\vspace{4mm}
+\vspace{6mm}
 \noindent
 \textbf{Problem 1: Set expressions}
 \vspace{1mm}
@@ -997,7 +997,7 @@ This inconsistency (loss of information) becomes clear in particular after conve
 (U \rightarrow 2^R) \not\equiv (U \rightarrow R)
 \end{align}
 
-\vspace{8mm}
+\vspace{4mm}
 \noindent
 \textbf{Problem 2: Operation types}
 \vspace{1mm}
@@ -1022,7 +1022,7 @@ The operation type, that determines how a mapping's arguments interrelate, can v
 	\label{fig:inconsistent_two_arguments}
 \end{figure}
 
-\vspace{8mm}
+\vspace{4mm}
 \noindent
 \textbf{Problem 3: Order of operations and arguments}
 \vspace{1mm}
@@ -1035,14 +1035,13 @@ Besides that, when handling two or more arguments the order of operations (may b
 (A \cap \lbrace B \cup C \rbrace \rightarrow D)
 \end{gathered}\label{eq:order_operations}
 \end{equation}
-\vspace{-6mm}
+\vspace{-8mm}
 \begin{equation}
 \begin{gathered}
 \lbrace A \setminus B \rbrace \not\equiv \lbrace B \setminus A \rbrace 
 \end{gathered}\label{eq:order_arguments}
-\end{equation}\\
+\end{equation}
 
-\vspace{8mm}
 \noindent
 \textbf{Problem 4: Categorization}
 \vspace{1mm}
@@ -1168,7 +1167,7 @@ The following figures are all based on these colors.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.45]{../figures/chapter3/legend.png}
+	\includegraphics[scale=0.4]{../figures/chapter3/legend.png}
 	\caption{Suggested legend for EL categorization coloring}
 	\label{fig:legend}
 \end{figure}
@@ -1286,6 +1285,7 @@ In rare cases the order of arguments participating in \textit{one} operation is 
 \label{gsl_example}
 To showcase that we can now model all relevant aspects of EL -- even for $m>1$ (see \textit{hierarchical EL}, section \ref{HEL}) -- we want to depict the HIX example with added role hierarchy \cite{Amthor18} uses as example with our newly developed notation.
 
+\noindent
 The example refers to the example depicted in section \ref{EL}, but with one additional level of indirection $m=2$.
 To depict the additional level of indirection ($LS_2, LA_2$), the color legend has to be expanded accordingly.
 It corresponds to its original depiction in figure \ref{fig:EL_diagram} and can be compared to it to observe the changes we introduced in this section.
