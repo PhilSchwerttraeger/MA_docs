@@ -1303,16 +1303,7 @@ The layout was adapted to better compare both figures, but is not limited to thi
 By eliminating the need of spatial alignment and by introducing colors for categorizing, models now can be arranged freely regarding its graph layout.
 As a result this allows for automatic layouting models in the software editor (section \ref{editor_design} and \ref{implementation}) according to certain needs (e.g.~compact, hierarchical, horizontally/vertically).
 
-More examples ($RBAC_3$, $ABAC$) can be found in the appendix on page \pageref{}.
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=\linewidth]{../figures/chapter3/RBAC96_v1.png}
-	\caption{$RBAC_3$ example}
-	\label{fig:RBAC96_example}
-\end{figure}
-
-
+For another example ($RBAC_3$) see figure \ref{fig:RBAC96_example} in the appendix on page \pageref{fig:RBAC96_example}.
 
 %\section{Visualization on a Higher Level of Abstraction}
 %\label{higher_abstraction_level}
@@ -1342,10 +1333,8 @@ The following task will be to design and develop an appropriate software system 
 \section{Structure}
 \label{editor_structure}
 
-
 \section{Sections}
 \label{editor_sections}
-
 
 
 
@@ -1363,11 +1352,9 @@ The following task will be to design and develop an appropriate software system 
 
 \section{Structure}
 \label{implementation_structure}
-	
-	
+		
 \section{GUI sections}
 \label{implementation_sections}
-
 
 
 
@@ -1375,10 +1362,8 @@ The following task will be to design and develop an appropriate software system 
 \chapter{Evaluation}
 \label{evaluation}
 
-
 \section{Graphical Specification Language}
 \label{evaluation_gsl}
-
 
 \section{Editor}
 \label{evaluation_editor}
@@ -1398,16 +1383,24 @@ The following task will be to design and develop an appropriate software system 
 
 
 
-% Anhang
-%\cleardoublepage
-%\tocentry{Anhang}
-%\renewcommand{\thesection}{\Alph{section}}
-%\markboth{Anhang}{}
-%\chapter*{Anhang}
-%\section{Kapitel 1}
-%\section{Kapitel 2}
-%\label{appendix}
+% Appendix
+\cleardoublepage
+\tocentry{Appendix}
+\renewcommand{\thesection}{\Alph{section}}
+\markboth{Appendix}{}
+\counterwithin{figure}{section}
+\chapter*{Appendix}
+\label{appendix}
+\section{Additional examples}
+The following figure depicts the $RBAC_3$ model in the graphical notation developed in chapter \ref{gsl_design}.
+For its definition see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}.
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{../figures/chapter3/RBAC96_v1.png}
+	\caption{$RBAC_3$ example}
+	\label{fig:RBAC96_example}
+\end{figure}
 
 
 

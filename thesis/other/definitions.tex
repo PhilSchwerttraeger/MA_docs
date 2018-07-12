@@ -301,16 +301,14 @@
 
 \usepackage[inline]{enumitem}
 
-
+% Tip/Note boxes
 \usepackage{xcolor}
 \usepackage[tikz]{bclogo}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{lipsum}
 \usepackage[many]{tcolorbox}
-
 \definecolor{bgblue}{RGB}{245,243,253}
 \definecolor{ttblue}{RGB}{91,194,224}
-
 \mdfdefinestyle{mystyle}{%
   rightline=true,
   innerleftmargin=10,
@@ -322,3 +320,6 @@
   skipabove=\topsep,
   skipbelow=\topsep
 }
+
+% Appendix numbering (figures, tables, href links)
+\usepackage{chngcntr}
