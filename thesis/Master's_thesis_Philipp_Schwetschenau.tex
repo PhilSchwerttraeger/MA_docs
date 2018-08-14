@@ -1386,17 +1386,17 @@ The same way additional lines and arrows can be added between existing elements 
 The section at the top left-hand side is the tab section.
 There are two tabs to switch between: The \textit{graphical} and the \textit{table} tab.
 The graphical tab is the default view.
-It contains the drawing area underneath as well as the properties section to the right-hand side of the drawing area.
+It contains the drawing area underneath as well as the side section to the right-hand side of the drawing area.
 
 The \textit{drawing area} is the main section of the application and serves as surface for all graphical elements.
 The concept and work-flow are already described in section \ref{GUI_concept}.
 
-On the right-hand side of the window is the \textit{properties section}.
+On the right-hand side of the window is the \textit{side section}.
 After selecting an element on the drawing area this section displays the element's properties and values.
 The selection of properties will change according to the type of element selected (e.g. relations will have a \textit{operation} property, while sets do not).
 
-At the top right-hand side of the window is the import/export section.
-
+At the top right-hand side of the window is the \textit{general} section.
+Two buttons allow importing and exporting a model.
 
 When switching to the table tab in the tab section on the top left-hand side the drawing area and properties section will be replaces with a single section containing a table.
 
@@ -1411,17 +1411,29 @@ When switching to the table tab in the tab section on the top left-hand side the
 
 \subsection{View settings}
 \label{editor_settings}
-Optionally there could be an additional section for view settings to toggle the visibility of model properties (e.g. show/hide annotations).
+\begin{mdframed}[style=mystyle,frametitle=Note]
+The following proposed function is treated as an optional feature..
+\end{mdframed}
+A gear button in the general section (next to import/export) opens the settings inside the side section (see figure \ref{fig:GUI_tab1_graphical_settings}).
+The settings subsection \textit{View} allows toggling the visibility of several model properties (e.g. show/hide annotations).
 This lets the user adapt the view to the complexity of the depicted model.
 
-The classical approach would be a main menu on top with a view section containing several items to enable/disable (state indicated with a checkmark).
-This menu would overlap the depicted model in the drawing area and the menu has to entered again and navigated through after every change.
+A classical approach of view settings could be a top menu with a view section containing several items to enable/disable (state indicated with a checkmark).
+This menu would overlap the depicted model in the drawing area and the menu has to be entered again and navigated through after every change.
 
-The proposed view settings section allows a browser-like fast configuration of the desired level of detail with toggle buttons.
+The proposed settings section allows a browser-like fast configuration of the desired level of detail with toggle buttons.
 The changes can be instantly observed in the depicted model.
 This behavior supports instant gratification (see principle 2 of usability \citep{Tidwell11}, section \ref{usability}).
 Several changes can be made fast without the need of reentering or renavigating.
 This also supports satisfiscing (principle 3 of usability \citep{Tidwell11}), because the user can easily use trial-and-error to find the function he needs.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_tab1_graphical_settings.png}
+	\caption{Editor: Settings}
+	\label{fig:GUI_tab1_graphical_settings}
+\end{figure}
+
 
 
 
