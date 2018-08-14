@@ -1349,12 +1349,13 @@ The two sections at the top (tabs, import/export) will remain always visible, wh
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_layout.png}
+	\includegraphics[width=\linewidth-5cm]{../figures/chapter4/GUI_layout.png}
 	\caption{Editor: Sections}
 	\label{fig:GUI_layout}
 \end{figure}
 
 \subsection{Concept}
+\label{GUI_concept}
 To obtain a clean and modern appearance the GUI will not have any distracting or redundant functions or menus.
 This will have the effect of reducing the visual cognitive load for (especially new) users.
 As a consequence of this decision there is for example no main menu on top.
@@ -1375,13 +1376,38 @@ The same way additional lines and arrows can be added between existing elements 
 
 \section{Sections}
 \label{editor_sections}
-
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_tab1_graphical.png}
 	\caption{Editor: Graphical tab}
 	\label{fig:GUI_tab1_graphical}
 \end{figure}
+
+The section at the top left-hand side is the tab section.
+There are two tabs to switch between: The \textit{graphical} and the \textit{table} tab.
+The graphical tab is the default view.
+It contains the drawing area underneath as well as the properties section to the right-hand side of the drawing area.
+
+The \textit{drawing area} is the main section of the application and serves as surface for all graphical elements.
+The concept and work-flow are already described in section \ref{GUI_concept}.
+
+On the right-hand side of the window is the \textit{properties section}.
+After selecting an element on the drawing area this section displays the element's properties and values.
+The selection of properties will change according to the type of element selected (e.g. relations will have a \textit{operation} property, while sets do not).
+
+At the top right-hand side of the window is the import/export section.
+
+
+When switching to the table tab in the tab section on the top left-hand side the drawing area and properties section will be replaces with a single section containing a table.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_tab2_table.png}
+	\caption{Editor: Table tab}
+	\label{fig:GUI_tab2_table}
+\end{figure}
+
+
 
 
 
