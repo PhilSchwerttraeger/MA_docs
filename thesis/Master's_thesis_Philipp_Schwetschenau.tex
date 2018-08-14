@@ -1344,9 +1344,44 @@ Section \ref{editor_sections} then gives insight into the several sections of th
 
 \section{Structure}
 \label{editor_structure}
+Figure \ref{fig:GUI_tab1_graphical} shows the main window of the editor with its separation into 4 sections.
+The two sections at the top (tabs, import/export) will remain always visible, while the two sections underneath will dynamically change depending on the tab selected in the tabs section.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_layout.png}
+	\caption{Editor: Sections}
+	\label{fig:GUI_layout}
+\end{figure}
+
+\subsection{Concept}
+To obtain a clean and modern appearance the GUI will not have any distracting or redundant functions or menus.
+This will have the effect of reducing the visual cognitive load for (especially new) users.
+As a consequence of this decision there is for example no main menu on top.
+This leads to more space for the drawing area and therefore for the graphical EL model going to be created.
+
+To achieve a fast work-flow functions should be case-dependent and accessible directly at the point of interest, in this case close to the graphical elements.
+Common functions like creating sets are therefore accessible through the context menu (right click on mouse or touch-and-hold on touchscreen-based devices).
+After selecting an element the context menu changes accordingly and allows deleting or duplicating of elements.
+Also the properties section right to the drawing area will change according to the current element selection in the drawing area.
+
+Relations and mappings can be created between two sets by drag and drop.
+The same way additional lines and arrows can be added between existing elements (for example to create a mapping between 3 or more elements).
+
+%This concept not being necessarily self-explaining to everyone a short 3-step mini tutorial should be available.
+
+
+
 
 \section{Sections}
 \label{editor_sections}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_tab1_graphical.png}
+	\caption{Editor: Graphical tab}
+	\label{fig:GUI_tab1_graphical}
+\end{figure}
 
 
 
