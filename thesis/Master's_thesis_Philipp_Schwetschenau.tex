@@ -251,6 +251,21 @@ A RBAC$_0$ model is a tuple $(U, R, P, S, UA, PA, user, roles)$ with
 \end{xdefinition}
 
 \noindent
+When a user now wants to perform an operation on an object the permission to do so is determined with the help of an access control function, similar to IBAC.
+The access control function checks whether there is an active session of the user he activates a role in, which has the permission to perform the operation on the desired object (see definition \ref{definition:RBAC_ACF} below).
+
+\begin{xdefinition}[RBAC access control function]
+$\\[-15pt]
+acf_{RBAC} (u,o,op) \rightarrow 
+   \begin{cases}
+   		\ true & |\ \exists r \in R, s \in S: \\ & \ \ u = user(s), r \in roles(s), ((o,op),r) \in PA \\
+   		\ false & |\ else
+   \end{cases}
+$
+\label{definition:RBAC_ACF}
+\end{xdefinition}
+
+\noindent
 RBAC is called a family of security models, because there is a base model (RBAC$_0$) and three models that extend this base model with advanced concepts.
 RBAC$_1$ extends RBAC$_0$ with a role hierarchy, because in reality it turned out that roles are often combinations of other already existing roles.
 This reduces redundancy and improves RBAC's scaling behavior even further.
