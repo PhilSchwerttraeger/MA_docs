@@ -952,6 +952,8 @@ Reinventing interaction design is not only very time consuming, but actually eve
 
 
 
+
+
 \cleardoublepage
 \chapter{Design: Graphical Specification Language}
 \label{gsl}
@@ -1326,6 +1328,8 @@ The following task will be to design and develop an appropriate software prototy
 
 
 
+
+
 \cleardoublepage
 \chapter{Design: Editor GUI}
 \label{editor_design}
@@ -1334,8 +1338,9 @@ The editor should support the process of EL as well as visualize the results of 
 Thus this chapter will present the GUI of the editor including its general concept, layout and sections.
 This will serve as base for the implementation in the subsequent chapter \ref{implementation}.
 
-In section \ref{editor_structure} a general overview of the window structure is given and the work-flow concept is explained.
-Section \ref{editor_sections} then gives insight into the several sections of the editor with their purposes und functions.
+In section \ref{editor_structure} a general overview of the window's sections is given.
+Section \ref{GUI_concept} then gives insight into the control concept and work-flow of the editor.
+Furthermore section \ref{editor_extensions} will suggest some optional features.
 
 % ein/ausblendbar wegen Übersicht, 
 % "Filter-layers" (visibility filter): Categories, Annotations, Internal structure formulas, Names/Identifiers, Operation rhombus, all relationships, mappings/relations/constraints
@@ -1344,74 +1349,83 @@ Section \ref{editor_sections} then gives insight into the several sections of th
 
 \section{Structure}
 \label{editor_structure}
-Figure \ref{fig:GUI_tab1_graphical} shows the main window of the editor with its separation into 4 sections.
-The two sections at the top (tabs, import/export) will remain always visible, while the two sections underneath will dynamically change depending on the tab selected in the tabs section.
+Figure \ref{fig:GUI_tab1_graphical} shows the application with its separation into 4 main sections.
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth-5cm]{../figures/chapter4/GUI_layout.png}
-	\caption{Editor: Sections}
+	\caption{Window sections}
 	\label{fig:GUI_layout}
 \end{figure}
 
-\subsection{Concept}
-\label{GUI_concept}
-To obtain a clean and modern appearance the GUI will not have any distracting or redundant functions or menus.
-This will have the effect of reducing the visual cognitive load for (especially new) users.
-As a consequence of this decision there is for example no main menu on top.
-This leads to more space for the drawing area and therefore for the graphical EL model going to be created.
-
-To achieve a fast work-flow functions should be case-dependent and accessible directly at the point of interest, in this case close to the graphical elements.
-Common functions like creating sets are therefore accessible through the context menu (right click on mouse or touch-and-hold on touchscreen-based devices).
-After selecting an element the context menu changes accordingly and allows deleting or duplicating of elements.
-Also the side section right to the drawing area will change according to the current element selection in the drawing area.
-
-Relations and mappings can be created between two sets by drag and drop.
-The same way additional lines and arrows can be added between existing elements (for example to create a mapping between 3 or more elements).
-
-Moving the drawing area's view is done with holding down the right mouse button (touchscreen domain: two fingers touch-and-hold), zooming with the mouse wheel (touchscreen domain: pinch-in/out).
-Alternatively the familiar key commands Ctrl and +/- allow zooming, when no mouse wheel is available.
-
-%This concept not being necessarily self-explaining to everyone a short 3-step mini tutorial should be available.
-
-
-
-
-\section{Sections}
-\label{editor_sections}
-The section at the top left-hand side is the tab section.
+\noindent
+The two sections at the top (tabs, general) will always remain visible, while the sections underneath will dynamically change depending on the tab selected in the tabs section.
+The section at the top left-hand side is the \textit{tabs} section.
 There are two tabs to switch between: The \textit{graphical} and the \textit{table} tab.
+
+At the top right-hand side of the window is the \textit{general} section.
+Two buttons allow importing and exporting a model.
+Next to them is a gear button to open the application's settings (more on this see \ref{editor_extension_settings}).
+
+
+
+\subsection{Graphical tab}
+\label{editor_graphical}
 The graphical tab is the default view.
 It contains the drawing area underneath as well as the side section to the right-hand side of the drawing area.
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_tab1_graphical.png}
-	\caption{Editor: Graphical tab}
+	\caption{Graphical tab}
 	\label{fig:GUI_tab1_graphical}
 \end{figure}
 
 \noindent
 The \textit{drawing area} is the main section of the application and serves as surface for all graphical elements.
-The concept and work-flow are already described in section \ref{GUI_concept}.
+The concept and work-flow will be described in section \ref{GUI_concept}.
+In the bottom left corner it shows the color legend for EL categories.
+It is, just like the zooming buttons in the buttom right corner, an overlay widget and is floating above the drawing content.
 
 On the right-hand side of the window is the \textit{side section}.
-After selecting an element on the drawing area this section displays the element's properties and values.
-The selection of properties will change according to the type of element selected (e.g. relations will have a \textit{operation} property, while sets do not).
+After selecting an element on the drawing area this section show the element's properties and values.
+The structure of the properties section will alter according to the type of element selected (e.g. relations will have a \textit{operation} field, while sets do not).
+To set the desired values suitable common input widgets (text field, drop-down menu, check box list) are provided.
 
-At the top right-hand side of the window is the \textit{general} section.
-Two buttons allow importing and exporting a model.
 
-When switching to the \textit{table} tab in the tab section the drawing area and side section will be replaced with a single section containing a table (see figure \ref{fig:GUI_tab2_table}).
+
+\subsection{Table tab}
+\label{editor_table}
+When switching to the \textit{table} tab in the tab section the drawing area and side section will be replace with a single section containing a table (see figure \ref{fig:GUI_tab2_table}).
 The table shows the current information of an EL model (modeled in the graphical tab) in an alternative tabular form sorted by EL categories.
-It is based on the tabular form for results of EL-based model engineering \cite{Amthor18} uses (see figure \ref{fig:EL_table}).
+It is based on the tabular form for results of EL-based model engineering \cite{Amthor18} uses (see figure \ref{fig:EL_table} on page \pageref{fig:EL_table}).
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_tab2_table.png}
-	\caption{Editor: Table tab}
+	\caption{Table tab}
 	\label{fig:GUI_tab2_table}
 \end{figure}
+
+
+
+\section{Control concept}
+\label{GUI_concept}
+To obtain a clean and modern appearance the GUI will not have any distracting or redundant functions or menus.
+This will have the effect of reducing the visual cognitive load for (especially new) users.
+As a consequence of this decision there is no menu bar on top.
+This leads to more space for the drawing area and therefore for the graphical EL model going to be created.
+
+To achieve a fast work-flow functions should be case-specific and accessible directly at the point of interest, in this case close to the graphical elements.
+Common functions like creating sets are therefore accessible through the context menu (right click on mouse or touch-and-hold on touch-based devices).
+After selecting an element the context menu changes accordingly and allows deleting or duplicating of elements.
+Also the side section right to the drawing area will change according to the current element selection in the drawing area.
+Relationships can be created between two elements by drag and drop.
+
+Moving the drawing area's view is done with holding down the right mouse button (touch domain: two fingers touch-and-hold), zooming with the mouse wheel (touch domain: pinch-in/out).
+Alternatively a + and - button at the bottom right corner of the drawing area will allow zooming when no mouse wheel is available.
+
+%This concept not being necessarily self-explaining to everyone a short 3-step mini tutorial should be available.
 
 
 
