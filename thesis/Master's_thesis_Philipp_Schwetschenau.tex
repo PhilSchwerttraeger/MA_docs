@@ -1019,21 +1019,22 @@ This inconsistency (loss of information) becomes clear in particular after conve
 
 \vspace{4mm}
 \noindent
-\textbf{Problem 2: Operation types}
+\textbf{Problem 2: Set operators}
 \vspace{1mm}
 
 \noindent
-Relationships can have multiple input arguments.
-Unfortunately \cite{Amthor18} neither depict any relationship with multiple arguments, nor describe how to depict those.
-We can easily imagine a simple mapping with two arguments: e.g.~a mapping that takes a subject's and an object's identification to decide whether an user action is allowed on an object or not (IBAC, see section \ref{IBAC}):
+Relations and mappings can use sets as well as combinations of multiple sets.
+These combinations are expressed with set operators (for example the cartesian product $\times$).
+\cite{Amthor18} depicts one of these graphically in figure 5.1 (page 140, \citep{Amthor18}).
+For the simplicity and as base for further discussion we construct a minimal example: A mapping that takes a subject's and an object's identification to decide whether an user access is allowed on an object or not:
 \begin{align}
-S \times O \rightarrow R 
+S \times O \rightarrow 2^R
 \end{align}
 
 \noindent
-The first naive attempt to extend the given notation would be drawing a line from $S$ and $O$, merging in one point and ending with an arrow head in $R$ (figure \ref{fig:inconsistent_two_arguments}).
+In the graphical notation we have a line from $S$ and $O$, merging in one point and ending with an arrow head in $R$ (figure \ref{fig:inconsistent_two_arguments}).
 Unfortunately this is not sufficient in terms of consistency, because the type of operation is not specified.
-The operation type, that determines how a mapping's arguments interrelate, can vary (here: $\times$, but may be $\cup, \cap, \setminus, \Delta$, \dots just as well).
+The set operator, that determines how two sets interrelate, can vary (here: $\times$, but may be $\cup, \cap, \setminus, \Delta$, \dots just as well).
 
 \begin{figure}[htb]
 	\centering
