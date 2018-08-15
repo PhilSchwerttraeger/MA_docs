@@ -1429,31 +1429,52 @@ Alternatively a + and - button at the bottom right corner of the drawing area wi
 
 
 
-\subsection{View settings}
-\label{editor_settings}
-\begin{mdframed}[style=mystyle,frametitle=Note]
-The following proposed function is treated as an optional feature..
-\end{mdframed}
-A gear button in the general section (next to import/export) opens the settings inside the side section (see figure \ref{fig:GUI_tab1_graphical_settings}).
-The settings subsection \textit{View} allows toggling the visibility of several model properties (e.g. show/hide annotations).
-This lets the user adapt the view to the complexity of the depicted model.
-
-A classical approach of view settings could be a top menu with a view section containing several items to enable/disable (state indicated with a checkmark).
-This menu would overlap the depicted model in the drawing area and the menu has to be entered again and navigated through after every change.
-
-The proposed settings section allows a browser-like fast configuration of the desired level of detail with toggle buttons.
-The changes can be instantly observed in the depicted model.
-This behavior supports instant gratification (see principle 2 of usability \citep{Tidwell11}, section \ref{usability}).
-Several changes can be made fast without the need of reentering or renavigating.
-This also supports satisfiscing (principle 3 of usability \citep{Tidwell11}), because the user can easily use trial-and-error to find the function he needs.
+\section{Extensions}
+\label{editor_extensions}
+The following proposed functions are treated as optional features.
+They are all combined depicted in figure \ref{fig:GUI_extensions}.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_tab1_graphical_settings.png}
-	\caption{Editor: Settings}
-	\label{fig:GUI_tab1_graphical_settings}
+	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_extensions.png}
+	\caption{Editor extensions}
+	\label{fig:GUI_extensions}
 \end{figure}
 
+\subsection{View settings}
+\label{editor_extension_settings}
+A gear button in the general section opens the settings inside the side section (see figure \ref{fig:GUI_extensions}).
+The setting's subsection \textit{View} allows toggling the visibility of several model properties (e.g. show/hide annotations).
+This lets the user adapt the view to the complexity of the depicted model.
+
+A classical approach of view settings could be a top menu with a view section containing several items to enable/disable (state indicated with a checkmark).
+This menu would overlap the depicted model in the drawing area and the menu has to be reentered and navigated through after every change.
+
+The proposed settings section allows a fast configuration of the desired level of detail with toggle buttons.
+The changes can be instantly observed in the depicted model nearby.
+This behavior supports instant gratification (see principle 2 of usability \citep{Tidwell11}, section \ref{usability}).
+Several changes can be made fast without the need of reentering or renavigating.
+This also supports satisfiscing (principle 3 of usability \citep{Tidwell11}), because the user can easily use trial-and-error to find the configuration he needs.
+
+\subsection{Default relationship}
+\label{editor_extension_default_relationship}
+A toggle button in the settings section \textit{or} a small drop-down menu inside a corner of the drawing area (see figure \ref{fig:GUI_extensions}) allows setting a default relationship type (mapping or relation).
+This is not necessary per se, due to being able to draw an arbitrary relationship and change it to a mapping/relation in the properties section, but this may enhance the working speed when drawing multiple non-default relationship elements.
+
+\subsection{Redirect edges}
+\label{editor_extension_redirect_edges}
+Until now edges are drawn between two elements and can not be altered in their position or form.
+Sometimes it is necessary to redirect edges for a better visual overview.
+Examples for this are the edges of \textit{RH} and \textit{pa} in figure \ref{fig:HIX} on page \pageref{fig:HIX}.
+For this purpose edges can have a handle in the middle, which appears after selecting them (see figure \ref{fig:redirect_edge}).
+Dragging and dropping the handle will redirect the edge through the new position of the set handle.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth-5cm]{../figures/chapter4/redirect_edge.png}
+	\caption{Redirect edge}
+	\label{fig:redirect_edge}
+\end{figure}
 
 
 
