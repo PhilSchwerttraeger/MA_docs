@@ -1364,10 +1364,13 @@ This leads to more space for the drawing area and therefore for the graphical EL
 To achieve a fast work-flow functions should be case-dependent and accessible directly at the point of interest, in this case close to the graphical elements.
 Common functions like creating sets are therefore accessible through the context menu (right click on mouse or touch-and-hold on touchscreen-based devices).
 After selecting an element the context menu changes accordingly and allows deleting or duplicating of elements.
-Also the properties section right to the drawing area will change according to the current element selection in the drawing area.
+Also the side section right to the drawing area will change according to the current element selection in the drawing area.
 
 Relations and mappings can be created between two sets by drag and drop.
 The same way additional lines and arrows can be added between existing elements (for example to create a mapping between 3 or more elements).
+
+Moving the drawing area's view is done with holding down the right mouse button (touchscreen domain: two fingers touch-and-hold), zooming with the mouse wheel (touchscreen domain: pinch-in/out).
+Alternatively the familiar key commands Ctrl and +/- allow zooming, when no mouse wheel is available.
 
 %This concept not being necessarily self-explaining to everyone a short 3-step mini tutorial should be available.
 
@@ -1376,6 +1379,11 @@ The same way additional lines and arrows can be added between existing elements 
 
 \section{Sections}
 \label{editor_sections}
+The section at the top left-hand side is the tab section.
+There are two tabs to switch between: The \textit{graphical} and the \textit{table} tab.
+The graphical tab is the default view.
+It contains the drawing area underneath as well as the side section to the right-hand side of the drawing area.
+
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_tab1_graphical.png}
@@ -1383,11 +1391,7 @@ The same way additional lines and arrows can be added between existing elements 
 	\label{fig:GUI_tab1_graphical}
 \end{figure}
 
-The section at the top left-hand side is the tab section.
-There are two tabs to switch between: The \textit{graphical} and the \textit{table} tab.
-The graphical tab is the default view.
-It contains the drawing area underneath as well as the side section to the right-hand side of the drawing area.
-
+\noindent
 The \textit{drawing area} is the main section of the application and serves as surface for all graphical elements.
 The concept and work-flow are already described in section \ref{GUI_concept}.
 
@@ -1398,7 +1402,9 @@ The selection of properties will change according to the type of element selecte
 At the top right-hand side of the window is the \textit{general} section.
 Two buttons allow importing and exporting a model.
 
-When switching to the table tab in the tab section on the top left-hand side the drawing area and properties section will be replaces with a single section containing a table.
+When switching to the \textit{table} tab in the tab section the drawing area and side section will be replaced with a single section containing a table (see figure \ref{fig:GUI_tab2_table}).
+The table shows the current information of an EL model (modeled in the graphical tab) in an alternative tabular form sorted by EL categories.
+It is based on the tabular form for results of EL-based model engineering \cite{Amthor18} uses (see figure \ref{fig:EL_table}).
 
 \begin{figure}[htb]
 	\centering
