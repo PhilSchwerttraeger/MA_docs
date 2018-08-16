@@ -1360,14 +1360,14 @@ The following task will be to design and develop an appropriate software prototy
 \cleardoublepage
 \chapter{Design: Editor GUI}
 \label{editor_design}
-One part of this thesis is to implement a prototype editor in order to be able to work with the graphical specification notation developed in the previous chapter.
+One part of this thesis is to implement a prototype editor in order to be able to work with the graphical notation developed in the previous chapter.
 The editor should support the process of EL as well as visualize the results of the EL process.
-Thus this chapter will present the GUI of the editor including its general concept, layout and sections.
+Thus this chapter will present the GUI of the editor including its general structure and control concept.
 This will serve as base for the implementation in the subsequent chapter \ref{implementation}.
 
 In section \ref{editor_structure} a general overview of the window's sections is given.
 Section \ref{GUI_concept} then gives insight into the control concept and work-flow of the editor.
-Furthermore section \ref{editor_extensions} will suggest some optional features.
+Furthermore section \ref{editor_extensions} will suggest some advanced features.
 
 % ein/ausblendbar wegen Übersicht, 
 % "Filter-layers" (visibility filter): Categories, Annotations, Internal structure formulas, Names/Identifiers, Operation rhombus, all relationships, mappings/relations/constraints
@@ -1410,9 +1410,9 @@ It contains the drawing area underneath as well as the side section to the right
 
 \noindent
 The \textit{drawing area} is the main section of the application and serves as surface for all graphical elements.
-The concept and work-flow will be described in section \ref{GUI_concept}.
+The corresponding concept and work-flow will be described in section \ref{GUI_concept}.
 In the bottom left corner it shows the color legend for EL categories.
-It is, just like the zooming buttons in the buttom right corner, an overlay widget and is floating above the drawing content.
+It is, just like the zooming buttons in the bottom right corner, an overlay widget and is floating above the drawing content.
 
 On the right-hand side of the window is the \textit{side section}.
 After selecting an element on the drawing area this section show the element's properties and values.
@@ -1444,11 +1444,14 @@ As a consequence of this decision there is no menu bar on top.
 This leads to more space for the drawing area and therefore for the graphical EL model going to be created.
 
 To achieve a fast work-flow functions should be case-specific and accessible directly at the point of interest, in this case close to the graphical elements.
-Common functions like creating sets are therefore accessible through the context menu (right click on mouse or touch-and-hold on touch-based devices).
-After selecting an element the context menu changes accordingly and allows deleting or duplicating of elements.
+Common functions like creating elements for sets, mappings, relations, constraints are therefore accessible through the context menu (right click on mouse or touch-and-hold on touch-based devices).
+After selecting an element the context menu changes accordingly when called and allows deleting or duplicating elements.
 Also the side section right to the drawing area will change according to the current element selection in the drawing area.
-Relationships can be created between two elements by drag and drop.
 
+Drawing connecting lines between two elements (e.g. set and mapping) can be done by drag and drop.
+After added such connection it can be adjusted within the properties section regarding its type (line/arrow), direction and annotation.
+
+Navigating the drawing area is primarily done with the mouse.
 Moving the drawing area's view is done with holding down the right mouse button (touch domain: two fingers touch-and-hold), zooming with the mouse wheel (touch domain: pinch-in/out).
 Alternatively a + and - button at the bottom right corner of the drawing area will allow zooming when no mouse wheel is available.
 
@@ -1456,25 +1459,25 @@ Alternatively a + and - button at the bottom right corner of the drawing area wi
 
 
 
-\section{Extensions}
+\section{Advanced features}
 \label{editor_extensions}
 The following proposed functions are treated as optional features.
-They are all combined depicted in figure \ref{fig:GUI_extensions}.
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_extensions.png}
-	\caption{Editor extensions}
-	\label{fig:GUI_extensions}
-\end{figure}
 
 \subsection{View settings}
 \label{editor_extension_settings}
 A gear button in the general section opens the settings inside the side section (see figure \ref{fig:GUI_extensions}).
 The setting's subsection \textit{View} allows toggling the visibility of several model properties (e.g. show/hide annotations).
-This lets the user adapt the view to the complexity of the depicted model.
+This lets the user adapt the view to the complexity of the depicted model and to the desired level of detail.
 
-A classical approach of view settings could be a top menu with a view section containing several items to enable/disable (state indicated with a checkmark).
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{../figures/chapter4/GUI_extensions.png}
+	\caption{View settings}
+	\label{fig:GUI_extensions}
+\end{figure}
+
+\noindent
+A classical approach of adjusting the editor's view could be a top menu with a view section containing several items to enable/disable (state indicated with a checkmark).
 This menu would overlap the depicted model in the drawing area and the menu has to be reentered and navigated through after every change.
 
 The proposed settings section allows a fast configuration of the desired level of detail with toggle buttons.
@@ -1483,10 +1486,10 @@ This behavior supports instant gratification (see principle 2 of usability \cite
 Several changes can be made fast without the need of reentering or renavigating.
 This also supports satisfiscing (principle 3 of usability \citep{Tidwell11}), because the user can easily use trial-and-error to find the configuration he needs.
 
-\subsection{Default relationship}
-\label{editor_extension_default_relationship}
-A toggle button in the settings section \textit{or} a small drop-down menu inside a corner of the drawing area (see figure \ref{fig:GUI_extensions}) allows setting a default relationship type (mapping or relation).
-This is not necessary per se, due to being able to draw an arbitrary relationship and change it to a mapping/relation in the properties section, but this may enhance the working speed when drawing multiple non-default relationship elements.
+%\subsection{Default relationship}
+%\label{editor_extension_default_relationship}
+%A toggle button in the settings section \textit{or} a small drop-down menu inside a corner of the drawing area (see figure \ref{fig:GUI_extensions}) allows setting a default relationship type (mapping or relation).
+%This is not necessary per se, due to being able to draw an arbitrary relationship and change it to a mapping/relation in the properties section, but this may enhance the working speed when drawing multiple non-default relationship elements.
 
 \subsection{Redirect edges}
 \label{editor_extension_redirect_edges}
