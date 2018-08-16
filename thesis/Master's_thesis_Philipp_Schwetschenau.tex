@@ -1200,6 +1200,10 @@ For multiple levels of indirection ($m>1$) the color legend needs to be extended
 Regarding their appearance sets remain mostly the same (see figure \ref{fig:set}).
 The unclosed area of a set can now be colored to indicate category memberships.
 Its name and internal definition depicted by a formula are optional.
+The formula allows to mathematical express the internal definition of a set without the need of graphically modeling them.
+With this option the complexity of the model can be limited where needed.
+A user can now decide case-specifically whether certain elements are relevant to be modeled graphically or mathematically for the sake of expressiveness/simplicity.
+Choosing the mathematical expression can help keeping the visual focus on more relevant elements of the model.
 
 \begin{figure}[htb]
 	\centering
@@ -1220,7 +1224,7 @@ They can be colored individually to their superset.\\
 \end{figure}
 
 \noindent
-The internal definition of sets (equations like $P = 2^{O \times OP}$ in $RBAC_0$, see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) is not depicted in a graphical way for the same reasons as for the usage of a mathematical expression for annotations and mathematical symbols for argument operation types (see section \ref{improving_notation}).
+The internal definition of sets (equations like $P = 2^{O \times OP}$ in $RBAC_0$, see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) is not depicted in a graphical way for the same reasons as for the usage of a mathematical expression for annotations and mathematical symbols for operator indications (see section \ref{improving_notation}).
 Still set definitions can be depicted with a mathematical expression inside the set itself.% as shown in figure \ref{fig:set_with_internal_def}.\\
 %
 %\begin{figure}[htb]
@@ -1261,12 +1265,12 @@ So in contrast to the original notation we can now specify not just a relationsh
 Many -- especially bright -- colors like yellow do not have a high contrast to their background (generally white), so colored thin objects like lines or object's outlines are hard to see.
 So, to enhance the visual perception, we do not want to use coloring directly on those objects, but continue using black arrows and lines to maximize the contrast in combination with a white background.
 To still be able to categorize relationships by color, relationship elements need a sufficient enclosed area that can properly represent its color.
-Relations already have such area: The rhombus shape holding the operation type symbol.
-Relations always have at least one operation type, mappings do not.
+Relations already have such area: The rhombus shape holding the operator symbol.
+Relations always have at least one operator, mappings do not.
 So for mappings we introduce a rectangle to obtain a sufficient coloring area.
 A Mapping also has its names encapsulated into this rectangle.
 The rectangle shape can be dynamically resized to fit its content.
-A relation holds its name in its rhombus shape above its operation type symbol (see figure \ref{fig:relationships}).
+A relation holds its name in its rhombus shape above its operator symbol (see figure \ref{fig:relationships}).
 
 \begin{figure}[htb]
 	\centering
@@ -1276,32 +1280,38 @@ A relation holds its name in its rhombus shape above its operation type symbol (
 \end{figure}
 
 \noindent
-Handling two or more arguments is possible now as well as multiple operations and any order of operations as depicted in figure \ref{fig:relationship_operation_2args} and \ref{fig:relationship_operation_3args}.
-When having multiple operation types the name of the relation is always encapsulated in the last operation type object.
+Handling two or more combined sets is possible now as well as any order of operations as depicted in figure \ref{fig:relationship_operation_2args} and \ref{fig:relationship_operation_3args}.
+When having multiple different operators for one relationship the name of the relationship itself is always encapsulated in the last element.
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.35]{../figures/chapter3/relationship_operation_2args.png}
-	\caption{Mapping with two arguments $f:A \times B \rightarrow Z$}
+	\caption{Mapping with multiple participating sets $f:A \times B \rightarrow Z$}
 	\label{fig:relationship_operation_2args}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.35]{../figures/chapter3/relationship_operation_3args.png}
-	\caption{Mapping with different operations $f:A \times \lbrace B \cup C \rbrace \rightarrow Z$ }
+	\caption{Mapping with multiple different operations $f:A \times \lbrace B \cup C \rbrace \rightarrow Z$ }
 	\label{fig:relationship_operation_3args}
 \end{figure}
 
 \noindent
-In rare cases the order of arguments participating in \textit{one} operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction) and can be indicated with roman numerals as annotations as depicted in figure \ref{fig:operation_order}.
+In rare cases the order of elements participating in \textit{one} operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction) and can be indicated with roman numerals as annotations as depicted in figure \ref{fig:operation_order}.
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.35]{../figures/chapter3/operation_order.png}
-	\caption{Indicating the order of arguments for an operation}
+	\caption{Indicating the order of sets for an operation}
 	\label{fig:operation_order}
 \end{figure}
+
+\noindent
+In addition to their regular use a relation element can be used to express unary set operations like $2^R$ by putting it in front of the target set.
+To some degree the notation now offers different ways to depict expressions to fit individual needs: A model utilizing an unary set expression over and over can reduce the number of needed (redundant) edge annotations by using such dedicated relation element and always relate to it instead of using annotations at all.
+
+With the solutions and methods described in this section the graphical EL notation allows a modular construction of mathematical terms.
 
 
 
