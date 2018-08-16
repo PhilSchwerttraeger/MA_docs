@@ -1045,7 +1045,7 @@ The set operator, that determines how two sets interrelate, can vary (here: $\ti
 
 \vspace{4mm}
 \noindent
-\textbf{Problem 3: Order of operations and arguments}
+\textbf{Problem 3: Order of operations and sets}
 \vspace{1mm}
 
 \noindent
@@ -1109,8 +1109,8 @@ In this scenario there would be need to depict $E$ two times at once (in $LS_1$ 
 \vspace{1mm}
 
 \noindent
-To counter the ambiguous depiction of sets in context of a relationship we need a better ways of depicting set expressions like power sets.
-For \textit{unary} set operations we introduce \textit{relationship annotations}.
+To counter the ambiguous depiction of sets in context of a relationship we need a better ways of depicting set expressions.
+For \textit{unary} set operations (e.g. power sets) we introduce \textit{relationship annotations}.
 These are positioned at the connection points of sets and relationships, simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}).
 Unlike their semantics in UML or ERD, these relationship annotations do not indicate the amount of elements participating in a relationship, but a specific form of an element in context of a relationship it is part of.
 Just like UML/ERD the mathematical expression (e.g.~$2^B$) is depicted directly as textual expression without any additional graphical elements or symbols.
@@ -1121,7 +1121,7 @@ This may be even counter-intuitive, because humans are able to hold up to 7 diff
 
 \vspace{2mm}
 \noindent
-\textbf{Solution to problem 2: Operation indicator}
+\textbf{Solution to problem 2: Set operators}
 \vspace{1mm}
 
 \noindent
@@ -1130,7 +1130,7 @@ In the notation \cite{Amthor18} uses, relationships do not specify any operator 
 Therefore relationships are depicted incompletely.
 Again, it seems not reasonable to introduce new graphical elements to indicate the operator at this level of detail and with that amount of different possible types.
 Again we use the textual mathematical expression/symbol.
-To avoid proximity and overlapping conflicts the operation indicator is encapsulated in a graphical shape: a rhombus (based on ERD relationships, see page \pageref{fig:ERD_relationship}).
+To avoid proximity and overlapping conflicts the operator is encapsulated in a graphical shape: a rhombus (based on ERD relationships, see page \pageref{fig:ERD_relationship}).
 This graphical element is the logical center and connection point for all arrows and lines from and to elements participating in this relationship.
 
 
