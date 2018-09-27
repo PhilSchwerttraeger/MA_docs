@@ -1540,14 +1540,32 @@ Furthermore Qt is a good choice, because it heavily focuses on GUI development a
 
 \section{Structure}
 \label{implementation_structure}
-Class diagram
+This section gives an overview of the implementation's structure of the EL editor.
+The main structure is heavily based on Qt's class structure for the classes we used and their relationships and is depicted as UML class structure in figure \ref{fig:Qt_class_structure}.
+
+\begin{mdframed}[style=mystyle,frametitle=Note]
+The full structure is more complex than shown in the following i.a.\ due to layout and auxiliary containers for aligning and managing widgets.
+For the purpose of this chapter we will reduce complexity to focus on selected parts.
+\end{mdframed}
+
+\noindent
+The \texttt{QMainWindow} is the default window Qt creates after program start.
+It is parent to all other widgets.
+The \texttt{MainWindow} contains a \texttt{QTabWidget} with two tabs: \texttt{QGraphicsView} and \texttt{QTabsWidget} (analogue to its design in section \ref{editor_structure}).
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\linewidth]{../figures/chapter5/class_diagram.png}
-	\caption{Class diagram}
-	\label{fig:class_diagram}
+	\includegraphics[scale=1]{../figures/chapter5/Qt_class_structure.png}
+	\caption{Qt class structure}
+	\label{fig:Qt_class_structure}
 \end{figure}
+
+\noindent
+\texttt{QGraphicsView} is a viewport and implements all view-related function such as zooming or navigating.
+It can hold one \texttt{QGraphicsScene} (respective one model) at a time to display.
+\texttt{QGraphicsScene} holds and manages all graphical items (\texttt{QGraphicsItem}) and implements interactions with them (e.g.\ positioning or moving).
+
+
 
 
 \begin{figure}[htb]
