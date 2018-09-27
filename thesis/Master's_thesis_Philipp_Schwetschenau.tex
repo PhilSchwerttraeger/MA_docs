@@ -1511,11 +1511,15 @@ Dragging and dropping the handle will redirect the edge through the new position
 \cleardoublepage
 \chapter{Implementation}
 \label{implementation}
-In this chapter is about the implementation of the EL editor.
+This chapter is about the implementation of the EL editor designed in the previous chapter.
+This chapter does not aim at explaining the whole source code or all functions, but at giving an overview on the implementation's structure and at giving some detailed insights towards it's core functionality.
 
-In section \ref{implementation_base}
-In section \ref{implementation_structure}
-In section \ref{implementation_sections}
+For this we will first take a look at the \textit{Qt} framework, the implementation base for this editor, in section \ref{implementation_base}.
+After that the general structure of the implementation itself will be explained in section \ref{implementation_structure}, followed by more detailed information on the \textit{graphics scene}, its central graph-based widget for drawing elements and how it is extended to fit the requirements for this editor.
+Also the concept for importing and exporting the data from and to an XML-based file format for persistent storage is depicted in section \ref{implementation_importexport}.
+In section \ref{implementation_sections} the different GUI sections of the editor are shown and their corresponding functions are outlined.
+
+
 
 
 
