@@ -1512,13 +1512,12 @@ Dragging and dropping the handle will redirect the edge through the new position
 \chapter{Implementation}
 \label{implementation}
 This chapter is about the implementation of the EL editor designed in the previous chapter.
-This chapter does not aim at explaining the whole source code or all functions, but at giving an overview on the implementation's structure and at giving some detailed insights towards it's core functionality.
+This chapter does not aim at explaining the source code itself or listing all functions, but at giving an overview on the implementation's structure and at giving some detailed insights towards its core functionality.
 
 For this we will first take a look at the \textit{Qt} framework, the implementation base for this editor, in section \ref{implementation_base}.
-After that the general structure of the implementation itself will be explained in section \ref{implementation_structure}, followed by more detailed information on the \textit{graphics scene}, its central graph-based widget for drawing elements and how it is extended to fit the requirements for this editor.
-Also the concept for importing and exporting the data from and to an XML-based file format for persistent storage is depicted in section \ref{implementation_importexport}.
-In section \ref{implementation_sections} the different GUI sections of the editor are shown and their corresponding functions are outlined.
-
+After that the general structure of the implementation itself will be explained in section \ref{implementation_structure}.
+In section \ref{implementation_sections} more details on two prominent GUI sections are given.
+And in the last section of this chapter the concept for importing and exporting data from and to an XML-based file format for persistent storage is explained in section \ref{implementation_importexport}.
 
 
 
@@ -1572,15 +1571,20 @@ Whenever the tab is changed to the table tab \texttt{QTableWidget} is build up/u
 		
 \section{GUI sections}
 \label{implementation_sections}
-\subsection{GraphicsScene}
+This section covers two essential GUI sections of the editor: The \textit{Graphics Scene} in section \ref{implementation_graphicsscene} and the \textit{Side Section} in section \ref{implementation_side_section}.
+
+
+
+\subsection{Graphics Scene}
 \label{implementation_graphicsscene}
+\texttt{GraphicsScene} is the central graph-based widget for holding and managing all graphical elements.
 Figure \ref{fig:class_diagram} shows the \texttt{GraphicsScene} class and its children classes in a more detailed form.
-In the actual implementation almost all classes are derived from corresponding Qt classes and are extended by several features.
-One example for this is \texttt{GraphicalElement}, which inherits from \texttt{QGraphicsItem} and adds private variables for EL element properties such as EID.
+In the actual implementation almost all classes are derived from corresponding Qt classes and are extended by additional features.
+One example for this is \texttt{GraphicalElement}, which inherits from \texttt{QGraphicsItem} and adds private attributes such as EID.
 
 \noindent
-The \texttt{GraphicsScene} holds functions to add new elements to the scene (e.g.\ \texttt{addSet()}).
-It also holds a list of all \textit{EIDs} and a list of all element \textit{categories}.
+\texttt{GraphicsScene} implements i.a. functions to add new elements to the scene.
+It also holds a list of all \textit{EIDs} and a list of all (potential) element \textit{categories}.
 
 \begin{figure}[htb]
 	\centering
@@ -1591,21 +1595,21 @@ It also holds a list of all \textit{EIDs} and a list of all element \textit{cate
 
 \noindent
 The categories list is initialized for an empty model with the EL categories for $m=1$ (see section \ref{EL} of the fundamentals chapter), but can be modified by the user while runtime or by importing projects.
-The \texttt{GraphicsScene} also holds all EL meta information such like the corresponding XML tag identifiers and colors (not depicted in figure \ref{fig:class_diagram}).
+The \texttt{GraphicsScene} also holds all model-specific EL meta information such as the corresponding XML tag identifiers and colors (not shown in figure \ref{fig:class_diagram}).
 
 For the internal organization all graphical elements in the scene have an unique \textit{element identifier} (\texttt{EID}) to address them.
 The \texttt{EID} of an item is not allowed to change during its lifetime.
 The allocation of \texttt{EID}s is simply implemented as incrementing integers.
-After deleting an element the corresponding \texttt{EID} is free and can be reallocated to new objects again.
+But after deleting an element the corresponding \texttt{EID} is free and can be reallocated to new objects again.
 
 \begin{mdframed}[style=mystyle,frametitle=Note]
 The \texttt{EID} differs from the attribute \texttt{identifier}.
-The latter is the textual identifier of the EL element, e.g.\ \textit{U} for a \textit{Users} set.
-Unlike the \texttt{identifier} attribute the \texttt{EID} is not allowed to change after set once.
+The latter is the identifier of the EL element, e.g.\ \textit{U} for a \textit{Users} set.
+Both have to be unique, but unlike the \texttt{identifier} attribute the \texttt{EID} is not allowed to change after set once.
 \end{mdframed}
 
 \noindent
-All four element types that can be added to the scene (\texttt{Set}, \texttt{mapping}, \texttt{relation} and \texttt{constraint}) inherit from \texttt{GraphicalElement}.
+All four element types that can be added to the scene (\textit{Set}, \textit{mapping}, \textit{relation} and \textit{constraint}) inherit from \texttt{GraphicalElement}.
 \texttt{GraphicalElement} holds all attributes all element types have in common (e.g.\ \texttt{EID}).
 The four element types themselves add exclusive attributes (e.g.\ \textit{formula} in \texttt{Set}).
 
@@ -1614,6 +1618,7 @@ The four element types themselves add exclusive attributes (e.g.\ \textit{formul
 
 
 \subsection{Side Section}
+\label{implementation_side_section}
 The side section displays information of the selected element in \texttt{GraphicsScene}.
 In the top right corner the element type is indicated.
 
