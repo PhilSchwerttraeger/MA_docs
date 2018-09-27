@@ -1614,6 +1614,21 @@ The four element types themselves add exclusive attributes (e.g.\ \textit{formul
 
 
 \subsection{Side Section}
+The side section displays information of the selected element in \texttt{GraphicsScene}.
+In the top right corner the element type is indicated.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.9]{../figures/chapter5/sidesection.png}
+	\caption{Side section: Item properties}
+	\label{fig:sidesection}
+\end{figure}
+
+All \texttt{QString}-typed attributes are displayed with an classical text edit widget.
+The description text edit widget is multi-lined.
+The element's categories are depicted with a list of checkable entries.
+After the horizontal line the element-exclusive attributes are listed (in case of \ref{fig:sidesection} the set's formula).
+Any changes in the side section will be instantly propagated to its element's attributes with every keystroke.
 
 
 
