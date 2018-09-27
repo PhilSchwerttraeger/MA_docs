@@ -1663,6 +1663,12 @@ Figure \ref{fig:contextMenu_item} shows the context menu of an item in the scene
 	\label{fig:contextMenu_item}
 \end{figure}
 
+\noindent
+The menu allows triggering actions to change element properties that are graphically displayed inside the element as well as category assignments.
+The actual components of this context menu depends on the element's type (e.g.\ shows \textit{Change formula} just for sets).
+
+After selecting a \textit{Change} action the corresponding text field of the elements gets into edit mode and reacts to user input until the focus is lost (clicking somewhere else).
+
 
 
 \section{Import and Export}
@@ -1676,6 +1682,10 @@ For the file handling Qt's \texttt{QFile} and \texttt{QFileDialog} classes are u
 The XML scheme follows the \textit{Entity Labeling Markup Language} specification in \cite[appendix C.2, p.~196]{Amthor18}.
 
 
+
+%\section{Summary}
+%\label{implementation_importexport}
+%This chapter
 
 
 
