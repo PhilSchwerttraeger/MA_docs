@@ -1516,11 +1516,11 @@ Dragging and dropping the handle will redirect the edge through the new position
 This chapter is about the implementation of the EL editor designed in the previous chapter.
 This chapter does not aim at explaining the source code itself or listing all functions, but at giving an overview on the implementation's structure and at giving some detailed insights towards its core functionality.
 
-For this we will first take a look at the \textit{Qt} framework, the implementation base for this editor, in section \ref{implementation_base}.
+For this we will first take a look at the framework \textit{Qt}, the implementation base for this editor, in section \ref{implementation_base}.
 After that the general structure of the implementation itself will be explained in section \ref{implementation_structure}.
-In section \ref{implementation_sections} more details on two prominent GUI sections are given.
-And in the last section of this chapter the concept for importing and exporting data from and to an XML-based file format for persistent storage is explained in section \ref{implementation_importexport}.
-
+In the subsequent subsections \ref{implementation_graphicsscene} and \ref{implementation_side_section} more details on two prominent GUI sections are given.
+Section \ref{implementation_events} then discusses cursor-based event handling of the implementation.
+Finally in the last section of this chapter the concept for importing and exporting data from and to an XML-based file format for persistent storage is explained in section \ref{implementation_importexport}.
 
 
 
@@ -1569,11 +1569,7 @@ It can hold one \texttt{QGraphicsScene} (respective one model) at a time to disp
 For the table view of the model's data Qt's \texttt{QTableWidget} is used.
 Whenever the tab is changed to the table tab \texttt{QTableWidget} is build up/updated with the current data available in \texttt{QGraphicsScene}.
 
-
-		
-\section{GUI sections}
-\label{implementation_sections}
-This section covers two essential GUI sections of the editor: The \textit{Graphics Scene} in section \ref{implementation_graphicsscene} and the \textit{Side Section} in section \ref{implementation_side_section}.
+The following sections cover two essential GUI sections of the editor: The \textit{Graphics Scene} in section \ref{implementation_graphicsscene} and the \textit{Side Section} in section \ref{implementation_side_section}.
 
 
 
@@ -1622,7 +1618,6 @@ The four element types themselves add exclusive attributes (e.g.\ \textit{formul
 \subsection{Side Section}
 \label{implementation_side_section}
 The side section displays information of the selected element in \texttt{GraphicsScene}.
-In the top right corner the element type is indicated.
 
 \begin{figure}[htb]
 	\centering
@@ -1631,26 +1626,26 @@ In the top right corner the element type is indicated.
 	\label{fig:sidesection}
 \end{figure}
 
-All \texttt{QString}-typed attributes are displayed with an classical text edit widget.
-The description text edit widget is multi-lined.
+\noindent
+In the top right corner the element type is indicated.
+All \texttt{QString}-typed attributes are displayed and modifiable with the help of a classical text edit widget.
+Furthermore the description text edit widget is multi-lined.
 The element's categories are depicted with a list of checkable entries.
-After the horizontal line the element-exclusive attributes are listed (in case of \ref{fig:sidesection} the set's formula).
-Any changes in the side section will be instantly propagated to its element's attributes with every keystroke.
+After the horizontal line the element-exclusive attributes are listed (in case of figure \ref{fig:sidesection} the set's formula).
+Any changes in the side section widgets will be instantly (with every key stroke) propagated to the element's attributes.
 
 
 
-\section{Events}
-Cursor-based behavior like selecting and marking items or drawing lines and arrows with drag and drop is implemented with the help of Qt's \texttt{mousePressEvent}, \texttt{mouseMoveEvent} and \texttt{mouseReleaseEvent} functions.
 \section{Event Handling}
 \label{implementation_events}
+Cursor-based behavior like selecting items or drawing lines and arrows with drag and drop is implemented with the help of Qt's \texttt{mousePressEvent}, \texttt{mouseMoveEvent} and \texttt{mouseReleaseEvent} functions.
 These are implemented on several levels.
-The top-most visible item (text items included) in the scene receives mouse events first.
+After such event is triggered the top-most visible item at the cursor's position (text items included) receives the event first.
 After reacting to the mouse event, the item can pass the event on to its underlying items or discard it.
-\texttt{contextMenuEvent}.
 
-Calling the context menu follows the same concept.
+Calling the context menu (\texttt{contextMenuEvent}) follows the same concept.
 Currently there are two layers the context menu is callable from: \texttt{GraphicalElement} when an element is clicked or \texttt{GraphicsScene} when free space of the scene is clicked.
-Figure \ref{fig:contextMenu_scene} shows the context menu after clicking an item in the scene.
+Figure \ref{fig:contextMenu_item} shows the context menu of an item in the scene.
 
 %\begin{figure}[htb]
 %	\centering
@@ -1676,7 +1671,7 @@ To export a model into a structured format we can not iterate through all items 
 However we can iterate through the \texttt{GraphicsScene}'s list of \texttt{EID}s to find all valid elements in \texttt{GraphicsScene} to then get all relevant data of the element according to its element type.
 
 For the file handling Qt's \texttt{QFile} and \texttt{QFileDialog} classes are used, for dealing with XML in particular the \texttt{QXmlStreamReader} and \texttt{QXmlStreamWriter} classes.
-The XML scheme follows the \textit{Entity Labeling Markup} specification in \citep[appendix C.2, p.~196]{Amthor18}.
+The XML scheme follows the \textit{Entity Labeling Markup Language} specification in \cite[appendix C.2, p.~196]{Amthor18}.
 
 
 
