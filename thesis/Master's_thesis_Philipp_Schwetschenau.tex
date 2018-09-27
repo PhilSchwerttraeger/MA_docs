@@ -1532,17 +1532,18 @@ Qt is a class library for GUI-based cross-platform software development and supp
 
 Qt uses its MOC (meta object compiler) preprocessor to extend C++ with additional features.
 One of these are signals and slots, an easy concept for an event-driven program flow and for enable simple communication between objects.
-One part of the Qt is its IDE \textit{Qt Creater}, which is used to develop the EL editor in this work.
-The main advantage in using Qt Creator rather than any other development environment is it's integrated design mode, which allows quickly building a prototype layout graphically, which then can be used and refined in the code.
+One part of Qt is its IDE \textit{Qt Creater}, which is used to develop the EL editor in this work.
+The main advantage in using Qt Creator rather than any other development environment is it's integrated design mode, which allows quick prototyping a layout graphically, which then can be used and refined in the code.
 
-Furthermore Qt is a good choice, because it heavily focuses on GUI development and has powerful classes to implement graph-based editors with custom items like the EL editor.
+Furthermore Qt is a good choice, because it heavily focuses on GUI development and has powerful classes to implement graph-based editors with custom items like this EL editor.
 
 
 
 \section{GUI Structure}
 \label{implementation_structure}
 This section gives an overview of the implementation's structure of the EL editor.
-The main structure is heavily based on Qt's class structure for the classes we used and their relationships and is depicted as UML class structure in figure \ref{fig:Qt_class_structure}.
+The main structure is heavily based on Qt's class structure for the classes we chose to use.
+Their relationships are depicted as UML class structure in figure \ref{fig:Qt_class_structure}.
 
 \begin{mdframed}[style=mystyle,frametitle=Note]
 The full structure is more complex than shown in the following i.a.\ due to layout and auxiliary containers for aligning and managing widgets.
@@ -1628,7 +1629,8 @@ The side section displays information of the selected element in \texttt{Graphic
 
 \noindent
 In the top right corner the element type is indicated.
-All \texttt{QString}-typed attributes are displayed and modifiable with the help of a classical text edit widget.
+For interacting with element's data common interaction design patterns (see section \ref{design_patterns}) are used.
+All \texttt{QString}-typed attributes are accessible with the help of classical text edit widgets.
 Furthermore the description text edit widget is multi-lined.
 The element's categories are depicted with a list of checkable entries.
 After the horizontal line the element-exclusive attributes are listed (in case of figure \ref{fig:sidesection} the set's formula).
@@ -1644,7 +1646,7 @@ After such event is triggered the top-most visible item at the cursor's position
 After reacting to the mouse event, the item can pass the event on to its underlying items or discard it.
 
 Calling the context menu (\texttt{contextMenuEvent}) follows the same concept.
-Currently there are two layers the context menu is callable from: \texttt{GraphicalElement} when an element is clicked or \texttt{GraphicsScene} when free space of the scene is clicked.
+Currently there are two layers the context menu is implemented in and callable from: \texttt{GraphicalElement}, which is triggered when an element is clicked or \texttt{GraphicsScene}, which is triggered when free space of the scene is clicked.
 Figure \ref{fig:contextMenu_item} shows the context menu of an item in the scene.
 
 %\begin{figure}[htb]
