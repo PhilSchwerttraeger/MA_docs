@@ -1525,9 +1525,16 @@ In section \ref{implementation_sections} the different GUI sections of the edito
 
 \section{Implementation Base}
 \label{implementation_base}
-For the implementation base the framework Qt was used.
-Qt is
-Qt lends itself towards the MVC principle, but it
+As implementation base the framework Qt was used.
+Qt is a class library for GUI-based cross-platform software development and supports all established operation systems like Linux, Windows, macOS, Android and iOS.
+%Qt has a dual licence model, that uses a proprietary license for commercial projects and the \textit{GNU General Public License} for open source projects.
+
+Qt uses its MOC (meta object compiler) preprocessor to extend C++ with additional features.
+One of these are signals and slots, an easy concept for an event-driven program flow and for enable simple communication between objects.
+One part of the Qt is its IDE \textit{Qt Creater}, which is used to develop the EL editor in this work.
+The main advantage in using Qt Creator rather than any other development environment is it's integrated design mode, which allows quickly building a prototype layout graphically, which then can be used and refined in the code.
+
+Furthermore Qt is a good choice, because it heavily focuses on GUI development and has powerful classes to implement graph-based editors with custom items like the EL editor.
 
 
 
