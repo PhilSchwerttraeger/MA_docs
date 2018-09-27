@@ -168,7 +168,7 @@ In section~\ref{graphical_notations} the well-established graphical notations \t
 Based on human optical perception and gestalt laws section~\ref{perception} provides information on how we perceive and evaluate optical stimuli regarding properties like shape and closeness.
 In the last section~\ref{gui_design} information on how to design a software graphical user interface are given with respect to common best practices like interaction design patterns and usability.
 
-\section{Security models}
+\section{Security Models}
 \label{security_models}
 A \textit{security policy} is a set of rules to fulfill security related requirements of an IT system.
 In order to be able to work with such a security policy and to analyze it, it has to be formalized as an instance of a \textit{security model}.
@@ -193,7 +193,7 @@ In the course of this work, we need security policies and models to explain and 
 
 
 
-\subsection{Identity-based Access Control}
+\subsection{Identity-Based Access Control}
 \label{IBAC}
 The most fundamental class of security models is probably the family of Identity-based Access Control (IBAC) models.
 The model is based on a system with active (subjects) and passive entities (objects).
@@ -296,7 +296,7 @@ RBAC$_3$ combines the concepts of RBAC$_1$ and RBAC$_2$.
 
 
 
-\subsubsection{RBAC notation by Sandhu at al.}
+\subsubsection{RBAC Notation by Sandhu at al.}
 \label{RBAC_notation}
 \cite{Sandhu96} use a graphical notation in their work to visualize the RBAC model family with all its elements and relationships (see figure \ref{fig:Sandhu_notation}).
 Due to RBAC being a well-established security model and also regarding its relevance in literature -- especially for its contribution to the standardized NIST RBAC model \citep{RBACNIST} -- we want to take a closer look at its graphical notation.
@@ -593,7 +593,7 @@ $LA_2$ and $LS_2$ are depicted as dashed rectangles within the diagram itself an
 
 
 
-\section{Graphical notation models}
+\section{Graphical Notation Models}
 \label{graphical_notations}
 In this section two well-established graphical notation models are presented: UML and ER.
 Due to being standard and de facto standard, they have a high relevance in the domain of graphical modeling. 
@@ -665,7 +665,7 @@ Lines do not collide if possible. \\
 
 
 
-\subsubsection{Additional annotations}
+\subsubsection{Additional Annotations}
 \label{UML_additional_annotations}
 UML has symbols and textual identifiers to visualize special properties.
 With \textit{multiplicities} an element can be constrained regarding its number in context of an relationship.
@@ -677,7 +677,7 @@ This makes it compatible, easy and fast for hand-drawing.
 Coloring remains a not officially specified option to highlight certain parts of a diagram, e.g. to set a focus without being in conflict with any already colorized sections of the model.
 
 
-\subsection{Entity-Relationship model}
+\subsection{Entity-Relationship Model}
 \label{ER}
 The entity-relationship model (ER) is a model to describe classified objects (entities) and how they are interrelated.
 It was developed to illustrate information in databases on a conceptual level and became a popular tool for requirement analysis in this domain.
@@ -739,7 +739,7 @@ It is connected to an entity or to a relationship with simple lines.
 \end{figure}
 \end{description}
 
-\subsubsection{Additional annotations}
+\subsubsection{Additional Annotations}
 \label{ER_additional_annotations}
 To specify the amount of entities in context of a relationship the following indicators for \textit{cardinalities} are used:
 
@@ -997,7 +997,7 @@ Henceforth all possible connections between sets like mappings, relations, const
 
 
 
-\subsection{Analyzing the EL notation used by Amthor}
+\subsection{Analyzing the EL Notation used by Amthor}
 \label{analyzing_notation}
 The major problems the graphical EL notation by \cite{Amthor18} has, that make the notation inconsistent, are the ambiguously depicted relationships between elements and the ambiguous method of classifying elements.
 In the following we want to isolate and describe 4 different problems.
@@ -1101,7 +1101,7 @@ In this scenario there would be need to depict $E$ two times at once (in $LS_1$ 
 
 \vspace{10mm}
 
-\subsection{Improving the EL notation used by Amthor}
+\subsection{Improving the EL Notation used by Amthor}
 \label{improving_notation}
 \vspace{2mm}
 \noindent
@@ -1396,7 +1396,7 @@ Next to them is a gear button to open the application's settings (more on this s
 
 
 
-\subsection{Graphical tab}
+\subsection{Graphical Tab}
 \label{editor_graphical}
 The graphical tab is the default view.
 It contains the drawing area underneath as well as the side section to the right-hand side of the drawing area.
@@ -1421,7 +1421,7 @@ To set the desired values suitable common input widgets (text field, drop-down m
 
 
 
-\subsection{Table tab}
+\subsection{Table Tab}
 \label{editor_table}
 When switching to the \textit{table} tab in the tab section the drawing area and side section will be replace with a single section containing a table (see figure \ref{fig:GUI_tab2_table}).
 The table shows the current information of an EL model (modeled in the graphical tab) in an alternative tabular form sorted by EL categories.
@@ -1436,7 +1436,7 @@ It is based on the tabular form for results of EL-based model engineering \cite{
 
 
 
-\section{Control concept}
+\section{Control Concept}
 \label{GUI_concept}
 To obtain a clean and modern appearance the GUI will not have any distracting or redundant functions or menus.
 This will have the effect of reducing the visual cognitive load for (especially new) users.
@@ -1459,11 +1459,11 @@ Alternatively a + and - button at the bottom right corner of the drawing area wi
 
 
 
-\section{Advanced features}
+\section{Advanced Features}
 \label{editor_extensions}
 The following proposed functions are treated as optional features.
 
-\subsection{View settings}
+\subsection{View Settings}
 \label{editor_extension_settings}
 A gear button in the general section opens the settings inside the side section (see figure \ref{fig:GUI_extensions}).
 The setting's subsection \textit{View} allows toggling the visibility of several model properties (e.g. show/hide annotations).
@@ -1491,7 +1491,7 @@ This also supports satisfiscing (principle 3 of usability \citep{Tidwell11}), be
 %A toggle button in the settings section \textit{or} a small drop-down menu inside a corner of the drawing area (see figure \ref{fig:GUI_extensions}) allows setting a default relationship type (mapping or relation).
 %This is not necessary per se, due to being able to draw an arbitrary relationship and change it to a mapping/relation in the properties section, but this may enhance the working speed when drawing multiple non-default relationship elements.
 
-\subsection{Redirect edges}
+\subsection{Redirect Edges}
 \label{editor_extension_redirect_edges}
 Until now edges are drawn between two elements and can not be altered in their position or form.
 Sometimes it is necessary to redirect edges for a better visual overview.
@@ -1505,6 +1505,8 @@ Dragging and dropping the handle will redirect the edge through the new position
 	\caption{Redirect edge}
 	\label{fig:redirect_edge}
 \end{figure}
+
+
 
 
 
@@ -1537,7 +1539,7 @@ Furthermore Qt is a good choice, because it heavily focuses on GUI development a
 
 
 
-\section{Structure}
+\section{GUI Structure}
 \label{implementation_structure}
 This section gives an overview of the implementation's structure of the EL editor.
 The main structure is heavily based on Qt's class structure for the classes we used and their relationships and is depicted as UML class structure in figure \ref{fig:Qt_class_structure}.
@@ -1639,6 +1641,8 @@ Any changes in the side section will be instantly propagated to its element's at
 
 \section{Events}
 Cursor-based behavior like selecting and marking items or drawing lines and arrows with drag and drop is implemented with the help of Qt's \texttt{mousePressEvent}, \texttt{mouseMoveEvent} and \texttt{mouseReleaseEvent} functions.
+\section{Event Handling}
+\label{implementation_events}
 These are implemented on several levels.
 The top-most visible item (text items included) in the scene receives mouse events first.
 After reacting to the mouse event, the item can pass the event on to its underlying items or discard it.
