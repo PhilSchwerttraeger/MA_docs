@@ -1633,6 +1633,32 @@ Any changes in the side section will be instantly propagated to its element's at
 
 
 \section{Events}
+Cursor-based behavior like selecting and marking items or drawing lines and arrows with drag and drop is implemented with the help of Qt's \texttt{mousePressEvent}, \texttt{mouseMoveEvent} and \texttt{mouseReleaseEvent} functions.
+These are implemented on several levels.
+The top-most visible item (text items included) in the scene receives mouse events first.
+After reacting to the mouse event, the item can pass the event on to its underlying items or discard it.
+\texttt{contextMenuEvent}.
+
+Calling the context menu follows the same concept.
+Currently there are two layers the context menu is callable from: \texttt{GraphicalElement} when an element is clicked or \texttt{GraphicsScene} when free space of the scene is clicked.
+Figure \ref{fig:contextMenu_scene} shows the context menu after clicking an item in the scene.
+
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics[]{../figures/chapter5/contextMenu_scene.png}
+%	\caption{Context menu after clicking empty space in the scene}
+%	\label{fig:contextMenu_scene}
+%\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.9]{../figures/chapter5/contextMenu_item.png}
+	\caption{Context menu after clicking an item}
+	\label{fig:contextMenu_item}
+\end{figure}
+
+
+
 \section{Import and Export}
 \label{implementation_importexport}
 The import and export functions \texttt{XMLtoScene} and \texttt{sceneToXML} are implemented in \texttt{MainWindow}.
