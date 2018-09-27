@@ -1561,12 +1561,17 @@ The \texttt{MainWindow} contains a \texttt{QTabWidget} with two tabs: \texttt{QG
 \end{figure}
 
 \noindent
-\texttt{QGraphicsView} is a viewport and implements all view-related function such as zooming or navigating.
+\texttt{QGraphicsView} is a viewport and implements all view-related functions such as zooming.
 It can hold one \texttt{QGraphicsScene} (respective one model) at a time to display.
 \texttt{QGraphicsScene} holds and manages all graphical items (\texttt{QGraphicsItem}) and implements interactions with them (e.g.\ positioning or moving).
 
+For the table view of the model's data Qt's \texttt{QTableWidget} is used.
+Whenever the tab is changed to the table tab \texttt{QTableWidget} is build up/updated with the current data available in \texttt{QGraphicsScene}.
 
 
+		
+\section{GUI sections}
+\label{implementation_sections}
 \subsection{GraphicsScene}
 \label{implementation_graphicsscene}
 Figure \ref{fig:class_diagram} shows the \texttt{GraphicsScene} class and its children classes in a more detailed form.
@@ -1608,23 +1613,22 @@ The four element types themselves add exclusive attributes (e.g.\ \textit{formul
 
 
 
+\subsection{Side Section}
+
+
+
+\section{Events}
 \section{Import and Export}
 \label{implementation_importexport}
-The import and export functions \texttt{XMLtoScene} and \texttt{sceneToXML}are implemented inside \texttt{MainWindow}.
-Due to not having a strict separation in view and model components (regarding the popular architectural pattern \textit{Model View Controller}) the element's model data and visual properties and functions are all located inside its instance itself.
-To export them into a structured format we can not iterate through all items on the scene, because this would include also texts and edges.
-But we can iterate through the \texttt{GraphicsScene}'s list of \texttt{EID}s to find valid elements and then get all relevant data of each item according to its element type.
+The import and export functions \texttt{XMLtoScene} and \texttt{sceneToXML} are implemented in \texttt{MainWindow}.
+Due to not having a strict separation in view and model (regarding the popular architectural pattern \textit{Model View Controller}) the element's model and visual properties and functions are all located inside its instance itself.
+To export a model into a structured format we can not iterate through all items in \texttt{GraphicsScene}, because this would also include also texts and edges.
+However we can iterate through the \texttt{GraphicsScene}'s list of \texttt{EID}s to find all valid elements in \texttt{GraphicsScene} to then get all relevant data of the element according to its element type.
 
-For the file handling Qt's \texttt{QFile} and \texttt{QFileDialog} classes are used, for dealing with XML in particular the \texttt{QXmlStreamWriter} and \texttt{QXmlStreamReader} classes.
+For the file handling Qt's \texttt{QFile} and \texttt{QFileDialog} classes are used, for dealing with XML in particular the \texttt{QXmlStreamReader} and \texttt{QXmlStreamWriter} classes.
 The XML scheme follows the \textit{Entity Labeling Markup} specification in \citep[appendix C.2, p.~196]{Amthor18}.
 
 
-		
-\section{GUI sections}
-\label{implementation_sections}
-Graphical scene: navigation, mouse modes
-Context Menu
-Items: Rename, selected, move
 
 
 
