@@ -1608,7 +1608,15 @@ The four element types themselves add exclusive attributes (e.g.\ \textit{formul
 
 
 
+\section{Import and Export}
+\label{implementation_importexport}
+The import and export functions \texttt{XMLtoScene} and \texttt{sceneToXML}are implemented inside \texttt{MainWindow}.
+Due to not having a strict separation in view and model components (regarding the popular architectural pattern \textit{Model View Controller}) the element's model data and visual properties and functions are all located inside its instance itself.
+To export them into a structured format we can not iterate through all items on the scene, because this would include also texts and edges.
+But we can iterate through the \texttt{GraphicsScene}'s list of \texttt{EID}s to find valid elements and then get all relevant data of each item according to its element type.
 
+For the file handling Qt's \texttt{QFile} and \texttt{QFileDialog} classes are used, for dealing with XML in particular the \texttt{QXmlStreamWriter} and \texttt{QXmlStreamReader} classes.
+The XML scheme follows the \textit{Entity Labeling Markup} specification in \citep[appendix C.2, p.~196]{Amthor18}.
 
 
 		
