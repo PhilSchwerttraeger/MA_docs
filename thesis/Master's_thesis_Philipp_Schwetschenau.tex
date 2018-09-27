@@ -1567,13 +1567,43 @@ It can hold one \texttt{QGraphicsScene} (respective one model) at a time to disp
 
 
 
+\subsection{GraphicsScene}
+\label{implementation_graphicsscene}
+Figure \ref{fig:class_diagram} shows the \texttt{GraphicsScene} class and its children classes in a more detailed form.
+In the actual implementation almost all classes are derived from corresponding Qt classes and are extended by several features.
+One example for this is \texttt{GraphicalElement}, which inherits from \texttt{QGraphicsItem} and adds private variables for EL element properties such as EID.
+
+\noindent
+The \texttt{GraphicsScene} holds functions to add new elements to the scene (e.g.\ \texttt{addSet()}).
+It also holds a list of all \textit{EIDs} and a list of all element \textit{categories}.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\linewidth]{../figures/chapter5/Qt_class_structure.png}
-	\caption{Qt class structure}
-	\label{fig:Qt_class_structure}
+	\includegraphics[width=\linewidth+1cm]{../figures/chapter5/class_diagram.png}
+	\caption{Class diagram}
+	\label{fig:class_diagram}
 \end{figure}
+
+\noindent
+The categories list is initialized with an empty model with the EL categories for $m=1$ (see section \ref{EL} of the fundamentals chapter), but can be modified while runtime or by importing projects.
+It also holds all EL meta information such like the corresponding XML tag identifiers and colors (not depicted in figure \ref{fig:class_diagram}).
+
+For the internal organization all graphical elements in the scene have an \textit{unique element identifier} (\texttt{EID}) to address them.
+The \texttt{EID} of an item is not allowed to change during its lifetime.
+The allocation of \texttt{EID}s is implemented as incrementing integers.
+After deleting an element the corresponding \texttt{EID} is free and can be reallocated to new objects again.
+
+\begin{mdframed}[style=mystyle,frametitle=Note]
+The \texttt{EID} differs from the attribute \texttt{identifier}.
+The latter is the textual identifier of the EL element, e.g.\ \textit{U} for a \textit{Users} set.
+Unlike the \texttt{identifier} attribute the \texttt{EID} is not allowed to change after set once.
+\end{mdframed}
+
+All four element types that can be added to the scene (\texttt{Set}, \texttt{mapping}, \texttt{relation} and \texttt{constraint}) inherit from \texttt{GraphicalElement}.
+\texttt{GraphicalElement} holds all attributes all element types have in common (e.g.\ \texttt{EID}).
+The four element types themselves add exclusive attributes (e.g.\ \textit{formula} in \texttt{Set}).
+
+
 
 
 		
