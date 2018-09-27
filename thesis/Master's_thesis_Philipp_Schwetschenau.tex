@@ -1585,12 +1585,12 @@ It also holds a list of all \textit{EIDs} and a list of all element \textit{cate
 \end{figure}
 
 \noindent
-The categories list is initialized with an empty model with the EL categories for $m=1$ (see section \ref{EL} of the fundamentals chapter), but can be modified while runtime or by importing projects.
-It also holds all EL meta information such like the corresponding XML tag identifiers and colors (not depicted in figure \ref{fig:class_diagram}).
+The categories list is initialized for an empty model with the EL categories for $m=1$ (see section \ref{EL} of the fundamentals chapter), but can be modified by the user while runtime or by importing projects.
+The \texttt{GraphicsScene} also holds all EL meta information such like the corresponding XML tag identifiers and colors (not depicted in figure \ref{fig:class_diagram}).
 
-For the internal organization all graphical elements in the scene have an \textit{unique element identifier} (\texttt{EID}) to address them.
+For the internal organization all graphical elements in the scene have an unique \textit{element identifier} (\texttt{EID}) to address them.
 The \texttt{EID} of an item is not allowed to change during its lifetime.
-The allocation of \texttt{EID}s is implemented as incrementing integers.
+The allocation of \texttt{EID}s is simply implemented as incrementing integers.
 After deleting an element the corresponding \texttt{EID} is free and can be reallocated to new objects again.
 
 \begin{mdframed}[style=mystyle,frametitle=Note]
@@ -1599,9 +1599,14 @@ The latter is the textual identifier of the EL element, e.g.\ \textit{U} for a \
 Unlike the \texttt{identifier} attribute the \texttt{EID} is not allowed to change after set once.
 \end{mdframed}
 
+\noindent
 All four element types that can be added to the scene (\texttt{Set}, \texttt{mapping}, \texttt{relation} and \texttt{constraint}) inherit from \texttt{GraphicalElement}.
 \texttt{GraphicalElement} holds all attributes all element types have in common (e.g.\ \texttt{EID}).
 The four element types themselves add exclusive attributes (e.g.\ \textit{formula} in \texttt{Set}).
+
+\texttt{QGraphicsTextItem} is used for displaying any text inside the  graphical elements.
+
+
 
 
 
