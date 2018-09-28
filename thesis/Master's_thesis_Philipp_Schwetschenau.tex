@@ -1059,16 +1059,18 @@ The set operator, that determines how two sets interrelate, can vary (here: $\ti
 Besides that, when handling two or more sets the order of set operations (may be mathematically indicated with brackets, see equation \ref{eq:order_operations}) and the order of sets participating in one particular set operation (see equation \ref{eq:order_arguments}) are relevant and thus have to be considered and depicted as well:
 \begin{equation}
 \begin{gathered}
-(\lbrace A \cap B \rbrace \cup C \rightarrow D) \not\equiv
-(A \cap \lbrace B \cup C \rbrace \rightarrow D)
+((A \cap B) \cup C \rightarrow D) \not\equiv
+(A \cap (B \cup C) \rightarrow D)
 \end{gathered}\label{eq:order_operations}
 \end{equation}
 \vspace{-8mm}
 \begin{equation}
 \begin{gathered}
-\lbrace A \setminus B \rbrace \not\equiv \lbrace B \setminus A \rbrace 
+(A \setminus B) \not\equiv (B \setminus A) 
 \end{gathered}\label{eq:order_arguments}
 \end{equation}
+
+
 
 \noindent
 \textbf{Problem 4: Categorization}
