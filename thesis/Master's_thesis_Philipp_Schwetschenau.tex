@@ -999,8 +999,11 @@ Henceforth all possible connections between sets like mappings, relations, const
 
 \subsection{Analyzing the EL Notation used by Amthor}
 \label{analyzing_notation}
-The major problems the graphical EL notation by \cite{Amthor18} has, that make the notation inconsistent, are the ambiguously depicted relationships between elements and the ambiguous method of classifying elements.
-In the following we want to isolate and describe 4 different problems.
+The major problem with the graphical EL notation by \cite{Amthor18} is that it is not isomorphic to its non-graphical counterpart.
+This specifically applies to the information loss induced by ambiguously depicted relationships between elements and the inconsistent method of classifying elements.
+So the first design goal for the graphical specification language is \textit{isomorphism}.
+For achieving this several elements have to be added, while others have to be extended.
+In the following we want to isolate and describe four problems in this context:
 
 \vspace{6mm}
 \noindent
@@ -1016,6 +1019,8 @@ This inconsistency (loss of information) becomes clear in particular after conve
 \begin{align}
 (U \rightarrow 2^R) \not\equiv (U \rightarrow R)
 \end{align}
+
+
 
 \vspace{4mm}
 \noindent
