@@ -1205,9 +1205,25 @@ Although we now use coloring (alternatively hachures), elements can be still arr
 \vspace{1mm}
 
 \noindent
-We introduce several options to vary the visual complexity:
-- annotation instead of pre-placed relation for single-use power-set
-- sets formula instead of combination of relations
+We introduce two methods to vary and adapt the visual complexity:
+
+\begin{description}
+\item[1) Annotations versus Rhombus Shapes]\hfill \\
+The rhombus shape in solution to problem 2 also allows expressing a power set by slotting it in ahead with an appropriate symbol inside (e.g.\ $\euscr{P}$).
+Together with annotations from solution to problem 1 we now have two semantically equivalent methods of depicting power sets.
+This gives the modeler the choice how to express power sets.
+The decision may vary from element to element and come with individual benefits.
+While using annotations is more space-saving and compact, the rhombus shape slotted in ahead can act as its own entity and multiple other relationships can refer to it (without using annotation duplicates for every single relationship).
+Regarding automated model-generation from imported data, the decision of what depiction to use this could be based on the number of references a power set has: annotation for one reference, rhombus element for two or more references.
+
+\item[2) Set Formula versus Graphical Depiction]\hfill \\
+Set's internal composition can be depicted as textual formula inside its shape but can also be graphically modeled with a combination of other elements.
+Similar to the first method this gives the modeler the choice how detailed a set should be depicted.
+Also the individual benefits of the single-use compact form versus multi-referenceable entity from above is very similar here.
+\end{description}
+
+\noindent
+More details and visual examples for this will follow in the next section, where we will finally go into the graphical aspect of these solutions.
 
 
 
