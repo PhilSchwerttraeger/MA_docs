@@ -1223,7 +1223,7 @@ Also the individual benefits of the single-use compact form (here: formula) vers
 \end{description}
 
 \noindent
-More details and visual examples for this will follow in the next section, where we will finally go into the graphical aspect of these solutions.
+More details and visual examples for this, especially the latter, will follow in the next section, where we will finally go into the graphical aspect of these solutions.
 
 
 
@@ -1281,9 +1281,23 @@ They can be colored individually to their superset.
 \end{figure}
 
 \noindent
-The internal definition of sets (equations like $P = 2^{O \times OP}$ in $RBAC_0$, see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) is not depicted in a graphical way for the same reasons as for the usage of a mathematical expression for annotations and mathematical symbols for operator indications (see section \ref{improving_notation}).
-Still set definitions can be depicted with a mathematical expression inside the set itself.% as shown in figure \ref{fig:set_with_internal_def}.\\
-%
+Alternatively they can be depicted completely graphically with the help of other elements.
+Figure \ref{fig:subsets_alternative} shows such variant of figure \ref{fig:subsets}.
+It is semantically equivalent.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter3/subsets_alternative.png}
+	\caption{Alternative depiction variants}
+	\label{fig:subsets_alternative}
+\end{figure}
+
+\noindent
+Internal definition of sets like $P = 2^{O \times OP}$ in $RBAC_0$ (see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) can be modeled graphically, but in cases like this, where all sets in the formula are not referenced at any other point of the model, the formula would probably be the better choice.
+Note that unlike the subset depiction above a formula can not depict the category membership of participating sets and is therefore \textit{not} semantically equivalent to its graphical counterpart.
+If participating sets have EL categories assigned and are therefore relevant for the EL model using the formula always induce a loss of information.
+The graphical depiction is favored 
+
 %\begin{figure}[htb]
 %	\centering
 %	\includegraphics[scale=0.5]{../figures/chapter3/set_with_internal_def.png}
