@@ -976,7 +976,7 @@ In this chapter we develop a notation to graphically model the Entity Labeling a
 In the first section \ref{gsl_concept} the general idea and approach for this are explained.
 In this context the notation used by \cite{Amthor18} is investigated regarding its inconsistency and general weaknesses.
 Afterwards possible solutions for these problems are proposed to extend and improve the notation.
-In section \ref{gsl_elements} all graphical elements developed are depicted and described regarding their function and usage.
+In section \ref{gsl_elements} all graphical elements developed are then depicted visually and described regarding their function and usage.
 Finally section \ref{gsl_example} depicts and describes a full practical example for EL modeling and illustrates all changes and improvements to its original notation form.
 
 
@@ -1007,12 +1007,12 @@ In the following we want to isolate and describe four problems in this context:
 
 \vspace{6mm}
 \noindent
-\textbf{Problem 1: Set expressions}
+\textbf{Problem 1: Power Sets}
 \vspace{1mm}
 
 \noindent
 When comparing the visual summary (figure \ref{fig:EL_diagram}) with the table form (figure \ref{fig:EL_table}) we find several inconsistencies.
-One is that all mappings in the visual summary ignore the presence of power sets or similar expressions that can extend sets.
+One is that all mappings in the visual summary ignore the presence of power sets.
 For example $ua: U \rightarrow 2^R$ is drawn as a simple arrow from $U$ to $R$.
 It depicts the participants in the mapping, but not the exact set expressions.
 This inconsistency (loss of information) becomes clear in particular after converting the graphical statement back to a mathematical one:
@@ -1024,7 +1024,7 @@ This inconsistency (loss of information) becomes clear in particular after conve
 
 \vspace{4mm}
 \noindent
-\textbf{Problem 2: Set operators}
+\textbf{Problem 2: Set Operators}
 \vspace{1mm}
 
 \noindent
@@ -1052,7 +1052,7 @@ The set operator, that determines how two sets interrelate, can vary (here: $\ti
 
 \vspace{4mm}
 \noindent
-\textbf{Problem 3: Order of operations and sets}
+\textbf{Problem 3: Order of Operations and Sets}
 \vspace{1mm}
 
 \noindent
@@ -1116,10 +1116,11 @@ In this scenario there would be need to depict $E$ two times at once (in $LS_1$ 
 
 \noindent
 While the previous four problems are related to the first design goal of achieving isomorphism, this problem derives from the actual design stage of the language.
-It appears that the modular approach we are going to use to solve the problems above can generate quite large models.
-Also it may happen that a user wants to model certain model aspects less prominent than others to keep the focus on important parts.
-So for reducing the visual complexity whenever needed, and to let the user have a choice how prominent graphical aspects should be depicted, there is need for a concept for depicting information in a compact way.
-This is our secondary design goal.
+It appears that the modular approach we are going to use can generate quite large graphical models.
+It may happen that a user wants to model certain parts of the model less prominent than others to keep the focus on important parts.
+So for reducing the visual complexity whenever needed, and to let the user have a choice how prominent certain parts should be depicted, there is need for a concept for depicting information in a compact way.
+This is the secondary design goal of the graphical specification language.
+Specific solutions towards this goal are mentioned in the following section whenever it is reasonable applicable.
 
 
 
@@ -1127,18 +1128,18 @@ This is our secondary design goal.
 \label{improving_notation}
 \vspace{2mm}
 \noindent
-\textbf{Solution to Problem 1: Set Expressions}
+\textbf{Solution to Problem 1: Power Sets}
 \vspace{1mm}
 
 \noindent
-To counter the ambiguous depiction of sets in context of a relationship we need a better ways of depicting set expressions.
-For \textit{unary} set operations (e.g. power sets) we introduce \textit{relationship annotations}.
+Other than problem 2, power sets are applied to just one set at once.
+To express them we introduce \textit{relationship annotations}.
 These are positioned at the connection points of sets and relationships, simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}).
 Unlike their semantics in UML or ERD, these relationship annotations do not indicate the amount of elements participating in a relationship, but a specific form of an element in context of a relationship it is part of.
-Just like UML/ERD the mathematical expression (e.g.~$2^B$) is depicted directly as textual expression without any additional graphical elements or symbols.
+Just like UML/ERD the mathematical expression ($2^X$) is depicted directly as textual expression without any additional graphical elements or symbols.
 This makes it universal to depict any mathematical expression needed.
 
-At this level of detail specifying special graphical elements (e.g.~special arrow heads) for every possible expression is not reasonable due to the high amount of different elements existing.
+At this level of detail specifying special graphical elements (e.g.~special arrow heads) is not reasonable due to the high amount of different elements existing (also with regard to solution to problem 2).
 This may be even counter-intuitive, because humans are able to hold up to 7 different elements in their visual buffer at once; beyond that learning/working becomes harder due to constantly swapping information between cerebral areas (see section \ref{human_optical_perception} about human optical perception).
 
 \vspace{2mm}
@@ -1147,13 +1148,14 @@ This may be even counter-intuitive, because humans are able to hold up to 7 diff
 \vspace{1mm}
 
 \noindent
-The second extension is the \textit{operation indicator}, which allows specifying an operator for non-unary operations between at least two elements.
+The second extension is the \textit{operation indicator}, which allows specifying an operator for operations with at least two operands.
 In the notation \cite{Amthor18} uses, relationships do not specify any operator between elements, just the relationship type by different arrows (mapping, relation, constraint).
 Therefore relationships are depicted incompletely.
-Again, it seems not reasonable to introduce new graphical elements to indicate the operator at this level of detail and with that amount of different possible types.
+Again, as already stated in solution to problem 1, it does not seem reasonable to introduce new graphical elements to indicate the operator at this level of detail and with that amount of different possible types.
 Again we use the textual mathematical expression/symbol.
 To avoid proximity and overlapping conflicts the operator is encapsulated in a graphical shape: a rhombus (based on ERD relationships, see page \pageref{fig:ERD_relationship}).
 This graphical element is the logical center and connection point for all arrows and lines from and to elements participating in this relationship.
+
 
 
 \vspace{2mm}
