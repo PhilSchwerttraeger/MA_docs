@@ -1392,6 +1392,21 @@ With the solutions and methods described in this section the graphical EL notati
 
 
 
+\subsection{Comments on the Model Structure}
+\label{comments_on_model_structure}
+The modular graph we developed is now able to describe EL models graphically.
+On an abstract level the graph is structured in nodes and edges, just like an mathematical graph.
+Based on this one might assume this being a bipartite graph, because edges connect sets with other elements.
+But due to mappings being also depicted with the help of graphical shapes, but are no sets at all, this is not the case.
+Therefore the graph is not bipartite.
+
+The reason for this is that mappings must provide a surface to hold their color to be able to get categorized properly.
+Therefore they have to be encapsulated in a geometrical shape just like the other elements, too.
+A depiction variant would be to not position the shape and its concent in the middle of its arrow, but above or below it with at least one point of contact.
+But due to lines and arrows are not limited to run straight horizontally or vertically, this might induce confusion in distinguishing multiple adjacent elements in large models with less space.
+
+
+
 \section{Example}
 \label{gsl_example}
 To showcase that we can now model all relevant aspects of EL -- even for $m>1$ (see \textit{hierarchical EL}, section \ref{HEL}) -- we want to depict the HIX example with added role hierarchy \cite{Amthor18} uses as example with our newly developed notation.
