@@ -1320,8 +1320,9 @@ Multi-coloring uses uniformly divided circular sectors to partition the coloring
 
 
 \subsection{Relationships}
+\label{relationships}
 Simple arrows depict mappings, double-sided arrows depict relations and dashed-lined arrows depict constraints -- unchanged.
-To be able to depict an extended set expression in context of a relationship, annotations are used as seen in figure \ref{fig:relationship_annotation}.
+Power sets can be expressed using annotations as seen in figure \ref{fig:relationship_annotation}.
 In many cases sets are used in their unaltered form and no extra expression is needed.
 In this case the annotation is not depicted to reduce redundancy.
 
@@ -1333,7 +1334,7 @@ In this case the annotation is not depicted to reduce redundancy.
 \end{figure}
 
 \noindent
-Mappings and relations can be extended with additional rhombus shapes in their middle to specify the type of operation.
+Mappings and relations can be extended with additional rhombus shapes to specify the type of operation.
 So in contrast to the original notation we can now specify not just a relationship type (mapping, relation, constraint), but also how its sets are connected.
 
 Many -- especially bright -- colors like yellow do not have a high contrast to their background (generally white), so colored thin objects like lines or object's outlines are hard to see.
@@ -1341,7 +1342,7 @@ So, to enhance the visual perception, we do not want to use coloring directly on
 To still be able to categorize relationships by color, relationship elements need a sufficient enclosed area that can properly represent its color.
 Relations already have such area: The rhombus shape holding the operator symbol.
 Relations always have at least one operator, mappings do not.
-So for mappings we introduce a rectangle to obtain a sufficient coloring area.
+So for mappings we introduce a rectangle shape to obtain a sufficient coloring area.
 A Mapping also has its names encapsulated into this rectangle.
 The rectangle shape can be dynamically resized to fit its content.
 A relation holds its name in its rhombus shape above its operator symbol (see figure \ref{fig:relationships}).
@@ -1356,6 +1357,8 @@ A relation holds its name in its rhombus shape above its operator symbol (see fi
 \noindent
 Handling two or more combined sets is possible now as well as any order of operations as depicted in figure \ref{fig:relationship_operation_2args} and \ref{fig:relationship_operation_3args}.
 When having multiple different operators for one relationship the name of the relationship itself is always encapsulated in the last element.
+Rhombus shapes do not necessarily need a name or identifier.
+Also they can be left uncolored.
 
 \begin{figure}[!htb]
 	\centering
