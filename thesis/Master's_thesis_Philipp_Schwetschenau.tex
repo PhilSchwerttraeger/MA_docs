@@ -1283,22 +1283,23 @@ They can be colored individually to their superset.
 \end{figure}
 
 \noindent
-Alternatively they can be depicted completely graphically with the help of other elements.
-Figure \ref{fig:subsets_alternative} shows such variant of figure \ref{fig:subsets}.
-It is semantically equivalent.
+Alternatively they can be depicted completely graphically with the help of other elements (introduced in the following section \ref{relationships}).
+Figure \ref{fig:subsets_alternative} shows such variant.
+It is semantically equivalent to figure \ref{fig:subsets}.
+For their individual benefits see \textit{Solution to Problem 5: Visual Complexity} from the previous section.
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=0.4]{../figures/chapter3/subsets_alternative.png}
-	\caption{Alternative depiction variants}
+	\caption{Subset depiction variant}
 	\label{fig:subsets_alternative}
 \end{figure}
 
 \noindent
-Internal definition of sets like $P = 2^{O \times OP}$ in $RBAC_0$ (see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) can be modeled graphically, but in cases like this, where all sets in the formula are not referenced at any other point of the model, the formula would probably be the better choice.
-Note that unlike the subset depiction above a formula can not depict the category membership of participating sets and is therefore \textit{not} semantically equivalent to its graphical counterpart.
+The internal definition of sets like $P = 2^{O \times OP}$ in $RBAC_0$ (see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) can be modeled graphically, but in cases like this, where all sets in the formula are not referenced at any other point of the model, the formula would probably be the better choice.
+But note that unlike the subset depiction above a formula can not depict the category membership(s) of participating sets and is therefore \textit{not} semantically equivalent to its graphical counterpart.
 If participating sets have EL categories assigned and are therefore relevant for the EL model using the formula always induce a loss of information.
-The graphical depiction is favored 
+The graphical depiction is probably favored in such cases.
 
 %\begin{figure}[htb]
 %	\centering
