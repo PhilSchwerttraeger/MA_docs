@@ -1702,7 +1702,7 @@ For the purpose of this chapter we will reduce complexity to focus on selected p
 \noindent
 The \texttt{QMainWindow} is the default window Qt creates after program start.
 It is parent to all other widgets.
-The \texttt{MainWindow} contains a \texttt{QTabWidget} with two tabs: \texttt{QGraphicsView} and \texttt{QTabsWidget} (analogue to its design in section \ref{editor_structure}).
+The \texttt{QMainWindow} contains a \texttt{QTabWidget} with two tabs: \texttt{QGraphicsView} and \texttt{QTabsWidget} (analogue to its design in section \ref{editor_structure}).
 
 \begin{figure}[htb]
 	\centering
@@ -1717,7 +1717,7 @@ It can hold one \texttt{QGraphicsScene} (one model) at a time to display.
 \texttt{QGraphicsScene} holds and manages all graphical items (\texttt{QGraphicsItem}) and implements interactions with them (e.g.\ positioning or moving).
 
 For the table view of the model's data Qt's \texttt{QTableWidget} is used.
-Whenever the tab is changed to the table tab \texttt{QTableWidget} is build up/updated with the current data available in \texttt{QGraphicsScene}.
+Whenever the tab is switched to the table tab \texttt{QTableWidget} is updated with the current data available in \texttt{QGraphicsScene}.
 
 The following sections cover two essential GUI sections of the editor: The \textit{Graphics Scene} in section \ref{implementation_graphicsscene} and the \textit{Side Section} in section \ref{implementation_side_section}.
 
@@ -1728,11 +1728,8 @@ The following sections cover two essential GUI sections of the editor: The \text
 \texttt{GraphicsScene} is the central widget for holding and managing all graphical elements.
 Figure \ref{fig:class_diagram} shows the \texttt{GraphicsScene} class and its children classes in a more detailed form.
 In the actual implementation almost all classes are derived from corresponding Qt classes and are extended by additional features.
-One example for this is \texttt{GraphicalElement}, which inherits from \texttt{QGraphicsItem} and adds private attributes such as EID.
-
-\noindent
-\texttt{GraphicsScene} implements i.a. functions to add new elements to the scene.
-It also holds a list of all \textit{EIDs} and a list of all (potential) element \textit{categories}.
+In this case \texttt{GraphicsScene} inherits from \texttt{QGraphicsScene} and adds private attributes such as EIDs or categories.
+Furthermore \texttt{GraphicsScene} implements functions to add new elements to the scene.
 
 \begin{figure}[htb]
 	\centering
@@ -1743,9 +1740,9 @@ It also holds a list of all \textit{EIDs} and a list of all (potential) element 
 
 \noindent
 The categories list is initialized for an empty model with the EL categories for $m=1$ (see section \ref{EL} of the fundamentals chapter), but can be modified by the user while runtime or by importing projects.
-The \texttt{GraphicsScene} also holds all model-specific EL meta information such as the corresponding XML tag identifiers and colors (not shown in figure \ref{fig:class_diagram}).
+The \texttt{GraphicsScene} also holds all model-specific EL meta information such as the corresponding XML tag identifiers for model export and category colors (not shown in figure \ref{fig:class_diagram}).
 
-For the internal organization all graphical elements in the scene have an unique \textit{element identifier} (\texttt{EID}) to address them.
+For the internal organization all graphical elements in the scene have an unique \textit{element identifier} (\texttt{EID}) to identify and address them.
 The \texttt{EID} of an item is not allowed to change during its lifetime.
 The allocation of \texttt{EID}s is simply implemented as incrementing integers.
 But after deleting an element the corresponding \texttt{EID} is free and can be reallocated to new objects again.
@@ -1761,13 +1758,13 @@ All four element types that can be added to the scene (\textit{Set}, \textit{map
 \texttt{GraphicalElement} holds all attributes all element types have in common (e.g.\ \texttt{EID}).
 The four element types themselves add exclusive attributes (e.g.\ \textit{formula} in \texttt{Set}).
 
-\texttt{QGraphicsTextItem} is used for displaying any text inside the  graphical elements.
+\texttt{QGraphicsTextItem} is used for displaying, formatting and positioning any text inside the graphical elements.
 
 
 
 \subsection{Side Section}
 \label{implementation_side_section}
-The side section displays information of the selected element in \texttt{GraphicsScene}.
+The side section displays information of the currently selected element in \texttt{GraphicsScene}.
 
 \begin{figure}[htb]
 	\centering
@@ -1823,11 +1820,11 @@ After selecting a \textit{Change} action the corresponding text field of the ele
 \section{Import and Export}
 \label{implementation_importexport}
 The import and export functions \texttt{XMLtoScene} and \texttt{sceneToXML} are implemented in \texttt{MainWindow}.
-Due to not having a strict separation in view and model (regarding the popular architectural pattern \textit{Model View Controller}) the element's model and visual properties and functions are all located inside its instance itself.
-To export a model into a structured format we can not iterate through all items in \texttt{GraphicsScene}, because this would also include also texts and edges.
+Due to not having a strict separation in view and model (regarding the popular architectural pattern \textit{Model View Controller}) the element's model and visual properties and functions are all stored inside its instance itself.
+To export a model into a structured format we can not iterate through all items in \texttt{GraphicsScene}, because this would also include all texts and edges.
 However we can iterate through the \texttt{GraphicsScene}'s list of \texttt{EID}s to find all valid elements in \texttt{GraphicsScene} to then get all relevant data of the element according to its element type.
 
-For the file handling Qt's \texttt{QFile} and \texttt{QFileDialog} classes are used, for dealing with XML in particular the \texttt{QXmlStreamReader} and \texttt{QXmlStreamWriter} classes.
+For file handling Qt's \texttt{QFile} and \texttt{QFileDialog} classes are used, for dealing with XML in particular the \texttt{QXmlStreamReader} and \texttt{QXmlStreamWriter} classes.
 The XML scheme follows the \textit{Entity Labeling Markup Language} specification in \cite[appendix C.2, p.~196]{Amthor18}.
 
 
