@@ -1468,93 +1468,13 @@ This will serve as base for the implementation in the subsequent chapter \ref{im
 
 \section{Requirements}
 \label{editor_requirements}
-This chapter presents the requirements for the editor.
 The editor is a graph-based prototype software editor to construct EL models graphically.
 It consists of two main sections: The graph section and the table section.
-The graph section is the primary section and provides a drawing area and tools to construct an EL model graphically with the mouse or touch control.
+The graph section is the primary section and provides a drawing area and tools to view and construct an EL model graphically.
 The table presents all model data in a text-based compact form.
 
 
 
-%# 1 Basic
-%## 1.1 Node elements
-%- [x] Create graphical nodes
-%  - [x] Set
-%  - [x] Mapping
-%  - [x] Relation
-%  - [x] Constraint
-%- [x] Select & highlight nodes
-%  - [x] Multi-select
-%- [x] Delete node
-%  - [x] Multi-delete selected nodes
-%- [x] (Re)positioning node
-%- [x] Show node properties (properties section)
-%- [x] Add/change node properties
-%  - [x] Unique EID (element ID) among all node elements
-%  - [x] Add/change string-based properties
-%    - [x] ... graphically
-%    - [x] ... with property section
-%  - [x] Add/delete EL categories
-%    - [x] ... graphically
-%    - [x] ... with property section
-%  - [x] Add/change relation operator
-%  - [x] Add/change set formula
-%  - [ ] Mapping/Relation: Generate formula from participants
-%
-%## 1.2 Edge elements
-%- [x] Create edge (between two nodes) (d&d)
-%  - [x] Interactive/real-time edge drawing
-%- [ ] Delete edge
-%- [ ] Arrow to edge: none/start/end
-%- [ ] Add/change edge annotation
-%
-%# 2 Sections
-%## 2.1 Graph tab (Editor)
-%- [x] Context-sensitive context menu behavior (right-click)
-%- [ ] Navigation
-%  - [x] Scrolling with keys/mouse wheel
-%    - [x] Up/down: Wheel
-%    - [x] Left/right: Ctrl + mouse wheel
-%  - [x] Scrolling with scroll bars
-%    - [x] Appear when scene is getting larger than viewport
-%  - [ ] Middle-click navigation
-%  - [ ] Mouse wheel zooming (Ctrl + wheel)
-%- [x] Properties section adjusts to selected element
-%- [x] EL category checkbox list
-%- [x] Color/category legend
-%- [x] Zooming buttons
-%
-%## 2.2 Table tab
-%- [x] Create table 
-%- [x] Auto-generated dynamic table
-%- [x] Sort by category
-%- [ ] Fancy-sort by category
-%
-%# 2.3 Settings
-%- [ ] Import EL-XML
-%- [x] Export EL-XML
-%
-%# 3 Optional
-%- [ ] "Math-mode" for fancy formulas
-%- [ ] Add/change/delete EL categories
-%  - [ ] Name
-%  - [ ] Colors
-%  - [ ] XML-tag
-%- [ ] Redirect edge (through support point)
-%- [ ] Open view settings (in floating view, overlapping property section)
-%  - [ ] Toggle annotations
-%  - [ ] Toggle categories
-%  - [ ] Toggle set names
-%  - [ ] Toggle legend
-%  - [ ] Toggle constraints
-%- [ ] Split view
-%- [ ] Constraint edge type (dotted)
-%- [ ] Toggle round edges
-%- [ ] Multi-coloring (multi-categories)
-%- [x] Auto-shortening strings for legend (Access Rule to "AR")
-%  - [ ] Append auto-increment-number for double-entries
-%- [ ] Table: Click to jump to element
-%- [ ] Auto-aligning methods for nodes
 \subsection{Object Manipulation}
 \label{req_object_manipulation}
 The editor provides functions for basic navigation like moving the viewport or zooming.
@@ -1573,6 +1493,19 @@ Arrows can be deleted, annotated and inverted in its direction.
 
 
 
+\subsection{Management}
+\label{req_management}
+Besides its drawing section the editor provides a function to generate and export a XML-based scheme (\textit{Entity Labeling Markup Language} \citep{Amthor18}) from its current model.
+Additional graphical information (e.g.\ positions) are integrated into the same file with additional tags.
+A file in the mentioned format can also be imported.
+An existing file not exported from this editor does not have any graphical information - therefore elements have to be manually adjusted regarding those properties after importing.
+
+Per default the EL categories are set to the EL categories for $m=1$, but are modifiable.
+They are associated with a specific model, so they are also part of importing/exporting.
+A category consists of its name, its color and its XML tag.
+The category/color legend is generated automatically from the categories.
+
+Optional settings can modify the depiction of the model on several levels, e.g.\ show/hide annotations or enable/disable colors to dynamically adapt the view complexity to individual needs.
 
 
 
