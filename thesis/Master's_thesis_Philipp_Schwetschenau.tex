@@ -1119,9 +1119,8 @@ In this scenario there would be need to depict $E$ two times at once (in $LS_1$ 
 While the previous four problems are related to the first design goal of achieving isomorphism, this problem derives from the actual design stage of the language.
 It appears that the modular approach we are going to use can generate quite large graphical models.
 It may happen that a user wants to model certain parts of the model less prominent than others to keep the focus on important parts.
-So for reducing the visual complexity whenever needed, and to let the user have a choice how prominent certain parts should be depicted, there is need for a concept for depicting information in a compact way.
+So for reducing the visual complexity whenever needed, and for offering the user the choice how prominent certain parts should be depicted, there is need for a concept for depicting information in an adaptive way.
 This is the secondary design goal of the graphical specification language.
-Specific solutions towards this goal are mentioned in the following section whenever it is reasonable applicable.
 
 
 
@@ -1210,18 +1209,22 @@ We introduce two methods to vary and adapt the visual complexity:
 
 \begin{description}
 \item[1) Annotations versus Rhombus Shapes]\hfill \\
-The rhombus shape in solution to problem 2 also allows expressing a power set by slotting it in ahead with an appropriate symbol inside (e.g.\ $\euscr{P}$).
-Together with annotations from solution to problem 1 we now have two semantically equivalent methods of depicting power sets.
-This gives the modeler the choice how to express power sets.
-The decision may vary from element to element and come with individual benefits.
-While using annotations is more space-saving and compact, the rhombus shape slotted in ahead can act as its own entity and multiple other relationships can refer to it (without using annotation duplicates for every single relationship).
-Regarding automated model-generation from imported data, the decision of what depiction to use this could be based on the number of references a power set has: annotation for one reference, rhombus element for two or more references.
+Solution to problem 2 also allows expressing a power set (with an appropriate symbol inside its shape e.g.\ $\euscr{P}$).
+Together with annotations from solution to problem 1 we have two methods of depicting power sets.
+This offers options to express power sets differently.
+The decision may vary from element to element and comes with individual benefits.
+While using annotations is more space-saving and compact, the rhombus shape can act as its own entity and multiple other relationships can refer to it (without using annotation duplicates for every single relationship).
+A good rule of thumb would be to decide based on the number of references a power set has: annotation for one reference, rhombus element for two or more references.
 
 \item[2) Set Formula versus Graphical Depiction]\hfill \\
 Set's internal composition can be depicted as textual formula or as subset depiction inside its shape, but can also be graphically modeled outside of it with a combination of other elements.
-Similar to the first method this gives the modeler the option to adjust to the desired level of detail.
+Similar to the first method this offers the option to adjust the desired level of detail.
 Also the individual benefits of the single-use compact form (formula/subset form) versus the multi-referenceable entity (graphical depiction with elements) from above are similar here.
-When elements are participating in at least one other points of the model the method of graphical depiction outside of the element should be preferred due to less visual overlapping.
+
+Note that the formula can neither indicate element's category memberships nor can be referenced by other elements in the mode.
+So it is not as expressive as its counterpart and therefore not isomorphic.
+When elements are referenced at at least one other element in the model the non-formula depiction should be preferred.
+Therefore formulas can only be used without loss of information when the participating elements are neither EL-categorized nor referenced at any other point of the model.
 \end{description}
 
 \noindent
@@ -1233,7 +1236,7 @@ More details and visual examples for this, especially the latter, will follow in
 \label{gsl_elements}
 The main structure of the notation is graph-based.
 It is adopted from \cite{Amthor18} and extended with additional features (solutions) from the previous section.
-Depicting EL categories by horizontal alignment is removed and replaced with coloring.
+Depicting EL categories by horizontal alignment or with the help of dashed boxes is removed and replaced with coloring.
 
 
 
@@ -1357,7 +1360,8 @@ A relation holds its name in its rhombus shape above its operator symbol (see fi
 \noindent
 Handling two or more combined sets is possible now as well as any order of operations as depicted in figure \ref{fig:relationship_operation_2args} and \ref{fig:relationship_operation_3args}.
 When having multiple different operators for one relationship the name of the relationship itself is always encapsulated in the last element.
-Rhombus shapes do not necessarily need a name or identifier.
+Rhombus shapes are primarily for relations, but can depict pure operators, too.
+They do not necessarily need a name or identifier.
 Also they can be left uncolored.
 
 \begin{figure}[!htb]
@@ -1385,9 +1389,6 @@ In rare cases the order of elements participating in \textit{one} operation is r
 \end{figure}
 
 \noindent
-In addition to their regular use a relation element can be used to express unary set operations like $2^R$ by putting it in front of the target set.
-To some degree the notation now offers different ways to depict expressions to fit individual needs: A model utilizing an unary set expression over and over can reduce the number of needed (redundant) edge annotations by using such dedicated relation element and always relate to it instead of using annotations at all.
-
 With the solutions and methods described in this section the graphical EL notation allows a modular construction of mathematical terms.
 
 
