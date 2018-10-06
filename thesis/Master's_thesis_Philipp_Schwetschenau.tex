@@ -1456,7 +1456,7 @@ The following task will be to design and develop an appropriate software prototy
 
 
 \cleardoublepage
-\chapter{Design: Editor}
+\chapter{Design: EL Editor}
 \label{editor_design}
 One part of this thesis is to implement a prototype editor in order to be able to work with the graphical notation developed in the previous chapter.
 The editor should support the process of EL as well as visualize the results of the EL process.
@@ -1468,7 +1468,93 @@ This will serve as base for the implementation in the subsequent chapter \ref{im
 
 \section{Requirements}
 \label{editor_requirements}
+This chapter presents the requirements for the editor.
+The editor is a graph-based prototype software editor to construct EL models graphically.
+It consists of two main sections: The graph section and the table section.
+The graph section is the primary section and provides a drawing area and tools to construct an EL model graphically with the mouse or touch control.
+The table presents all model data in a text-based compact form.
 
+
+
+%# 1 Basic
+%## 1.1 Node elements
+%- [x] Create graphical nodes
+%  - [x] Set
+%  - [x] Mapping
+%  - [x] Relation
+%  - [x] Constraint
+%- [x] Select & highlight nodes
+%  - [x] Multi-select
+%- [x] Delete node
+%  - [x] Multi-delete selected nodes
+%- [x] (Re)positioning node
+%- [x] Show node properties (properties section)
+%- [x] Add/change node properties
+%  - [x] Unique EID (element ID) among all node elements
+%  - [x] Add/change string-based properties
+%    - [x] ... graphically
+%    - [x] ... with property section
+%  - [x] Add/delete EL categories
+%    - [x] ... graphically
+%    - [x] ... with property section
+%  - [x] Add/change relation operator
+%  - [x] Add/change set formula
+%  - [ ] Mapping/Relation: Generate formula from participants
+%
+%## 1.2 Edge elements
+%- [x] Create edge (between two nodes) (d&d)
+%  - [x] Interactive/real-time edge drawing
+%- [ ] Delete edge
+%- [ ] Arrow to edge: none/start/end
+%- [ ] Add/change edge annotation
+%
+%# 2 Sections
+%## 2.1 Graph tab (Editor)
+%- [x] Context-sensitive context menu behavior (right-click)
+%- [ ] Navigation
+%  - [x] Scrolling with keys/mouse wheel
+%    - [x] Up/down: Wheel
+%    - [x] Left/right: Ctrl + mouse wheel
+%  - [x] Scrolling with scroll bars
+%    - [x] Appear when scene is getting larger than viewport
+%  - [ ] Middle-click navigation
+%  - [ ] Mouse wheel zooming (Ctrl + wheel)
+%- [x] Properties section adjusts to selected element
+%- [x] EL category checkbox list
+%- [x] Color/category legend
+%- [x] Zooming buttons
+%
+%## 2.2 Table tab
+%- [x] Create table 
+%- [x] Auto-generated dynamic table
+%- [x] Sort by category
+%- [ ] Fancy-sort by category
+%
+%# 2.3 Settings
+%- [ ] Import EL-XML
+%- [x] Export EL-XML
+%
+%# 3 Optional
+%- [ ] "Math-mode" for fancy formulas
+%- [ ] Add/change/delete EL categories
+%  - [ ] Name
+%  - [ ] Colors
+%  - [ ] XML-tag
+%- [ ] Redirect edge (through support point)
+%- [ ] Open view settings (in floating view, overlapping property section)
+%  - [ ] Toggle annotations
+%  - [ ] Toggle categories
+%  - [ ] Toggle set names
+%  - [ ] Toggle legend
+%  - [ ] Toggle constraints
+%- [ ] Split view
+%- [ ] Constraint edge type (dotted)
+%- [ ] Toggle round edges
+%- [ ] Multi-coloring (multi-categories)
+%- [x] Auto-shortening strings for legend (Access Rule to "AR")
+%  - [ ] Append auto-increment-number for double-entries
+%- [ ] Table: Click to jump to element
+%- [ ] Auto-aligning methods for nodes
 
 
 
