@@ -1286,31 +1286,6 @@ They can be colored individually to their superset.
 \end{figure}
 
 \noindent
-Alternatively they can be depicted completely graphically with the help of other elements (introduced in the following section \ref{relationships}).
-Figure \ref{fig:subsets_alternative} shows such variant.
-It is semantically equivalent to figure \ref{fig:subsets}.
-For their individual benefits see \textit{Solution to Problem 5: Visual Complexity} from the previous section.
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[scale=0.4]{../figures/chapter3/subsets_alternative.png}
-	\caption{Subset depiction variant}
-	\label{fig:subsets_alternative}
-\end{figure}
-
-\noindent
-The internal definition of sets like $P = 2^{O \times OP}$ in $RBAC_0$ (see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) can be modeled graphically, but in cases like this, where all sets in the formula are not referenced at any other point of the model, the formula would probably be the better choice.
-But note that unlike the subset depiction above a formula can not depict the category membership(s) of participating sets and is therefore \textit{not} semantically equivalent to its graphical counterpart.
-If participating sets have EL categories assigned and are therefore relevant for the EL model using the formula always induce a loss of information.
-The graphical depiction is probably favored in such cases.
-
-%\begin{figure}[htb]
-%	\centering
-%	\includegraphics[scale=0.5]{../figures/chapter3/set_with_internal_def.png}
-%	\caption{Set element with its internal definition as formula}
-%	\label{fig:set_with_internal_def}
-%\end{figure}
-
 Indicating a membership to two or more categories is done by \textit{multi-coloring} the unclosed area of an element.
 Multi-coloring uses uniformly divided circular sectors to partition the coloring area.
 
@@ -1393,18 +1368,48 @@ With the solutions and methods described in this section the graphical EL notati
 
 
 
+\subsection{Depiction Variants}
+\label{variants}
+There are depiction variants available to adapt the level of detail if needed or wished.
+An example for subset depiction was already shown in figure \ref{fig:subsets}.
+As proposed in \textit{Solution to Problem 5: Visual Complexity} (section \ref{improving_notation}, page \pageref{improving_notation}) subsets can also be depicted externally.
+Figure \ref{fig:subsets_alternative} shows such variant.
+It is semantically equivalent to figure \ref{fig:subsets}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{../figures/chapter3/subsets_alternative.png}
+	\caption{External subset depiction variant}
+	\label{fig:subsets_alternative}
+\end{figure}
+
+\noindent
+The internal definition of sets like $P = 2^{O \times OP}$ in $RBAC_0$ (see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) can be modeled graphically, but in cases like this, where all sets in the formula are not referenced at any other point in the model, the formula depiction is a legitimate choice.
+Figure \ref{fig:subsets_formula} depicts the example from above.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.5]{../figures/chapter3/subsets_formula.png}
+	\caption{Set element with its internal definition as formula}
+	\label{fig:subsets_formula}
+\end{figure}
+
+\noindent
+For individual benefits and usage of such variants see \textit{Solution to Problem 5: Visual Complexity} (section \ref{improving_notation}, page \pageref{improving_notation}).
+
+
+
 \subsection{Comments on the Model Structure}
 \label{comments_on_model_structure}
 The modular graph we developed is now able to describe EL models graphically.
-On an abstract level the graph is structured in nodes and edges, just like an mathematical graph.
-Based on this one might assume this being a bipartite graph, because edges connect sets with other elements.
-But due to mappings being also depicted with the help of graphical shapes, but are no sets at all, this is not the case.
-Therefore the graph is not bipartite.
+On an basic level the graph is structured in nodes and edges, just like an mathematical graph.
+Based on this one might assume this being a bipartite graph.
+But due to mappings being depicted with the help of a graphical shape, but not being sets at all, this is not the case.
 
-The reason for this is that mappings must provide a surface to hold their color to be able to get categorized properly.
-Therefore they have to be encapsulated in a geometrical shape just like the other elements, too.
-A depiction variant would be to not position the shape and its concent in the middle of its arrow, but above or below it with at least one point of contact.
-But due to lines and arrows are not limited to run straight horizontally or vertically, this might induce confusion in distinguishing multiple adjacent elements in large models with less space.
+The reason for this is that mappings must provide a surface to hold a color to be able to get categorized properly.
+For this they have to be encapsulated in a geometrical shape just like the other elements, too.
+A depiction alternative would be to not position the shape and its content in the middle of its arrow, but above or below it with at least one point of contact.
+But due to lines and arrows not being limited to run straight horizontally or vertically, this might induce confusion in distinguishing multiple adjacent elements in large models with less space.
 
 
 
