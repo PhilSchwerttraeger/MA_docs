@@ -1004,7 +1004,7 @@ The major problem with the graphical EL notation by \cite{Amthor18} is that it i
 This specifically applies to the information loss induced by ambiguously depicted relationships between elements and the inconsistent method of classifying elements.
 So the first design goal for the graphical specification language is \textit{isomorphism}.
 For achieving this several elements have to be added, while others have to be extended.
-In the following we want to isolate and describe four problems in this context:
+In the following we want to isolate and describe five problems in this context:
 
 \vspace{6mm}
 \noindent
@@ -1032,7 +1032,7 @@ This inconsistency (loss of information) becomes clear in particular after conve
 Relations and mappings can use sets as well as combinations of multiple sets.
 These combinations are expressed with set operators (for example the cartesian product $\times$).
 \cite{Amthor18} depicts one of these graphically in figure 5.1 (page 140, \citep{Amthor18}).
-For the simplicity and as base for further discussion we construct a minimal example: A mapping that takes a subject's and an object's identification to decide whether a user access is allowed on an object or not:
+For simplicity and as base for further discussion we construct a minimal example: A mapping that takes a subject's and an object's identification to decide whether a user access is allowed on an object or not:
 \begin{align}
 S \times O \rightarrow 2^R
 \end{align}
@@ -1045,7 +1045,7 @@ The set operator, that determines how two sets interrelate, can vary (here: $\ti
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth-10cm]{../figures/chapter3/inconsistent_two_arguments.png}
-	\caption{Ambiguous attempt to depict a mapping with two arguments}
+	\caption{Ambiguous attempt to depict a mapping with two input operands}
 	\label{fig:inconsistent_two_arguments}
 \end{figure}
 
@@ -1132,12 +1132,11 @@ This is the secondary design goal of the graphical specification language.
 \vspace{1mm}
 
 \noindent
-Other than problem 2, power sets are applied to just one set at once.
+Other than problem 2, power sets are applied to just one set.
 To express them we introduce \textit{relationship annotations}.
 These are positioned at the connection points of sets and relationships, simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}).
 Unlike their semantics in UML or ERD, these relationship annotations do not indicate the amount of elements participating in a relationship, but a specific form of an element in context of a relationship it is part of.
 Just like UML/ERD the mathematical expression ($2^X$) is depicted directly as textual expression without any additional graphical elements or symbols.
-This makes it universal to depict any mathematical expression needed.
 
 At this level of detail specifying special graphical elements (e.g.~special arrow heads) is not reasonable due to the high amount of different elements existing (also with regard to solution to problem 2).
 This may be even counter-intuitive, because humans are able to hold up to 7 different elements in their visual buffer at once; beyond that learning/working becomes harder due to constantly swapping information between cerebral areas (see section \ref{human_optical_perception} about human optical perception).
@@ -1251,7 +1250,7 @@ For multiple levels of indirection ($m>1$) the color legend needs to be extended
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.5]{../figures/chapter3/legend.png}
+	\includegraphics[scale=0.45]{../figures/chapter3/legend.png}
 	\caption{Suggested legend for EL categorization coloring}
 	\label{fig:legend}
 \end{figure}
@@ -1265,7 +1264,6 @@ Its name and internal definition depicted by a formula are optional.
 The formula allows to mathematically express the internal definition of a set without the need of graphically modeling them.
 With this option the complexity of the model can be limited where needed.
 A user can now decide case-specifically whether certain elements are relevant to be modeled graphically or mathematically for the sake of expressiveness/simplicity.
-Choosing the mathematical expression can help keeping the visual focus on more relevant elements of the model.
 
 \begin{figure}[htb]
 	\centering
@@ -1285,16 +1283,17 @@ They can be colored individually to their superset.
 	\label{fig:subsets}
 \end{figure}
 
-\noindent
-Indicating a membership to two or more categories is done by \textit{multi-coloring} the unclosed area of an element.
-Multi-coloring uses uniformly divided circular sectors to partition the coloring area.
-
-\begin{figure}[htb]
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.3]{../figures/chapter3/set_multicolor.png}
 	\caption{Sets with multiple category memberships}
 	\label{fig:set_multicolor}
 \end{figure}
+
+\noindent
+Indicating a membership to two or more categories is done by \textit{multi-coloring} the unclosed area of an element.
+Multi-coloring uses uniformly divided circular sectors to partition the coloring area.
+
 
 
 \subsection{Relationships}
@@ -1306,7 +1305,7 @@ In this case the annotation is not depicted to reduce redundancy.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.4]{../figures/chapter3/relationship_annotation.png}
+	\includegraphics[scale=0.35]{../figures/chapter3/relationship_annotation.png}
 	\caption{Relation $R \subseteq A \times 2^B$}
 	\label{fig:relationship_annotation}
 \end{figure}
@@ -1327,7 +1326,7 @@ A relation holds its name in its rhombus shape above its operator symbol (see fi
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\linewidth-2cm]{../figures/chapter3/relationships.png}
+	\includegraphics[width=\linewidth-1cm]{../figures/chapter3/relationships.png}
 	\caption{Relationship types}
 	\label{fig:relationships}
 \end{figure}
@@ -1471,7 +1470,7 @@ This will serve as base for the implementation in the subsequent chapter \ref{im
 The editor is a graph-based prototype software editor to construct EL models graphically.
 It consists of two main sections: The graph section and the table section.
 The graph section is the primary section and provides a drawing area and tools to view and construct an EL model graphically.
-The table presents all model data in a text-based compact form.
+The table presents all model data in a secondary text-based compact form.
 
 
 
@@ -1660,29 +1659,29 @@ Dragging and dropping the handle will redirect the edge through the new position
 \cleardoublepage
 \chapter{Implementation}
 \label{implementation}
-This chapter is about the implementation of the EL editor designed in the previous chapter.
+This chapter is about the implementation of the EL editor described and designed in the previous chapter.
 This chapter does not aim at explaining the source code itself or listing all functions, but at giving an overview on the implementation's structure and at giving some detailed insights towards its core functionality.
 
 For this we will first take a look at the framework \textit{Qt}, the implementation base for this editor, in section \ref{implementation_base}.
 After that the general structure of the implementation itself will be explained in section \ref{implementation_structure}.
-In the subsequent subsections \ref{implementation_graphicsscene} and \ref{implementation_side_section} more details on two prominent GUI sections are given.
+In the subsequent sections \ref{implementation_graphicsscene} and \ref{implementation_side_section} more details on two prominent GUI sections are given.
 Section \ref{implementation_events} then discusses cursor-based event handling of the implementation.
-Finally in the last section of this chapter the concept for importing and exporting data from and to an XML-based file format for persistent storage is explained in section \ref{implementation_importexport}.
+Finally in the last section of this chapter the concept for importing and exporting data from and to a XML-based file format for persistent storage is explained in section \ref{implementation_importexport}.
 
 
 
 \section{Implementation Base}
 \label{implementation_base}
-As implementation base the framework Qt was used.
-Qt is a class library for GUI-based cross-platform software development and supports all established operation systems like Linux, Windows, macOS, Android and iOS.
+Implementation base for this editor is Qt.
+Qt is a framework/class library for GUI-based cross-platform software development and supports all established operating systems like Linux, Windows, macOS, Android and iOS.
 %Qt has a dual licence model, that uses a proprietary license for commercial projects and the \textit{GNU General Public License} for open source projects.
 
 Qt uses its MOC (meta object compiler) preprocessor to extend C++ with additional features.
-One of these are signals and slots, an easy concept for an event-driven program flow and for enable simple communication between objects.
-One part of Qt is its IDE \textit{Qt Creater}, which is used to develop the EL editor in this work.
-The main advantage in using Qt Creator rather than any other development environment is it's integrated design mode, which allows quick prototyping a layout graphically, which then can be used and refined in the code.
+One of these are signals and slots, an easy concept for an event-driven program flow and for enabling simple communication between objects.
+One part of Qt is its IDE \textit{Qt Creator}, which was used in context of this work.
+The main advantage in using Qt Creator rather than any other development environment is its integrated design mode, which allows quick prototyping a layout graphically, which then can be used and refined in the code later on.
 
-Furthermore Qt is a good choice, because it heavily focuses on GUI development and has powerful classes to implement graph-based editors with custom items like this EL editor.
+Furthermore Qt is used, because it heavily focuses on GUI development and has powerful classes to implement graph-based editors with custom items like this EL editor.
 
 
 
@@ -1711,7 +1710,7 @@ The \texttt{MainWindow} contains a \texttt{QTabWidget} with two tabs: \texttt{QG
 
 \noindent
 \texttt{QGraphicsView} is a viewport and implements all view-related functions such as zooming.
-It can hold one \texttt{QGraphicsScene} (respective one model) at a time to display.
+It can hold one \texttt{QGraphicsScene} (one model) at a time to display.
 \texttt{QGraphicsScene} holds and manages all graphical items (\texttt{QGraphicsItem}) and implements interactions with them (e.g.\ positioning or moving).
 
 For the table view of the model's data Qt's \texttt{QTableWidget} is used.
