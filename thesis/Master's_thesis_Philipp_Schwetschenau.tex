@@ -1874,6 +1874,119 @@ To assess the language regarding its expressiveness this chapter constructs and 
 %HRU
 %2-4 bsp
 
+\subsection{RBAC}
+\label{eval_language_rbac}
+RBAC is a security model, where the access control is based on roles.
+It was already described in detail in section \ref{RBAC} of the fundamentals chapter (see page \pageref{RBAC}).
+Based on its definition (\ref{definition:RBAC}) we are now going to construct $RBAC_1$ with the graphical specification language developed in this work.
+For this we take its elements and translate them to their graphical counterparts.
+
+RBAC consists of sets, relations and mappings.
+First we create all basic sets $U, R, P, S$ with circles for each set.
+We put the set identifier and its full name into them.
+The name is optional, but improves the comprehension, especially for models with many sets or set names with common first letter (e.g.\ $O$ and $OP$ in this model).
+The resulting model is depicted in figure \ref{fig:RBAC96_v5_variant_stage1}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.13]{../figures/chapter6/RBAC96_v5_variant_stage1.png}
+	\caption{Modeling RBAC (step 1): Create sets}
+	\label{fig:RBAC96_v5_variant_stage1}
+\end{figure}
+
+\noindent
+After set creation we add the relations $UA$ and $PA$ by creating the corresponding shapes and positioning them between the participating sets.
+Then we connect the relation with the participating sets with arrows.
+For this we need to rearrange the sets created before to ideally have no overlapping lines in the model in the end.
+
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics[scale=0.13]{../figures/chapter6/RBAC96_v5_variant_stage2.png}
+%	\caption{}
+%	\label{fig:RBAC96_v5_variant_stage2}
+%\end{figure}
+%
+%\noindent
+Similar procedure follows for the assignments $user$ and $roles$.
+But unlike a relation a assignment has input and output participants.
+Arrows have to point from sets or to sets accordingly.
+Also we need to modify $R$ to $2^R$ for $roles$ by adding an annotation to the corresponding arrow.
+The model after those two steps is depicted in figure \ref{fig:RBAC96_v5_variant_stage3}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.13]{../figures/chapter6/RBAC96_v5_variant_stage3.png}
+	\caption{Modeling RBAC (step 2 and 3): Create relations and mappings}
+	\label{fig:RBAC96_v5_variant_stage3}
+\end{figure}
+
+\noindent
+Now we have to connect $O$ and $OP$ to $P$.
+For this we need to rebuild the mathematical expression with rhombus shapes in the correct order of operations.
+
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics[scale=0.13]{../figures/chapter6/RBAC96_v5_variant_stage4.png}
+%	\caption{}
+%	\label{fig:RBAC96_v5_variant_stage4}
+%\end{figure}
+
+%\noindent
+Finally we obtain a full model of RBAC, on which we now can run the EL process on.
+For this we need to set up a color legend, that maps colors to EL categories.
+After that we can color the elements background to the colors of the according categories.
+Note that elements that are not relevant for EL can be left blank (\textit{uncategorized}).
+This includes all operation elements like $2^{\Box}$, but also $O$ and $OP$ in this model.
+The resulting final model is depicted in figure \ref{fig:RBAC96_v5_variant}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.13]{../figures/chapter6/RBAC96_v5_variant.png}
+	\caption{Modeling RBAC (step 3 and 4): Create remaining operations}
+	\label{fig:RBAC96_v5_variant}
+\end{figure}
+
+\noindent
+We can extend the current model with constraints to obtain a $RBAC_3$ model at any time when needed.
+To add a constraint a rounded rectangle has to be created with the constraint identifier inside.
+The element then has to be connect to all elements participating in that constraint with dotted-lined arrows.
+
+Taking the graphical EL model now and converting it back to a textual form will result in the same element definitions from definition \ref{definition:RBAC} and an EL model can be obtained in its texual form like the following:
+
+\begin{align*}
+\langle &\mathcal{M}_{RBAC}, \mathcal{A}_{EL}, sem \rangle
+\end{align*}
+\begin{align*}
+\mathcal{M}_{RBAC} &= \lbrace U, S, R, RH, P, UA, PA, user, roles \rbrace
+\end{align*}
+\begin{align*}
+sem(ES) &= \lbrace U \rbrace\\
+sem(LS) &= \lbrace S, R, RH \rbrace\\
+sem(LA) &= \lbrace user, roles \rbrace\\
+sem(AR) &= \lbrace P, PA \rbrace\\
+sem(RR) &= \lbrace UA \rbrace\\
+sem(MC) &= \lbrace \emptyset \rbrace
+\end{align*}
+
+\noindent
+Furthermore we can optionally alter the model to a custom desired level of detail.
+We decide that the depiction of $P$'s sub elements is not necessary for us in the context we want to use the model.
+We decide to compress the model, because several elements are not associated with any EL category and are therefore less important than the other elements.
+
+We alter the model by reducing the definition of P to one term, which is depicted as formula inside P itself instead of depicting any elements externally.
+This results in a more compact graphical EL model, limited to EL-associated elements only.
+The resulting refined model is depicted in figure \ref{fig:RBAC96_v5}.
+Note that the EL category legend is the exact same as in figure \ref{fig:RBAC96_v5_variant} and is therefore not depicted again.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.13]{../figures/chapter6/RBAC96_v5.png}
+	\caption{Modeling RBAC (step 5): Refine/compress selected elements}
+	\label{fig:RBAC96_v5}
+\end{figure}
+
+% Compare to Amthor
+
 \subsection{CoreABAC}
 \label{eval_language_coreabac}
 Section will follow soon.
