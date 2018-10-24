@@ -238,7 +238,7 @@ A RBAC$_0$ model is a tuple $(U, R, P, S, UA, PA, user, roles)$ with
 \vspace{-2mm}
 \begin{itemize}
 \item $O$ is the set of \textit{objects}
-\item $OP$ the set of \textit{operations})
+\item $OP$ the set of \textit{operations}
 \end{itemize}
 \vspace{-2mm}
 \item $S$ as set of \textit{sessions}
@@ -1840,6 +1840,10 @@ The XML scheme follows the \textit{Entity Labeling Markup Language} specificatio
 \label{evaluation}
 %kritik immer fehlende isomorphe abbildung -> begriff "isomorphie" als entwurfskriterium
 %auch als steilvorlage für eval
+Subject of this chapter is the evaluation of both, the graphical specification language for EL developed in chapter \ref{gsl} as well as the EL editor prototype, which was designed in chapter \ref{editor_design} and described regarding its implementation in chapter \ref{implementation}.
+In section \ref{eval_goals} the goals and methods for the evaluation are presented.
+Section \ref{eval_language} and \ref{eval_editor} then elaborate on the evaluation of the language and the editor separately.
+Finally all results are summarized and evaluated altogether in section \ref{eval_results}.
 
 
 
@@ -1848,8 +1852,53 @@ The XML scheme follows the \textit{Entity Labeling Markup Language} specificatio
 
 
 
-\section{Editor}
-\label{evaluation_editor}
+
+
+\section{Language Evaluation}
+\label{eval_language}
+One design goal of the language was \textit{isomorphism} (see section \ref{analyzing_notation}) to its mathematical counterpart, the textual notation form.
+To assess the language regarding its expressiveness this chapter constructs and depicts use cases in form of security models in context of EL.
+
+%argumentativ 
+%aussagekraft
+%mathematische modell
+%druch Examples
+%
+%RBAC alpha
+%HRU
+%2-4 bsp
+
+\subsection{CoreABAC}
+\label{eval_language_coreabac}
+Section will follow soon.
+%This section will depict the CoreABAC security model in the graphical specification language for EL.
+%Due to being very similar to the procedure for RBAC in the previous section, we will just depict the final model, not every step to construct it.
+%
+%CoreABAC is defined as following:
+
+%TODO: CoreABAC definition
+
+
+\subsection{Usability Tests}
+\label{eval_language_usability}
+As stated above the language is also evaluated with the help of usability tests.
+For this three persons with different degree of knowledge
+
+
+
+\section{Editor Evaluation}
+\label{eval_editor}
+User Study
+Editor prototype
+
+\subsection{Usability Tests}
+\label{eval_editor_usability}
+ergonomics of tools to create such
+
+
+
+\section{Results}
+\label{eval_results}
 
 
 
@@ -1860,6 +1909,8 @@ The XML scheme follows the \textit{Entity Labeling Markup Language} specificatio
 \blindtext
 
 
+%Outlook
+% Latex
 
 \cleardoublepage
 \chapter{Summary}
@@ -1880,12 +1931,12 @@ The XML scheme follows the \textit{Entity Labeling Markup Language} specificatio
 The following figure depicts the $RBAC_3$ model in the graphical notation developed in chapter \ref{gsl}.
 For its definition see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}.
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=\linewidth-1cm]{../figures/chapter3/RBAC96_v1.png}
-	\caption{$RBAC_3$ example}
-	\label{fig:RBAC96_example}
-\end{figure}
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics[width=\linewidth-1cm]{../figures/chapter3/RBAC96_v1.png}
+%	\caption{$RBAC_3$ example}
+%	\label{fig:RBAC96_example}
+%\end{figure}
 
 
 
