@@ -1840,10 +1840,10 @@ The XML scheme follows the \textit{Entity Labeling Markup Language} specificatio
 \label{evaluation}
 %kritik immer fehlende isomorphe abbildung -> begriff "isomorphie" als entwurfskriterium
 %auch als steilvorlage für eval
-Subject of this chapter is the evaluation of both, the graphical specification language for EL developed in chapter \ref{gsl} as well as the EL editor prototype, which was designed in chapter \ref{editor_design} and described regarding its implementation in chapter \ref{implementation}.
+Subject of this chapter is the evaluation of the graphical specification language for EL developed in chapter \ref{gsl} as well as the EL editor prototype, which was designed in chapter \ref{editor_design} and described regarding its implementation in chapter \ref{implementation}.
 In section \ref{eval_goals} the goals and methods for the evaluation are presented.
 Section \ref{eval_language} and \ref{eval_editor} then elaborate on the evaluation of the language and the editor separately.
-Finally all results are summarized and evaluated altogether in section \ref{eval_results}.
+Finally all results are summarized in section \ref{eval_summary}.
 
 
 
@@ -1853,36 +1853,32 @@ As already stated, the evaluation is split into the evaluation of the language a
 Furthermore the evaluation of the language is split into two methods.
 
 The first method is to evaluate the language constructively with the help of existing security models in the context of EL.
-The goal here is to show that the language is suitable to model and depict selected relevant EL models and its elements with an adequate and useful \textit{expressiveness}.
+The goal here is to show that the language is suitable to model and depict selected security models and their elements with an adequate and useful \textit{expressiveness}.
 
-The second method for the evaluation of the language as well as method to evaluate the editor consists of \textit{usability tests} with selected users.
-The results should give insight in the language's and editor's properties of supporting \textit{usability} and \textit{operability} and in how reasonable the suggested work flow is for both.
+The second method for the evaluation of the language as well as the method to evaluate the editor consists of \textit{usability tests} with selected users.
+The results should give insight in the language's and editor's properties of supporting \textit{usability} and \textit{operability} and in how reasonable and supportive the given work flow is while actually working with it.
+The results of the usability tests are taken back into the design stage to improve and refine the graphical specification language in form of a second iteration.
 
 
 
 \section{Language Evaluation}
 \label{eval_language}
-One design goal of the language was \textit{isomorphism} (see section \ref{analyzing_notation}) to its mathematical counterpart, the textual notation form.
-To assess the language regarding its expressiveness this chapter constructs and depicts use cases in form of security models in context of EL.
+One design goal of the language was \textit{isomorphism} (see section \ref{analyzing_notation}) to its mathematical counterpart: the textual notation form.
+To evaluate the language regarding its expressiveness this section constructs and depicts use cases in form of the security models RBAC (section \ref{eval_language_rbac}) and CoreABAC (section \ref{eval_language_coreabac}) in context of EL.
+In the second part of this section the language is evaluated with the help of usability tests (section \ref{eval_language_usability}).
 
-%argumentativ 
-%aussagekraft
-%mathematische modell
-%druch Examples
-%
-%RBAC alpha
-%HRU
-%2-4 bsp
+
 
 \subsection{RBAC}
 \label{eval_language_rbac}
-RBAC is a security model, where the access control is based on roles.
-It was already described in detail in section \ref{RBAC} of the fundamentals chapter (see page \pageref{RBAC}).
+RBAC is a typical security model.
+Its access control mechanism is based on roles.
+It is described in detail in section \ref{RBAC} of the fundamentals chapter (see page \pageref{RBAC}).
 Based on its definition (\ref{definition:RBAC}) we are now going to construct $RBAC_1$ with the graphical specification language developed in this work.
-For this we take its elements and translate them to their graphical counterparts.
+For this we take its elements described mathematically in its definition and translate them step by step into their graphical representations.
 
 RBAC consists of sets, relations and mappings.
-First we create all basic sets $U, R, P, S$ with circles for each set.
+First we create all basic sets $U, S, R, P, O, OP$ with circles for each set.
 We put the set identifier and its full name into them.
 The name is optional, but improves the comprehension, especially for models with many sets or set names with common first letter (e.g.\ $O$ and $OP$ in this model).
 The resulting model is depicted in figure \ref{fig:RBAC96_v5_variant_stage1}.
@@ -1909,8 +1905,10 @@ For this we need to rearrange the sets created before to ideally have no overlap
 %\noindent
 Similar procedure follows for the mappings $user$ and $roles$.
 But unlike a relation a mapping has input and output participants.
-Arrows have to point from sets or to sets accordingly.
+Arrows have to point away from it or towards it accordingly.
 Also we need to modify $R$ to $2^R$ for $roles$ by adding an annotation to the corresponding arrow.
+Note that it is also possible to create an dedicated element for $2^R$ instead of the arrow annotation.
+But due to not having any other element in the model referring to $2^R$ this comes with no advantages over the arrow annotation.
 The model after those two steps is depicted in figure \ref{fig:RBAC96_v5_variant_stage3}.
 
 \begin{figure}[htb]
@@ -1921,22 +1919,21 @@ The model after those two steps is depicted in figure \ref{fig:RBAC96_v5_variant
 \end{figure}
 
 \noindent
-Now we have to connect $O$ and $OP$ to $P$.
-For this we need to rebuild the mathematical expression with rhombus shapes in the correct order of operations.
-
+Next step is to connect $O$ and $OP$ to $P$.
+For this the mathematical expression has to be rebuilt with rhombus shapes in the correct order of operations.
 %\begin{figure}[htb]
 %	\centering
 %	\includegraphics[scale=0.13]{../figures/chapter6/RBAC96_v5_variant_stage4.png}
 %	\caption{}
 %	\label{fig:RBAC96_v5_variant_stage4}
 %\end{figure}
-
 %\noindent
 Finally we obtain a full model of RBAC, on which we now can run the EL process on.
-For this we need to set up a color legend, that maps colors to EL categories.
-After that we can color the elements background to the colors of the according categories.
+For this we need to set up a color legend that maps colors to EL categories.
+After that we can colorize the element backgrounds to the colors of the corresponding EL categories.
+The process of EL itself, basically the semantic assignment of elements to EL categories, is not focus of this work and will be assumed to be given in the context of this chapter.
 Note that elements that are not relevant for EL can be left blank (\textit{uncategorized}).
-This includes all operation elements like $2^{\Box}$, but also $O$ and $OP$ in this model.
+This includes all operation elements like $2^{\Box}$, but also may include \textit{secondary sets} or \textit{helper sets} like $O$ and $OP$ in this model.
 The resulting final model is depicted in figure \ref{fig:RBAC96_v5_variant}.
 
 \begin{figure}[htb]
@@ -1949,7 +1946,7 @@ The resulting final model is depicted in figure \ref{fig:RBAC96_v5_variant}.
 \noindent
 We can extend the current model with constraints to obtain a $RBAC_3$ model at any time when needed.
 To add a constraint a rounded rectangle has to be created with the constraint identifier inside.
-The element then has to be connect to all elements participating in that constraint with dotted-lined arrows.
+The element then has to be connected to all elements participating in that constraint with dotted-lined arrows pointing towards these elements.
 
 Taking the graphical EL model now and converting it back to a textual form will result in the same element definitions from definition \ref{definition:RBAC} and an EL model can be obtained in its texual form like the following:
 
@@ -1961,18 +1958,18 @@ Taking the graphical EL model now and converting it back to a textual form will 
 \end{align*}
 \begin{align*}
 sem(ES) &= \lbrace U \rbrace\\
-sem(LS) &= \lbrace S, R, RH \rbrace\\
-sem(LA) &= \lbrace user, roles \rbrace\\
+sem(LS) &= \lbrace S, R \rbrace\\
+sem(LA) &= \lbrace user, roles, RH \rbrace\\
 sem(AR) &= \lbrace P, PA \rbrace\\
 sem(RR) &= \lbrace UA \rbrace\\
 sem(MC) &= \lbrace \emptyset \rbrace
 \end{align*}
 
 \noindent
-Optionally we can now alter the appearance of the model to a desired level of detail.
-We decide that the depiction of elements that define $P$ is not necessary for us, because those elements are not associated with any EL category and are therefore less important than the EL-associated elements.
+Optionally we can now alter the appearance of the model to a desired level of detail (with some downsides discussed later on).
+We may decide that the depiction of elements that define $P$ is not necessary for us, because those elements are not associated with any EL category and are therefore less important than the EL-associated elements.
 
-We alter the model by reducing the definition of P to one term, which is depicted as formula inside P itself instead of depicting any elements externally.
+We alter the model by reducing the definition of $P$ to one term, which is depicted as formula inside P itself instead of depicting any elements externally.
 This results in a compressed and more compact graphical EL model.
 The resulting refined model is depicted in figure \ref{fig:RBAC96_v5}.
 Note that the EL category legend is the exact same as in figure \ref{fig:RBAC96_v5_variant} and is therefore not depicted again.
@@ -2000,44 +1997,54 @@ Section will follow soon.
 \subsection{Usability Tests}
 \label{eval_language_usability}
 As stated above the language is also evaluated with the help of usability tests.
-For this three probands with different degrees of knowledge regarding security models and EL where asked to use the language as well as the editor.
+For this three test participants with different degrees of knowledge regarding security models and EL where asked to use the language as well as the editor.
 All of them where students with background in model-based security engineering currently writing their master's thesis.
 
-For every proband there was a approximately two hour meeting.
+For every participant there was an approximately two hour meeting.
 Every meeting was divided into two parts.
-First the EL aspect and the graphical specification language for EL proposed in this work were presented and discussed.
-Afterwards the probands were asked to use the language to model the RBAC security model (see section \ref{RBAC} and \ref{eval_language_rbac}) graphically by themselves.
-For this the formal definition of the model was given (\ref{definition:RBAC}).
-The task was executed by hand drawing as well as with a software tool, the EL editor developed in this work, later on.
+First the EL aspect as well as the graphical specification language for EL proposed in this work were presented and discussed.
+Afterwards the test participants were asked to use the language to model the RBAC security model (see section \ref{RBAC} and \ref{eval_language_rbac}) graphically by themselves.
+For this the formal definition of the model was given (definition \ref{definition:RBAC}).
+The task was performed by hand drawing as well as with a software tool, the EL editor developed in this work, later on.
 In this section we will focus on the language part of it.
 For the software part see section \ref{eval_editor_usability}.
-After those meetings there was a additional final meeting with all probands and supervisors to summarize and evaluate the results of the tests together and to isolate the main concerns and aspects to improve the language.
+After those meetings there was a separate additional meeting with all testers and supervisors to summarize and evaluate the results of the tests together and to isolate the main concerns and aspects to improve the language.
 
-While in the first proposal of the language relations and operations were depicted by the same graphical element (rhombus shape) and could only be distinguished by having an identifier or not, they are now clearly differentiated with their own shapes to avoid misunderstandings.
+One major difficulty was the difference between relations and set modifiers.
+While in the first design iteration of the language relations and set modifiers were depicted by the same graphical element (rhombus shape) and could only be distinguished by having an identifier or not, they are now clearly differentiated with their own shapes to avoid misunderstandings.
 On the one hand this adds new elements to the system, but on the other hand this supports the visual perception and intuitive usage of the language.
-
-Also relations and mappings were altered regarding their shapes to visually support their properties and usage in a more intuitive way (see figure \ref{fig:refinedElements}).
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.13]{../figures/chapter6/refinedElements.png}
+	\includegraphics[width=\linewidth]{../figures/chapter6/refinedElements.png}
 	\caption{Refined relations and mappings}
 	\label{fig:refinedElements}
 \end{figure}
+
+\noindent
+As a result of the usability tests also relations and mappings got altered in their shapes to visually support their properties and usage in a more intuitive way.
+Figure \ref{fig:refinedElements} shows a collection of all element modifications originated from the results of the usability tests.
 
 
 
 \section{Editor Evaluation}
 \label{eval_editor}
-The editor being one artifact of this work, also was evaluated regarding its usability with user tests.
-Due to being just a preliminary prototype of the software editor designed in chapter \ref{editor_design} not all features were available by the time of usability tests taking place.
+The editor being one artifact of this work, also was evaluated regarding its usability via user tests.
+Due to being just a preliminary prototype of the software editor designed in chapter \ref{editor_design} not all features were available by the time of the usability tests taking place.
 
 
 
 \subsection{Usability Tests}
 \label{eval_editor_usability}
-The evaluation of the editor with usability tests was done combined with the usability tests described in section \ref{eval_language_usability}.
-The probands were given the task to model a given security model with the graphical EL specification language by hand but also with the help of the EL editor.
+The evaluation of the EL editor prototype was done in combination with the usability tests for the graphical specification language described in section \ref{eval_language_usability}.
+The test participants were asked to model a given security model with the graphical specification language by hand but also with the help of the editor.
+The main findings are discussed in the following.
+
+The clean and context-driven overall design was generally accepted by all testers. 
+But other then the overall design the work flow of drawing arrows by default instead of moving objects was not as intuitive as assumed.
+Most users were confused at first, because this (first select by click and release, then click and drag to move objects) is apparently not the default click behavior to expect in such type of editor.
+It seems that it would be better to have a dedicated object and arrow drawing mode to switch between than a multi-functional context-based mouse behavior.
+Furthermore the proposed \textit{combi-mode} can still be integrated in form of an alternate control mode, which can be enabled in the settings.
 
 \begin{figure}[bht]
 	\centering
@@ -2046,18 +2053,11 @@ The probands were given the task to model a given security model with the graphi
 	\label{fig:RBACmodeled2}
 \end{figure}
 
-\noindent
-The clean and context-driven overall design was generally accepted by all testers. 
-But other then the overall design the desired work flow of drawing arrows by default instead of moving objects was not as intuitive as assumed.
-Most users were confused at first, because this (first select by click and release, then click and drag to move objects) is apparently not the default click behavior to expect in such type of editor.
-It seems that it would be better to have a dedicated object and arrow drawing mode to switch between than a multi-functional context-based mouse behavior.
-Furthermore the proposed \textit{combi-mode} can still be integrated in form of an alternate control mode, which can be enabled in the settings.
-
 The core feature of assigning elements to EL categories was generally discovered easily and used without any difficulty or uncertainty.
 The GUI elements and widgets to do so (context menu, colored check box list in properties section) were received positively and intuitively without exception.
 
 Figure \ref{fig:RBACmodeled2} shows a potential model created in the editor.
-Besides the mentioned aspects above several improvements for the editor's work flow were suggested as well as behavioural bugs of the editor were revealed and documented, that might act as pool for further development in the future.
+Besides the mentioned aspects above several improvements for the editor's work flow were suggested as well as behavioural bugs of the editor were revealed and documented, that might act as pool for future development.
 
 
 
@@ -2065,13 +2065,13 @@ Besides the mentioned aspects above several improvements for the editor's work f
 \label{eval_summary}
 In this chapter the graphical specification language for EL designed in chapter \ref{gsl} was evaluated as well as the EL editor designed in chapter \ref{editor_design}.
 The language was evaluated along several examples as well as with the help of usability tests.
+
 The results of the usability tests had high impact on the language design.
-Designed with the goal of being unambiguous and to support the EL process visually in the first place the graphical specification language developed in this work could be further improved in a second iteration regarding its usability and intuitive usage with the help of the results of proband tests.
-For this several elements were modified in such way they now have more intuitive shapes, which are also better to distinguish.
+Designed with the goal of being unambiguous and to support the EL process visually in the first place the graphical specification language developed in this work could be further improved in a second iteration regarding its usability and intuitive usage with the help of the test results.
+For this several elements were modified in such a way they now have more intuitive shapes and are also better to distinguish.
 
-Beside the language also the EL editor prototype, which was developed as tool to construct such EL models with software, was evaluated through user tests.
-The results revealed i.a. some work flow weaknesses.
-
+Not only the language also the EL editor prototype, which was developed as tool to construct such EL models with software, was evaluated through user tests.
+While the results hint several improvements to in the work flow and edit behavior, the core feature of supporting the process of EL by coloring elements was confirmed and accepted without objection.
 
 
 
