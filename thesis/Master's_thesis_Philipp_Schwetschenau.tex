@@ -2029,13 +2029,35 @@ Also relations and mappings were altered regarding their shapes to visually supp
 
 \section{Editor Evaluation}
 \label{eval_editor}
-User Study
-Editor prototype
+The editor being one artifact of this work, also was evaluated regarding its usability with user tests.
+Due to being just a preliminary prototype of the software editor designed in chapter \ref{editor_design} not all features were available by the time of usability tests taking place.
+
+
 
 \subsection{Usability Tests}
 \label{eval_editor_usability}
-ergonomics of tools to create such
+The evaluation of the editor with usability tests was done combined with the usability tests described in section \ref{eval_language_usability}.
+The probands were given the task to model a given security model with the graphical EL specification language by hand but also with the help of the EL editor.
 
+\begin{figure}[bht]
+	\centering
+	\includegraphics[width=\linewidth]{../figures/chapter6/RBACmodeled2.png}
+	\caption{RBAC modeled in the EL editor (depricated element shapes)}
+	\label{fig:RBACmodeled2}
+\end{figure}
+
+\noindent
+The clean and context-driven overall design was generally accepted by all testers. 
+But other then the overall design the desired work flow of drawing arrows by default instead of moving objects was not as intuitive as assumed.
+Most users were confused at first, because this (first select by click and release, then click and drag to move objects) is apparently not the default click behavior to expect in such type of editor.
+It seems that it would be better to have a dedicated object and arrow drawing mode to switch between than a multi-functional context-based mouse behavior.
+Furthermore the proposed \textit{combi-mode} can still be integrated in form of an alternate control mode, which can be enabled in the settings.
+
+The core feature of assigning elements to EL categories was generally discovered easily and used without any difficulty or uncertainty.
+The GUI elements and widgets to do so (context menu, colored check box list in properties section) were received positively and intuitively without exception.
+
+Figure \ref{fig:RBACmodeled2} shows a potential model created in the editor.
+Besides the mentioned aspects above several improvements for the editor's work flow were suggested as well as behavioural bugs of the editor were revealed and documented, that might act as pool for further development in the future.
 
 
 \section{Results}
