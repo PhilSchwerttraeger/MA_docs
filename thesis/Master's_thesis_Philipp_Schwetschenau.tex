@@ -1132,7 +1132,7 @@ This is the secondary design goal of the graphical specification language.
 \vspace{1mm}
 
 \noindent
-Other than problem 2, power sets are applied to just one set.
+Other than problem 2, power sets are exclusively applied to just one set.
 To express them we introduce \textit{relationship annotations}.
 These are positioned at the connection points of sets and relationships, simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}).
 Unlike their semantics in UML or ERD, these relationship annotations do not indicate the amount of elements participating in a relationship, but a specific form of an element in context of a relationship it is part of.
@@ -1147,7 +1147,7 @@ This may be even counter-intuitive, because humans are able to hold up to 7 diff
 \vspace{1mm}
 
 \noindent
-The second extension is the \textit{operation indicator}, which allows specifying an operator for operations with at least two operands.
+The second extension is the \textit{operation indicator}, which allows specifying an operator for operations with one or more operands.
 In the notation \cite{Amthor18} uses, relationships do not specify any operator between elements, just the relationship type by different arrows (mapping, relation, constraint).
 Therefore relationships are depicted incompletely.
 Again, as already stated in solution to problem 1, it does not seem reasonable to introduce new graphical elements to indicate the operator at this level of detail and with that amount of different possible types.
@@ -1165,7 +1165,7 @@ This graphical element is the logical center and connection point for all arrows
 \noindent
 The order of operations can be easily depicted by \textit{cascading} operator elements introduced above.
 In rare cases also the order of sets participating in \textit{one} operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction).
-To indicate and determine the order of sets \textit{roman numerals} can be used as additional annotations, when needed.
+To indicate and determine the order of sets \textit{roman numerals} can be used as additional annotations, whenever needed.
 
 
 
@@ -1204,11 +1204,11 @@ Although we now use coloring (alternatively hachures), elements can be still arr
 \vspace{1mm}
 
 \noindent
-We introduce two methods to vary and adapt the visual complexity:
+In the following we introduce methods to vary and adapt the visual complexity:
 
 \begin{description}
 \item[1) Annotations versus Rhombus Shapes]\hfill \\
-Solution to problem 2 also allows expressing a power set (with an appropriate symbol inside its shape e.g.\ $\euscr{P}$).
+Solution to problem 2 also allows expressing a power set (with an appropriate symbol inside its shape e.g.\ $\euscr{P}$ or $2^{\Box}$).
 Together with annotations from solution to problem 1 we have two methods of depicting power sets.
 This offers options to express power sets differently.
 The decision may vary from element to element and comes with individual benefits.
@@ -1216,18 +1216,30 @@ While using annotations is more space-saving and compact, the rhombus shape can 
 A good rule of thumb would be to decide based on the number of references a power set has: annotation for one reference, rhombus element for two or more references.
 
 \item[2) Set Formula versus Graphical Depiction]\hfill \\
-Set's internal composition can be depicted as textual formula or as subset depiction inside its shape, but can also be graphically modeled outside of it with a combination of other elements.
+Internal definitions of sets can be depicted as textual formulas inside their shapes, but can also be graphically modeled outside of them with the help of other elements.
 Similar to the first method this offers the option to adjust the desired level of detail.
-Also the individual benefits of the single-use compact form (formula/subset form) versus the multi-referenceable entity (graphical depiction with elements) from above are similar here.
+Also individual benefits of the compact form (formula) versus the external graphical depiction with elements from above are similar here.
 
-Note that the formula can neither indicate element's category memberships nor can be referenced by other elements in the mode.
-So it is not as expressive as its counterpart and therefore not isomorphic.
-When elements are referenced at at least one other element in the model the non-formula depiction should be preferred.
-Therefore formulas can only be used without loss of information when the participating elements are neither EL-categorized nor referenced at any other point of the model.
+Note that the formula can neither indicate the category memberships of an element nor allows participating sets to be referenced by any other element in the model.
+Beyond that it is not even possible to determine the category a set is associated with, but also whether a set is categorized or not categorized at all.
+To counter this problem we can create an \textit{additional rule} that assumes elements with unclear EL-memberships (e.g.\ sets only mentioned in context of a formula) are always associated with no EL category.
+This leads to formulas being legal exclusively for sets with participating sets that are not associated with any EL category.
+Without this rule and the corresponding consequence for formula usage the resulting depiction would be inconsistent and not unambiguously transformable into a textual EL notation anymore.
+As a consequence of that the language would become non-isomorphic.
+
+\item[3) Relations]\hfill \\
+Also in context of generating large models there are structures that occur more often than others in context of security models.
+For them shortcuts can be provided that combine multiple operators into just one element to reduce the needed amount of elements and therefore the visual complexity.
+
+We introduce such shortcut element for relations.
+A relation over the sets $P_1, P_2, \dots, P_n$ is defined as subset of their cartesian product: 
+$R \subset P_1 \times P_2 \times \dots \times P_n$.
+Having a dedicated element for relations frees from always depicting the subset symbol as well as the cartesian product symbol.
+Only the participating sets are left to be specified.
 \end{description}
 
 \noindent
-More details and visual examples for this, especially the latter, will follow in the next section, where we will finally go into the graphical aspect of these solutions.
+Details and visual examples for this follow in the next section, where we will finally go into the graphical aspect of these solutions.
 
 
 
@@ -1982,7 +1994,8 @@ Note that the EL category legend is the exact same as in figure \ref{fig:RBAC96_
 \end{figure}
 
 \noindent
-Important to mention here is that both models (figure \ref{fig:RBAC96_v5_variant} and \ref{fig:RBAC96_v5}) are not necessarily semantically equal without an additional rule.
+Important to mention here is that both models (figure \ref{fig:RBAC96_v5_variant} and \ref{fig:RBAC96_v5}) are not necessarily semantically equal without assuming the additional rule from .
+
 By compressing $P$'s internal definition from an external depiction with dedicated elements to a formula depiction inside itself potential EL category assignments are getting lost (e.g.\ in this case when $O$ or $OP$ would have be assigned to any EL category).
 In this specific case none of them are assigned to any EL categories.
 Still, after converting elements to a textual term, we can not determine whether elements may have been assigned to EL categories before or not, because the textual term does not allow coloring and therefore no association to a category.
