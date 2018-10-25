@@ -1907,8 +1907,8 @@ For this we need to rearrange the sets created before to ideally have no overlap
 %\end{figure}
 %
 %\noindent
-Similar procedure follows for the assignments $user$ and $roles$.
-But unlike a relation a assignment has input and output participants.
+Similar procedure follows for the mappings $user$ and $roles$.
+But unlike a relation a mapping has input and output participants.
 Arrows have to point from sets or to sets accordingly.
 Also we need to modify $R$ to $2^R$ for $roles$ by adding an annotation to the corresponding arrow.
 The model after those two steps is depicted in figure \ref{fig:RBAC96_v5_variant_stage3}.
@@ -1969,12 +1969,11 @@ sem(MC) &= \lbrace \emptyset \rbrace
 \end{align*}
 
 \noindent
-Furthermore we can optionally alter the model to a custom desired level of detail.
-We decide that the depiction of $P$'s sub elements is not necessary for us in the context we want to use the model.
-We decide to compress the model, because several elements are not associated with any EL category and are therefore less important than the other elements.
+Optionally we can now alter the appearance of the model to a desired level of detail.
+We decide that the depiction of elements that define $P$ is not necessary for us, because those elements are not associated with any EL category and are therefore less important than the EL-associated elements.
 
 We alter the model by reducing the definition of P to one term, which is depicted as formula inside P itself instead of depicting any elements externally.
-This results in a more compact graphical EL model, limited to EL-associated elements only.
+This results in a compressed and more compact graphical EL model.
 The resulting refined model is depicted in figure \ref{fig:RBAC96_v5}.
 Note that the EL category legend is the exact same as in figure \ref{fig:RBAC96_v5_variant} and is therefore not depicted again.
 
