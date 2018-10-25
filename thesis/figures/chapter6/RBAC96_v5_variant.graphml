@@ -308,7 +308,7 @@ Permissions<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.sbgn.Phenotype">
           <y:Geometry height="31.92779314304039" width="49.259865599999955" x="450.11673216000077" y="253.26919142847993"/>
-          <y:Fill color="#FFCC99" transparent="false"/>
+          <y:Fill color="#FFFF66" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="center" visible="true" width="21.33203125" x="13.963917175000006" y="6.613310634020195">RH<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
