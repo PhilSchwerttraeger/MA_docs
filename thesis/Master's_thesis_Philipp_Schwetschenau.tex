@@ -982,7 +982,7 @@ Finally section \ref{gsl_example} depicts and describes a full practical example
 
 
 
-\section{Concept}
+\section{Approach}
 \label{gsl_concept}
 %approach, basic ideas, adoptions from literature
 
@@ -998,20 +998,17 @@ Henceforth all possible connections between sets like mappings, relations, const
 
 
 
-\subsection{Analyzing the EL Notation used by Amthor}
+\section{Analyzing the EL Notation used by Amthor}
 \label{analyzing_notation}
 The major problem with the graphical EL notation by \cite{Amthor18} is that it is not isomorphic to its non-graphical counterpart.
 This specifically applies to the information loss induced by ambiguously depicted relationships between elements and the inconsistent method of classifying elements.
 So the first design goal for the graphical specification language is \textit{isomorphism}.
 For achieving this several elements have to be added, while others have to be extended.
-In the following we want to isolate and describe five problems in this context:
+In the following we want to isolate and describe five problems in this context.
 
-\vspace{6mm}
-\noindent
-\textbf{Problem 1: Power Sets}
-\vspace{1mm}
 
-\noindent
+
+\subsection{Problem 1: Power Sets}
 When comparing the visual summary (figure \ref{fig:EL_diagram}) with the table form (figure \ref{fig:EL_table}) we find several inconsistencies.
 One is that all mappings in the visual summary ignore the presence of power sets.
 For example $ua: U \rightarrow 2^R$ is drawn as a simple arrow from $U$ to $R$.
@@ -1023,12 +1020,7 @@ This inconsistency (loss of information) becomes clear in particular after conve
 
 
 
-\vspace{4mm}
-\noindent
-\textbf{Problem 2: Set Operators}
-\vspace{1mm}
-
-\noindent
+\subsection{Problem 2: Set Operators}
 Relations and mappings can use sets as well as combinations of multiple sets.
 These combinations are expressed with set operators (for example the cartesian product $\times$).
 \cite{Amthor18} depicts one of these graphically in figure 5.1 (page 140, \citep{Amthor18}).
@@ -1051,12 +1043,7 @@ The set operator, that determines how two sets interrelate, can vary (here: $\ti
 
 
 
-\vspace{4mm}
-\noindent
-\textbf{Problem 3: Order of Operations and Sets}
-\vspace{1mm}
-
-\noindent
+\subsection{Problem 3: Order of Operations and Sets}
 Besides that, when handling two or more sets the order of set operations (may be mathematically indicated with brackets, see equation \ref{eq:order_operations}) and the order of sets participating in one particular set operation (see equation \ref{eq:order_arguments}) are relevant and thus have to be considered and depicted as well:
 \begin{equation}
 \begin{gathered}
@@ -1073,11 +1060,7 @@ Besides that, when handling two or more sets the order of set operations (may be
 
 
 
-\noindent
-\textbf{Problem 4: Categorization}
-\vspace{1mm}
-
-\noindent
+\subsection{Problem 4: Categorization}
 The EL categories are depicted by \cite{Amthor18} with dashed spaces at the bottom of a figure.
 These allow categorizing by horizontally aligning elements into sections.
 Additionally elements can be categorized by surrounding them with a dashed box (e.g.~\textit{R} in $LS_2$ in figure \ref{fig:ambiguous_categorization}).
@@ -1110,12 +1093,7 @@ In this scenario there would be need to depict $E$ two times at once (in $LS_1$ 
 
 
 
-\vspace{6mm}
-\noindent
-\textbf{Problem 5: Visual Complexity}
-\vspace{1mm}
-
-\noindent
+\subsection{Problem 5: Visual Complexity}
 While the previous four problems are related to the first design goal of achieving isomorphism, this problem derives from the actual design stage of the language.
 It appears that the modular approach we are going to use can generate quite large graphical models.
 It may happen that a user wants to model certain parts of the model less prominent than others to keep the focus on important parts.
@@ -1124,14 +1102,12 @@ This is the secondary design goal of the graphical specification language.
 
 
 
-\subsection{Improving the EL Notation used by Amthor}
+\section{Improving the EL Notation used by Amthor}
 \label{improving_notation}
-\vspace{2mm}
-\noindent
-\textbf{Solution to Problem 1: Power Sets}
-\vspace{1mm}
 
-\noindent
+
+
+\subsection{Solution 1: Annotations}
 Other than problem 2, power sets are exclusively applied to just one set.
 To express them we introduce \textit{relationship annotations}.
 These are positioned at the connection points of sets and relationships, simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}).
@@ -1141,13 +1117,10 @@ Just like UML/ERD the mathematical expression ($2^X$) is depicted directly as te
 At this level of detail specifying special graphical elements (e.g.~special arrow heads) is not reasonable due to the high amount of different elements existing (also with regard to solution to problem 2).
 This may be even counter-intuitive, because humans are able to hold up to 7 different elements in their visual buffer at once; beyond that learning/working becomes harder due to constantly swapping information between cerebral areas (see section \ref{human_optical_perception} about human optical perception).
 
-\vspace{2mm}
-\noindent
-\textbf{Solution to Problem 2: Set Operators}
-\vspace{1mm}
 
-\noindent
-The second extension is the \textit{operation indicator}, which allows specifying an operator for operations with one or more operands.
+
+\subsection{Solution 2: Operator Indications}
+The second extension is the \textit{operator indication}, which allows specifying an operator for operations with one or more operands.
 In the notation \cite{Amthor18} uses, relationships do not specify any operator between elements, just the relationship type by different arrows (mapping, relation, constraint).
 Therefore relationships are depicted incompletely.
 Again, as already stated in solution to problem 1, it does not seem reasonable to introduce new graphical elements to indicate the operator at this level of detail and with that amount of different possible types.
@@ -1157,24 +1130,15 @@ This graphical element is the logical center and connection point for all arrows
 
 
 
-\vspace{2mm}
-\noindent
-\textbf{Solution to Problem 3: Order of Operations and Sets}
-\vspace{1mm}
 
-\noindent
+\subsection{Solution 3: Cascading and Roman Numerals}
 The order of operations can be easily depicted by \textit{cascading} operator elements introduced above.
 In rare cases also the order of sets participating in \textit{one} operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction).
 To indicate and determine the order of sets \textit{roman numerals} can be used as additional annotations, whenever needed.
 
 
 
-\vspace{4mm}
-\noindent
-\textbf{Solution to Problem 4: Categorization}
-\vspace{1mm}
-
-\noindent
+\subsection{Solution 4: Coloring}
 To counter the problem of ambiguously categorization we need a better way to depict category memberships.
 Unfortunately -- as observed above -- falsely categorized elements are unavoidable with the method of horizontally aligning elements.
 Expanding the method into two dimensions will not solve this issue either, because it does not change the situation of falsely associated elements with spatially aligned categories.
@@ -1198,12 +1162,7 @@ Although we now use coloring (alternatively hachures), elements can be still arr
 
 
 
-\vspace{4mm}
-\noindent
-\textbf{Solution to Problem 5: Visual Complexity}
-\vspace{1mm}
-
-\noindent
+\subsection{Solution 5: Alternate Forms}
 In the following we introduce methods to vary and adapt the visual complexity:
 
 \begin{description}
