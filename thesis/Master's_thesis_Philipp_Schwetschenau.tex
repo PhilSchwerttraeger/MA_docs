@@ -1128,12 +1128,17 @@ Again we use the textual mathematical expression/symbol.
 To avoid proximity and overlapping conflicts the operator is encapsulated in a graphical shape: a rhombus (based on ERD relationships, see page \pageref{fig:ERD_relationship}).
 This graphical element is the logical center and connection point for all arrows and lines from and to elements participating in this relationship.
 
+Arrows or lines can connect such operator elements.
+Outgoing arrows point to elements participating in the operation.
+An incoming arrow points from another element in the model to this operation to indicate a relationship.
+This other element can be an operator element itself (\textit{cascading}).
+Also some operator elements can be de facto sets (e.g.\ the cartesian product between two sets again is a set itself).
 
 
 
 \subsection{Solution 3: Cascading and Roman Numerals}
 The order of operations can be easily depicted by \textit{cascading} operator elements introduced above.
-In rare cases also the order of sets participating in \textit{one} operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction).
+In rare cases also the order of elements participating in a operation is relevant for the operation itself, e.g.\ for $\setminus$ (set difference).
 To indicate and determine the order of sets \textit{roman numerals} can be used as additional annotations, whenever needed.
 
 
@@ -1145,7 +1150,7 @@ Expanding the method into two dimensions will not solve this issue either, becau
 Therefore aligning elements along one (or two) axis is not suitable for this task of categorization.
 
 Abandoning the idea of horizontal aligning still leaves the option to use dashed rectangles to categorize elements.
-In the worst case this would lead to every item being encapsulated into its very own rectangle.
+In the worst case this would lead to every item being encapsulated into its very own rectangle, which would be highly redundant.
 This would add multiple new elements and makes it unnecessarily hard to oversee all members of one category.
 
 As described in section \ref{gestalt_laws} \textit{gestalt laws} can help to solve graphical-based tasks.
@@ -1154,8 +1159,12 @@ According to the law objects can be logically grouped, although they may not be 
 The gestalt factor \textit{shape} is already reserved for depicting an element's type, \textit{brightness} may be too subtle, \textit{size}, \textit{orientation} and \textit{rotation} impractical.
 But \textit{color} seems to be a suitable solution.
 Coloring can indicate an element's classification without proximity, aligning or altering its shape and is applicable to sets (circles, ellipses) as well as to relationships (arrows, lines).
-Also multiple category memberships can be depicted by multi-coloring enclosed areas of elements.
-%This will be beneficial in particular when depicting models with multiple levels of indirection (see hierarchical EL in section \ref{HEL}), due to elements potentially having multiple memberships.
+Also multiple category memberships can be depicted now by multi-coloring enclosed areas of elements.
+
+The colors can be chosen freely, but have to be depicted as legend inside a model to show the category-color assignment.
+Additional elements not associated with any EL category (e.g.\ operator elements) are not colored (effectively colored white).
+The color white is therefore preallocated and not available for any EL category.
+The number of colors is not necessarily limited to six (seven with white), due to the degree of indirection $m$ not being limited to 1 (see \textit{Hierarchical Entity Labeling} in section \ref{HEL}).
 
 In domains where colors are not available (hand drawing, monochrome print) hachures must be utilized to indicate category memberships.
 Although we now use coloring (alternatively hachures), elements can be still arranged in groups (horizontally, vertically, freely) to support the perception of belonging together as far as the structure of a concrete model does allow that.
@@ -1163,36 +1172,36 @@ Although we now use coloring (alternatively hachures), elements can be still arr
 
 
 \subsection{Solution 5: Alternate Forms}
+\label{solution_alternate_forms}
 In the following we introduce methods to vary and adapt the visual complexity:
 
 \begin{description}
-\item[1) Annotations versus Rhombus Shapes]\hfill \\
-Solution to problem 2 also allows expressing a power set (with an appropriate symbol inside its shape e.g.\ $\euscr{P}$ or $2^{\Box}$).
-Together with annotations from solution to problem 1 we have two methods of depicting power sets.
+\item[1) Annotations versus Operator Elements]\hfill \\
+The operator elements from solution 2 also allow expressing power sets (with an appropriate symbol inside its shape e.g.\ $\euscr{P}$ or $2^{\Box}$).
+Together with annotations from solution 1 we have two methods of depicting power sets.
 This offers options to express power sets differently.
 The decision may vary from element to element and comes with individual benefits.
-While using annotations is more space-saving and compact, the rhombus shape can act as its own entity and multiple other relationships can refer to it (without using annotation duplicates for every single relationship).
-A good rule of thumb would be to decide based on the number of references a power set has: annotation for one reference, rhombus element for two or more references.
+While using annotations is more space-saving and compact, the operator element can act as its own entity and multiple other relationships can refer to it (without using annotation duplicates for every single relationship).
+Based on the number of elements referring to one particular power set the best depiction form can be determined: annotation for one reference, operator element for two or more references.
 
 \item[2) Set Formula versus Graphical Depiction]\hfill \\
-Internal definitions of sets can be depicted as textual formulas inside their shapes, but can also be graphically modeled outside of them with the help of other elements.
-Similar to the first method this offers the option to adjust the desired level of detail.
+An internal definition of a set can be depicted as textual formula inside its shape, but can also be modeled graphically externally with the help of other elements.
+Similar to the first method this offers the option to adjust to a desired level of detail.
 Also individual benefits of the compact form (formula) versus the external graphical depiction with elements from above are similar here.
 
-Note that the formula can neither indicate the category memberships of an element nor allows participating sets to be referenced by any other element in the model.
-Beyond that it is not even possible to determine the category a set is associated with, but also whether a set is categorized or not categorized at all.
-To counter this problem we can create an \textit{additional rule} that assumes elements with unclear EL-memberships (e.g.\ sets only mentioned in context of a formula) are always associated with no EL category.
+Note that the formula can neither indicate the category memberships of an element nor allow participating sets to be referenced by any other element in the model.
+Beside not being able to determine the category a participating set is associated with, it is not even possible to determine whether a set is even categorized or not categorized at all.
+To counter this problem we can create an \textit{additional rule} that assumes elements with undetermined EL-memberships (e.g.\ sets only mentioned in context of a formula) are always associated with no EL category.
 This leads to formulas being legal exclusively for sets with participating sets that are not associated with any EL category.
 Without this rule and the corresponding consequence for formula usage the resulting depiction would be inconsistent and not unambiguously transformable into a textual EL notation anymore.
 As a consequence of that the language would become non-isomorphic.
 
 \item[3) Relations]\hfill \\
 Also in context of generating large models there are structures that occur more often than others in context of security models.
-For them shortcuts can be provided that combine multiple operators into just one element to reduce the needed amount of elements and therefore the visual complexity.
-
-We introduce such shortcut element for relations.
+For them shortcuts can be provided that combine multiple operator elements into one element to reduce the needed amount of elements and therefore the visual complexity and overall redundancy.
+We introduce such shortcut/combination elements for relations.
 A relation over the sets $P_1, P_2, \dots, P_n$ is defined as subset of their cartesian product: 
-$R \subset P_1 \times P_2 \times \dots \times P_n$.
+$R \subseteq P_1 \times P_2 \times \dots \times P_n$.
 Having a dedicated element for relations frees from always depicting the subset symbol as well as the cartesian product symbol.
 Only the participating sets are left to be specified.
 \end{description}
@@ -1214,14 +1223,14 @@ Depicting EL categories by horizontal alignment or with the help of dashed boxes
 Any model now needs a legend (or reference to a legend) to show the assignment of colors to the corresponding EL categories.
 For $m=1$ we have six different categories and therefore six colors.
 Using the primary colors (red, blue, yellow) and their mixtures (green, orange, purple) maximizes the visual differences and avoids visual misunderstandings.
-Brightening up the colors is a common method to make the coloring less prominent and the notation less optical aggressive due to its higher contrast to (black) text, lines and object's outlines.
+Brightening up the colors is a common method to make the coloring less prominent and the notation less optical aggressive and more readable due to its higher contrast to (black) text, lines and object's outlines.
 A suggested color selection is shown in figure \ref{fig:legend}.
 All models in this document are based on this color legend, therefore it is not necessary to depict it again in following figures.
 For multiple levels of indirection ($m>1$) the color legend needs to be extended accordingly.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.45]{../figures/chapter3/legend.png}
+	\includegraphics[width=\linewidth-7.5cm]{../figures/chapter3/legend.png}
 	\caption{Suggested legend for EL categorization coloring}
 	\label{fig:legend}
 \end{figure}
@@ -1234,7 +1243,8 @@ The enclosed area of a set can now be colored to indicate category memberships.
 Its name and internal definition depicted by a formula are optional.
 The formula allows to mathematically express the internal definition of a set without the need of graphically modeling them.
 With this option the complexity of the model can be limited where needed.
-A user can now decide case-specifically whether certain elements are relevant to be modeled graphically or mathematically for the sake of expressiveness/simplicity.
+A user can decide case-specifically whether certain elements are relevant to be modeled graphically or mathematically for the sake of expressiveness/simplicity.
+The conditions for using a sets formula have been described in section \ref{solution_alternate_forms} before.
 
 \begin{figure}[htb]
 	\centering
@@ -1244,8 +1254,9 @@ A user can now decide case-specifically whether certain elements are relevant to
 \end{figure}
 
 \noindent
-The depiction of subsets is unaltered as well: They can be drawn as smaller sets inside their superset.
-They can be colored individually to their superset.
+The depiction of subsets is mostly unaltered as well: They can be drawn as smaller sets inside their superset.
+With the removal of the horizontal alignment for EL categorization subsets are no longer automatically associated with the category of its superset only, but can be colored (categorized) individually to their superset.
+A depiction variant for subsets is described later in section \ref{variants}.
 
 \begin{figure}[htb]
 	\centering
@@ -1257,6 +1268,7 @@ They can be colored individually to their superset.
 \noindent
 Indicating a membership to two or more categories is done by \textit{multi-coloring} the unclosed area of an element.
 Multi-coloring uses uniformly divided circular sectors to partition the coloring area.
+Two examples for multi-colored sets, ergo sets associated with multiple categories, is depicted in figure \ref{fig:set_multicolor}.
 
 \begin{figure}[!h]
 	\centering
@@ -1269,46 +1281,31 @@ Multi-coloring uses uniformly divided circular sectors to partition the coloring
 
 \subsection{Relationships}
 \label{relationships}
-Simple arrows depict mappings, double-sided arrows depict relations and dashed-lined arrows depict constraints -- unchanged.
-Power sets can be expressed using annotations as seen in figure \ref{fig:relationship_annotation}.
-In many cases sets are used in their unaltered form and no extra expression is needed.
-In this case the annotation is not depicted to reduce redundancy.
+In the former \cite{Amthor18} notation simple arrows depict mappings, double-sided arrows depict relations and dashed-lined arrows depict constraints.
+This general concept gets extended in this section.
+Figure \ref{fig:relationships} gives an overview over all relationship elements.
+In the following we are going to discuss these elements in detail.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.35]{../figures/chapter3/relationship_annotation.png}
-	\caption{Relation $R \subseteq A \times 2^B$}
-	\label{fig:relationship_annotation}
-\end{figure}
-
-\noindent
-Mappings and relations can be extended with additional rhombus shapes to specify the type of operation.
-So in contrast to the original notation we can now specify not just a relationship type (mapping, relation, constraint), but also how its sets are connected.
-
-Many -- especially bright -- colors like yellow do not have a high contrast to their background (generally white), so colored thin objects like lines or object's outlines are hard to see.
-So, to enhance the visual perception, we do not want to use coloring directly on those objects, but continue using black arrows and lines to maximize the contrast in combination with a white background.
-To still be able to categorize relationships by color, relationship elements need a sufficient enclosed area that can properly represent its color.
-Relations already have such area: The rhombus shape holding the operator symbol.
-Relations always have at least one operator, mappings do not.
-So for mappings we introduce a rectangle shape to obtain a sufficient coloring area.
-A Mapping also has its names encapsulated into this rectangle.
-The rectangle shape can be dynamically resized to fit its content.
-A relation holds its name in its rhombus shape above its operator symbol (see figure \ref{fig:relationships}).
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=\linewidth-1cm]{../figures/chapter3/relationships.png}
-	\caption{Relationship types}
+	\includegraphics[width=\linewidth-4cm]{../figures/chapter3/relationships.png}
+	\caption{Relationship elements (prototypes left, examples right}
 	\label{fig:relationships}
 \end{figure}
 
 \noindent
-Handling two or more combined sets is possible now as well as any order of operations as depicted in figure \ref{fig:relationship_operation_2args} and \ref{fig:relationship_operation_3args}.
-When having multiple different operators for one relationship the name of the relationship itself is always encapsulated in the last element.
+Many -- especially bright -- colors like yellow do not have a high contrast to their background (generally white), so colored thin objects like lines or object's outlines are hard to see.
+So, to enhance the visual perception, we do not want to use coloring directly on those objects, but continue using black arrows and lines to maximize the contrast in combination with a white background.
+To still be able to categorize relationships by color, relationship elements need a sufficient enclosed area that can properly represent its color.
+Relations already have such area with their dedicated element shape, mappings do not.
+So for mappings we create an additional shape to obtain a sufficient coloring area.
+Mappings and relations both have their identifier encapsulated inside their geometrical shape.
+Both shape widths can be resized dynamically to fit its content.
+Examples for mapping and relation are depicted in figure \ref{fig:relationships}.
 
-Rhombus shapes are primarily for depicting relations, but can also depict pure operators, too.
-These do not necessarily need a name or identifier.
-Also they can be left uncategorized/uncolored.
+Mappings can be extended with additional operator elements to specify the type of operation.
+So in contrast to the original notation we can now specify not just a relationship type (mapping, relation, constraint), but also how its sets interrelate internally (see figure \ref{fig:relationship_operation_2args}).
+Handling two or more sets is possible now as well as any order of operations as depicted in figure \ref{fig:relationship_operation_3args}.
 
 \begin{figure}[!htb]
 	\centering
@@ -1325,7 +1322,7 @@ Also they can be left uncategorized/uncolored.
 \end{figure}
 
 \noindent
-In rare cases the order of elements participating in \textit{one} operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction).
+In rare cases the order of elements participating in a operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction).
 Such order or participants can be indicated with roman numerals as annotations.
 An example for this is depicted in figure \ref{fig:operation_order}.
 
@@ -1334,6 +1331,17 @@ An example for this is depicted in figure \ref{fig:operation_order}.
 	\includegraphics[scale=0.35]{../figures/chapter3/operation_order.png}
 	\caption{Indicating the order of sets for an operation}
 	\label{fig:operation_order}
+\end{figure}
+
+\noindent
+As already stated power sets can be expressed using annotations and operator elements to express a operation between two other elements as seen in figure \ref{fig:relationship_annotation}.
+In many cases sets are used in their unaltered form and no extra annotation is needed (e.g.\ $A$ in figure \ref{fig:relationship_annotation}).
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth-7cm]{../figures/chapter3/relationship_annotation.png}
+	\caption{Graphical depiction of the term $A \times 2^B$}
+	\label{fig:relationship_annotation}
 \end{figure}
 
 \noindent
