@@ -1981,7 +1981,30 @@ Note that the EL category legend is the exact same as in figure \ref{fig:RBAC96_
 	\label{fig:RBAC96_v5}
 \end{figure}
 
-% Compare to Amthor
+\noindent
+Important to mention here is that both models (figure \ref{fig:RBAC96_v5_variant} and \ref{fig:RBAC96_v5}) are not necessarily semantically equal without an additional rule.
+By compressing $P$'s internal definition from an external depiction with dedicated elements to a formula depiction inside itself potential EL category assignments are getting lost (e.g.\ in this case when $O$ or $OP$ would have be assigned to any EL category).
+In this specific case none of them are assigned to any EL categories.
+Still, after converting elements to a textual term, we can not determine whether elements may have been assigned to EL categories before or not, because the textual term does not allow coloring and therefore no association to a category.
+We can counter this problem by assuming that elements with unclear EL-memberships (e.g.\ $O$ in textual form) are always associated with no EL category.
+This leads to compression being legal exclusively for elements without EL-assignments, otherwise the depiction would be inconsistent.
+Without this rule a compression with elements not already present in other parts of the model (here: $O$ and $OP$) always induces an loss of information and results in a non-isomorphic graphical representation.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth-1cm]{../figures/chapter6/RBAC96_Amthor.png}
+	\caption{Visual summary of RBAC96 \cite{Amthor18} uses}
+	\label{fig:RBAC96_Amthor}
+\end{figure}
+
+\noindent
+When comparing the resulting model (figure \ref{fig:RBAC96_v5}) to the initial \textit{visual summary} \cite{Amthor18} used and which was improved in this work the lack of consistency becomes clear.
+Figure \ref{fig:RBAC96_Amthor} shows the visual summary \cite{Amthor18} depicts to represent RBAC in context of EL.
+Note that there are no constraints in this model, but a constraint example is depicted in a symbolic way to show how they would look like.
+In comparison to figure \ref{fig:RBAC96_v5} this depiction clearly lacks all problems identified and improved in section 
+\ref{gsl_concept}.
+
+
 
 \subsection{CoreABAC}
 \label{eval_language_coreabac}
