@@ -2000,7 +2000,30 @@ Section will follow soon.
 \subsection{Usability Tests}
 \label{eval_language_usability}
 As stated above the language is also evaluated with the help of usability tests.
-For this three persons with different degree of knowledge
+For this three probands with different degrees of knowledge regarding security models and EL where asked to use the language as well as the editor.
+All of them where students with background in model-based security engineering currently writing their master's thesis.
+
+For every proband there was a approximately two hour meeting.
+Every meeting was divided into two parts.
+First the EL aspect and the graphical specification language for EL proposed in this work were presented and discussed.
+Afterwards the probands were asked to use the language to model the RBAC security model (see section \ref{RBAC} and \ref{eval_language_rbac}) graphically by themselves.
+For this the formal definition of the model was given (\ref{definition:RBAC}).
+The task was executed by hand drawing as well as with a software tool, the EL editor developed in this work, later on.
+In this section we will focus on the language part of it.
+For the software part see section \ref{eval_editor_usability}.
+After those meetings there was a additional final meeting with all probands and supervisors to summarize and evaluate the results of the tests together and to isolate the main concerns and aspects to improve the language.
+
+While in the first proposal of the language relations and operations were depicted by the same graphical element (rhombus shape) and could only be distinguished by having an identifier or not, they are now clearly differentiated with their own shapes to avoid misunderstandings.
+On the one hand this adds new elements to the system, but on the other hand this supports the visual perception and intuitive usage of the language.
+
+Also relations and mappings were altered regarding their shapes to visually support their properties and usage in a more intuitive way (see figure \ref{fig:refinedElements}).
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.13]{../figures/chapter6/refinedElements.png}
+	\caption{Refined relations and mappings}
+	\label{fig:refinedElements}
+\end{figure}
 
 
 
