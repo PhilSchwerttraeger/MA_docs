@@ -1177,11 +1177,11 @@ In the following we introduce methods to vary and adapt the visual complexity:
 
 \begin{description}
 \item[1) Annotations versus Operator Elements]\hfill \\
-The operator elements from solution 2 also allow expressing power sets (with an appropriate symbol inside its shape e.g.\ $\euscr{P}$ or $2^{\Box}$).
+Operator elements from solution 2 also allow expressing power sets (with an appropriate symbol inside its shape e.g.\ $\euscr{P}$ or $2^{\Box}$).
 Together with annotations from solution 1 we have two methods of depicting power sets.
 This offers options to express power sets differently.
-The decision may vary from element to element and comes with individual benefits.
-While using annotations is more space-saving and compact, the operator element can act as its own entity and multiple other relationships can refer to it (without using annotation duplicates for every single relationship).
+The decision may vary from element to element and has individual benefits.
+While using annotations is more compact, the operator element can act as its own entity and multiple other relationships can refer to it (without using annotation duplicates for every single relationship).
 Based on the number of elements referring to one particular power set the best depiction form can be determined: annotation for one reference, operator element for two or more references.
 
 \item[2) Set Formula versus Graphical Depiction]\hfill \\
@@ -1215,12 +1215,12 @@ Details and visual examples for this follow in the next section, where we will f
 \label{gsl_elements}
 The main structure of the notation is graph-based.
 It is adopted from \cite{Amthor18} and extended with additional features (solutions) from the previous section.
-Depicting EL categories by horizontal alignment or with the help of dashed boxes is removed and replaced with coloring.
 
 
 
 \subsection{Color Legend}
-Any model now needs a legend (or reference to a legend) to show the assignment of colors to the corresponding EL categories.
+Depicting EL categories by horizontal alignment or with the help of dashed boxes is removed and replaced with coloring.
+Therefore any model now needs a legend (or reference to a legend) to show the assignment of colors to the corresponding EL categories.
 For $m=1$ we have six different categories and therefore six colors.
 Using the primary colors (red, blue, yellow) and their mixtures (green, orange, purple) maximizes the visual differences and avoids visual misunderstandings.
 Brightening up the colors is a common method to make the coloring less prominent and the notation less optical aggressive and more readable due to its higher contrast to (black) text, lines and object's outlines.
@@ -1301,7 +1301,7 @@ Relations already have such area with their dedicated element shape, mappings do
 So for mappings we create an additional shape to obtain a sufficient coloring area.
 Mappings and relations both have their identifier encapsulated inside their geometrical shape.
 Both shape widths can be resized dynamically to fit its content.
-Examples for mapping and relation are depicted in figure \ref{fig:relationships}.
+Examples for both are depicted in figure \ref{fig:relationships}.
 
 Mappings can be extended with additional operator elements to specify the type of operation.
 So in contrast to the original notation we can now specify not just a relationship type (mapping, relation, constraint), but also how its sets interrelate internally (see figure \ref{fig:relationship_operation_2args}).
@@ -1309,32 +1309,32 @@ Handling two or more sets is possible now as well as any order of operations as 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.35]{../figures/chapter3/relationship_operation_2args.png}
+	\includegraphics[scale=0.15]{../figures/chapter3/relationship_operation_2args.png}
 	\caption{Mapping with multiple participating sets $f:A \times B \rightarrow Z$}
 	\label{fig:relationship_operation_2args}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.35]{../figures/chapter3/relationship_operation_3args.png}
+	\includegraphics[scale=0.15]{../figures/chapter3/relationship_operation_3args.png}
 	\caption{Mapping with multiple different operations $f:A \times ( B \cup C ) \rightarrow Z$ }
 	\label{fig:relationship_operation_3args}
 \end{figure}
 
 \noindent
 In rare cases the order of elements participating in a operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction).
-Such order or participants can be indicated with roman numerals as annotations.
+Such order of participants can be indicated with roman numerals as annotations.
 An example for this is depicted in figure \ref{fig:operation_order}.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.35]{../figures/chapter3/operation_order.png}
+	\includegraphics[scale=0.15]{../figures/chapter3/operation_order.png}
 	\caption{Indicating the order of sets for an operation}
 	\label{fig:operation_order}
 \end{figure}
 
 \noindent
-As already stated power sets can be expressed using annotations and operator elements to express a operation between two other elements as seen in figure \ref{fig:relationship_annotation}.
+As already stated power sets can be expressed using annotations and operator elements to express an operation between two other elements as seen in figure \ref{fig:relationship_annotation}.
 In many cases sets are used in their unaltered form and no extra annotation is needed (e.g.\ $A$ in figure \ref{fig:relationship_annotation}).
 
 \begin{figure}[htb]
@@ -1352,10 +1352,11 @@ With the solutions and methods described in this section the graphical EL notati
 \subsection{Depiction Variants}
 \label{variants}
 There are depiction variants available to adapt the level of detail if needed or wished.
+In this section two depiction variants are described.
+
 An example for subset depiction was already shown in figure \ref{fig:subsets}.
-As proposed in \textit{Solution to Problem 5: Visual Complexity} (section \ref{improving_notation}, page \pageref{improving_notation}) subsets can also be depicted externally.
-Figure \ref{fig:subsets_alternative} shows such variant.
-It is semantically equivalent to figure \ref{fig:subsets}.
+As proposed in \textit{Solution 5: Alternate Forms} (section \ref{solution_alternate_forms}) subsets can also be depicted externally.
+Figure \ref{fig:subsets_alternative} shows such semantically equivalent variant.
 
 \begin{figure}[htb]
 	\centering
@@ -1365,18 +1366,26 @@ It is semantically equivalent to figure \ref{fig:subsets}.
 \end{figure}
 
 \noindent
-The internal definition of sets like $P = 2^{O \times OP}$ in $RBAC_0$ (see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) can be modeled graphically, but in cases like this, where all sets in the formula are not referenced at any other point in the model, the formula depiction is a legitimate choice.
-Figure \ref{fig:subsets_formula} depicts the example from above.
+The internal definition of sets like $P = 2^{O \times OP}$ in $RBAC_0$ (see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) can be modeled graphically, but in cases like this, where all sets in the formula are neither EL-categorized nor referenced at any other point in the model, the formula depiction is a legitimate choice.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.43]{../figures/chapter3/subsets_formula.png}
-	\caption{Set element with its internal definition as formula}
+	\includegraphics[scale=0.15]{../figures/chapter3/subsets_formula.png}
+	\caption{Set with its internal definition as formula}
 	\label{fig:subsets_formula}
 \end{figure}
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.15]{../figures/chapter3/subsets_externally.png}
+	\caption{Set with its definition modeled external}
+	\label{fig:subsets_externally}
+\end{figure}
+
 \noindent
-For individual benefits and usage of such variants see \textit{Solution to Problem 5: Visual Complexity} (section \ref{improving_notation}, page \pageref{improving_notation}).
+Figure \ref{fig:subsets_formula} depicts $P$'s internal definition with the help of a formula, figure \ref{fig:subsets_externally} the external modeling alternative.
+
+For individual benefits and usage of such variants see \textit{Solution 5: Alternate Forms} (section \ref{solution_alternate_forms}) .
 
 
 
@@ -1387,6 +1396,7 @@ On an basic level the graph is structured in nodes and edges, just like an mathe
 Based on this one might assume this being a bipartite graph.
 But due to mappings being depicted with the help of a graphical shape, but not being sets at all, this is not the case.
 
+\noindent
 The reason for this is that mappings must provide a surface to hold a color to be able to get categorized properly.
 For this they have to be encapsulated in a geometrical shape just like the other elements, too.
 A depiction alternative would be to not position the shape and its content in the middle of its arrow, but above or below it with at least one point of contact.
@@ -1396,26 +1406,33 @@ But due to lines and arrows not being limited to run straight horizontally or ve
 
 \section{Example}
 \label{gsl_example}
-To showcase that we can now model all relevant aspects of EL -- even for $m>1$ (see \textit{hierarchical EL}, section \ref{HEL}) -- we want to depict the HIX example with added role hierarchy \cite{Amthor18} uses as example with our newly developed notation.
-
-\noindent
-The example refers to the example depicted in section \ref{EL}, but with one additional level of indirection $m=2$.
-To depict the additional level of indirection ($LS_2, LA_2$), the color legend has to be expanded accordingly.
-It corresponds to its original depiction in figure \ref{fig:EL_diagram} and can be compared to it to observe the changes we introduced in this section.
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics[width=\linewidth-4cm]{../figures/chapter3/HIX.png}
+%	\caption{HIX example with $m=2$ \citep{Amthor18}}
+%	\label{fig:HIX}
+%\end{figure}
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\linewidth-4cm]{../figures/chapter3/HIX.png}
-	\caption{HIX example with $m=2$ \citep{Amthor18}}
-	\label{fig:HIX}
+	\includegraphics[width=\linewidth-4cm]{../figures/chapter3/HIX2.png}
+	\caption{HIX example with $m=1$ \citep{Amthor18}}
+	\label{fig:HIX2}
 \end{figure}
 
 \noindent
+To showcase that we can now model all relevant aspects of EL we want to depict the HIX example with added role hierarchy \cite{Amthor18} uses as example with our newly developed notation.
+The example refers to the example depicted in section \ref{EL}, but with an additional role hierarchy $RH$.
+%The example refers to the example depicted in section \ref{EL}, but with one additional level of indirection $m=2$.
+%To depict the additional level of indirection ($LS_2, LA_2$), the color legend has to be expanded accordingly.
+It corresponds to its original depiction in figure \ref{fig:EL_diagram} and can be compared to it to observe the changes we introduced in this section.
+
 The layout was adapted to better compare both figures, but is not limited to this particular form as its former notation was.
 By eliminating the need of spatial alignment and by introducing colors for categorizing, models now can be arranged freely regarding its graph layout.
-As a result this allows for automatic layouting models in the software editor (section \ref{editor_design} and \ref{implementation}) according to certain needs (e.g.~compact, hierarchical, horizontally/vertically).
+As a result this also allows for automatic layouting models in the software editor (section \ref{editor_design} and \ref{implementation}) according to certain needs (e.g.~compact, hierarchical, horizontally/vertically).
 
-For another example ($RBAC_3$) see figure \ref{fig:RBAC96_example} in the appendix on page \pageref{fig:RBAC96_example}.
+%For another example ($RBAC_3$) see figure \ref{fig:RBAC96_example} in the appendix on page \pageref{fig:RBAC96_example}.
+For more examples see chapter \ref{evaluation} \textit{Evaluation}.
 
 %\section{Visualization on a Higher Level of Abstraction}
 %\label{higher_abstraction_level}
@@ -1460,16 +1477,16 @@ The table presents all model data in a secondary text-based compact form.
 \label{req_object_manipulation}
 The editor provides functions for basic navigation like moving the viewport or zooming.
 The graph section allows fast and local object manipulation with the mouse or touch controls.
-Most operations are therefore cursor-based or provided through a context menu.
+Most operations are therefore cursor-based or accessible through a context menu.
 
-The basic elements are set, relation/rhombus, mapping and constraint.
+The basic elements are set, relation, mapping and constraint.
 All those elements can be created, selected, re-positioned and deleted.
 All elements have unique identifiers and several type-dependent properties (e.g.\ name).
 The editor allows viewing and changing those element properties.
 One essential property is \textit{EL category memberships}, a list with all categories the element is categorized into.
-Some element properties are depicted in the graphical EL model, while others are depicted in the table tab only (optional; not essential for the EL aspect).
+Some element properties are depicted in the graphical EL model, while others are depicted in the table tab only (these are optional/supportive and not essential for modeling an EL model).
 
-The editor provides arrow drawing between elements to connect them.
+The editor provides arrow and line drawing between elements to connect them.
 Arrows can be deleted, annotated and inverted in its direction.
 
 
@@ -1477,9 +1494,9 @@ Arrows can be deleted, annotated and inverted in its direction.
 \subsection{Management}
 \label{req_management}
 Besides its drawing section the editor provides a function to generate and export a XML-based scheme (\textit{Entity Labeling Markup Language} \citep{Amthor18}) from its current model.
-Additional graphical information (e.g.\ positions) are integrated into the same file with additional tags.
-A file in the mentioned format can also be imported.
-An existing file not exported from this editor does not have any graphical information - therefore elements have to be manually adjusted regarding those properties after importing.
+Graphical information (e.g.\ positions) are integrated into the same file with additional tags.
+A file in the format mentioned above can also be imported.
+An existing file not exported from this editor does not have any graphical information - therefore elements have to be manually adjusted regarding those properties after importing (rearranging).
 
 Per default the EL categories are set to the EL categories for $m=1$, but are modifiable.
 They are associated with a specific model, so they are also part of importing/exporting.
@@ -1623,7 +1640,7 @@ This also supports satisfiscing (principle 3 of usability \citep{Tidwell11}), be
 \label{editor_extension_redirect_edges}
 Until now edges are drawn between two elements and can not be altered in their position or form.
 Sometimes it is necessary to redirect edges for a better visual overview.
-Examples for this are the edges of \textit{RH} and \textit{pa} in figure \ref{fig:HIX} on page \pageref{fig:HIX}.
+Examples for this are the edges of \textit{RH} in figure \ref{fig:HIX2} on page \pageref{fig:HIX2}.
 For this purpose edges can have a handle in the middle, which appears after selecting them (see figure \ref{fig:redirect_edge}).
 Dragging and dropping the handle will redirect the edge through the new position of the set handle.
 
@@ -1970,19 +1987,19 @@ We can counter this problem by assuming that elements with unclear EL-membership
 This leads to compression being legal exclusively for elements without EL-assignments, otherwise the depiction would be inconsistent.
 Without this rule a compression with elements not already present in other parts of the model (here: $O$ and $OP$) always induces an loss of information and results in a non-isomorphic graphical representation.
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=\linewidth-1cm]{../figures/chapter6/RBAC96_Amthor.png}
-	\caption{Visual summary of RBAC96 \cite{Amthor18} uses}
-	\label{fig:RBAC96_Amthor}
-\end{figure}
-
-\noindent
-When comparing the resulting model (figure \ref{fig:RBAC96_v5}) to the initial \textit{visual summary} \cite{Amthor18} used and which was improved in this work the lack of consistency becomes clear.
-Figure \ref{fig:RBAC96_Amthor} shows the visual summary \cite{Amthor18} depicts to represent RBAC in context of EL.
-Note that there are no constraints in this model, but a constraint example is depicted in a symbolic way to show how they would look like.
-In comparison to figure \ref{fig:RBAC96_v5} this depiction clearly lacks all problems identified and improved in section 
-\ref{gsl_concept}.
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics[width=\linewidth-1cm]{../figures/chapter6/RBAC96_Amthor.png}
+%	\caption{Visual summary of RBAC96 \cite{Amthor18} uses}
+%	\label{fig:RBAC96_Amthor}
+%\end{figure}
+%
+%\noindent
+%When comparing the resulting model (figure \ref{fig:RBAC96_v5}) to the initial \textit{visual summary} \cite{Amthor18} used and which was improved in this work the lack of consistency becomes clear.
+%Figure \ref{fig:RBAC96_Amthor} shows the visual summary \cite{Amthor18} depicts to represent RBAC in context of EL.
+%Note that there are no constraints in this model, but a constraint example is depicted in a symbolic way to show how they would look like.
+%In comparison to figure \ref{fig:RBAC96_v5} this depiction clearly lacks all problems identified and improved in section 
+%\ref{gsl_concept}.
 
 
 
