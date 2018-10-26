@@ -315,8 +315,8 @@ Following graphical elements are used in this notation:
 \begin{itemize}
 \item A circle or ellipse represents a set ($U, R, P, S$).
 \item A rounded rectangle represents a special set -- the set of \textit{Constraints}.
-\item A normal-headed unidirectional arrow represents a one-to-one assignment ($user$).
-\item A double-headed unidirectional arrow represents a one-to-many assignment ($roles$).
+\item A normal-headed unidirectional arrow represents an one-to-one assignment ($user$).
+\item A double-headed unidirectional arrow represents an one-to-many assignment ($roles$).
 \item A double-headed bidirectional arrow represents a many-to-many assignment relation ($UA, PA, RH$).
 \item A normal-headed unidirectional dashed arrow represents a constraint.
 Six arrows of this type are pointing symbolically from the set of constraints in the direction of all model components constraints can be potentially defined on.
@@ -974,11 +974,11 @@ Reinventing interaction design is not only very time consuming, but actually eve
 \label{gsl}
 In this chapter we develop a notation to graphically model the Entity Labeling aspect (see section \ref{EL}) of Aspect-oriented Security Engineering.
 In the first section \ref{gsl_concept} the general idea and approach for this are explained.
-In this context the notation used by \cite{Amthor18} is investigated regarding its inconsistency and general weaknesses.
+In this context the notation used by \cite{Amthor18} is investigated regarding its inconsistency and general weaknesses in section \ref{analyzing_notation}.
 5 problems are going to be isolated and described in detail.
-Afterwards possible solutions for these problems are proposed to extend and improve the notation with regard to design goals.
+Afterwards possible solutions for these problems are proposed to extend and improve the notation with regard to design goals in section \ref{improving_notation}.
 In section \ref{gsl_elements} all graphical elements developed are then depicted visually and described regarding their form, function and usage.
-Finally section \ref{gsl_example} depicts and describes a full practical example for EL modeling and illustrates all changes and improvements to its original notation form.
+Finally section \ref{gsl_example} depicts and describes a full practical example for EL modeling and illustrates changes and improvements to its original notation form.
 
 
 
@@ -990,7 +990,7 @@ Due to being highly tailored to one specific domain, established graphical notat
 A new concept like EL generally requires a newly designed graphical notation.
 In reality needed elements, concepts and ideas are not always created from scratch, but are getting (partly) adopted from related systems and adapted accordingly as long as they syntactically and semantically fit.
 With or without adoption: The system should be designed in a way its components are unambiguous to components of systems from similar or related domains to avoid misunderstanding or barriers in learning.
-With this said we want to start off with the graphical notation \cite{Amthor18} uses to visualize the EL aspect and try to analyze and expose its problems in section \ref{analyzing_notation} and to propose matching solutions in section \ref{improving_notation}.
+With this said we want to start off with the graphical notation \cite{Amthor18} uses to visualize the EL aspect and try to analyze and expose its problems in section \ref{analyzing_notation} and to propose matching solutions in section \ref{improving_notation} to improve it step by step.
 
 \begin{mdframed}[style=mystyle,frametitle=Note]
 Henceforth all possible connections between sets like mappings, relations, constraints, etc.~are referred to as \textit{relationships} (hypernym).
@@ -1097,8 +1097,8 @@ In this scenario there would be need to depict $E$ two times at once (in $LS_1$ 
 While the previous four problems are related to the first design goal of achieving isomorphism, this problem derives from the actual design stage of the language.
 It appears that the modular approach we are going to use can generate quite large graphical models.
 It may happen that a user wants to model certain parts of the model less prominent than others to keep the focus on important parts.
-So for reducing the visual complexity whenever needed, and for offering the user the choice how prominent certain parts should be depicted, there is need for a concept for depicting information in an adaptive way.
-This is the secondary design goal of the graphical specification language.
+So for reducing the visual complexity whenever needed, and for offering the user the choice how prominent certain parts should be depicted, there is need for concepts for depicting information in an adaptive way.
+This is the \textit{secondary design goal} of the graphical specification language.
 
 
 
@@ -1108,27 +1108,27 @@ This is the secondary design goal of the graphical specification language.
 
 
 \subsection{Solution 1: Annotations}
-Other than problem 2, power sets are exclusively applied to just one set.
+Other than problem 2, power sets are applied to just one set.
 To express them we introduce \textit{relationship annotations}.
 These are positioned at the connection points of sets and relationships, simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}).
 Unlike their semantics in UML or ERD, these relationship annotations do not indicate the amount of elements participating in a relationship, but a specific form of an element in context of a relationship it is part of.
 Just like UML/ERD the mathematical expression ($2^X$) is depicted directly as textual expression without any additional graphical elements or symbols.
 
-At this level of detail specifying special graphical elements (e.g.~special arrow heads) is not reasonable due to the high amount of different elements existing (also with regard to solution to problem 2).
+At this level of detail specifying special graphical elements (e.g.~special arrow heads) is not reasonable due to the high amount of different elements existing (also with regard to solution 2).
 This may be even counter-intuitive, because humans are able to hold up to 7 different elements in their visual buffer at once; beyond that learning/working becomes harder due to constantly swapping information between cerebral areas (see section \ref{human_optical_perception} about human optical perception).
 
 
 
-\subsection{Solution 2: Operator Indications}
+\subsection{Solution 2: Operator Elements}
 The second extension is the \textit{operator indication}, which allows specifying an operator for operations with one or more operands.
 In the notation \cite{Amthor18} uses, relationships do not specify any operator between elements, just the relationship type by different arrows (mapping, relation, constraint).
 Therefore relationships are depicted incompletely.
-Again, as already stated in solution to problem 1, it does not seem reasonable to introduce new graphical elements to indicate the operator at this level of detail and with that amount of different possible types.
+Again, as already stated in solution 1, it does not seem reasonable to introduce new graphical elements to indicate the operator at this level of detail and with that amount of different possible types.
 Again we use the textual mathematical expression/symbol.
 To avoid proximity and overlapping conflicts the operator is encapsulated in a graphical shape: a rhombus (based on ERD relationships, see page \pageref{fig:ERD_relationship}).
 This graphical element is the logical center and connection point for all arrows and lines from and to elements participating in this relationship.
 
-Arrows or lines can connect such operator elements.
+Arrows or lines can connect such \textit{operator elements}.
 Outgoing arrows point to elements participating in the operation.
 An incoming arrow points from another element in the model to this operation to indicate a relationship.
 This other element can be an operator element itself (\textit{cascading}).
@@ -1138,12 +1138,13 @@ Also some operator elements can be de facto sets (e.g.\ the cartesian product be
 
 \subsection{Solution 3: Cascading and Roman Numerals}
 The order of operations can be easily depicted by \textit{cascading} operator elements introduced above.
-In rare cases also the order of elements participating in a operation is relevant for the operation itself, e.g.\ for $\setminus$ (set difference).
+In rare cases also the order of elements participating in an operation is relevant for the operation itself, e.g.\ for $\setminus$ (set difference).
 To indicate and determine the order of sets \textit{roman numerals} can be used as additional annotations, whenever needed.
 
 
 
 \subsection{Solution 4: Coloring}
+\label{solution_coloring}
 To counter the problem of ambiguously categorization we need a better way to depict category memberships.
 Unfortunately -- as observed above -- falsely categorized elements are unavoidable with the method of horizontally aligning elements.
 Expanding the method into two dimensions will not solve this issue either, because it does not change the situation of falsely associated elements with spatially aligned categories.
@@ -1163,11 +1164,11 @@ Also multiple category memberships can be depicted now by multi-coloring enclose
 
 The colors can be chosen freely, but have to be depicted as legend inside a model to show the category-color assignment.
 Additional elements not associated with any EL category (e.g.\ operator elements) are not colored (effectively colored white).
-The color white is therefore preallocated and not available for any EL category.
+The color white is therefore predefined and not available for any EL category.
 The number of colors is not necessarily limited to six (seven with white), due to the degree of indirection $m$ not being limited to 1 (see \textit{Hierarchical Entity Labeling} in section \ref{HEL}).
 
-In domains where colors are not available (hand drawing, monochrome print) hachures must be utilized to indicate category memberships.
-Although we now use coloring (alternatively hachures), elements can be still arranged in groups (horizontally, vertically, freely) to support the perception of belonging together as far as the structure of a concrete model does allow that.
+In domains where colors are not available (hand drawing, monochrome print) shades of gray or hachures must be utilized to indicate category memberships.
+Although we use coloring now (alternatively shades of gray/hachures), elements can still be arranged in groups (horizontally, vertically, freely) to support the perception of belonging together as far as the structure of a particular model does allow that.
 
 
 
@@ -1187,11 +1188,11 @@ Based on the number of elements referring to one particular power set the best d
 \item[2) Set Formula versus Graphical Depiction]\hfill \\
 An internal definition of a set can be depicted as textual formula inside its shape, but can also be modeled graphically externally with the help of other elements.
 Similar to the first method this offers the option to adjust to a desired level of detail.
-Also individual benefits of the compact form (formula) versus the external graphical depiction with elements from above are similar here.
+Also individual benefits of the compact form versus the external depiction with additional elements from the method above are similar here.
 
 Note that the formula can neither indicate the category memberships of an element nor allow participating sets to be referenced by any other element in the model.
 Beside not being able to determine the category a participating set is associated with, it is not even possible to determine whether a set is even categorized or not categorized at all.
-To counter this problem we can create an \textit{additional rule} that assumes elements with undetermined EL-memberships (e.g.\ sets only mentioned in context of a formula) are always associated with no EL category.
+To counter this problem we can set up an \textit{additional rule} that assumes elements with undetermined EL-memberships (e.g.\ sets only mentioned in context of a formula) are always associated with no EL category.
 This leads to formulas being legal exclusively for sets with participating sets that are not associated with any EL category.
 Without this rule and the corresponding consequence for formula usage the resulting depiction would be inconsistent and not unambiguously transformable into a textual EL notation anymore.
 As a consequence of that the language would become non-isomorphic.
@@ -1221,12 +1222,14 @@ It is adopted from \cite{Amthor18} and extended with additional features (soluti
 \subsection{Color Legend}
 Depicting EL categories by horizontal alignment or with the help of dashed boxes is removed and replaced with coloring.
 Therefore any model now needs a legend (or reference to a legend) to show the assignment of colors to the corresponding EL categories.
+
 For $m=1$ we have six different categories and therefore six colors.
 Using the primary colors (red, blue, yellow) and their mixtures (green, orange, purple) maximizes the visual differences and avoids visual misunderstandings.
 Brightening up the colors is a common method to make the coloring less prominent and the notation less optical aggressive and more readable due to its higher contrast to (black) text, lines and object's outlines.
 A suggested color selection is shown in figure \ref{fig:legend}.
 All models in this document are based on this color legend, therefore it is not necessary to depict it again in following figures.
 For multiple levels of indirection ($m>1$) the color legend needs to be extended accordingly.
+As already mentioned in section \ref{solution_coloring} the color white is predefined for uncategorized elements and is therefore not available for category coloring.
 
 \begin{figure}[htb]
 	\centering
@@ -1238,13 +1241,8 @@ For multiple levels of indirection ($m>1$) the color legend needs to be extended
 
 
 \subsection{Sets}
-Regarding their appearance sets remain mostly the same (see figure \ref{fig:set}).
-The enclosed area of a set can now be colored to indicate category memberships.
-Its name and internal definition depicted by a formula are optional.
-The formula allows to mathematically express the internal definition of a set without the need of graphically modeling them.
-With this option the complexity of the model can be limited where needed.
-A user can decide case-specifically whether certain elements are relevant to be modeled graphically or mathematically for the sake of expressiveness/simplicity.
-The conditions for using a sets formula have been described in section \ref{solution_alternate_forms} before.
+Regarding their appearance sets remain mostly the same compared to the notation \cite{Amthor18} uses.
+The basic set layout is depicted in figure \ref{fig:set}.
 
 \begin{figure}[htb]
 	\centering
@@ -1254,6 +1252,13 @@ The conditions for using a sets formula have been described in section \ref{solu
 \end{figure}
 
 \noindent
+The enclosed area of a set can now be colored to indicate category memberships.
+Its name and internal definition depicted by a formula are optional.
+The formula allows to mathematically express the internal definition of a set without the need of graphically modeling them.
+With this option the complexity of the model can be limited where needed.
+A user can decide case-specifically whether certain elements are relevant to be modeled graphically or mathematically for the sake of expressiveness/simplicity.
+The conditions for using a set formula have been described in section \ref{solution_alternate_forms} in detail.
+
 The depiction of subsets is mostly unaltered as well: They can be drawn as smaller sets inside their superset.
 With the removal of the horizontal alignment for EL categorization subsets are no longer automatically associated with the category of its superset only, but can be colored (categorized) individually to their superset.
 A depiction variant for subsets is described later in section \ref{variants}.
@@ -1281,7 +1286,7 @@ Two examples for multi-colored sets, ergo sets associated with multiple categori
 
 \subsection{Relationships}
 \label{relationships}
-In the former \cite{Amthor18} notation simple arrows depict mappings, double-sided arrows depict relations and dashed-lined arrows depict constraints.
+In the former notation \citep{Amthor18} simple arrows depict mappings, double-sided arrows depict relations and dashed-lined arrows depict constraints.
 This general concept gets extended in this section.
 Figure \ref{fig:relationships} gives an overview over all relationship elements.
 In the following we are going to discuss these elements in detail.
@@ -1297,14 +1302,13 @@ In the following we are going to discuss these elements in detail.
 Many -- especially bright -- colors like yellow do not have a high contrast to their background (generally white), so colored thin objects like lines or object's outlines are hard to see.
 So, to enhance the visual perception, we do not want to use coloring directly on those objects, but continue using black arrows and lines to maximize the contrast in combination with a white background.
 To still be able to categorize relationships by color, relationship elements need a sufficient enclosed area that can properly represent its color.
-Relations already have such area with their dedicated element shape, mappings do not.
-So for mappings we create an additional shape to obtain a sufficient coloring area.
+So for mappings and relations we create additional dedicated shapes to obtain a sufficient coloring area.
 Mappings and relations both have their identifier encapsulated inside their geometrical shape.
 Both shape widths can be resized dynamically to fit its content.
 Examples for both are depicted in figure \ref{fig:relationships}.
 
 Mappings can be extended with additional operator elements to specify the type of operation.
-So in contrast to the original notation we can now specify not just a relationship type (mapping, relation, constraint), but also how its sets interrelate internally (see figure \ref{fig:relationship_operation_2args}).
+So in contrast to the former notation we can now specify not just a relationship type (mapping, relation, constraint), but also how its sets interrelate internally (see figure \ref{fig:relationship_operation_2args}).
 Handling two or more sets is possible now as well as any order of operations as depicted in figure \ref{fig:relationship_operation_3args}.
 
 \begin{figure}[!htb]
@@ -1322,9 +1326,9 @@ Handling two or more sets is possible now as well as any order of operations as 
 \end{figure}
 
 \noindent
-In rare cases the order of elements participating in a operation is relevant for the operation itself (e.g.~$\setminus$ for set substraction).
+In rare cases the order of elements participating in an operation is relevant for the operation itself (e.g.~$\setminus$ for set difference).
 Such order of participants can be indicated with roman numerals as annotations.
-An example for this is depicted in figure \ref{fig:operation_order}.
+An example for this is depicted in the following figure \ref{fig:operation_order}.
 
 \begin{figure}[!htb]
 	\centering
@@ -1355,8 +1359,10 @@ There are depiction variants available to adapt the level of detail if needed or
 In this section two depiction variants are described.
 
 An example for subset depiction was already shown in figure \ref{fig:subsets}.
-As proposed in \textit{Solution 5: Alternate Forms} (section \ref{solution_alternate_forms}) subsets can also be depicted externally.
+Similar to the methods described in \textit{Solution 5: Alternate Forms} (section \ref{solution_alternate_forms}) subsets can also be depicted externally.
 Figure \ref{fig:subsets_alternative} shows such semantically equivalent variant.
+Similar to the benefits of having externally modeled elements instead of a formula (method 2 in section \ref{solution_alternate_forms}) the external modeling allows a better way to reference such subsets from other elements, because arrows do not intersect with the outline of the superset.
+Also this variant avoids the assumption two subsets being necessarily disjoint (due to their non-overlapping depiction in the compact form).
 
 \begin{figure}[htb]
 	\centering
@@ -1366,7 +1372,8 @@ Figure \ref{fig:subsets_alternative} shows such semantically equivalent variant.
 \end{figure}
 
 \noindent
-The internal definition of sets like $P = 2^{O \times OP}$ in $RBAC_0$ (see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) can be modeled graphically, but in cases like this, where all sets in the formula are neither EL-categorized nor referenced at any other point in the model, the formula depiction is a legitimate choice.
+As described in method 2 in \textit{Solution 5: Alternate Forms} the internal set defintion can potentially be depicted in two way.
+Sets like $P = 2^{O \times OP}$ in $RBAC_0$ (see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}) can be modeled graphically, when all sets in the formula are neither EL-categorized nor referenced at any other point in the model.
 
 \begin{figure}[htb]
 	\centering
@@ -1384,6 +1391,8 @@ The internal definition of sets like $P = 2^{O \times OP}$ in $RBAC_0$ (see defi
 
 \noindent
 Figure \ref{fig:subsets_formula} depicts $P$'s internal definition with the help of a formula, figure \ref{fig:subsets_externally} the external modeling alternative.
+Note that $P$ and the power set element are connected with the help of a simple line, not an arrow.
+This line indicates that the subsequent term is an definition.
 
 For individual benefits and usage of such variants see \textit{Solution 5: Alternate Forms} (section \ref{solution_alternate_forms}) .
 
@@ -1392,15 +1401,14 @@ For individual benefits and usage of such variants see \textit{Solution 5: Alter
 \subsection{Comments on the Model Structure}
 \label{comments_on_model_structure}
 The modular graph we developed is now able to describe EL models graphically.
-On an basic level the graph is structured in nodes and edges, just like an mathematical graph.
-Based on this one might assume this being a bipartite graph.
-But due to mappings being depicted with the help of a graphical shape, but not being sets at all, this is not the case.
+On an more abstract level the graph is structured in nodes and edges, just like an mathematical graph.
+Based on this one might assume this being a graph with all nodes being sets structurally.
+But due to mappings being depicted with the help of a graphical elements just like sets and relations, but not being sets at all, this is not the case.
 
-\noindent
 The reason for this is that mappings must provide a surface to hold a color to be able to get categorized properly.
 For this they have to be encapsulated in a geometrical shape just like the other elements, too.
 A depiction alternative would be to not position the shape and its content in the middle of its arrow, but above or below it with at least one point of contact.
-But due to lines and arrows not being limited to run straight horizontally or vertically, this might induce confusion in distinguishing multiple adjacent elements in large models with less space.
+But due to lines and arrows not being limited to run straight horizontally or vertically, this might induce confusion in distinguishing multiple adjacent mapping elements in large models with less space.
 
 
 
@@ -1860,7 +1868,7 @@ The results of the usability tests are taken back into the design stage to impro
 \section{Language Evaluation}
 \label{eval_language}
 One design goal of the language was \textit{isomorphism} (see section \ref{analyzing_notation}) to its mathematical counterpart: the textual notation form.
-To evaluate the language regarding its expressiveness this section constructs and depicts use cases in form of the security models RBAC (section \ref{eval_language_rbac}) and CoreABAC (section \ref{eval_language_coreabac}) in context of EL.
+To evaluate the language regarding its expressiveness this section constructs and depicts use cases in form of the security models RBAC (section \ref{eval_language_rbac}) and ABAC$_\alpha$ (section \ref{eval_language_coreabac}) in context of EL.
 In the second part of this section the language is evaluated with the help of usability tests (section \ref{eval_language_usability}).
 
 
@@ -1873,7 +1881,7 @@ It is described in detail in section \ref{RBAC} of the fundamentals chapter (see
 Based on its definition (\ref{definition:RBAC}) we are now going to construct $RBAC_1$ with the graphical specification language developed in this work.
 For this we take its elements described mathematically in its definition and translate them step by step into their graphical representations.
 
-RBAC consists of sets, relations and mappings.
+RBAC consists of set, relation and mapping elements.
 First we create all basic sets $U, S, R, P, O, OP$ with circles for each set.
 We put the set identifier and its full name into them.
 The name is optional, but improves the comprehension, especially for models with many sets or set names with common first letter (e.g.\ $O$ and $OP$ in this model).
@@ -1916,7 +1924,7 @@ The model after those two steps is depicted in figure \ref{fig:RBAC96_v5_variant
 
 \noindent
 Next step is to connect $O$ and $OP$ to $P$.
-For this the mathematical expression has to be rebuilt with rhombus shapes in the correct order of operations.
+For this the mathematical expression has to be rebuilt with operator elements in the correct order of operations.
 %\begin{figure}[htb]
 %	\centering
 %	\includegraphics[scale=0.13]{../figures/chapter6/RBAC96_v5_variant_stage4.png}
@@ -1962,7 +1970,7 @@ sem(MC) &= \lbrace \emptyset \rbrace
 \end{align*}
 
 \noindent
-Optionally we can now alter the appearance of the model to a desired level of detail (with some downsides discussed later on).
+Optionally we can now alter the appearance of the model to a desired level of detail.
 We may decide that the depiction of elements that define $P$ is not necessary for us, because those elements are not associated with any EL category and are therefore less important than the EL-associated elements.
 
 We alter the model by reducing the definition of $P$ to one term, which is depicted as formula inside P itself instead of depicting any elements externally.
@@ -1978,12 +1986,12 @@ Note that the EL category legend is the exact same as in figure \ref{fig:RBAC96_
 \end{figure}
 
 \noindent
-Important to mention here is that both models (figure \ref{fig:RBAC96_v5_variant} and \ref{fig:RBAC96_v5}) are not necessarily semantically equal without assuming the additional rule from .
+Important to mention here is that both models (figure \ref{fig:RBAC96_v5_variant} and \ref{fig:RBAC96_v5}) are not necessarily semantically equal without assuming the additional rule from method 2 in section \ref{solution_alternate_forms}.
 
 By compressing $P$'s internal definition from an external depiction with dedicated elements to a formula depiction inside itself potential EL category assignments are getting lost (e.g.\ in this case when $O$ or $OP$ would have be assigned to any EL category).
 In this specific case none of them are assigned to any EL categories.
 Still, after converting elements to a textual term, we can not determine whether elements may have been assigned to EL categories before or not, because the textual term does not allow coloring and therefore no association to a category.
-We can counter this problem by assuming that elements with unclear EL-memberships (e.g.\ $O$ in textual form) are always associated with no EL category.
+We can counter this problem by assuming that elements with unclear EL-memberships (e.g.\ $O$ in textual form) are always associated with no EL category (white coloring).
 This leads to compression being legal exclusively for elements without EL-assignments, otherwise the depiction would be inconsistent.
 Without this rule a compression with elements not already present in other parts of the model (here: $O$ and $OP$) always induces an loss of information and results in a non-isomorphic graphical representation.
 
@@ -2003,7 +2011,7 @@ Without this rule a compression with elements not already present in other parts
 
 
 
-\subsection{CoreABAC}
+\subsection{ABAC$_\alpha$}
 \label{eval_language_coreabac}
 Section will follow soon.
 %This section will depict the CoreABAC security model in the graphical specification language for EL.
@@ -2030,18 +2038,17 @@ In this section we will focus on the language part of it.
 For the software part see section \ref{eval_editor_usability}.
 After those meetings there was a separate additional meeting with all testers and supervisors to summarize and evaluate the results of the tests together and to isolate the main concerns and aspects to improve the language.
 
-One major difficulty was the difference between relations and set modifiers.
-While in the first design iteration of the language relations and set modifiers were depicted by the same graphical element (rhombus shape) and could only be distinguished by having an identifier or not, they are now clearly differentiated with their own shapes to avoid misunderstandings.
+One major difficulty was the difference between relations and operator elements.
+While in the first design iteration of the language relations and operator elements were depicted by the same graphical element (rhombus shape) and could only be distinguished by having an identifier or not, they are now clearly differentiated with their own shapes to avoid misunderstandings.
 On the one hand this adds new elements to the system, but on the other hand this supports the visual perception and intuitive usage of the language.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\linewidth]{../figures/chapter6/refinedElements.png}
+	\includegraphics[width=\linewidth-1cm]{../figures/chapter6/refinedElements.png}
 	\caption{Refined relations and mappings}
 	\label{fig:refinedElements}
 \end{figure}
 
-\noindent
 As a result of the usability tests also relations and mappings got altered in their shapes to visually support their properties and usage in a more intuitive way.
 Figure \ref{fig:refinedElements} shows a collection of all element modifications originated from the results of the usability tests.
 
