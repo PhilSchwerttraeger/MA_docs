@@ -2011,8 +2011,41 @@ Without this rule a compression with elements not already present in other parts
 
 
 
-\subsection{ABAC$_\alpha$}
+\subsection{CoreABAC}
+
+
+\begin{xdefinition}[CoreABAC] 
+An instance of the CoreABAC model is a tuple $(U, O, A, V, \mathit{PERM}, P, \textit{UAA}, \mathit{OAA}, \mathit{PPR})$ with
+
+\vspace{-2mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item $U$ as set of \textit{user identifiers}
+\item $O$ as set of \textit{object identifiers}
+\item $A$ as set of \textit{attribute identifiers}
+\item $V$ as set of \textit{attribute values}
+\item $\mathit{PERM}$ as set of \textit{permission attributes}
+\item $P$ as a set of boolean statements which we call policy rules, that relate to attribute identifiers from $A$ and values from $V$
+\item $\mathit{UAA} \subseteq A \times U \times 2^V$ as a relation that assigns a set of attribute values to users
+\item $\mathit{OAA} \subseteq A \times O \times 2^V$ as a relation that assigns a set of attribute values to objects
+\item $\mathit{PPR} \subseteq P \times 2^{\mathit{PERM}}$ as a relation that assigns permissions to policy rules
+\end{itemize}
+\label{definition:CoreABAC}
+\end{xdefinition}
+
+
 \label{eval_language_coreabac}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth-1cm]{../figures/chapter6/CoreABAC.png}
+	\caption{CoreABAC}
+	\label{fig:CoreABAC}
+\end{figure}
+
+
+
+\subsection{ABAC$_\alpha$}
+\label{eval_language_abacalpha}
 Section will follow soon.
 %This section will depict the CoreABAC security model in the graphical specification language for EL.
 %Due to being very similar to the procedure for RBAC in the previous section, we will just depict the final model, not every step to construct it.
