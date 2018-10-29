@@ -208,10 +208,10 @@ An access control function (ACF) is a function ${acf}: S \times O \times OP \rig
 \begin{itemize}
 \item $S$ is a set of \textit{subject identifiers}
 \item $O$ is a set of \textit{object identifiers}
-\item $OP$ is a set of \textit{operation identifiers}
+\item $\mathit{OP}$ is a set of \textit{operation identifiers}
 \end{itemize} 
 \vspace{-2mm}
-For any $s \in S, o \in O, op \in OP$, we say $s$ is allowed to execute $op$ on $o$ iff $acf(s,o,op)$.
+For any $s \in S, o \in O, op \in \mathit{OP}$, we say $s$ is allowed to execute $op$ on $o$ iff $acf(s, o, op)$.
 \end{definition}
 
 
@@ -227,25 +227,25 @@ On the other hand every role is mapped to a set of permissions.
 This concept reduces redundancy in systems with large or fast growing sets of subjects and objects and also models real scenarios closer to reality (e.g. job function in an organization).
 
 \begin{xdefinition}[RBAC] 
-A RBAC$_0$ model is a tuple $(U, R, P, S, UA, PA, user, roles)$ with
+A RBAC$_0$ model is a tuple $(U, R, P, S, \mathit{UA}, \mathit{PA}, \mathit{user}, \mathit{roles})$ with
 
 \vspace{-2mm}
 \begin{itemize}
 \setlength\itemsep{0em}
 \item $U$ as set of \textit{users}
 \item $R$ as set of \textit{roles}
-\item $P = 2^{O \times OP}$ as set of \textit{permissions}
+\item $P = 2^{O \times \mathit{OP}}$ as set of \textit{permissions}
 \vspace{-2mm}
 \begin{itemize}
 \item $O$ is the set of \textit{objects}
-\item $OP$ the set of \textit{operations}
+\item $\mathit{OP}$ the set of \textit{operations}
 \end{itemize}
 \vspace{-2mm}
 \item $S$ as set of \textit{sessions}
-\item $UA \subseteq U \times R$ as a many-to-many \textit{user-to-role assignment relation}
-\item $PA \subseteq P \times R$ as a many-to-many \textit{permission-to-role assignment relation}
-\item $user: S \rightarrow U$ as function, that maps every session to a single user
-\item $roles: S \rightarrow 2^R$ as function, that maps every session to set of roles
+\item $\mathit{UA} \subseteq U \times R$ as a many-to-many \textit{user-to-role assignment relation}
+\item $\mathit{PA} \subseteq P \times R$ as a many-to-many \textit{permission-to-role assignment relation}
+\item $\mathit{user}: S \rightarrow U$ as function, that maps every session to a single user
+\item $\mathit{roles}: S \rightarrow 2^R$ as function, that maps every session to set of roles
 \end{itemize}
 \label{definition:RBAC}
 \end{xdefinition}
@@ -256,10 +256,10 @@ The access control function checks whether there is an active session of the use
 
 \begin{xdefinition}[RBAC access control function]
 $\\[-15pt]
-acf_{RBAC} (u,o,op) \rightarrow 
+acf_{\mathit{RBAC}} (u, o, \mathit{op})) \rightarrow 
    \begin{cases}
-   		\ true & |\ \exists r \in R, s \in S: \\ & \ \ u = user(s), r \in roles(s), ((o,op),r) \in PA \\
-   		\ false & |\ else
+   		\ \mathit{true}) & |\ \exists r \in R, s \in S: \\ & \ \ u = \mathit{user}(s), r \in \mathit{roles}(s), ((o, \mathit{op}), r) \in \mathit{PA} \\
+   		\ \mathit{false}) & |\ \mathit{else})
    \end{cases}
 $
 \label{definition:RBAC_ACF}
@@ -269,9 +269,9 @@ $
 RBAC is called a family of security models, because there is a base model (RBAC$_0$) and three models that extend this base model with advanced concepts.
 RBAC$_1$ extends RBAC$_0$ with a role hierarchy, because in reality it turned out that roles are often combinations of other already existing roles.
 This reduces redundancy and improves RBAC's scaling behavior even further.
-The role hierarchy is defined as partial order $RH \subseteq R \times R$.% on $R$. %(also written as $\geq$).
+The role hierarchy is defined as partial order $\mathit{RH} \subseteq R \times R$.% on $R$. %(also written as $\geq$).
 
-RBAC$_2$ extends RBAC$_0$ with a set of constraints $C$ to restrict values of the model components $UA, PA, user, role$ or $RH$ (e.g. ``\textit{forbid the activation of two certain roles at the same time}'').
+RBAC$_2$ extends RBAC$_0$ with a set of constraints $C$ to restrict values of the model components $\mathit{UA}, \mathit{PA}, \mathit{user}, \mathit{role}$ or $\mathit{RH}$ (e.g. ``\textit{forbid the activation of two certain roles at the same time}'').
 Constraints are highly individual and specific to a certain application.
 However, \cite{Sandhu96} mentions three main concepts for constraints, that seem to be used frequently and are therefore reasonable to implement: \textit{Mutually exclusive roles}, \textit{cardinality} and \textit{prerequisite roles}.
 
@@ -315,9 +315,9 @@ Following graphical elements are used in this notation:
 \begin{itemize}
 \item A circle or ellipse represents a set ($U, R, P, S$).
 \item A rounded rectangle represents a special set -- the set of \textit{Constraints}.
-\item A normal-headed unidirectional arrow represents an one-to-one assignment ($user$).
-\item A double-headed unidirectional arrow represents an one-to-many assignment ($roles$).
-\item A double-headed bidirectional arrow represents a many-to-many assignment relation ($UA, PA, RH$).
+\item A normal-headed unidirectional arrow represents an one-to-one assignment ($\mathit{user}$).
+\item A double-headed unidirectional arrow represents an one-to-many assignment ($\mathit{roles}$).
+\item A double-headed bidirectional arrow represents a many-to-many assignment relation ($\mathit{UA}, \mathit{PA}, \mathit{RH}$).
 \item A normal-headed unidirectional dashed arrow represents a constraint.
 Six arrows of this type are pointing symbolically from the set of constraints in the direction of all model components constraints can be potentially defined on.
 \end{itemize}
@@ -332,7 +332,7 @@ It is drawn with large black dots inside, which represent single elements of thi
 These set elements are then connected to other components with certain arrows.
 Three small black dots (in this case aligned horizontally) indicate that those three set elements are just symbolic and that there are potentially more or less (the number of sessions is not limited per definition).
 
-This diagram is often used in a simplified form (for example in \citep{Amthor18}) that does not display single set elements of \textit{Sessions S}, but directly connects \textit{Sessions S}-- like the other sets -- with just one arrow (for the \textit{user} function) to \textit{Users} and one arrow (for the \textit{roles} function) to \textit{Roles}.
+This diagram is often used in a simplified form (for example in \citep{Amthor18}) that does not display single set elements of \textit{Sessions S}, but directly connects \textit{Sessions S} -- like the other sets -- with just one arrow (for the \textit{user} function) to \textit{Users} and one arrow (for the \textit{roles} function) to \textit{Roles}.
 Also worth mentioning is that the \textit{Role Hierarchy RH} is drawn as a loop. 
 It is pointing from \textit{Roles} ($R$) to \textit{Roles} with a double-headed bidirectional arrow.
 
@@ -340,7 +340,7 @@ Sandhu's notation depicts the overall structure of the RBAC model with its relat
 Different arrow types indicate different types of relationships.
 Besides \textit{Sessions S} no set displays any set elements.
 Also no set displays any kind of definition for its elements.
-For example \textit{Permissions P} does not indicate that its elements are defined as $2^{O \times OP}$ (as in the RBAC definition, see definition \ref{definition:RBAC}).
+For example \textit{Permissions P} does not indicate that its elements are defined as $2^{O \times \mathit{OP}}$ (as in the RBAC definition, see definition \ref{definition:RBAC}).
 
 %maybe my own gsl from bachelor thesis?
 
@@ -418,7 +418,7 @@ The Entity Labeling (EL) aspect is one possible aspect $\mathcal{A}$ in context 
 It is designed to support the process of formally specifying policy semantics typically found in operating systems and middleware systems.
 Its purpose is to support the transition from informal policy to formal model (see highlighted part in figure \ref{fig:AOSE}).
 
-For this model components of an informally specified policy are formalized by classifying them into the six semantic categories $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$:
+For this model components of an informally specified policy are formalized by classifying them into the six semantic categories $\mathit{ES}$, $\mathit{LS}$, $\mathit{LA}$, $\mathit{AR}$, $\mathit{RR}$, and $\mathit{MC}$:
 
 \begin{description}
 \item[1) Entity Set (ES)]\hfill \\
@@ -502,18 +502,18 @@ The resulting model after EL can be depicted in three different forms: Textual, 
 The textual form created from an example policy looks like this:
 
 \begin{align*}
-\langle &\mathcal{M}_{example}, \mathcal{A}_{EL}, sem \rangle
+\langle &\mathcal{M}_{\mathit{example}}, \mathcal{A}_{EL}, sem \rangle
 \end{align*}
 \begin{align*}
-\mathcal{M}_{example} &= \lbrace U, D, R, GR, AR, P, ua, da, pa \rbrace
+\mathcal{M}_{\mathit{example}} &= \lbrace U, D, R, \mathit{GR}, \mathit{AR}, P, \mathit{ua}, \mathit{da}, \mathit{pa} \rbrace
 \end{align*}
 \begin{align*}
-sem(ES) &= \lbrace U, D \rbrace\\
-sem(LS) &= \lbrace R, P \rbrace\\
-sem(LA) &= \lbrace ua, da \rbrace\\
-sem(AR) &= \lbrace pa, P \rbrace\\
-sem(RR) &= \lbrace GR, AR, ua \rbrace\\
-sem(MC) &= \lbrace \emptyset \rbrace
+sem(\mathit{ES}) &= \lbrace U, D \rbrace\\
+sem(\mathit{LS}) &= \lbrace R, P \rbrace\\
+sem(\mathit{LA}) &= \lbrace \mathit{ua}, \mathit{da} \rbrace\\
+sem(\mathit{AR}) &= \lbrace \mathit{pa}, P \rbrace\\
+sem(\mathit{RR}) &= \lbrace \mathit{GR}, \mathit{AR}, \mathit{ua} \rbrace\\
+sem(\mathit{MC}) &= \lbrace \emptyset \rbrace
 \end{align*}
 
 \noindent
@@ -568,21 +568,21 @@ In this context $m$ indicates the degree of indirection.
 For $m>1$ the EL aspect is defined by \cite{Amthor18} as:
 
 \begin{align*}
-\mathcal{A}_{EL(m)} = \lbrace ES,LS_1, \dots,LS_m, LA_1, \dots, LA_m,AR,RR,MC\rbrace
+\mathcal{A}_{\mathit{EL}(m)} = \lbrace \mathit{ES}, \mathit{LS}_1, \dots, \mathit{LS}_m, \mathit{LA}_1, \dots, \mathit{LA}_m, \mathit{AR}, \mathit{RR}, \mathit{MC}\rbrace
 \end{align*}
 
 \noindent
-Adding a role hierarchy to our example policy from above will alter $sem(LA)$ to $sem(LA_1)$ and $sem(LS)$ to $sem(LS_1)$ and will add following two assignments:
+Adding a role hierarchy to our example policy from above will alter $sem(\mathit{LA})$ to $sem(\mathit{LA}_1)$ and $sem(\mathit{LS})$ to $sem(\mathit{LS}_1)$ and will add following two assignments:
 
 \begin{align*}
-sem(LS_2) &= \lbrace R \rbrace\\
-sem(LA_2) &= \lbrace RH \rbrace\\
+sem(\mathit{LS}_2) &= \lbrace R \rbrace\\
+sem(\mathit{LA}_2) &= \lbrace \mathit{RH} \rbrace\\
 \end{align*}
 
 \noindent
-This leads to a diagram with an additional component $RH$ and multiple sections for $LS_i$ and $LA_i$ as depicted in figure \ref{fig:EL_diagram_m}.
+This leads to a diagram with an additional component $RH$ and multiple sections for $\mathit{LS}_i$ and $\mathit{LA}_i$ as depicted in figure \ref{fig:EL_diagram_m}.
 The category spaces at the bottom are now not the only indications for categories in this diagram.
-$LA_2$ and $LS_2$ are depicted as dashed rectangles within the diagram itself and frame its components $RH$ and $R$.
+$\mathit{LA}_2$ and $\mathit{LS}_2$ are depicted as dashed rectangles within the diagram itself and frame its components $\mathit{RH}$ and $R$.
 
 \begin{figure}[htb]
 	\centering
@@ -1063,20 +1063,20 @@ Besides that, when handling two or more sets the order of set operations (may be
 \subsection{Problem 4: Categorization}
 The EL categories are depicted by \cite{Amthor18} with dashed spaces at the bottom of a figure.
 These allow categorizing by horizontally aligning elements into sections.
-Additionally elements can be categorized by surrounding them with a dashed box (e.g.~\textit{R} in $LS_2$ in figure \ref{fig:ambiguous_categorization}).
+Additionally elements can be categorized by surrounding them with a dashed box (e.g.~\textit{R} in $\mathit{LS}_2$ in figure \ref{fig:ambiguous_categorization}).
 The horizontal alignment seems similar to a table categorization with columns, but unlike a table the graphical depiction uses arrows that connect elements to indicate a relationship between them.
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth-8cm]{../figures/chapter3/ambiguous_categorization.png}
-	\caption{Ambiguous categorization of the relation RH}
+	\caption{Ambiguous categorization of the relation \textit{RH}}
 	\label{fig:ambiguous_categorization}
 \end{figure}
 
 \noindent
 When connecting two elements, which are positioned in different sections, arrows inevitably run through all sections lying between those sections.
 Due to arrows not always connecting elements across just two sections, it is possible that they connect elements that are further away from each other or elements that belong to the same section.
-For example in figure \ref{fig:ambiguous_categorization} \textit{RH} is placed above $R$, because it is no member of one of the horizontally adjacent categories of $LS_1$ ($LA_1$ and $AR$); nevertheless it is incorrectly associated with $LS_1$ due to its horizontal alignment.
+For example in figure \ref{fig:ambiguous_categorization} \textit{RH} is placed above $R$, because it is no member of one of the horizontally adjacent categories of $\mathit{LS}_1$ ($\mathit{LA}_1$ and $\mathit{AR}$); nevertheless it is incorrectly associated with $LS_1$ due to its horizontal alignment.
 As a result arrows will always be automatically associated with
 
 \begin{enumerate}[label=\alph*)]
@@ -1088,8 +1088,8 @@ As a result arrows will always be automatically associated with
 which is both unpreventable and undesired in many cases.
 
 But not just arrows, also \textit{sets} have a similar issue, because they can be member of multiple categories at once.
-In figure \ref{fig:ambiguous_categorization} we can construct such situation by adding a new element $E$, which is member of $LS_1$ and of a new category $C$, that is not horizontally adjacent to $LS_1$, but left to $LA_1$ or right to $AR$.
-In this scenario there would be need to depict $E$ two times at once (in $LS_1$ and $C$), which makes the figure redundant and thus confusing, especially for the activity of iteratively developing a model, which is the major task EL was actually designed for to support.\\
+In figure \ref{fig:ambiguous_categorization} we can construct such situation by adding a new element $E$, which is member of $\mathit{LS}_1$ and of a new category $C$, that is not horizontally adjacent to $\mathit{LS}_1$, but left to $\mathit{LA}_1$ or right to $\mathit{AR}$.
+In this scenario there would be need to depict $E$ two times at once (in $\mathit{LS}_1$ and $C$), which makes the figure redundant and thus confusing, especially for the activity of iteratively developing a model, which is the major task EL was actually designed for to support.\\
 
 
 
@@ -1868,7 +1868,7 @@ The results of the usability tests are taken back into the design stage to impro
 \section{Language Evaluation}
 \label{eval_language}
 One design goal of the language was \textit{isomorphism} (see section \ref{analyzing_notation}) to its mathematical counterpart: the textual notation form.
-To evaluate the language regarding its expressiveness this section constructs and depicts use cases in form of the security models RBAC (section \ref{eval_language_rbac}) and ABAC$_\alpha$ (section \ref{eval_language_coreabac}) in context of EL.
+To evaluate the language regarding its expressiveness this section constructs and depicts use cases in form of the security models RBAC (section \ref{eval_language_rbac}) and CoreABAC (section \ref{eval_language_coreabac}) in context of EL.
 In the second part of this section the language is evaluated with the help of usability tests (section \ref{eval_language_usability}).
 
 
