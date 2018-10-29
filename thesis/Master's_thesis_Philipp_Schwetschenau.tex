@@ -2012,7 +2012,8 @@ Without this rule a compression with elements not already present in other parts
 
 
 \subsection{CoreABAC}
-
+%Servos and Osborn [2017]
+CoreABAC is defined as following:
 
 \begin{xdefinition}[CoreABAC] 
 An instance of the CoreABAC model is a tuple $(U, O, A, V, \mathit{PERM}, P, \textit{UAA}, \mathit{OAA}, \mathit{PPR})$ with
@@ -2033,6 +2034,11 @@ An instance of the CoreABAC model is a tuple $(U, O, A, V, \mathit{PERM}, P, \te
 \label{definition:CoreABAC}
 \end{xdefinition}
 
+Most model elements can be depicted with the same elements and methods used for RBAC in the previous section.
+New in this model are relations with 3 participating sets.
+Also new is \textit{policy rules} $P$, which is a set of boolean statements that we will treat as constraint.
+Participating sets in constraints are depicted with arrows with dashed lines.
+Unlike the RBAC model before we are going to depict the full model without any steps in between due to being the same procedure as before.
 
 \label{eval_language_coreabac}
 \begin{figure}[htb]
