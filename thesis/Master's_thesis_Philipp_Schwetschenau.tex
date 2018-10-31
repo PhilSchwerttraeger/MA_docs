@@ -2012,13 +2012,19 @@ Without this rule a compression with elements not already present in other parts
 
 
 \subsection{CoreABAC}
-%Servos and Osborn [2017]
-CoreABAC is defined as following:
+Besides RBAC we want to depict another type of security model that is based on attributes: The \textit{Attribute-Based Access Control} (ABAC) model.
+Compared to RBAC, ABAC has no commonly agreed model or standardization.
+With CoreABAC \cite{Servos17} tried to collect all elements from many ABAC models in literature to form a more generalized ABAC model.
+CoreABAC is defined as following \citep{Amthor18, Servos17}:
 
 \begin{xdefinition}[CoreABAC] 
-An instance of the CoreABAC model is a tuple $(U, O, A, V, \mathit{PERM}, P, \textit{UAA}, \mathit{OAA}, \mathit{PPR})$ with
+An instance of the CoreABAC model is a tuple:
+\begin{center}
+$(U, O, A, V, \mathit{PERM}, P, \textit{UAA}, \mathit{OAA}, \mathit{PPR})$ 
+\end{center}
+\noindent
+with
 
-\vspace{-2mm}
 \begin{itemize}
 \setlength\itemsep{0em}
 \item $U$ as set of \textit{user identifiers}
@@ -2034,11 +2040,13 @@ An instance of the CoreABAC model is a tuple $(U, O, A, V, \mathit{PERM}, P, \te
 \label{definition:CoreABAC}
 \end{xdefinition}
 
-Most model elements can be depicted with the same elements and methods used for RBAC in the previous section.
-New in this model are relations with 3 participating sets.
-Also new is \textit{policy rules} $P$, which is a set of boolean statements that we will treat as constraint.
-Participating sets in constraints are depicted with arrows with dashed lines.
-Unlike the RBAC model before we are going to depict the full model without any steps in between due to being the same procedure as before.
+\noindent
+Most CoreABAC model elements can be depicted with the same elements and methods used for RBAC in the previous section \ref{eval_language_rbac}.
+New in this model are relations with three participating elements ($UAA$ and $OAA$).
+Also new is \textit{policy rules} $P$, which is a set of boolean statements that we will depict as constraint element.
+Participation in such constraints are depicted with arrows with dashed lines.
+
+Unlike the RBAC model before we are going to depict the full model without any steps in between due to being the same procedure as before in figure \ref{fig:CoreABAC}.
 
 \label{eval_language_coreabac}
 \begin{figure}[htb]
@@ -2050,9 +2058,9 @@ Unlike the RBAC model before we are going to depict the full model without any s
 
 
 
-\subsection{ABAC$_\alpha$}
-\label{eval_language_abacalpha}
-Section will follow soon.
+%\subsection{ABAC$_\alpha$}
+%\label{eval_language_abacalpha}
+%Section will follow soon.
 %This section will depict the CoreABAC security model in the graphical specification language for EL.
 %Due to being very similar to the procedure for RBAC in the previous section, we will just depict the final model, not every step to construct it.
 %
