@@ -1099,6 +1099,7 @@ In this scenario there would be need to depict $E$ two times at once (in $\mathi
 
 
 \subsection{Problem 5: Visual Complexity}
+\label{problem_visual_complexity}
 While the previous four problems are related to the first design goal of achieving isomorphism, this problem derives from the actual design stage of the language.
 It appears that the modular approach we are going to use can generate quite large graphical models.
 It may happen that a user wants to model certain parts of the model less prominent than others to keep the focus on important parts.
@@ -1268,7 +1269,7 @@ The conditions for using a set formula have been described in section \ref{solut
 
 The depiction of subsets is mostly unaltered as well: They can be drawn as smaller sets inside their superset.
 With the removal of the horizontal alignment for EL categorization subsets are no longer automatically associated with the category of its superset only, but can be colored (categorized) individually to their superset.
-A depiction variant for subsets is described later in section \ref{variants}.
+A depiction variant for subsets is described later in section \ref{variants} regarding visual complexity handling (see section \ref{problem_visual_complexity}).
 
 \begin{figure}[htb]
 	\centering
@@ -1399,9 +1400,12 @@ Sets like $P = 2^{O \times OP}$ in $RBAC_0$ (see definition \ref{definition:RBAC
 \noindent
 Figure \ref{fig:subsets_formula} depicts $P$'s internal definition with the help of a formula, figure \ref{fig:subsets_externally} the external modeling alternative.
 Note that $P$ and the power set element are connected with the help of a simple line, not an arrow.
-This line indicates that the subsequent term is an definition.
+The power set element is de facto a set and formally the same set as $P$.
+The connecting line indicates this equality.
+Elements from the power set element onwards build up a term that is equal to the internal definition as formula.
+The line element is only legally applicable between a set and an operation, set or tuple element.
 
-For individual benefits and usage of such variants see \textit{Solution 5: Alternate Forms} (section \ref{solution_alternate_forms}) .
+For individual benefits and usage of such variants see \textit{Solution 5: Alternate Forms} (section \ref{solution_alternate_forms}).
 
 
 
@@ -1455,6 +1459,9 @@ For this we have to iterate through all basic elements (sets, mapping, relations
 
 \item Construct the element definition by visiting all participating elements connected with arrows/lines recursively (\textit{graph search}).
 \end{enumerate}
+
+\noindent
+These two procedures are used in chapter \ref{evaluation} \textit{evaluation} later.
 
 
 
@@ -1987,7 +1994,7 @@ The model after those two steps is depicted in figure \ref{fig:RBAC96_v5_variant
 \end{figure}
 
 \noindent
-Next step is to connect $O$ and $\mathit{OP}$ to $P$.
+The next step is to connect $O$ and $\mathit{OP}$ with $P$.
 For this the mathematical expression has to be rebuilt with operator elements in the correct order of operations.
 %\begin{figure}[htb]
 %	\centering
@@ -2041,7 +2048,7 @@ For the following the procedure for converting a graphical EL model to a textual
 For each basic element we have to we have perform three steps:
 First we collect the identifier for each element: We obtain the set of all model elements $\mathcal{M}_{\mathit{RBAC}}$.
 Then we have to determine and collect the EL categories for each element with the help of its colors and the depicted color legend: We obtain the semantical application of EL $\mathit{sem}$.
-Finally we construct the individual definition for each element by visiting all arrows/lines and connected elements: We obtain all element definitions (see definition \ref{definition:RBAC}).
+Finally we construct the individual definition for each element by visiting all connected elements: We obtain all element definitions (see definition \ref{definition:RBAC}).
 
 
 
@@ -2087,7 +2094,7 @@ Without this rule the compression of $O$ and $\mathit{OP}$ would induce a loss o
 
 
 \subsection{CoreABAC}
-Besides RBAC we want to depict another, but different type of security model that is based on attributes: The \textit{Attribute-Based Access Control} (ABAC) model.
+With CoreABAC we want to depict a different type of security model that is based on attributes: The \textit{Attribute-Based Access Control} (ABAC) model.
 Compared to RBAC, ABAC has no commonly agreed model or standardization.
 With CoreABAC \cite{Servos17} tried to collect all elements from many ABAC models in literature to form a more generalized ABAC model.
 CoreABAC is defined as following \citep{Amthor18, Servos17}:
