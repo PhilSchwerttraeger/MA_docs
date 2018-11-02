@@ -501,20 +501,25 @@ There are two types of constraints: policy-intrinsic (related to variables manag
 The resulting model after EL can be depicted in three different forms: Textual, table and graphical.
 The textual form created from an example policy looks like this:
 
-\begin{align*}
+\begin{align}
 \langle &\mathcal{M}_{\mathit{example}}, \mathcal{A}_{EL}, sem \rangle
-\end{align*}
-\begin{align*}
+\label{EL_Aspect}
+\end{align}
+\begin{align}
 \mathcal{M}_{\mathit{example}} &= \lbrace U, D, R, \mathit{GR}, \mathit{AR}, P, \mathit{ua}, \mathit{da}, \mathit{pa} \rbrace
-\end{align*}
-\begin{align*}
+\label{EL_M}
+\end{align}
+\begin{align}
+\begin{split}
 sem(\mathit{ES}) &= \lbrace U, D \rbrace\\
 sem(\mathit{LS}) &= \lbrace R, P \rbrace\\
 sem(\mathit{LA}) &= \lbrace \mathit{ua}, \mathit{da} \rbrace\\
 sem(\mathit{AR}) &= \lbrace \mathit{pa}, P \rbrace\\
 sem(\mathit{RR}) &= \lbrace \mathit{GR}, \mathit{AR}, \mathit{ua} \rbrace\\
 sem(\mathit{MC}) &= \lbrace \emptyset \rbrace
-\end{align*}
+\end{split}
+\label{EL_sem}
+\end{align}
 
 \noindent
 Figure \ref{fig:EL_table} shows the same result as table.
