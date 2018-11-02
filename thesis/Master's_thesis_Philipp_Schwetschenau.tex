@@ -1955,6 +1955,9 @@ We can extend the current model with constraints to obtain an RBAC$_3$ model at 
 To add a constraint a rounded rectangle has to be created with the constraint identifier inside.
 The element then has to be connected to all elements participating in that constraint with dotted-lined arrows pointing towards these elements.
 
+
+
+\subsubsection{Backward Conversion}
 Taking the graphical EL model now and converting it back to a textual form will result in the same element definitions from definition \ref{definition:RBAC} and an EL model can be obtained in its texual form like the following:
 
 \begin{align*}
@@ -1964,15 +1967,24 @@ Taking the graphical EL model now and converting it back to a textual form will 
 \mathcal{M}_{\mathit{RBAC}} &= \lbrace U, S, R, \mathit{RH}, P, \mathit{UA}, \mathit{PA}, \mathit{user}, \mathit{roles} \rbrace
 \end{align*}
 \begin{align*}
-sem(ES) &= \lbrace U \rbrace\\
-sem(LS) &= \lbrace S, R \rbrace\\
-sem(LA) &= \lbrace user, roles, \mathit{RH} \rbrace\\
-sem(AR) &= \lbrace P, \mathit{PA} \rbrace\\
-sem(RR) &= \lbrace \mathit{UA} \rbrace\\
-sem(MC) &= \lbrace \emptyset \rbrace
+\mathit{sem}(\mathit{ES}) &= \lbrace U \rbrace\\
+\mathit{sem}(\mathit{LS}) &= \lbrace S, R \rbrace\\
+\mathit{sem}(\mathit{LA}) &= \lbrace user, roles, \mathit{RH} \rbrace\\
+\mathit{sem}(\mathit{AR}) &= \lbrace P, \mathit{PA} \rbrace\\
+\mathit{sem}(\mathit{RR}) &= \lbrace \mathit{UA} \rbrace\\
+\mathit{sem}(\mathit{MC}) &= \lbrace \emptyset \rbrace
 \end{align*}
 
 \noindent
+For this we have to iterate through all basic elements (sets, mapping, relations, constraints) and perform three steps for each element:
+First we collect the identifier for each element: We obtain $\mathcal{M}_{\mathit{RBAC}}$.
+To obtain the \textit{semantical application} of EL $\mathit{sem}$ we need to identify the colors and corresponding EL categories for each element with the help of the depicted color legend or a color legend reference.
+Finally we construct the individual definition for each element by visiting all arrows/lines and connected elements recursively (\textit{graph search}): We obtain all element definitions (see definition \ref{definition:RBAC}).
+
+
+
+\subsubsection{Adjusting the Level of Detail}
+\label{eval_lod}
 Optionally we can now alter the appearance of the model to a desired level of detail.
 We may decide that the depiction of elements that define $P$ is not necessary for us, because those elements are not associated with any EL category and are therefore less important than the EL-associated elements.
 
