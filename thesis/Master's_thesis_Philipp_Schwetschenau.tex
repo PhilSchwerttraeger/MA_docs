@@ -1443,6 +1443,21 @@ When there are basic elements in the model that are not assigned to any EL categ
 This step is optional.
 Details on this are given in sections \ref{solution_alternate_forms} and \ref{variants}.
 \end{description}
+
+\noindent
+Converting a graphical EL model back to a textual form will result in two main artifacts: An formal EL model (set of all model elements and semantical application) and the model element definitions.
+For this we have to iterate through all basic elements (sets, mapping, relations, constraints) and perform three steps for each element:
+
+\begin{enumerate}
+\item Collect the identifier to obtain a set of all model elements (see equation \ref{EL_M}).
+
+\item Collect the element colors and corresponding EL categories with the help of the depicted color legend (or color legend reference) to obtain the semantical application $\mathit{sem}$ (see equations \ref{EL_sem}).
+
+\item Construct the element definition by visiting all participating elements connected with arrows/lines recursively (\textit{graph search}).
+\end{enumerate}
+
+
+
 \subsection{Comments on the Model Structure}
 \label{comments_on_model_structure}
 The modular graph we developed is now able to describe EL models graphically.
