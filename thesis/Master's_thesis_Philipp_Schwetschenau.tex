@@ -1951,7 +1951,7 @@ The resulting final model is depicted in figure \ref{fig:RBAC96_v5_variant}.
 \end{figure}
 
 \noindent
-We can extend the current model with constraints to obtain a RBAC$_3$ model at any time when needed.
+We can extend the current model with constraints to obtain an RBAC$_3$ model at any time when needed.
 To add a constraint a rounded rectangle has to be created with the constraint identifier inside.
 The element then has to be connected to all elements participating in that constraint with dotted-lined arrows pointing towards these elements.
 
@@ -2013,7 +2013,7 @@ Without this rule the compression of $O$ and $\mathit{OP}$ would induce a loss o
 
 
 \subsection{CoreABAC}
-Besides RBAC we want to depict another type of security model that is based on attributes: The \textit{Attribute-Based Access Control} (ABAC) model.
+Besides RBAC we want to depict another, but different type of security model that is based on attributes: The \textit{Attribute-Based Access Control} (ABAC) model.
 Compared to RBAC, ABAC has no commonly agreed model or standardization.
 With CoreABAC \cite{Servos17} tried to collect all elements from many ABAC models in literature to form a more generalized ABAC model.
 CoreABAC is defined as following \citep{Amthor18, Servos17}:
@@ -2045,9 +2045,9 @@ with
 Most CoreABAC model elements can be depicted with the same elements and methods used for RBAC in the previous section \ref{eval_language_rbac}.
 New in this model are relations with three participating elements ($UAA$ and $OAA$).
 Also new is \textit{policy rules} $P$, which is a set of boolean statements that we will depict as constraint element.
-Participation in such constraints are depicted with arrows with dashed lines.
+Participation in such constraints is depicted by arrows with dashed lines.
 
-Unlike the RBAC model before we are going to depict the full model without any steps in between due to being the same procedure as before in figure \ref{fig:CoreABAC}.
+Unlike the RBAC model before we are going to depict the full model without any steps in between (see figure \ref{fig:CoreABAC}) due to being the same procedure as before:
 
 \label{eval_language_coreabac}
 \begin{figure}[htb]
@@ -2057,7 +2057,8 @@ Unlike the RBAC model before we are going to depict the full model without any s
 	\label{fig:CoreABAC}
 \end{figure}
 
-
+\noindent
+Due to not having any basic elements that are not assigned to any EL category this model does not allow any compression like in section \ref{eval_lod}.
 
 %\subsection{ABAC$_\alpha$}
 %\label{eval_language_abacalpha}
