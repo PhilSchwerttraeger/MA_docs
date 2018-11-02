@@ -1943,6 +1943,7 @@ Its access control mechanism is based on roles.
 It is described in detail in section \ref{RBAC} of the fundamentals chapter (see page \pageref{RBAC}).
 Based on its definition (\ref{definition:RBAC}) we are now going to construct RBAC$_1$ with the graphical specification language developed in this work.
 For this we take its elements described mathematically in its definition and translate them step by step into their graphical representations.
+The procedure for constructing a model graphically suggested in section \ref{gsl_construction} is used here.
 
 RBAC consists of set, relation and mapping elements.
 First we create all basic sets $U, S, R, P, O, \mathit{OP}$ with circles for each set.
@@ -2036,10 +2037,11 @@ Taking the graphical EL model now and converting it back to a textual form will 
 \end{align*}
 
 \noindent
-For this we have to iterate through all basic elements (sets, mapping, relations, constraints) and perform three steps for each element:
-First we collect the identifier for each element: We obtain $\mathcal{M}_{\mathit{RBAC}}$.
-To obtain the \textit{semantical application} of EL $\mathit{sem}$ we need to identify the colors and corresponding EL categories for each element with the help of the depicted color legend or a color legend reference.
-Finally we construct the individual definition for each element by visiting all arrows/lines and connected elements recursively (\textit{graph search}): We obtain all element definitions (see definition \ref{definition:RBAC}).
+For the following the procedure for converting a graphical EL model to a textual form suggested in section \ref{gsl_construction} is used here.
+For each basic element we have to we have perform three steps:
+First we collect the identifier for each element: We obtain the set of all model elements $\mathcal{M}_{\mathit{RBAC}}$.
+Then we have to determine and collect the EL categories for each element with the help of its colors and the depicted color legend: We obtain the semantical application of EL $\mathit{sem}$.
+Finally we construct the individual definition for each element by visiting all arrows/lines and connected elements: We obtain all element definitions (see definition \ref{definition:RBAC}).
 
 
 
