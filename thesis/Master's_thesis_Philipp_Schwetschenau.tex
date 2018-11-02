@@ -1405,6 +1405,44 @@ For individual benefits and usage of such variants see \textit{Solution 5: Alter
 
 
 
+\subsection{Model Construction}
+\label{gsl_construction}
+In this section a structured procedure to build up a model with the graphical specification language for EL is suggested.
+This procedure constructs a graphical model from its formal definition, but of course graphical models can also be created without a given formal specification or with the help of another or no structured procedure at all.
+The suggested procedure is divided into six steps:
+
+\begin{description}
+\item[1) Sets]\hfill \\
+In the first step all sets are created.
+A set has to have at least its identifier inside its shape; name and formula are optional.
+Limitations for the usage of set formulas are described and discussed in section \ref{solution_alternate_forms}.
+
+\item[2) Relations]\hfill \\
+In the second step all relations are created.
+A relation has to have its identifier inside its shape and has to be connected to at least two other elements with the help of arrows.
+Participating sets have to be created, when not already present in the model.
+It may be necessary to add operation elements to build up a more complex term.
+
+\item[3) Mappings]\hfill \\
+In the third step all mappings are created.
+A mapping has to have its identifier inside its shape.
+It always has one incoming and one outgoing element/arrow.
+As in the previous step it may be necessary to add operation elements to build up a more complex term here, too.
+
+\item[4) Constraints]\hfill \\
+In this step all constraints are created.
+A constraint has to have its identifier inside its shape.
+Participating elements are connected with arrows with dashed lines.
+
+\item[6) Categorization]\hfill \\
+In this step EL is applied by coloring basic elements created in the previous steps.
+Elements that are not associated with any EL category are not colored and stay white.
+
+\item[7) Adjusting]\hfill \\
+When there are basic elements in the model that are not assigned to any EL categories, depiction variants may be applicable.
+This step is optional.
+Details on this are given in sections \ref{solution_alternate_forms} and \ref{variants}.
+\end{description}
 \subsection{Comments on the Model Structure}
 \label{comments_on_model_structure}
 The modular graph we developed is now able to describe EL models graphically.
