@@ -2169,15 +2169,6 @@ Unlike the RBAC model before we are going to depict the full model without any s
 \noindent
 Due to not having any basic elements that are not assigned to any EL category this model does not allow any compression like in section \ref{eval_lod}.
 
-%\subsection{ABAC$_\alpha$}
-%\label{eval_language_abacalpha}
-%Section will follow soon.
-%This section will depict the CoreABAC security model in the graphical specification language for EL.
-%Due to being very similar to the procedure for RBAC in the previous section, we will just depict the final model, not every step to construct it.
-%
-%CoreABAC is defined as following:
-
-%TODO: CoreABAC definition
 
 
 \subsection{Usability Tests}
@@ -2278,10 +2269,22 @@ At the same time this limits models to those concepts.
 From looking at definitions of established security models these concepts cover many models and its elements, but depicting any other or new concepts, that are not possible to depict with the help of existing elements, will require an extension or adaption of the language.
 
 %e.g. abacalpha
-With regard to \cite{Zeckzer14} the amount of different elements being held in our visual buffer is limited (section \ref{human_optical_perception}).
+One example for such limitation can be illustrated with the ABAC$_\alpha$ model \citep{Jin12}.
+ABAC$_\alpha$ defines elements we can not depict with the current language means: Sets of (attribute) functions.
+These sets contain functions, that map to target sets depending on the type of the attribute function itself.
+When we try to depict this model graphically (see figure \ref{fig:ABACalpha}) the result is not isomorphic due to information loss.
+A possible solution is to extend the language by adding required elements.
+
+\begin{figure}[bht]
+	\centering
+	\includegraphics[width=\linewidth]{../figures/chapter7/ABACalpha2.png}
+	\caption{ABAC$_\alpha$ in the graphical EL specification language}
+	\label{fig:ABACalpha}
+\end{figure}
+
+With regard to \cite{Zeckzer14a} the amount of different elements being held in our visual buffer is limited (section \ref{human_optical_perception}).
 Therefore the number of additional elements the language can be reasonably extended with is limited as well.
-Currently having five node types and 2 edge types this limit is almost exhausted.
-This is the reason the language is currently designed the way it is.
+Currently having five node types and two edge types this limit is almost exhausted.
 Extending the language leads to a trade-off between increasing the expressiveness of the language and increasing the handling complexity for users.
 Due to already handling two categorization methods, specifying element types through their geometrical shapes and EL categories through colors, extending the language with additional categorization concepts is not recommended.
 Instead additional diagram type, that focus on other aspects than EL, could be introduced similar to diagram types in UML having one specific aspect each (section \ref{UML}).
