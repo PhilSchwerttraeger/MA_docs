@@ -2268,8 +2268,14 @@ This chapter discusses limits and open issues of the graphical specification lan
 Some ideas on further improving the language and the editor derived from the evaluation part of this work (chapter \ref{evaluation}) and were already integrated in from of a design reiteration into the language, and yet others are discussed in this chapter.
 Especially the EL editor leaves room for improvement due to the time restriction for development in context of this work.
 
+\section{Language}
+\label{future_GSL}
 % mathematical elements just as defined: mappings relation sets
-
+The language currently is build up on four basic mathematical concepts: sets, mappings, relations and constraints.
+Additional to those, operator elements allow depicting set operations.
+This allows drawing and composing model elements with exactly these elements.
+At the same time this limits models to those concepts.
+From looking at definitions of established security models these concepts cover many models and its elements, but depicting any other or new concepts, that are not possible to depict with the help of existing elements, will require an extension or adaption of the language.
 
 %e.g. abacalpha
 
@@ -2304,9 +2310,10 @@ Furthermore the language and the editor were evaluated with the help of usabilit
 Its results gave valuable insights in the actual usage and work flow of the language and the editor and were propagated back in form of a design reiteration to even further improve both artifacts.
 
 %future
-After heavily improving the language after its evaluation, it still has some open issues and limitations.
-Currently it is limited to the mathematical concepts of sets, set operations, mappings, relations and constraints.
-From looking at definitions of established security models these concepts cover many models and its elements, but depicting any other or new concepts (that are not possible to compose with the existing elements) will require an extension or adaption of the language.
+After heavily improving the language after its evaluation, it still has some open issues like being limited to the mathematical concepts it is build on.
+Depicting any other concepts will require extending or adapting the language accordingly.
+
+%schluss
 
 
 
