@@ -2292,6 +2292,22 @@ Instead additional diagram type, that focus on other aspects than EL, could be i
 % less reasonable models: HRU
 
 
+\section{Editor}
+\label{future_editor}
+The feature set of the editor is currently limited to its basic functions.
+While section \ref{editor_extensions} of chapter \ref{editor} suggested optional advanced features for the editor, this section should discuss aspects of future development.
+The next steps are to add features as well as further improve stability.
+
+One important aspect for actual usage and integration with other software is to improve the modules for importing and exporting models.
+Currently the XML-based file format does not support the import and export of any categories other than the standard EL categories (for $m=1$), which is necessary for the additional feature of creating and modifying custom categories and category colors.
+For the latter a dynamic widget has to be provided that allows adding, removing and modifying of categories. 
+For every category its name, XML tag and color has to be configured.
+A button for retrieving the standard EL preset can help configuring the  correct ELM format (Entity Labeling Markup) for compatibility with model analysis and verification tools after export.
+
+Regarding the graphical elements themselves, the depiction of texts inside element shapes can be improved, e.g.\ with \textit{dynamic centering and resizing} depending on actual properties being set, not set or having very long values.
+Furthermore formulas can be visually enhanced by integrating a dedicated Latex module for handling the correct depiction of mathematical terms.
+
+
 
 \cleardoublepage
 \chapter{Summary}
