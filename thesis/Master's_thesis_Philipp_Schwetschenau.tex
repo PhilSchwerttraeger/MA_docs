@@ -182,7 +182,7 @@ Finally the last chapter summarizes this work and its results.
 \chapter{Fundamentals}
 \label{fundamentals}
 This chapter provides information to fundamentals necessary for this thesis.
-It will serve as a basis for design decisions in the following chapter~\ref{gsl} and chapter~\ref{editor_design}.
+It will serve as a basis for design decisions in the following chapter~\ref{gsl} and chapter~\ref{editor}.
 
 Section \ref{security_models} introduces two fundamental families of security models: IBAC and RBAC.
 It also describes a graphical notation for depicting RBAC models by \cite{Sandhu96}.
@@ -841,7 +841,7 @@ When entity types are treated as classes, entities as objects, relationships as 
 \section{Perception}
 \label{perception}
 This section is about the human visual perception.
-Its content will act as fundamental basis for designing a graphical specification language in chapter \ref{gsl} as well as for designing an editor's graphical user interface in chapter \ref{editor_design}.
+Its content will act as fundamental basis for designing a graphical specification language in chapter \ref{gsl} as well as for designing an editor's graphical user interface in chapter \ref{editor}.
 
 In science there are two types of visualizing information:
 One is to present absolute or relative primitive values (tables, bar graphs, pie charts) and one to depict structural information and semantic properties (specialized graphical systems like the class diagram of UML or the Chen notation of ERD).
@@ -1534,7 +1534,7 @@ It corresponds to its original depiction in figure \ref{fig:EL_diagram} and can 
 
 The layout was adapted to better compare both figures, but is not limited to this particular form as its former notation was.
 By eliminating the need of spatial alignment and by introducing colors for categorizing, models now can be arranged freely regarding its graph layout.
-As a result this also allows for automatic layouting models in the software editor (section \ref{editor_design} and \ref{implementation}) according to certain needs (e.g.~compact, hierarchical, horizontally/vertically).
+As a result this also allows for automatic layouting models in the software editor (section \ref{editor} and \ref{implementation}) according to certain needs (e.g.~compact, hierarchical, horizontally/vertically).
 
 %For another example ($RBAC_3$) see figure \ref{fig:RBAC96_example} in the appendix on page \pageref{fig:RBAC96_example}.
 For more examples and insights in how to construct those models see chapter \ref{evaluation} \textit{Evaluation}.
@@ -1560,7 +1560,7 @@ The following task will be to design and develop an appropriate software prototy
 
 \cleardoublepage
 \chapter{Design: EL Editor}
-\label{editor_design}
+\label{editor}
 One part of this thesis is to implement a prototype editor in order to be able to work with the graphical notation developed in the previous chapter.
 The editor should support the process of EL as well as visualize the results of the EL process.
 This chapter will present the requirements as well as the resulting GUI design of the editor including its general structure and control concept.
@@ -1579,7 +1579,7 @@ The table presents all model data in a secondary text-based compact form.
 
 
 \subsection{Object Manipulation}
-\label{req_object_manipulation}
+\label{editor_object_manipulation}
 The editor provides functions for basic navigation like moving the viewport or zooming.
 The graph section allows fast and local object manipulation with the mouse or touch controls.
 Most operations are therefore cursor-based or accessible through a context menu.
@@ -1597,7 +1597,7 @@ Arrows can be deleted, annotated and inverted in its direction.
 
 
 \subsection{Management}
-\label{req_management}
+\label{editor_management}
 Besides its drawing section the editor provides a function to generate and export a XML-based scheme (\textit{Entity Labeling Markup Language} \citep{Amthor18}) from its current model.
 Graphical information (e.g.\ positions) are integrated into the same file with additional tags.
 A file in the format mentioned above can also be imported.
@@ -1616,7 +1616,7 @@ Optional settings can modify the depiction of the model on several levels, e.g.\
 \label{editor_gui}
 This chapter covers the \textit{graphical user interface} of the editor.
 In the first section \ref{editor_structure} a general overview of the window's sections is given.
-Section \ref{GUI_concept} then gives insight into the control concept and work-flow of the editor.
+Section \ref{editor_control_concept} then gives insight into the control concept and work-flow of the editor.
 Furthermore section \ref{editor_extensions} will suggest some advanced features.
 
 % ein/ausblendbar wegen Übersicht, 
@@ -1660,7 +1660,7 @@ It contains the drawing area underneath as well as the side section to the right
 
 \noindent
 The \textit{drawing area} is the main section of the application and serves as surface for all graphical elements.
-The corresponding concept and work flow will be described in section \ref{GUI_concept}.
+The corresponding concept and work flow will be described in section \ref{editor_control_concept}.
 The bottom left corner shows the color legend for EL categories.
 It is, just like the zooming buttons in the bottom right corner, an overlay widget and is floating above the drawing content.
 
@@ -1687,7 +1687,7 @@ It is based on the tabular form for results of EL-based model engineering \cite{
 
 
 \section{Control Concept}
-\label{GUI_concept}
+\label{editor_control_concept}
 To obtain a clean and modern appearance the GUI will not have any distracting or redundant functions or menus.
 This will have the effect of reducing the visual cognitive load for (especially new) users.
 As a consequence of this decision there is no menu bar on top.
@@ -1942,7 +1942,7 @@ The XML scheme follows the \textit{Entity Labeling Markup Language} specificatio
 \label{evaluation}
 %kritik immer fehlende isomorphe abbildung -> begriff "isomorphie" als entwurfskriterium
 %auch als steilvorlage für eval
-Subject of this chapter is the evaluation of the graphical specification language for EL developed in chapter \ref{gsl} as well as the EL editor prototype, which was designed in chapter \ref{editor_design} and described regarding its implementation in chapter \ref{implementation}.
+Subject of this chapter is the evaluation of the graphical specification language for EL developed in chapter \ref{gsl} as well as the EL editor prototype, which was designed in chapter \ref{editor} and described regarding its implementation in chapter \ref{implementation}.
 In section \ref{eval_goals} the goals and methods for the evaluation are presented.
 Sections \ref{eval_language} and \ref{eval_editor} then elaborate on the evaluation of the language and the editor separately.
 Finally all results are summarized in section \ref{eval_summary}.
@@ -2206,7 +2206,7 @@ Figure \ref{fig:refinedElements} shows a collection of all element modifications
 \section{Editor Evaluation}
 \label{eval_editor}
 The editor, being one artifact of this work, was also evaluated regarding its usability via user tests.
-Due to being just a preliminary prototype of the software editor designed in chapter \ref{editor_design} not all features were available by the time of the usability tests taking place.
+Due to being just a preliminary prototype of the software editor designed in chapter \ref{editor} not all features were available by the time of the usability tests taking place.
 
 
 
@@ -2217,7 +2217,7 @@ The test participants were asked to draw a given security model with the graphic
 The main findings are discussed in the following.
 
 The clean and context-driven overall design was generally accepted by all testers. 
-But other then the overall design the work flow of drawing arrows by default (see section \ref{GUI_concept}) instead of moving objects was not as intuitive as assumed.
+But other then the overall design the work flow of drawing arrows by default (see section \ref{editor_control_concept}) instead of moving objects was not as intuitive as assumed.
 Most users were confused at first, because this (first select by click and release, then click and drag to move objects) is apparently not the default click behavior to expect in such type of editor.
 It seems that it would be better to have a dedicated object and arrow drawing mode to switch between than a multi-functional context-based mouse behavior.
 Furthermore the proposed \textit{combi-mode} can still be integrated in form of an alternate control mode, which can be enabled in the settings.
@@ -2239,7 +2239,7 @@ Besides the mentioned aspects above several improvements for the editor's work f
 
 \section{Summary}
 \label{eval_summary}
-In this chapter the graphical specification language for EL designed in chapter \ref{gsl} was evaluated as well as the EL editor designed in chapter \ref{editor_design}.
+In this chapter the graphical specification language for EL designed in chapter \ref{gsl} was evaluated as well as the EL editor designed in chapter \ref{editor}.
 The language was evaluated along several examples as well as with the help of usability tests.
 
 The results of the usability tests had high impact on the language design.
