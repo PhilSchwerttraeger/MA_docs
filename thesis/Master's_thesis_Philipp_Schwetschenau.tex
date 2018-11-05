@@ -2261,33 +2261,37 @@ Especially the EL editor leaves room for improvement due to the time restriction
 
 \section{Language}
 \label{future_GSL}
-% mathematical elements just as defined: mappings relation sets
-The language currently is build up on four basic mathematical concepts: sets, mappings, relations and constraints.
-Additional to those, operator elements allow depicting set operations.
-This allows drawing and composing model elements with exactly these elements.
-At the same time this limits models to those concepts.
-From looking at definitions of established security models these concepts cover many models and its elements, but depicting any other or new concepts, that are not possible to depict with the help of existing elements, will require an extension or adaption of the language.
+The language is build up on four basic mathematical concepts: sets, mappings, relations, constraints and set operators.
+This limits drawing and composing model elements to exactly these elements.
+Depicting security models with other or new concepts, that are not possible to compose with the help of the existing elements, will require an extension or adaption of the language.
 
-%e.g. abacalpha
 One example for such limitation can be illustrated with the ABAC$_\alpha$ model \citep{Jin12}.
-ABAC$_\alpha$ defines elements we can not depict with the current language means: Sets of (attribute) functions.
-These sets contain functions, that map to target sets depending on the type of the attribute function itself.
-When we try to depict this model graphically (see figure \ref{fig:ABACalpha}) the result is not isomorphic due to information loss.
-A possible solution is to extend the language by adding required elements.
+ABAC$_\alpha$ defines elements we can not depict with current means of the specification language: Sets of (attribute) functions $\mathit{UA}, \mathit{SA}$ and $\mathit{OA}$.
+These sets contain functions that map to a target set depending on the type of the attribute function itself (conditional branch).
+One solution would be extend the language with the missing concepts, in this case by adding a new element:
+We add a circle to a mapping element to indicate being a set of functions, allow it having two outgoing arrows and specify which arrow (respective which target element) is legal for each function by adding annotations.
+The necessary modification to integrate this additional concept is rather large.
+Due to the increased visual complexity the resulting model (see figure \ref{fig:ABACalpha}, also compare to figure A.1 in \cite{Amthor18}) is confusing to understand; at this point a (isomorphic) graphical modeling is not very advantageous anymore.
 
 \begin{figure}[bht]
 	\centering
-	\includegraphics[width=\linewidth]{../figures/chapter7/ABACalpha2.png}
-	\caption{ABAC$_\alpha$ in the graphical EL specification language}
+	\includegraphics[width=\linewidth]{../figures/chapter7/ABACalpha3.png}
+	\caption{Attempt at modeling ABAC$_\alpha$ with the graphical specification language}
 	\label{fig:ABACalpha}
 \end{figure}
 
 With regard to \cite{Zeckzer14a} the amount of different elements being held in our visual buffer is limited (section \ref{human_optical_perception}).
-Therefore the number of additional elements the language can be reasonably extended with is limited as well.
+Therefore the number of additional elements the language can be reasonably extended with is limited as well at least with regards to usability.
 Currently having five node types and two edge types this limit is almost exhausted.
 Extending the language leads to a trade-off between increasing the expressiveness of the language and increasing the handling complexity for users.
-Due to already handling two categorization methods, specifying element types through their geometrical shapes and EL categories through colors, extending the language with additional categorization concepts is not recommended.
+
+Not only extending with additional elements, also extending with concepts like another level of categorization is not recommended, due to already handling two categorization methods, specifying element types through their geometrical shapes and EL categories through colors.
 Instead additional diagram type, that focus on other aspects than EL, could be introduced similar to diagram types in UML having one specific aspect each (section \ref{UML}).
+
+Beside extending it there is room for improving the language itself.
+One is the use of roman numerals for indicating the order of operands participating in an operation that needs a determined operand order (e.g.\ $\mathit{UA}$ in figure \ref{fig:RBAC96_v5_variant_stage3}).
+Especially the usage in combination with edge annotations like $R^2$ can be visually conflicting.
+There may be a more elegant solution for that.
 
 % less reasonable models: HRU
 
@@ -2299,13 +2303,13 @@ While section \ref{editor_extensions} of chapter \ref{editor} suggested optional
 The next steps are to add features as well as further improve stability.
 
 One important aspect for actual usage and integration with other software is to improve the modules for importing and exporting models.
-Currently the XML-based file format does not support the import and export of any categories other than the standard EL categories (for $m=1$), which is necessary for the additional feature of creating and modifying custom categories and category colors.
+Currently the XML-based file format does not have a general model section that would support the import and export of any categories other than the standard EL categories (for $m=1$), which is necessary for the additional feature of creating and modifying custom categories and category colors.
 For the latter a dynamic widget has to be provided that allows adding, removing and modifying of categories. 
-For every category its name, XML tag and color has to be configured.
-A button for retrieving the standard EL preset can help configuring the  correct ELM format (Entity Labeling Markup) for compatibility with model analysis and verification tools after export.
+For each category its name, XML tag and color has to be configured (tag and color could be generated automatically).
+An additional button for retrieving the standard EL preset can help configuring the  correct ELM format (Entity Labeling Markup) for compatibility with model analysis and verification tools after export.
 
-Regarding the graphical elements themselves, the depiction of texts inside element shapes can be improved, e.g.\ with \textit{dynamic centering and resizing} depending on actual properties being set, not set or having very long values.
-Furthermore formulas can be visually enhanced by integrating a dedicated Latex module for handling the correct depiction of mathematical terms.
+Regarding the graphical elements, the depiction of texts inside element shapes could be further improved, e.g.\ with \textit{dynamic centering and resizing} depending on actual properties being set, not set or having very large values.
+Furthermore formulas could be visually enhanced by integrating a dedicated Latex module for handling the correct depiction of mathematical terms.
 
 
 
@@ -2314,30 +2318,31 @@ Furthermore formulas can be visually enhanced by integrating a dedicated Latex m
 \label{summary}
 %domain
 Entity-Labeling is one aspect in a new approach called Aspect-oriented Security Engineering proposed by \cite{Amthor18} that claims to close semantic gaps in the process of security engineering.
-The concept of classifying model elements into six semantic categories shall especially support working with different groups of people involved.
-The illustrate this mathematical notation \cite{Amthor18} uses a visual summary.
+The concept of classifying model elements into six semantic categories shall support working with different groups of people involved.
+To illustrate such mathematically specified models \cite{Amthor18} uses a visual summary.
 
 %goal
 This illustration having several inconsistencies lead to the goal of this work to improve and extend the notation to obtain an unambiguous graphical specification language for security models in context of EL.
 %how
-For this we analyzed the notation and isolated five major problems regarding its ambiguousness.
-After that five matching solutions for these problems were developed in form of concepts that extend the notation.
-The concepts are derived from established graphical notations when possible or are designed with the help of gestalt laws to enhance their visual quality and handling.
+For this the visual summary was analyzed and five major problems were isolated regarding its ambiguousness.
+After that matching solutions were developed in form of concepts that extend the notation.
+Extending concepts derived from established graphical notations and are designed with the help of gestalt laws to enhance their visual quality and handling.
 At some points a graphical depiction of certain aspects was not reasonable anymore due to visual overload and mathematical notations were integrated instead (e.g.\ edge annotations, operator element symbols).
 %results
-The resulting language is no visual summary anymore, but a stand-alone specification method, that is isomorphic to its mathematical counterpart.
+The resulting language is a consistent stand-alone specification method, that is isomorphic to its mathematical counterpart.
 
 %impl
 Beside the graphical specification language, also a GUI-based tool was designed and developed as a prototype to support the depiction, creation and modification of security models in context of EL.
 
 %eval
-Several security models were depicted with the language to showcase the expressiveness of it.
+Several security models were depicted with the language to showcase its expressiveness.
 Furthermore the language and the editor were evaluated with the help of usability tests with a selected set of participants.
 Its results gave valuable insights in the actual usage and work flow of the language and the editor and were propagated back in form of a design reiteration to even further improve both artifacts.
 
 %future
 After heavily improving the language after its evaluation, it still has some open issues like being limited to the mathematical concepts it is build on.
 Depicting any other concepts will require extending or adapting the language accordingly.
+The amount of language extensions is limited to maintain a reasonable usability.
 
 %schluss
 
