@@ -111,17 +111,17 @@ The notation is on a mathematical basis and uses concepts like sets, assignments
 
 \section{Motivation} 
 The goal of reducing the impact of human errors by closing semantic gaps as much as possible with the help of AOSE/EL requires handling another formal notation, which is, in this case, EL itself and its classification into the six semantic categories.
-To support working with this approach, especially for the communication between different groups of people involved like model engineers, security architects, software developers or future administrators, who have to cooperate and coordinate and all have different levels of experience, \citet*{Amthor18} considers a graphical representation to be helpful to enhance the transition between informal and formalized notation.
+To support working with this approach, especially for the communication between different groups of people involved like model engineers, security architects, software developers or future administrators, who have to cooperate and coordinate while having different levels of experience, \citet*{Amthor18} considers a graphical representation to be helpful to enhance the transition between informal and formalized notation.
 
 \citet*{Amthor18} already uses \textit{visual summaries} to illustrate examples.
-However, the depiction system is not described in detail as well as it is inconsistent and ambiguous regarding several parts of the formalization (e.g.\ arrows can have multiple meanings, the categorization method is misleading, functions do not specify operators between operands).
+However, the depiction system is not described in detail as well as it is inconsistent and ambiguous regarding several parts of the formalization (e.g.\ arrows can have multiple meanings, the categorization method is misleading, functions do not specify operators for multiple operands).
 So these visualizations are appropriate to summerize an already formalized policy after EL-based model engineering, but are not suitable for independent modeling on a stand-alone level, because they are not isomorphic to their formalized mathematical counterpart.
 
 %There are two types of visualization \cite{Amthor18} uses, which have different levels of abstraction: 
 %One is based on the actual model components and visualizes them and their relationships.
 %The other one is based on a higher level of abstraction and visualizes the EL with its structure of semantic categories and their relationships.
 
-There are visual notations like UML or ERD, which have in common that they are tailored to one particular domain and its special needs each.
+There are visual notations like UML or ERD, which have in common that they are tailored to one particular domain and its special needs.
 Obviously they can not be applied here, but may give inspiration on how to design a graphical system with appropriate methods to depict and express certain semantics and relationships.
 
 Eventually to be able to independently and visually model and work on EL-based security policies there is need for an unambiguous formal graphical specification language.
@@ -135,35 +135,35 @@ This will focus on clean and unambiguous semantics of the language.
 The use of the language should be as easy as possible and as comprehensive as needed.
 Therefore its appearance and elements should be clear and well-structured.
 A selection of appropriate symbols and geometrical shapes for their corresponding model counterparts has to be made regarding an intuitive understanding and natural work flow.
-This selection should not be designed contradictory or conflicting to already established notations, especially those, which may be used in the context of security engineering.
+Elements should not be designed contradictory or conflicting to already established notations, especially to those, which may be used in the context of security engineering.
 
 It should be evaluated how feasible and reasonable it is to develop equivalent graphical counterparts for every single element and relationship in context of EL and to display all of them at once.
 Furthermore depiction variants, that allow the user to alter and adapt a model to an individual desired level of detail, should be developed and evaluated.
 
-In addition to the development of the graphical specification language a GUI-based editor should be developed as a prototype tool to make use of the proposed graphical specification language.
-The editor should allow presenting, drawing and modifying such models, but also to import and export security models for EL from and into a persistent file format.
+In addition to the development of the graphical specification language a GUI-based editor should be developed as a prototype tool to make use of the language.
+The editor should allow presenting, drawing and modifying such models, but also importing and exporting models from and to a persistent file format.
 Beside being used in context of this editor the language should also be suited for hand drawing without any digital support.
 
-The language is going to be evaluated regarding its expressiveness by constructing selected security models with it.
-Additionally the language as well as the editor are going to be evaluated with the help of user tests regarding their usability.
+%The language is going to be evaluated regarding its expressiveness by constructing selected security models with it.
+%Additionally the language as well as the editor are going to be evaluated with the help of user tests regarding their usability.
 
 
 
 \section{Structure}
 \label{structure}
 This work is structured into eight chapters.
-The first chapter is an introduction to the domain of this work and the work itself including its motivation and goals.
+The first chapter is an introduction to the domain of this work and the work itself including its motivation and goal.
 
 The second chapter provides essential fundamentals, that are relevant in context of this work.
 It covers security models as well as the Aspect-oriented Security Engineering/Entity-Labeling developed by \cite{Amthor18}, which this work is based on.
-Furthermore it presents the basic concepts of the graphical notation models UML and ER as well as concepts and patterns for designing and evaluating graphical notations and software graphical user interfaces.
+Furthermore it presents the basic concepts of the graphical notation models UML and ER as well as concepts and patterns that will support designing and evaluating graphical notations and graphical user interfaces.
 
 The third chapter is about the graphical specification language.
 It will start with investigating the \textit{visual summary} used by \cite{Amthor18} in order to reveal its problems.
-After isolating these problems matching concepts are proposed to solve them and to construct a new graphical specification language regarding design goals.
+After isolating these problems matching concepts are developed to solve them and to construct a new graphical specification language considering design goals.
 The chapter then illustrates all graphical model elements and discusses its usage and limitations.
 
-Afterwards, chapter 4 describes the requirements, the overall structure and certain sections of the EL editor, that was developed in form of a prototype in conjunction with this work.
+Afterwards chapter 4 describes the requirements, the overall structure and certain sections of the EL editor, which was developed in form of a prototype in conjunction with this work.
 
 The actual implementation of the EL editor is subject of the subsequent chapter 5:
 Qt as implementation base is introduced and the implementation's structure will be described on a reasonable level of abstraction.
@@ -172,7 +172,7 @@ The sixth chapter is about the evaluation.
 The language will be evaluated by constructing several existing security models with it.
 Furthermore usability tests with a selected set of users were performed in order to evaluate the language and the editor.
 
-Chapter 7 discusses current limits and open issues of the language and the editor to give a short outlook for further improvement and possible extensions.
+Chapter 7 discusses limits and open issues of the language and the editor to give a short outlook for further improvement and possible extensions.
 
 Finally the last chapter summarizes this work and its results.
 
