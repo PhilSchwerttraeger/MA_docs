@@ -156,25 +156,23 @@ The first chapter is an introduction to the domain of this work and the work its
 
 The second chapter provides essential fundamentals, that are relevant in context of this work.
 It covers security models as well as the Aspect-oriented Security Engineering/Entity-Labeling developed by \cite{Amthor18}, which this work is based on.
-Furthermore it presents the basic concepts of the graphical notation models UML and ER as well as concepts, patterns and methods for designing and evaluating graphical notations and software graphical user interfaces.
+Furthermore it presents the basic concepts of the graphical notation models UML and ER as well as concepts and patterns for designing and evaluating graphical notations and software graphical user interfaces.
 
 The third chapter is about the graphical specification language.
 It will start with investigating the \textit{visual summary} used by \cite{Amthor18} in order to reveal its problems.
-After isolating these problems we possible matching concepts are proposed to solve them and to construct a new graphical specification language regarding design goals.
+After isolating these problems matching concepts are proposed to solve them and to construct a new graphical specification language regarding design goals.
 The chapter then illustrates all graphical model elements and discusses its usage and limitations.
 
 Afterwards, chapter 4 describes the requirements, the overall structure and certain sections of the EL editor, that was developed in form of a prototype in conjunction with this work.
-Also the general control concept and optional advanced features are discussed in this chapter.
 
 The actual implementation of the EL editor is subject of the subsequent chapter 5:
 Qt as implementation base is introduced and the implementation's structure will be described on a reasonable level of abstraction.
-Beyond that event handling and the import/export mechanism of the editor are explained in more detail.
 
 The sixth chapter is about the evaluation.
-The language will be evaluated with the help of constructing some existing security models with it.
-Furthermore usability tests with a selected set of users are utilized to evaluate the language and the editor.
+The language will be evaluated by constructing several existing security models with it.
+Furthermore usability tests with a selected set of users were performed in order to evaluate the language and the editor.
 
-Chapter 7 discusses limits and open issues of the language and the editor to give a short outlook for further improvement and possible extensions.
+Chapter 7 discusses current limits and open issues of the language and the editor to give a short outlook for further improvement and possible extensions.
 
 Finally the last chapter summarizes this work and its results.
 
@@ -1012,9 +1010,9 @@ Reinventing interaction design is not only very time consuming, but actually eve
 \chapter{Design: Graphical Specification Language}
 \label{gsl}
 In this chapter we develop a notation to graphically model the Entity Labeling aspect (see section \ref{EL}) of Aspect-oriented Security Engineering.
-In the first section \ref{gsl_concept} the general idea and approach for this are explained.
-In this context the notation used by \cite{Amthor18} is investigated regarding its inconsistency and general weaknesses in section \ref{analyzing_notation}.
-5 problems are going to be isolated and described in detail.
+In the first section \ref{gsl_concept} the general approach for this is explained.
+The notation used by \cite{Amthor18} is then investigated regarding its inconsistency and general weaknesses in section \ref{analyzing_notation}.
+Five problems are going to be isolated and described in detail.
 Afterwards possible solutions for these problems are proposed to extend and improve the notation with regard to design goals in section \ref{improving_notation}.
 In section \ref{gsl_elements} all graphical elements developed are then depicted visually and described regarding their form, function and usage.
 Finally section \ref{gsl_example} depicts and describes a full practical example for EL modeling and illustrates changes and improvements to its original notation form.
@@ -2098,11 +2096,12 @@ Note that the EL category legend is the exact same as in figure \ref{fig:RBAC96_
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[scale=0.13]{../figures/chapter6/RBAC96_v5.png}
+	\includegraphics[width=\linewidth-2.5cm]{../figures/chapter6/RBAC96_v5.png}
 	\caption{Modeling RBAC (step 5): Refine/compress selected elements}
 	\label{fig:RBAC96_v5}
 \end{figure}
 
+\noindent
 Important to mention here is that both models (figure \ref{fig:RBAC96_v5_variant} and \ref{fig:RBAC96_v5}) are not necessarily semantically equal without assuming the additional rule from method 2 in section \ref{solution_alternate_forms}: 
 By compressing $P$'s internal definition from an external depiction with dedicated elements to a formula depiction inside itself potential EL category assignments are getting lost, in this case when $O$ or $\mathit{OP}$ would have been assigned to any EL category.
 In this specific case none of them are assigned to any EL categories.
@@ -2291,7 +2290,9 @@ Therefore the number of additional elements the language can be reasonably exten
 Currently having five node types and two edge types this limit is almost exhausted.
 Extending the language leads to a trade-off between increasing the expressiveness of the language and increasing the handling complexity for users.
 
-Not only extending with additional elements, also extending with concepts like another level of categorization is not recommended, due to already handling two categorization methods, specifying element types through their geometrical shapes and EL categories through colors.
+\noindent
+Beside extending with additional elements, also extending with concepts like another level of categorization is possible.
+Due to already handling two categorization methods, specifying element types through their geometrical shapes and EL categories through colors, this is not recommended.
 Instead additional diagram type, that focus on other aspects than EL, could be introduced similar to diagram types in UML having one specific aspect each (section \ref{UML}).
 
 Beside extending it there is room for improving the language itself.
