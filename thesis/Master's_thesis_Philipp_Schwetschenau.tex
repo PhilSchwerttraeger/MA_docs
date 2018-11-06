@@ -1445,20 +1445,21 @@ For individual benefits and usage of such variants see \textit{Solution 5: Alter
 
 \subsection{Model Construction}
 \label{gsl_construction}
-In this section a structured procedure to build up a model with the graphical specification language for EL is suggested.
-This procedure constructs a graphical model from its formal definition, but of course graphical models can also be created without a given formal specification or with the help of another or no structured procedure at all.
-The suggested procedure is divided into six steps:
+In this section two structured procedures are described: One to build up a model with the graphical specification language and one to convert a graphical model back to its textual form.
+
+The first procedure allows constructing a graphical model from its formal definition as well as free constructing without any given definition.
+It is divided into six steps:
 
 \begin{description}
 \item[1) Sets]\hfill \\
 In the first step all sets are created.
 A set has to have at least its identifier inside its shape; name and formula are optional.
-Limitations for the usage of set formulas are described and discussed in section \ref{solution_alternate_forms}.
+Limitations for the usage of set formulas are discussed in section \ref{solution_alternate_forms}.
 
 \item[2) Relations]\hfill \\
 In the second step all relations are created.
 A relation has to have its identifier inside its shape and has to be connected to at least two other elements with the help of arrows.
-Participating sets have to be created, when not already present in the model.
+Participating sets have to be created, when they are not already present in the model.
 It may be necessary to add operation elements to build up a more complex term.
 
 \item[3) Mappings]\hfill \\
@@ -1474,10 +1475,10 @@ Participating elements are connected with arrows with dashed lines.
 
 \item[6) Categorization]\hfill \\
 In this step EL is applied by coloring basic elements created in the previous steps.
-Elements that are not associated with any EL category are not colored and stay white.
+Elements not associated with any EL category stay uncolored.
 
 \item[7) Adjusting]\hfill \\
-When there are basic elements in the model that are not assigned to any EL categories, depiction variants may be applicable.
+When there are basic elements in the model that are not assigned to any EL categories (uncolored), depiction variants may be applicable.
 This step is optional.
 Details on this are given in sections \ref{solution_alternate_forms} and \ref{variants}.
 \end{description}
@@ -1487,7 +1488,7 @@ Converting a graphical EL model back to a textual form will result in two main a
 For this we have to iterate through all basic elements (sets, mapping, relations, constraints) and perform three steps for each element:
 
 \begin{enumerate}
-\item Collect the identifier to obtain a set of all model elements (see equation \ref{EL_M}).
+\item Collect the identifier to obtain a set of all basic model elements (see equation \ref{EL_M}).
 
 \item Collect the element colors and corresponding EL categories with the help of the depicted color legend (or color legend reference) to obtain the semantical application $\mathit{sem}$ (see equations \ref{EL_sem}).
 
@@ -1495,7 +1496,9 @@ For this we have to iterate through all basic elements (sets, mapping, relations
 \end{enumerate}
 
 \noindent
-These two procedures are used in chapter \ref{evaluation} \textit{evaluation} later.
+Note that those procedures are just a recommendation.
+Any other procedure will work, too.
+The two procedures described in this section are used in chapter \ref{evaluation} \textit{evaluation} later to construct examples.
 
 
 
@@ -1511,7 +1514,7 @@ For this they have to be encapsulated in a geometrical shape just like the other
 A depiction alternative would be to not position the shape and its content in the middle of its arrow, but above or below it with at least one point of contact.
 But due to lines and arrows not being limited to run straight horizontally or vertically, this might induce confusion in distinguishing multiple adjacent mapping elements in large models with less space.
 
-This leads to our graphical system deviating from the typical mathematical graph concept.
+This leads to our graphical notation deviating from the typical mathematical graph concept.
 
 
 
