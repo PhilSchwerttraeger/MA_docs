@@ -178,6 +178,8 @@ Finally the last chapter summarizes this work and its results.
 
 
 
+
+
 \cleardoublepage
 \chapter{Fundamentals}
 \label{fundamentals}
@@ -2261,22 +2263,22 @@ While the results hint at several improvements of the work flow and editing beha
 \label{future_work}
 % chapter introduction
 This chapter discusses limits and open issues of the graphical specification language developed in this work and the current state of development of the editor.
-Some ideas on further improving the language and the editor derived from the evaluation part of this work (chapter \ref{evaluation}) and were already integrated in from of a design reiteration into the language, and yet others are discussed in this chapter.
+Some ideas on further improving the language and the editor derived from the evaluation part of this work (chapter \ref{evaluation}) and were already integrated in form of a language design reiteration, yet others are discussed in this chapter.
 Especially the EL editor leaves room for improvement due to the time restriction for development in context of this work.
 
 \section{Language}
 \label{future_GSL}
-The language is build up on four basic mathematical concepts: sets, mappings, relations, constraints and set operators.
-This limits drawing and composing model elements to exactly these elements.
+The language is built up with five basic mathematical concepts: sets, mappings, relations, constraints and set operators.
+This limits drawing and composing model elements to exactly these concepts.
 Depicting security models with other or new concepts, that are not possible to compose with the help of the existing elements, will require an extension or adaption of the language.
 
 One example for such limitation can be illustrated with the ABAC$_\alpha$ model \citep{Jin12}.
 ABAC$_\alpha$ defines elements we can not depict with current means of the specification language: Sets of (attribute) functions $\mathit{UA}, \mathit{SA}$ and $\mathit{OA}$.
 These sets contain functions that map to a target set depending on the type of the attribute function itself (conditional branch).
-One solution would be extend the language with the missing concepts, in this case by adding a new element:
+One solution would be to extend the language with the missing concept, in this case by adding a new dedicated element:
 We add a circle to a mapping element to indicate being a set of functions, allow it having two outgoing arrows and specify which arrow (respective which target element) is legal for each function by adding annotations.
-The necessary modification to integrate this additional concept is rather large.
-Due to the increased visual complexity the resulting model (see figure \ref{fig:ABACalpha}, also compare to figure A.1 in \cite{Amthor18}) is confusing to understand; at this point a (isomorphic) graphical modeling is not very advantageous anymore.
+The necessary modifications to integrate this additional concept are rather large.
+Due to the increased visual complexity the resulting model (see figure \ref{fig:ABACalpha}, also compare to figure A.1 in \cite{Amthor18}) is hard to grasp; at this point a (isomorphic) graphical modeling is not very advantageous anymore.
 
 \begin{figure}[bht]
 	\centering
@@ -2286,18 +2288,18 @@ Due to the increased visual complexity the resulting model (see figure \ref{fig:
 \end{figure}
 
 With regard to \cite{Zeckzer14a} the amount of different elements being held in our visual buffer is limited (section \ref{human_optical_perception}).
-Therefore the number of additional elements the language can be reasonably extended with is limited as well at least with regards to usability.
+Therefore the number of additional elements the language can be reasonably extended with is limited as well -- at least with regards to usability.
 Currently having five node types and two edge types this limit is almost exhausted.
 Extending the language leads to a trade-off between increasing the expressiveness of the language and increasing the handling complexity for users.
 
 \noindent
 Beside extending with additional elements, also extending with concepts like another level of categorization is possible.
-Due to already handling two categorization methods, specifying element types through their geometrical shapes and EL categories through colors, this is not recommended.
-Instead additional diagram type, that focus on other aspects than EL, could be introduced similar to diagram types in UML having one specific aspect each (section \ref{UML}).
+Due to already handling two categorization methods -- specifying element types through their geometrical shapes and EL categories through colors -- this is not recommended.
+Instead additional diagram types, that focus on other aspects than EL, could be introduced, similar to diagram types in UML having one specific aspect each (section \ref{UML}).
 
 Beside extending it there is room for improving the language itself.
-One is the use of roman numerals for indicating the order of operands participating in an operation that needs a determined operand order (e.g.\ $\mathit{UA}$ in figure \ref{fig:RBAC96_v5_variant_stage3}).
-Especially the usage in combination with edge annotations like $R^2$ can be visually conflicting.
+One aspect may be the use of roman numerals for determining the order of operands (e.g.\ $\mathit{UA}$ in figure \ref{fig:RBAC96_v5_variant_stage3}).
+Especially the usage in combination with edge annotations like $2^R$ can be visually conflicting due to potential graphical overlapping.
 There may be a more elegant solution for that.
 
 % less reasonable models: HRU
@@ -2306,21 +2308,21 @@ There may be a more elegant solution for that.
 \section{Editor}
 \label{future_editor}
 The feature set of the editor is currently limited to its basic functions.
-While section \ref{editor_extensions} of chapter \ref{editor} suggested optional advanced features for the editor, this section discusses aspects of future development.
+While section \ref{editor_extensions} suggested optional advanced features for the editor, this section discusses aspects of future development.
 The next steps are adding features as well as further improving stability.
 
 One aspect, especially for integration with other software, is to improve the modules for importing and exporting models.
 Currently the XML-based file format does not have a section that can hold general information about a model.
 This is necessary to support importing and exporting models with any categories other than the standard EL categories (for $m=1$).
-Asides from the required XML section the feature of creating and modifying custom categories also requires a dynamic widget that allows adding, removing and modifying of categories. 
-For each category its name, XML tag and color has to be configured (tag and color could be generated automatically).
+Apart from the required XML section the feature of creating and modifying custom categories also requires a dynamic widget that allows adding, removing and modifying categories. 
+For each category name, XML tag and color have to be configured (tag and color could be generated automatically as well).
 An additional button for retrieving the standard EL preset can help configuring the correct ELM format (Entity Labeling Markup) for compatibility with other model analysis and verification tools after export.
 
 A split view could enable a layout where editor and table are not managed in tabs, but side by side.
-This view would highly benefit from large screens.
+This view would highly benefit from larger screens.
 
-Regarding the graphical elements, the depiction of texts inside element shapes could be further improved, e.g.\ with \textit{dynamic centering and resizing} depending on actual properties being set, not set or having very large values.
-Furthermore formulas could be visually enhanced by integrating a dedicated Latex module for handling the correct conversion and depiction of mathematical terms.
+Regarding the graphical elements, the depiction of texts inside element shapes could be further improved, e.g.\ with \textit{dynamic centering and resizing} depending on properties actual being set, not set or having very large values.
+Furthermore formulas could be visually enhanced by integrating a dedicated \LaTeX~module for handling the correct conversion and depiction of mathematical terms.
 
 
 
