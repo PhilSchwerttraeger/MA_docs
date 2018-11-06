@@ -2305,17 +2305,21 @@ There may be a more elegant solution for that.
 \section{Editor}
 \label{future_editor}
 The feature set of the editor is currently limited to its basic functions.
-While section \ref{editor_extensions} of chapter \ref{editor} suggested optional advanced features for the editor, this section should discuss aspects of future development.
-The next steps are to add features as well as further improve stability.
+While section \ref{editor_extensions} of chapter \ref{editor} suggested optional advanced features for the editor, this section discusses aspects of future development.
+The next steps are adding features as well as further improving stability.
 
-One important aspect for actual usage and integration with other software is to improve the modules for importing and exporting models.
-Currently the XML-based file format does not have a general model section that would support the import and export of any categories other than the standard EL categories (for $m=1$), which is necessary for the additional feature of creating and modifying custom categories and category colors.
-For the latter a dynamic widget has to be provided that allows adding, removing and modifying of categories. 
+One aspect, especially for integration with other software, is to improve the modules for importing and exporting models.
+Currently the XML-based file format does not have a section that can hold general information about a model.
+This is necessary to support importing and exporting models with any categories other than the standard EL categories (for $m=1$).
+Asides from the required XML section the feature of creating and modifying custom categories also requires a dynamic widget that allows adding, removing and modifying of categories. 
 For each category its name, XML tag and color has to be configured (tag and color could be generated automatically).
-An additional button for retrieving the standard EL preset can help configuring the  correct ELM format (Entity Labeling Markup) for compatibility with model analysis and verification tools after export.
+An additional button for retrieving the standard EL preset can help configuring the correct ELM format (Entity Labeling Markup) for compatibility with other model analysis and verification tools after export.
+
+A split view could enable a layout where editor and table are not managed in tabs, but side by side.
+This view would highly benefit from large screens.
 
 Regarding the graphical elements, the depiction of texts inside element shapes could be further improved, e.g.\ with \textit{dynamic centering and resizing} depending on actual properties being set, not set or having very large values.
-Furthermore formulas could be visually enhanced by integrating a dedicated Latex module for handling the correct depiction of mathematical terms.
+Furthermore formulas could be visually enhanced by integrating a dedicated Latex module for handling the correct conversion and depiction of mathematical terms.
 
 
 
