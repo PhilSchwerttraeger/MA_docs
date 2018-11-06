@@ -447,8 +447,12 @@ with:
 The Entity Labeling (EL) aspect is one possible aspect $\mathcal{A}$ in context of AOSE (see definition \ref{definition:AOSE}).
 It is designed to support the process of formally specifying policy semantics typically found in operating systems and middleware systems.
 Its purpose is to support the transition from informal policy to formal model (see highlighted part in figure \ref{fig:AOSE}).
+For this model components of an informally specified policy are formalized by classifying them into the six semantic categories:
 
-For this model components of an informally specified policy are formalized by classifying them into the six semantic categories $\mathit{ES}$, $\mathit{LS}$, $\mathit{LA}$, $\mathit{AR}$, $\mathit{RR}$, and $\mathit{MC}$:
+\begin{align}
+\mathcal{A}_{\mathit{EL}} &= \lbrace \mathit{ES}, \mathit{LS}, \mathit{LA}, \mathit{AR}, \mathit{RR}, \mathit{MC} \rbrace
+\label{EL_A}
+\end{align}
 
 \begin{description}
 \item[1) Entity Set (ES)]\hfill \\
@@ -528,8 +532,8 @@ There are two types of constraints: policy-intrinsic (related to variables manag
 %\end{xdefinition}
 
 \noindent
-The resulting model after EL can be depicted in three different forms: Textual, table and graphical.
-The textual form created from an example policy looks like this:
+The resulting model can be depicted in three different forms: Textual, table and graphical.
+The textual form (created from an example policy) looks like this:
 
 \begin{align}
 \langle &\mathcal{M}_{\mathit{example}}, \mathcal{A}_{EL}, sem \rangle
