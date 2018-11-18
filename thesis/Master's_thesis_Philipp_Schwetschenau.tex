@@ -2266,8 +2266,11 @@ While the results hint at several improvements of the work flow and editing beha
 \label{future_work}
 % chapter introduction
 This chapter discusses limits and open issues of the graphical specification language developed in this work and the current state of development of the editor.
-Some ideas on further improving the language and the editor derived from the evaluation part of this work (chapter \ref{evaluation}) and were already integrated in form of a language design reiteration, yet others are discussed in this chapter.
+Many ideas for further improving the language and the editor derived from the evaluation part of this work (chapter \ref{evaluation}).
+Some of them were already integrated into the language in form of a design reiteration.
 Especially the EL editor leaves room for improvement due to the time restriction for development in context of this work.
+
+
 
 \section{Language}
 \label{future_GSL}
@@ -2292,13 +2295,13 @@ Due to the increased visual complexity the resulting model (see figure \ref{fig:
 
 With regard to \cite{Zeckzer14a} the amount of different elements being held in our visual buffer is limited (section \ref{human_optical_perception}).
 Therefore the number of additional elements the language can be reasonably extended with is limited as well -- at least with regards to usability.
-Currently having five node types and two edge types this limit is almost exhausted.
+Currently having five node types and two edge types this visual buffer space is almost exhausted.
 Extending the language leads to a trade-off between increasing the expressiveness of the language and increasing the handling complexity for users.
 
 \noindent
 Beside extending with additional elements, also extending with concepts like another level of categorization is possible.
 Due to already handling two categorization methods -- specifying element types through their geometrical shapes and EL categories through colors -- this is not recommended.
-Instead additional diagram types, that focus on other aspects than EL, could be introduced, similar to diagram types in UML having one specific aspect each (section \ref{UML}).
+Instead additional diagram types that focus on other aspects than EL, could be introduced, similar to diagram types in UML having one specific aspect each (section \ref{UML}).
 
 Beside extending it there is room for improving the language itself.
 One aspect may be the use of roman numerals for determining the order of operands (e.g.\ $\mathit{UA}$ in figure \ref{fig:RBAC96_v5_variant_stage3}).
