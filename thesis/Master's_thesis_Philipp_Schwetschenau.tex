@@ -1162,7 +1162,8 @@ This may be even counter-intuitive, because humans are able to hold up to 7 diff
 
 
 \subsection{Solution 2: Operator Elements}
-The second extension is the \textit{operator indication}, which allows specifying an operator for operations with one or more operands.
+\label{operator_elements}
+The second extension is the \textit{operator element}, which allows specifying an operator for operations with one or more operands.
 In the notation \cite{Amthor18} uses, relationships do not specify any operator between elements, just the relationship type by different arrows (mapping, relation, constraint).
 Therefore relationships are depicted incompletely.
 Again, as already stated in solution 1, it does not seem reasonable to introduce new graphical elements to indicate the operator at this level of detail and with that amount of different possible types.
@@ -1371,6 +1372,9 @@ Handling two or more sets is possible now as well as any order of operations as 
 In some cases the order of elements participating in an operation is relevant for the operation itself (e.g.~$\setminus$ for set difference).
 Such order of participants can be indicated with roman numerals as annotations.
 Example for this can be seen in figures \ref{fig:relationship_operation_2args} and \ref{fig:relationship_operation_3args}.
+While mappings do not require roman numerals (due to having just one incoming and one outgoing arrow), relations do.
+Relations that exclusively refer to identical sets such as $\mathit{RH} \subseteq R \times R$ constitute an exception to that rule and can omit roman numerals, because a order is not necessary to convert it to its mathematical form (e.g.\ figure \ref{fig:HIX2}).
+
 
 %\begin{figure}[!htb]
 %	\centering
@@ -1427,7 +1431,7 @@ Sets like $P = 2^{O \times OP}$ in $RBAC_0$ (see definition \ref{definition:RBAC
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=0.27]{../figures/chapter3/subsets_externally.png}
-	\caption{Set with its definition modeled external}
+	\caption{Set with its definition modeled externally}
 	\label{fig:subsets_externally}
 \end{figure}
 
@@ -1437,7 +1441,7 @@ Note that $P$ and the power set element are connected with the help of a simple 
 The power set element is de facto a set and formally the same set as $P$.
 The connecting line indicates this equality.
 Elements from the power set element onwards build up a term that is equal to the internal definition as formula.
-The line element is only legally applicable between a set and an operation, set or tuple element.
+The line element is only legally applicable between a set and an operation, set or relation element.
 
 For individual benefits and usage of such variants see \textit{Solution 5: Alternate Forms} (section \ref{solution_alternate_forms}).
 
@@ -1460,13 +1464,13 @@ Limitations for the usage of set formulas are discussed in section \ref{solution
 In the second step all relations are created.
 A relation has to have its identifier inside its shape and has to be connected to at least two other elements with the help of arrows.
 Participating sets have to be created, when they are not already present in the model.
-It may be necessary to add operation elements to build up a more complex term.
+It may be necessary to add operator elements to build up a more complex term.
 
 \item[3) Mappings]\hfill \\
 In the third step all mappings are created.
 A mapping has to have its identifier inside its shape.
 It always has one incoming and one outgoing element/arrow.
-As in the previous step it may be necessary to add operation elements to build up a more complex term here, too.
+As in the previous step it may be necessary to add operator elements to build up a more complex term here, too.
 
 \item[4) Constraints]\hfill \\
 In this step all constraints are created.
@@ -2003,7 +2007,7 @@ The resulting model is depicted in figure \ref{fig:RBAC96_v5_variant_stage1}.
 \end{figure}
 
 \noindent
-After set creation we add the relations $UA$ and $PA$ by creating the corresponding shapes and positioning them between the participating sets.
+After set creation we add the relations $\mathit{UA}$ and $\mathit{PA}$ by creating the corresponding shapes and positioning them between the participating sets.
 Then we connect the relation with the participating sets with arrows.
 For this we need to rearrange the sets created before to ideally have no overlapping lines in the model in the end.
 
@@ -2019,7 +2023,7 @@ Similar procedure follows for the mappings $user$ and $roles$.
 But unlike a relation a mapping has input and output participants.
 Arrows have to point away from it or towards it accordingly.
 Also we need to modify $R$ to $2^R$ for $roles$ by adding an annotation to the corresponding arrow.
-Note that it is also possible to create an dedicated element for $2^R$ instead of the arrow annotation.
+Note that it is also possible to create a dedicated element for $2^R$ instead of the arrow annotation.
 But due to not having any other element in the model referring to $2^R$ this comes with no advantages over the arrow annotation.
 The model after those two steps is depicted in figure \ref{fig:RBAC96_v5_variant_stage3}.
 
@@ -2045,7 +2049,7 @@ For this we need to set up a color legend that maps colors to EL categories.
 After that we can colorize the element backgrounds to the colors of the corresponding EL categories.
 The process of EL itself, basically the semantic assignment of elements to EL categories, is not focus of this work and will be assumed to be given in the context of this chapter.
 Note that elements that are not relevant for EL can be left blank (\textit{uncategorized}).
-This includes all operation elements like $2^{\Box}$, but also may include \textit{secondary sets} or \textit{helper sets} like $O$ and $\mathit{OP}$ in this model.
+Generally this includes all operator elements (like $\times$ in figure \ref{fig:RBAC96_v5}), but may also include \textit{secondary sets} like $O$ and $\mathit{OP}$ in this model.
 The resulting final model is depicted in figure \ref{fig:RBAC96_v5_variant}.
 
 \begin{figure}[htb]
@@ -2208,6 +2212,7 @@ On the one hand this adds new elements to the system, but on the other hand this
 	\label{fig:refinedElements}
 \end{figure}
 
+\noindent
 As a result of the usability tests also relations and mappings got altered in their shapes to visually support their properties and usage in a more intuitive way.
 Figure \ref{fig:refinedElements} shows a collection of all element modifications that originated from the results of the usability tests.
 
