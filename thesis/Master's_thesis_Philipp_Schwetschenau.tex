@@ -1155,7 +1155,7 @@ To express them we introduce \textit{relationship annotations}.
 These are positioned at the connection points of sets and relationships, simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}).
 Unlike their semantics in UML or ERD, these relationship annotations do not indicate the amount of elements participating in a relationship, but a specific form of an element in context of a relationship it is part of.
 Just like UML/ERD the mathematical expression is depicted directly as textual expression without any additional graphical elements or symbols.
-The expression can be $2^X$ when directly used at a set $X$, 2\textsuperscript{$\wedge$} otherwise, e.g.\ at an \textit{operator element} (see section \ref{operator_elements}), that involves multiple elements.
+The expression can be $2^X$ when directly used at a set $X$, 2\textsuperscript{$\wedge$} otherwise, e.g.\ at an \textit{operator element} (see section \ref{operator_elements}) that involves multiple elements.
 
 At this level of detail specifying special graphical elements (e.g.~special arrow heads) is not reasonable due to the high amount of different elements existing (also with regard to solution 2).
 This may be even counter-intuitive, because humans are able to hold up to 7 different elements in their visual buffer at once; beyond that learning/working becomes harder due to constantly swapping information between cerebral areas (see section \ref{human_optical_perception} about human optical perception).
@@ -1303,10 +1303,6 @@ With this option the complexity of the model can be limited where needed.
 A user can decide case-specifically whether certain elements are relevant to be modeled graphically or mathematically for the sake of expressiveness/simplicity.
 The conditions for using a set formula have been described in section \ref{solution_alternate_forms} in detail.
 
-The depiction of subsets is mostly unaltered as well: They can be drawn as smaller sets inside their superset.
-With the removal of the horizontal alignment for EL categorization subsets are no longer automatically associated with the category of its superset only, but can be colored (categorized) individually to their superset.
-A depiction variant for subsets is described later in section \ref{variants} regarding visual complexity handling (see section \ref{problem_visual_complexity}).
-
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=0.4]{../figures/chapter3/subsets.png}
@@ -1315,6 +1311,10 @@ A depiction variant for subsets is described later in section \ref{variants} reg
 \end{figure}
 
 \noindent
+The depiction of subsets is mostly unaltered as well: They can be drawn as smaller sets inside their superset.
+With the removal of the horizontal alignment for EL categorization subsets are no longer automatically associated with the category of its superset only, but can be colored (categorized) individually to their superset.
+A depiction variant for subsets is described later in section \ref{variants} regarding visual complexity handling (see section \ref{problem_visual_complexity}).
+
 Indicating a membership to two or more categories is done by \textit{multi-coloring} the unclosed area of an element.
 Multi-coloring uses uniformly divided circular sectors to partition the coloring area.
 Two examples for multi-colored sets, ergo sets associated with multiple categories, is depicted in figure \ref{fig:set_multicolor}.
@@ -1337,7 +1337,7 @@ In the following we are going to discuss these elements in detail.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\linewidth-4cm]{../figures/chapter3/relationships.png}
+	\includegraphics[width=\linewidth-4.5cm]{../figures/chapter3/relationships.png}
 	\caption{Relationship elements (prototypes left, examples right)}
 	\label{fig:relationships}
 \end{figure}
