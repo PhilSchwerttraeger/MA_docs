@@ -146,7 +146,7 @@ Elements should not be designed contradictory or conflicting to already establis
 As a starting point the \textit{visual summary} \cite*{Amthor18} uses is analyzed regarding ambiguously depicted elements and its inconsistent classification method.
 Afterwards solutions to those problems are developed to improve the notation towards an unambiguous and isomorphic graphical language.
 
-To evaluate the language a selection of security models are constructed with it.
+To evaluate the language, a selection of security models are constructed with it.
 Also usability tests are used to evaluate the language as well as the editor with a selected set of participants.
 
 
@@ -162,12 +162,12 @@ Furthermore it presents the basic concepts of the graphical notation models UML 
 
 The third chapter is about the graphical specification language.
 It will start with investigating the \textit{visual summary} used by \cite{Amthor18} in order to reveal its problems.
-After isolating these problems matching concepts are developed to solve them and to construct a new graphical specification language considering design goals.
+After isolating these problems, matching concepts are developed to solve them and to construct a new graphical specification language considering design goals.
 The chapter then illustrates all graphical model elements and discusses its usage and limitations.
 
 Afterwards chapter 4 describes the requirements, the overall structure and certain sections of the EL editor, which was developed in form of a prototype in conjunction with this work.
 
-The actual implementation of the EL editor is subject of the subsequent chapter 5:
+The actual implementation of the EL editor is subject of the subsequent \mbox{chapter 5}:
 Qt as implementation base is introduced and the implementation's structure will be described on a reasonable level of abstraction.
 
 The sixth chapter is about the evaluation.
@@ -194,7 +194,7 @@ This notation will serve as first basis for graphical modeling in this domain.
 Section \ref{AOSE} focuses on the Aspect-oriented Security Engineering (AOSE) proposed by \citet*{Amthor18}.
 It covers the Entity Labeling Aspect in particular, one aspect of AOSE, which is going to be essential regarding the task to design a graphical specification language for it.
 Also the notation used by \citet*{Amthor18} to graphically model the process of Entity-Labeling, which was inspired by the graphical RBAC notation by \cite{Sandhu96}, will be described.
-This will be the starting point in designing the graphical specification language in chapter \ref{gsl}.
+This will be the starting point in designing the graphical specification language in \mbox{chapter \ref{gsl}}.
 
 In section~\ref{graphical_notations} the well-established graphical notations \textit{Unified Modeling Language} and \textit{Entity-Relationship} are described.
 Based on human optical perception and gestalt laws section~\ref{perception} provides information on how we perceive and evaluate optical stimuli regarding properties like shape and closeness.
@@ -865,7 +865,7 @@ These laws apply in particular when we look at graphical user interfaces (\texti
 They can describe how and why we look at certain aspects first or find some aspect more easy or hard to understand than another.
 Considering gestalt laws while designing any graphical content can help improving its visual quality and solving graphical problems and therefore also enhance the handling for its readers or users.
 
-Given that there is a large number of various gestalt laws, the following list (based on \citep{Goeckel01a}, \citep{Heinecke04a} and \citep{Sternberg}) describes some of them that are relevant for the task of designing a graphical specification language in chapter \ref{gsl}:
+Given that, there is a large number of various gestalt laws, the following list (based on \citep{Goeckel01a}, \citep{Heinecke04a} and \citep{Sternberg}) describes some of them that are relevant for the task of designing a graphical specification language in chapter \ref{gsl}:
 
 \begin{description}
 \item[1) Law of Prägnanz]\hfill \\
@@ -1031,7 +1031,7 @@ Due to being highly tailored to one specific domain, established graphical notat
 A new concept like EL generally requires a newly designed graphical notation.
 In reality needed elements, concepts and ideas are not always created from scratch, but are getting (partly) adopted from related systems and adapted accordingly as long as they syntactically and semantically fit.
 With or without adoption: The system should be designed in a way its components are unambiguous to components of systems from similar or related domains to avoid misunderstanding or barriers in learning.
-With this said we want to start off with the graphical notation \cite{Amthor18} uses to visualize the EL aspect and try to analyze and expose its problems in section \ref{analyzing_notation} and to propose matching solutions in section \ref{improving_notation} to improve it step by step.
+With this said, we want to start off with the graphical notation \cite{Amthor18} uses to visualize the EL aspect and try to analyze and expose its problems in section \ref{analyzing_notation} and to propose matching solutions in section \ref{improving_notation} to improve it step by step.
 
 \begin{mdframed}[style=mystyle,frametitle=Note]
 Henceforth all possible connections between sets like mappings, relations, constraints, etc.~are referred to as \textit{relationships} (hypernym).
@@ -1154,10 +1154,10 @@ The solutions are first described in this section regarding their general concep
 \subsection{Solution 1: Annotations}
 Other than problem 2, power sets are applied to just one set.
 To express them we introduce \textit{relationship annotations}.
-These are positioned at the connection points of sets and relationships, simliar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}).
+These are positioned at the connection points of sets and relationships, similar to UML's multiplicities (see section \ref{UML_additional_annotations}) or ERD's capacities (see section \ref{ER_additional_annotations}).
 Unlike their semantics in UML or ERD, these relationship annotations do not indicate the amount of elements participating in a relationship, but a specific form of an element in context of a relationship it is part of.
 Just like UML/ERD the mathematical expression is depicted directly as textual expression without any additional graphical elements or symbols.
-The expression can be $2^X$ when directly used at a set $X$, 2\textsuperscript{$\wedge$} otherwise, e.g.\ at an \textit{operator element} (see section \ref{operator_elements}) that involves multiple elements.
+The expression can be $2^X$ when directly used at a set $X$, 2\textsuperscript{$\wedge$} or $2^*$ otherwise, e.g.\ at an \textit{operator element} (see section \ref{operator_elements}) that involves multiple elements.
 
 At this level of detail specifying special graphical elements (e.g.~special arrow heads) is not reasonable due to the high amount of different elements existing (also with regard to solution 2).
 This may be even counter-intuitive, because humans are able to hold up to 7 different elements in their visual buffer at once; beyond that learning/working becomes harder due to constantly swapping information between cerebral areas (see section \ref{human_optical_perception} about human optical perception).
@@ -1512,7 +1512,7 @@ The two procedures described in this section are used in chapter \ref{evaluation
 \subsection{Comments on the Model Structure}
 \label{comments_on_model_structure}
 The modular graph we developed is now able to describe EL models graphically.
-On an more abstract level the graph is structured in nodes and edges, just like an mathematical graph.
+On a more abstract level the graph is structured in nodes and edges, just like an mathematical graph.
 Based on this one might assume this being a graph with all nodes being sets structurally.
 But due to mappings being depicted with the help of a graphical elements just like sets and relations, but not being sets at all, this is not the case.
 
@@ -1553,7 +1553,7 @@ By eliminating the need of spatial alignment and by introducing colors for categ
 As a result this also allows for automatic layouting models in the software editor (section \ref{editor} and \ref{implementation}) according to certain needs (e.g.~compact, hierarchical, horizontally/vertically).
 
 %For another example ($RBAC_3$) see figure \ref{fig:RBAC96_example} in the appendix on page \pageref{fig:RBAC96_example}.
-For more examples and insights in how to construct those models see chapter \ref{evaluation} \textit{Evaluation}.
+For more examples and insights in how to construct those models see \mbox{chapter \ref{evaluation}} \textit{Evaluation}.
 
 %\section{Visualization on a Higher Level of Abstraction}
 %\label{higher_abstraction_level}
@@ -1608,7 +1608,7 @@ One essential property is \textit{EL category memberships}, a list with all cate
 Some element properties are depicted in the graphical EL model, while others are depicted in the table tab only (these are optional/supportive and not essential for modeling an EL model).
 
 The editor provides arrow and line drawing between elements to connect them.
-Arrows can be deleted, annotated and inverted in its direction.
+Arrows can be deleted, annotated and inverted in their direction.
 
 
 
@@ -1617,7 +1617,7 @@ Arrows can be deleted, annotated and inverted in its direction.
 Besides its drawing section the editor provides a function to generate and export a XML-based scheme (\textit{Entity Labeling Markup Language} \citep{Amthor18}) from its current model.
 Graphical information (e.g.\ positions) are integrated into the same file with additional tags.
 A file in the format mentioned above can also be imported.
-An existing file not exported from this editor does not have any graphical information - therefore elements have to be manually adjusted regarding those properties after importing (rearranging).
+An existing file not exported from this editor does not have any graphical information -- therefore elements have to be manually adjusted regarding those properties after importing (rearranging).
 
 Per default the EL categories are set to the EL categories for $m=1$, but are modifiable.
 They are associated with a specific model, so they are also part of importing/exporting.
@@ -1818,7 +1818,7 @@ For the purpose of this chapter we will reduce complexity to focus on selected p
 \end{mdframed}
 
 \noindent
-The \texttt{QMainWindow} is the default window Qt creates after program start.
+\texttt{QMainWindow} is the default window Qt creates after program start.
 It is parent to all other widgets.
 The \texttt{QMainWindow} contains a \texttt{QTabWidget} with two tabs: \texttt{QGraphicsView} and \texttt{QTabsWidget} (analogue to its design in section \ref{editor_structure}).
 
