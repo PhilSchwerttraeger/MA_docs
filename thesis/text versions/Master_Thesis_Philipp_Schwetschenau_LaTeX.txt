@@ -28,7 +28,7 @@ Fachgebiet für Verteilte Systeme und Betriebssysteme
 
 
 \vfill {\large
-	Master Thesis\\ \vspace{2ex}
+	Master thesis\\ \vspace{2ex}
 	\LARGE \textbf{A Graphical Language for\\
 	Specifying Security Models} \\ \vspace{2.5ex}
 	\normalsize Submitted by: \\
@@ -39,7 +39,7 @@ Fachgebiet für Verteilte Systeme und Betriebssysteme
 	\makebox[\detaildescriptionwidth][r]{Supervisor:~~} Dipl.-Inf. Peter Amthor \\
 	\vspace{2ex} \\
 	\makebox[\detaildescriptionwidth][r]{Program:~~} Computer Science (Master) 2010\\  
-	\makebox[\detaildescriptionwidth][r]{Student number:~~} 46756  
+	\makebox[\detaildescriptionwidth][r]{Student number.:~~} 46756  
 	\vspace{2ex} \\
 	\makebox[\detaildescriptionwidth][r]{Submitted:~~} Ilmenau, 29. November 2018
 }
@@ -113,10 +113,6 @@ To support working with this approach, especially for the communication between 
 \citet*{Amthor18} already uses \textit{visual summaries} to illustrate examples.
 However, the depiction system is not described in detail as well as it is inconsistent and ambiguous regarding several parts of the formalization (e.g.\ arrows can have multiple meanings, the categorization method is misleading, functions do not specify operators for multiple operands).
 So these visualizations are appropriate to summerize an already formalized policy after EL-based model engineering, but are not suitable for independent modeling on a stand-alone level, because they are not isomorphic to their formalized mathematical counterpart.
-
-%There are two types of visualization \cite{Amthor18} uses, which have different levels of abstraction: 
-%One is based on the actual model components and visualizes them and their relationships.
-%The other one is based on a higher level of abstraction and visualizes the EL with its structure of semantic categories and their relationships.
 
 There are visual notations like UML or ERD, which have in common that they are tailored to one particular domain and its special needs.
 However they can not be applied here, because they focus on describing structural and functional properties of a software system and not formalized security properties.
@@ -207,24 +203,6 @@ In order to be able to work with such a security policy and to analyze it, it ha
 Being the central artifact in the process of model-based security engineering we want to describe a very basic security model -- the \textit{Identity-based Access Control} (IBAC) model -- and a well-established and widely used extension of it -- the \textit{Role-based Access Control} (RBAC) model.
 In the course of this work, we need security policies and models to explain and visualize model-based security engineering with regard to Entity Labeling.
 
-%\subsection{HRU}
-%\label{HRU}
-%The HRU security model \citep*{Harrison75a} is a fundamental, dynamic access control model.
-%It manages permissions of subjects on objects with the help of an state automaton and access control matrices.
-%While subjects are active (e.g. users), objects are passive (e.g. files).
-
-%\begin{xdefinition}[HRU] 
-%A HRU model is a deterministic automaton
-%$(Q, \Sigma , \delta , q_{0})$ with 
-%$Q = 2^S \times 2^O \times M$ as state space, 
-%$M = \lbrace m|m:S \times O \rightarrow 2^R \rbrace$ as set of access control matrices, 
-%$\Sigma$ as input alphabet, 
-%$\delta : Q \times \Sigma \rightarrow Q$ as state transition function and 
-%$q_0 \in Q$ as initial state.
-%\end{xdefinition}
-
-
-
 \subsection{Identity-Based Access Control}
 \label{IBAC}
 The most fundamental class of security models is probably the family of Identity-based Access Control (IBAC) models.
@@ -309,23 +287,6 @@ However, \cite{Sandhu96} mentions three main concepts for constraints, that seem
 
 RBAC$_3$ combines the concepts of RBAC$_1$ and RBAC$_2$.
 
-%In contrast to automaton-based security models (e.g.~HRU), RBAC is static.
-%Due to not being dynamic a RBAC model can always just reflect a snapshot in time.
-%A dynamic variant of RBAC was proposed by \cite{Schlegel13} and is called DRBAC.
-%It combines the RBAC$_3$ model with a deterministic state automaton of the HRU model.
-
-%\begin{xdefinition}[DRBAC] 
-%A DRBAC model is a tuple 
-%$(Q, \Sigma , \delta , q_{0}, OP, R, RH, C)$ with
-%$Q = 2^U \times 2^O \times 2^P \times 2^S \times 2^{\mathit{PA}} \times %2^{\mathit{UA}} \times \mathit{USER} \times \mathit{ROLES}$ as state space, where $U, O, P, S, PA, UA, RH, C$ is defined just as in the RBAC$_3$ model, 
-%$\mathit{USER} = \lbrace user|user: S \rightarrow U \rbrace$ as set of mappings that maps sessions to users, 
-%$\mathit{ROLES} = \lbrace roles|roles: S \rightarrow 2^R \rbrace$ as set of mappings that maps sessions to roles, 
-%$\Sigma = OP \times X$ as input alphabet, 
-%$\delta : Q \times \Sigma \rightarrow Q$ as state transition function, 
-%$q_0 \in Q$ as initial state and 
-%$OP, R, RH, C$ as static component.
-%\end{xdefinition}
-
 
 
 \subsubsection{RBAC Notation by Sandhu at al.}
@@ -353,7 +314,6 @@ Following graphical elements are used in this notation:
 \item A normal-headed unidirectional dashed arrow represents a constraint.
 Six arrows of this type are pointing symbolically from the set of constraints in the direction of all model components constraints can be potentially defined on.
 \end{itemize}
-%TODO: Better a table?
 
 \noindent
 A set has its name and its identifier in its center.
@@ -373,30 +333,6 @@ Different arrow types indicate different types of relationships.
 Besides \textit{Sessions S} no set displays any set elements.
 Also no set displays any kind of definition for its elements.
 For example \textit{Permissions P} does not indicate that its elements are defined as $2^{O \times \mathit{OP}}$ (as in the RBAC definition, see definition \ref{definition:RBAC}).
-
-%maybe my own gsl from bachelor thesis?
-
-
-%\subsection{Security Model Core}
-%\label{model_core}
-%Over the years many different security models emerged for special purposes and requirements.
-%They heavily vary and differ in their structure and design.
-%Comparing them or even parts of them for analysis or evaluation purposes is not always possible per se.
-%Methods to analyze a model concerning a given security property have to be adapted to every model they should run on.
-%So \cite{Poelck14} proposed the Security Model Core to describe and formalize all possible security models in one meta model in a homogeneous way.
-
-%\begin{xdefinition}[Security Model Core]
-%\label{def:SecurityModelCore}
-%The Security Model Core is a 5-tuple 
-%$(Q, \Sigma , \delta , q_{0}, E)$ with 
-%$Q$ as state space,
-%$\Sigma$ as input alphabet, 
-%$\delta: Q \times \Sigma \rightarrow Q$ as state transition function, 
-%$q_0$ as initial state and 
-%$E$ as static extension vector.
-%\end{xdefinition}
-
-%The definition of model components depends on the specialization of the corresponding model core and is done in six steps by identifying and defining those components.
 
 
 
@@ -460,78 +396,26 @@ For this model components of an informally specified policy are formalized by cl
 \item[1) Entity Set (ES)]\hfill \\
 \textit{ES} is a set of \textit{entity} identifiers.
 These are very basic elements in context of access control decisions and can be resources or principals like users or files.
-%\vspace{-2mm}
-
-%\begin{xdefinition}[ES] 
-%ES model components are sets that list potential participants in access decisions.
-%Elements of those sets are (1) atomic identifiers, (2) legal argument values for any authorization decision, (3) illegal argument values for evaluating \textit{AR} model components and (4) associated with labels via \textit{LA} model components.
-%\label{definition:ES}
-%\end{xdefinition}
 
 \item[2) Label Set (LS)]\hfill \\
 \textit{LS} is a set of legal \textit{label} values.
 Labels act as attributes in access control decisions and therefore as level of indirection.
 Their content varies depending on a policy's application domain.
-% and can be finite enumerations (e.g.~RBAC), infinite enumerations (e.g.~ABAC) or any number system such as $\mathbb{N}$.
-%\vspace{-2mm}
-
-%\begin{xdefinition}[LS] 
-%LS model components are sets that list identifiers used in entity labels.
-%Elements of those sets are (1) legal attribute values in labels, (2) legal argument values for evaluating \textit{AR} model components, (3) illegal argument values for any authorization decision and (4) may be associated with labels via \textit{LA} model components.
-%\label{definition:LS}
-%\end{xdefinition}
 
 \item[3) Label Assignment (LA)]\hfill \\
 \textit{LA} is a set of associations between entities and labels.
-%\vspace{-2mm}
-
-%\begin{xdefinition}[LA] 
-%LA model components are assignments that determine a system configuration in terms of how a policy's access rules (\textit{AR}) are applied to entities (\textit{ES}). They (1) are used to associate entity identifiers with label identifiers, (2) may be used to associate label identifiers with label identifiers and (3) indirectly determine any authorization decision.
-%\label{definition:LA}
-%\end{xdefinition}
 
 \item[4) Access Rule (AR)]\hfill \\
 \textit{AR} is a logical rule that defines, based on a set of entity labels, which operations may be legally performed on entities corresponding to these labels. Model components in \textit{AR} thus reflect a policy’s \textit{access control function}.
-%\vspace{-2mm}
-
-%\begin{xdefinition}[AR] 
-%\textit{AR} model components are logical rules which (1) are evaluated using label identifiers and (2) directly determine any authorization decision.
-%\label{definition:AR}
-%\end{xdefinition}
 
 \item[5) Relabeling Rule (RR)]\hfill \\
 \textit{RR} is a logical rule for legal label changes.
 Label changes can emerge from either administrative accesses (e.g.~RBAC's \textit{UA}) or discretionary accesses (user owns files and grant roles/users access).
-%\vspace{-2mm}
-
-%\begin{xdefinition}[RR] 
-%\textit{RR} model components are logical rules which (1) define relations between \textit{ES} or \textit{LS} model components and (2) restrict changes of \textit{LA} model components.
-%\label{definition:RR}
-%\end{xdefinition}
 
 \item[6) Model Constraints (MC)]\hfill \\
 \textit{MC} is a set of constraints over model components that must be satisfied at all time.
 There are two types of constraints: policy-intrinsic (related to variables managed inside the AC system) and policy-extrinsic (related to external variables, e.g.~time).
-%\vspace{-2mm}
-
-%\begin{xdefinition}[MC] 
-%MC model components are boolean expressions or external variables. 
-%They represent conditions which (1) may relate to all model components (including external variables), (2) must be satisfied by the values of all model components (excluding external variables) and (3) must be satisfied after any change of the model components.
-%\label{definition:MC}
-%\end{xdefinition}
 \end{description}
-
-%\noindent
-%According to these categories EL is defined as following:
-
-%\begin{xdefinition}[Entity Labeling aspect] 
-%The Entity Labeling aspect of a security policy is defined as:
-%\begin{gather*}
-%\mathcal{A}_{EL} = \lbrace ES,LS,LA,AR,RR,MC\rbrace
-%\end{gather*}
-%where $ES$, $LS$, $LA$, $AR$, $RR$, and $MC$ denote categories of model components defined as in definitions \ref{definition:ES} to
-%\label{definition:EL} \ref{definition:MC}.
-%\end{xdefinition}
 
 \noindent
 The resulting model can be depicted in three different forms: Textual, table and graphical.
@@ -645,7 +529,6 @@ UML and ER come with reasonable concepts to illustrate structural information an
 The \textit{Unified Modeling Language} (UML) is a graphical modeling language to specify, visualize, design and document software \citep{UML_OMG}.
 UML became a widely used tool in software development and was standardized by The Object Management Group in 1997 and also was approved as official ISO standard in 2005 \citep{UML_ISO}.
 
-%UML defines terms and relationships between those terms, as well as a graphical notation for those.
 The current version of UML (2.5) contains 14 different types of diagrams.
 Every diagram illustrates information according to one specific aspect.
 UML diagrams are classified into static and dynamic types, but they can have fuzzy borders and mixed forms as well.
@@ -661,8 +544,6 @@ Components an UML diagram is build up with are classified into \textit{elements}
 Elements are the main artifacts in an UML diagram.
 Graphically elements are based on closed shapes like boxes or ellipses.
 They usually have a name or identifier in form of text in the center of their shape. Horizontal lines can be used to separate an element into two or more sections (see \textit{class} element in figure \ref{fig:UML_elements}). \\
-%Examples for elements are classes, packages, ports, etc.~(see figure \ref{fig:UML_elements}).
-%Elements can be closely tied to specific diagram types (e.g.~components to component diagrams).
 
 \begin{figure}[htb]
 	\centering
@@ -671,22 +552,6 @@ They usually have a name or identifier in form of text in the center of their sh
 	\label{fig:UML_elements}
 \end{figure}
 
-%\noindent 
-%Some elements can have multiple forms.
-%For example the class element has a simple symbolic form as well as an extended form with detailed information (see figure \ref{fig:Class}).
-%With this option whole diagrams can be dynamically adjusted to a desired level of detail.
-%
-%\begingroup
-%\leftskip10em
-%\begin{figure}[htb]
-%	\centering
-%	\includegraphics[width=\linewidth]{../figures/chapter2/UML_Klassen2.png}
-%	\caption{Class diagrams with different level of detail}
-%	\label{fig:Class}
-%\end{figure}
-%\par
-%\endgroup
-
 \item[2) Relationships]\hfill \\
 Relationships can connect two or more elements.
 Graphically relationships are lines.
@@ -694,7 +559,6 @@ Optionally they can have a shape at one end to indicate a direction.
 They can vary in form by having differently drawn lines (solid, dashed) or shaped arrow heads (see figure \ref{fig:UML_relationships}).
 They preferably run in $90^{\circ}$ or $45^{\circ}$ angles.
 Lines do not collide if possible. \\
-%Examples: Dependency, generalization, include (see figure \ref{fig:UML_relationships})
 
 \begin{figure}[htb]
 	\centering
@@ -793,7 +657,6 @@ To specify the amount of entities in context of a relationship the following ind
 \end{itemize}
 
 \noindent
-%Cardinalities can be upper case (N) or lower case (n) with no semantic difference.
 A relationship can be read in two directions.
 For example the \textit{orders}-relationship in figure \ref{fig:ERD_minimal_example}:
 
@@ -802,14 +665,6 @@ For example the \textit{orders}-relationship in figure \ref{fig:ERD_minimal_exam
 \item An order is connected to exactly one client (left-to-right).
 \item A client is connceted to no, one or multiple orders (right-to-left).
 \end{itemize}
-
-%An entity type needs to have a \textit{primary key} defined in order to have its elements unambiguously identifiable.
-%The primary key is an attribute or a combination of attributes of the entity type and has to be unique among all other attribute values.
-%A primary key attribute is graphically indicated with an underlined name (see \textit{ClientID} in figure \ref{fig:ERD_minimal_example}).
-
-%Besides this basic system, ERDs can indicate some additional information.
-%For example besides those elements described above, there are variants of them with a double frame line to indicate a \textit{weak} property (no primary key, dependent to parent elements) or a dashed frame line to indicate a \textit{multivalued} property.
-%In context of this work those will not be relevant.
 
 \noindent
 The idea of ERD annotations is suitable solution to graphically model a special aspect or property in context of a relationship between elements.
@@ -839,12 +694,6 @@ When entity types are treated as classes, entities as objects, relationships as 
 	\caption{ERD modeled as UML class diagram}
 	\label{fig:ERD_as_UML}
 \end{figure}
-
-%\noindent
-%As seen in figure \ref{fig:ERD_as_UML} the diagram visually differs from the diagram in figure \ref{fig:ERD_minimal_example}, but can depict the information even more compact.
-%However, there is no common way for indicating an entity type's primary key in UML (the UML extension concept of \textit{stereotypes} can be used for this).
-
-
 
 \section{Perception}
 \label{perception}
@@ -880,7 +729,6 @@ Smart utilizing this law offers opportunities to design visually separated secti
 \item[3) Law of Similarity]\hfill \\
 Homogeneously depicted objects are associated as belonging together, although they may not be in close range to each other.
 This effect can be induced by \textit{Gestalt factors} like shape, color, brightness, size, orientation or rotation.
-%This law allows classifying or logically grouping multiple spatially distributed objects.
 
 \item[4) Law of Good Gestalt]\hfill \\
 While looking at complex structures of objects, details are ignored and objects will always be perceived in the most simple, regular and symmetric pattern they will form.
@@ -963,7 +811,6 @@ The following list describes the first 6 of those principles:
 \item[1) Safe Exploration]\hfill \\
 A user should always be able to safely explore the interface.
 This includes undoing every operation he performs in particular.
-%For this a software has to be designed as \textit{non-destructive} as possible.
 
 \item[2) Instant Gratification]\hfill \\
 A user should always instantly get feedback about operations he just performed.
@@ -973,16 +820,11 @@ This can be the direct result of his operation (e.g.~opening a window) or a visu
 \textit{Satisfiscing} (\textit{satisfying} and \textit{sufficing}) is the phenomenon that a user tends to scan all options just roughly and to use trial-and-error before finding the perfectly matching tool for a certain task.
 He tends to be fine with solutions that are \textit{good enough} and not the best possible.
 This means that the user should be supported to find the right tools when he needs them.
-%For this symbols and texts have to be short, simple and easy to understand.
 Elements and symbols already known should be reused when possible.
 Also to ensure a correct order of operations or work flow (if necessary at all, see point 6 of this list) the user should be guided appropriately (e.g.~\textit{drag here}).
 
 \item[4) Changes in Midstream]\hfill \\
 A user should always be able to interfere with running operations to always have the control (e.g. a time consuming operation indicated with a progress bar together with a cancel button underneath).
-
-%\item[5) Deferred Choices]\hfill \\
-%A user should always be able to defer choices that are not mandatory and answer just the minimal set of questions that are necessary to progress at a certain point.
-%Of course, besides this, the system has to offer a way for the user to come back to answer the skipped questions later.
 
 \item[5) Incremental Construction]\hfill \\
 Builder-style software like editors need to support \textit{incremental construction}.
@@ -1025,8 +867,6 @@ Finally section \ref{gsl_example} depicts and describes a full practical example
 
 \section{Approach}
 \label{gsl_concept}
-%approach, basic ideas, adoptions from literature
-
 Due to being highly tailored to one specific domain, established graphical notations for structural or semantic properties like UML or ER (see section \ref{graphical_notations}) are impractical for direct reuse in other domains.
 A new concept like EL generally requires a newly designed graphical notation.
 In reality needed elements, concepts and ideas are not always created from scratch, but are getting (partly) adopted from related systems and adapted accordingly as long as they syntactically and semantically fit.
@@ -1378,15 +1218,6 @@ Example for this can be seen in figures \ref{fig:relationship_operation_2args} a
 While mappings do not require roman numerals (due to having just one incoming and one outgoing arrow), relations do.
 Relations that exclusively refer to identical sets such as $\mathit{RH} \subseteq R \times R$ constitute an exception to that rule and can omit roman numerals because the order is no necessary information for conversion (e.g.\ figure \ref{fig:HIX2}).
 
-
-%\begin{figure}[!htb]
-%	\centering
-%	\includegraphics[width=\linewidth-7cm]{../figures/chapter3/operation_order.png}
-%	\caption{Indicating the order of sets for an operation}
-%	\label{fig:operation_order}
-%\end{figure}
-%\noindent
-
 As already stated power sets can be expressed using annotations and operator elements to express an operation between two other elements as seen in figure \ref{fig:relationship_annotation}.
 In many cases sets are used in their unaltered form and no extra annotation is needed (e.g.\ $A$ in figure \ref{fig:relationship_annotation}).
 
@@ -1527,13 +1358,6 @@ This leads to our graphical notation deviating from the typical mathematical gra
 
 \section{Example}
 \label{gsl_example}
-%\begin{figure}[htb]
-%	\centering
-%	\includegraphics[width=\linewidth-4cm]{../figures/chapter3/HIX.png}
-%	\caption{HIX example with $m=2$ \citep{Amthor18}}
-%	\label{fig:HIX}
-%\end{figure}
-
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth-4cm]{../figures/chapter3/HIX2.png}
@@ -1544,19 +1368,13 @@ This leads to our graphical notation deviating from the typical mathematical gra
 \noindent
 To showcase that we can now model all relevant aspects of EL we want to depict the HIX example with added role hierarchy \cite{Amthor18} uses as example with our newly developed notation.
 The example refers to the example depicted in section \ref{EL}, but with an additional role hierarchy $RH$.
-%The example refers to the example depicted in section \ref{EL}, but with one additional level of indirection $m=2$.
-%To depict the additional level of indirection ($LS_2, LA_2$), the color legend has to be expanded accordingly.
 It corresponds to its original depiction in figure \ref{fig:EL_diagram} and can be compared to it to observe the changes we introduced in this section.
 
 The layout was adapted to better compare both figures, but is not limited to this particular form as its former notation was.
 By eliminating the need of spatial alignment and by introducing colors for categorizing, models now can be arranged freely regarding its graph layout.
 As a result this also allows for automatic layouting models in the software editor (section \ref{editor} and \ref{implementation}) according to certain needs (e.g.~compact, hierarchical, horizontally/vertically).
 
-%For another example ($RBAC_3$) see figure \ref{fig:RBAC96_example} in the appendix on page \pageref{fig:RBAC96_example}.
 For more examples and insights in how to construct those models see \mbox{chapter \ref{evaluation}} \textit{Evaluation}.
-
-%\section{Visualization on a Higher Level of Abstraction}
-%\label{higher_abstraction_level}
 
 
 
@@ -1634,11 +1452,6 @@ This chapter covers the \textit{graphical user interface} of the editor.
 In the first section \ref{editor_structure} a general overview of the window's sections is given.
 Section \ref{editor_control_concept} then gives insight into the control concept and work-flow of the editor.
 Furthermore section \ref{editor_extensions} will suggest some advanced features.
-
-% ein/ausblendbar wegen Übersicht, 
-% "Filter-layers" (visibility filter): Categories, Annotations, Internal structure formulas, Names/Identifiers, Operation rhombus, all relationships, mappings/relations/constraints
-
-%  categorizing, models now can be arranged freely regarding its graph layout <--- auto-layouting options!
 
 \subsection{General Structure}
 \label{editor_structure}
@@ -1722,8 +1535,6 @@ Navigating the drawing area is primarily done with the mouse.
 Moving the drawing area's view is done with holding down the right mouse button (touch domain: two fingers touch-and-hold), zooming with the mouse wheel (touch domain: pinch-in/out).
 Alternatively a + and - button at the bottom right corner of the drawing area will allow zooming when no mouse wheel is available.
 
-%This concept not being necessarily self-explaining to everyone a short 3-step mini tutorial should be available.
-
 
 
 \section{Advanced Features}
@@ -1752,11 +1563,6 @@ The changes can be instantly observed in the depicted model nearby.
 This behavior supports instant gratification (see principle 2 of usability \citep{Tidwell11}, section \ref{usability}).
 Several changes can be made fast without the need of reentering or renavigating.
 This also supports satisfiscing (principle 3 of usability \citep{Tidwell11}), because the user can easily use trial-and-error to find the configuration he needs.
-
-%\subsection{Default relationship}
-%\label{editor_extension_default_relationship}
-%A toggle button in the settings section \textit{or} a small drop-down menu inside a corner of the drawing area (see figure \ref{fig:GUI_extensions}) allows setting a default relationship type (mapping or relation).
-%This is not necessary per se, due to being able to draw an arbitrary relationship and change it to a mapping/relation in the properties section, but this may enhance the working speed when drawing multiple non-default relationship elements.
 
 \subsection{Redirect Edges}
 \label{editor_extension_redirect_edges}
@@ -1795,7 +1601,6 @@ Finally in the last section of this chapter the concept for importing and export
 \label{implementation_base}
 Implementation base for this editor is Qt.
 Qt is a framework/class library for GUI-based cross-platform software development and supports all established operating systems like Linux, Windows, macOS, Android and iOS.
-%Qt has a dual licence model, that uses a proprietary license for commercial projects and the \textit{GNU General Public License} for open source projects.
 
 Qt uses its MOC (meta object compiler) preprocessor to extend C++ with additional features.
 One of these are signals and slots, an easy concept for an event-driven program flow and for enabling simple communication between objects.
@@ -1913,13 +1718,6 @@ Calling the context menu (\texttt{contextMenuEvent}) follows the same concept.
 Currently there are two layers the context menu is implemented in and callable from: \texttt{GraphicalElement}, which is triggered when an element is clicked or \texttt{GraphicsScene}, which is triggered when free space of the scene is clicked.
 Figure \ref{fig:contextMenu_item} shows the context menu of an item in the scene.
 
-%\begin{figure}[htb]
-%	\centering
-%	\includegraphics[]{../figures/chapter5/contextMenu_scene.png}
-%	\caption{Context menu after clicking empty space in the scene}
-%	\label{fig:contextMenu_scene}
-%\end{figure}
-
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=0.9]{../figures/chapter5/contextMenu_item.png}
@@ -1947,17 +1745,9 @@ The XML scheme follows the \textit{Entity Labeling Markup Language} specificatio
 
 
 
-%\section{Summary}
-%\label{implementation_importexport}
-%This chapter
-
-
-
 \cleardoublepage
 \chapter{Evaluation}
 \label{evaluation}
-%kritik immer fehlende isomorphe abbildung -> begriff "isomorphie" als entwurfskriterium
-%auch als steilvorlage für eval
 Subject of this chapter is the evaluation of the graphical specification language for EL developed in chapter \ref{gsl} as well as the EL editor prototype, which was designed in chapter \ref{editor} and described regarding its implementation in chapter \ref{implementation}.
 In section \ref{eval_goals} the goals and methods for the evaluation are presented.
 Sections \ref{eval_language} and \ref{eval_editor} then elaborate on the evaluation of the language and the editor separately.
@@ -2014,14 +1804,6 @@ After set creation we add the relations $\mathit{UA}$ and $\mathit{PA}$ by creat
 Then we connect the relation with the participating sets with arrows.
 For this we need to rearrange the sets created before to ideally have no overlapping lines in the model in the end.
 
-%\begin{figure}[htb]
-%	\centering
-%	\includegraphics[scale=0.13]{../figures/chapter6/RBAC96_v5_variant_stage2.png}
-%	\caption{}
-%	\label{fig:RBAC96_v5_variant_stage2}
-%\end{figure}
-%
-%\noindent
 Similar procedure follows for the mappings $user$ and $roles$.
 But unlike a relation a mapping has input and output participants.
 Arrows have to point away from it or towards it accordingly.
@@ -2040,13 +1822,6 @@ The model after those two steps is depicted in figure \ref{fig:RBAC96_v5_variant
 \noindent
 The next step is to connect $O$ and $\mathit{OP}$ with $P$.
 For this the mathematical expression has to be rebuilt with operator elements in the correct order of operations.
-%\begin{figure}[htb]
-%	\centering
-%	\includegraphics[scale=0.13]{../figures/chapter6/RBAC96_v5_variant_stage4.png}
-%	\caption{}
-%	\label{fig:RBAC96_v5_variant_stage4}
-%\end{figure}
-%\noindent
 Finally we obtain a full model of RBAC, on which we now can run the EL process on.
 For this we need to set up a color legend that maps colors to EL categories.
 After that we can colorize the element backgrounds to the colors of the corresponding EL categories.
@@ -2121,22 +1896,6 @@ Still, after converting $O$ and $\mathit{OP}$ to a textual term, we can not dete
 We can counter this problem by assuming that elements with unclear EL-categorization like $O$ and $\mathit{OP}$ are always associated with no EL category (white coloring).
 This leads to compression being legal exclusively for elements without EL-assignments, otherwise the depiction would be inconsistent.
 Without this rule the compression of $O$ and $\mathit{OP}$ would induce a loss of information and results in a non-isomorphic graphical representation.
-
-%\begin{figure}[htb]
-%	\centering
-%	\includegraphics[width=\linewidth-1cm]{../figures/chapter6/RBAC96_Amthor.png}
-%	\caption{Visual summary of RBAC96 \cite{Amthor18} uses}
-%	\label{fig:RBAC96_Amthor}
-%\end{figure}
-%
-%\noindent
-%When comparing the resulting model (figure \ref{fig:RBAC96_v5}) to the initial \textit{visual summary} \cite{Amthor18} used and which was improved in this work the lack of consistency becomes clear.
-%Figure \ref{fig:RBAC96_Amthor} shows the visual summary \cite{Amthor18} depicts to represent RBAC in context of EL.
-%Note that there are no constraints in this model, but a constraint example is depicted in a symbolic way to show how they would look like.
-%In comparison to figure \ref{fig:RBAC96_v5} this depiction clearly lacks all problems identified and improved in section 
-%\ref{gsl_concept}.
-
-
 
 \subsection{CoreABAC}
 With CoreABAC we want to depict a different type of security model that is based on attributes: The \textit{Attribute-Based Access Control} (ABAC) model.
@@ -2272,7 +2031,6 @@ While the results hint at several improvements of the work flow and editing beha
 \cleardoublepage
 \chapter{Outlook and Future Work}
 \label{future_work}
-% chapter introduction
 This chapter discusses limits and open issues of the graphical specification language developed in this work and the current state of development of the editor.
 Many ideas for further improving the language and the editor derived from the evaluation part of this work (chapter \ref{evaluation}).
 Some of them were already integrated into the language in form of a design reiteration.
@@ -2316,7 +2074,6 @@ One aspect may be the use of roman numerals for determining the order of operand
 Especially the usage in combination with edge annotations like $2^R$ can be visually conflicting due to potential graphical overlapping.
 There may be a more elegant solution for that.
 
-% less reasonable models: HRU
 
 
 \section{Editor}
@@ -2371,30 +2128,6 @@ The results gave valuable insights in the actual usage and work flow of the lang
 Still the language has open issues like being limited to the mathematical concepts it is built on.
 Depicting any other concepts will require extending or adapting the language accordingly.
 The amount of extensions is limited in practical terms to ensure a reasonable level of usability.
-
-%schluss
-
-
-
-% Appendix
-%\cleardoublepage
-%\tocentry{Appendix}
-%\renewcommand{\thesection}{\Alph{section}}
-%\markboth{Appendix}{}
-%\counterwithin{figure}{section}
-%\chapter*{Appendix}
-%\label{appendix}
-%\section{Additional examples}
-%The following figure depicts the $RBAC_3$ model in the graphical notation developed in chapter \ref{gsl}.
-%For its definition see definition \ref{definition:RBAC} on page \pageref{definition:RBAC}.
-
-%\begin{figure}[htb]
-%	\centering
-%	\includegraphics[width=\linewidth-1cm]{../figures/chapter3/RBAC96_v1.png}
-%	\caption{$RBAC_3$ example}
-%	\label{fig:RBAC96_example}
-%\end{figure}
-
 
 
 % Literaturverzeichnis
